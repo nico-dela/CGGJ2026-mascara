@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dli1vhc627e5r"
+path="res://.godot/imported/oso_mask_found.dialogue-5343226699f2a2c6a3f3bd1cc24f41ba.tres"
+
+[deps]
+
+source_file="res://dialogues/oso_mask_found.dialogue"
+dest_files=["res://.godot/imported/oso_mask_found.dialogue-5343226699f2a2c6a3f3bd1cc24f41ba.tres"]
+
+[params]
+
+defaults=true

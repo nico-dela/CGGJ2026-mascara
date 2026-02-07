@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bbcsuyhwvfpps"]
+
+[ext_resource type="Texture2D" uid="uid://cktxey8gbl7bv" path="res://images/Bar dentro.png" id="1_1nud3"]
+[ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/room_transition.tscn" id="2_pmnxm"]
+[ext_resource type="Texture2D" uid="uid://gjqumd2y5lla" path="res://images/MEsada bar.png" id="2_yvqia"]
+[ext_resource type="AudioStream" uid="uid://dg1q6eng6em7u" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Madera.wav" id="3_1bltn"]
+[ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/player.tscn" id="3_rjoje"]
+[ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/inventory_ui.tscn" id="4_bg4i0"]
+[ext_resource type="PackedScene" uid="uid://dsmx0ego51jb0" path="res://scenes/bartender.tscn" id="6_1bltn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvqia"]
+size = Vector2(1047, 37.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bltn"]
+size = Vector2(150.74896, 552.0535)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1bltn"]
+a = Vector2(644, 3)
+b = Vector2(-6, 2)
+
+[node name="Room3" type="Node2D" unique_id=1251456646]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1398950556]
+position = Vector2(1024, 541)
+scale = Vector2(3.26, 3.26)
+texture = ExtResource("1_1nud3")
+
+[node name="RoomTransition" parent="." unique_id=253777366 instance=ExtResource("2_pmnxm")]
+position = Vector2(981, 1035)
+scale = Vector2(18.064516, 2.3333333)
+target_scene = "res://scenes/room_1.tscn"
+target_spawn_id = "Spawn_Bar_to_Town"
+transition_sound = ExtResource("3_1bltn")
+
+[node name="Player" parent="." unique_id=1174022349 instance=ExtResource("3_rjoje")]
+position = Vector2(982, 870)
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=808482513]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=551275651]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1904007930]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=657581513 instance=ExtResource("4_bg4i0")]
+
+[node name="Bartender" parent="." unique_id=1592255677 instance=ExtResource("6_1bltn")]
+z_index = 1
+position = Vector2(988, 574)
+scale = Vector2(3.5, 3.5)
+
+[node name="RoomLimits" type="StaticBody2D" parent="." unique_id=2006781616]
+
+[node name="BarraSprite" type="Sprite2D" parent="RoomLimits" unique_id=1324703268]
+z_index = 3
+position = Vector2(1033, 351)
+texture = ExtResource("2_yvqia")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLimits" unique_id=65289795]
+z_index = 4
+position = Vector2(975, 621)
+shape = SubResource("RectangleShape2D_yvqia")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomLimits" unique_id=1269018023]
+position = Vector2(354.8048, 849.4089)
+rotation = 0.90408057
+shape = SubResource("RectangleShape2D_1bltn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomLimits" unique_id=1004151234]
+position = Vector2(1652, 845)
+rotation = -0.90408057
+shape = SubResource("RectangleShape2D_1bltn")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RoomLimits" unique_id=1416315848]
+position = Vector2(202, 1082)
+shape = SubResource("SegmentShape2D_1bltn")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RoomLimits" unique_id=1169376484]
+position = Vector2(1170, 1082)
+shape = SubResource("SegmentShape2D_1bltn")

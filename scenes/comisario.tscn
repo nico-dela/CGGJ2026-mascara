@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://b1ix0urhuwm17"]
+
+[ext_resource type="Script" uid="uid://dth10xa84q1to" path="res://scripts/comisario.gd" id="1_17t4n"]
+[ext_resource type="Texture2D" uid="uid://cswh61182ddcl" path="res://spritesheets/Poli_Idle.png" id="1_t3thw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17t4n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs7ht"]
+atlas = ExtResource("1_t3thw")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi3gw"]
+atlas = ExtResource("1_t3thw")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkiar"]
+atlas = ExtResource("1_t3thw")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blrn8"]
+atlas = ExtResource("1_t3thw")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_we72q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs7ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi3gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkiar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blrn8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="Comisario" type="Area2D" unique_id=1247389019]
+script = ExtResource("1_17t4n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1858912340]
+shape = SubResource("CapsuleShape2D_17t4n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1987841877]
+sprite_frames = SubResource("SpriteFrames_we72q")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8392515

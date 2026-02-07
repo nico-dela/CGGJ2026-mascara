@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chy8qmdgag64b"
+path="res://.godot/imported/Puerta Vaiven 1 (+corto).wav-49cd7e3346063a110a20c8ac35ac972c.sample"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Vaiven 1 (+corto).wav"
+dest_files=["res://.godot/imported/Puerta Vaiven 1 (+corto).wav-49cd7e3346063a110a20c8ac35ac972c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

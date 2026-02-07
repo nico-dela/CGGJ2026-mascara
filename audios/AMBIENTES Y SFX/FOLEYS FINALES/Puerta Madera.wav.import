@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dg1q6eng6em7u"
+path="res://.godot/imported/Puerta Madera.wav-8f238be57c0b2d6ecfe7feb98d9df408.sample"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Madera.wav"
+dest_files=["res://.godot/imported/Puerta Madera.wav-8f238be57c0b2d6ecfe7feb98d9df408.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

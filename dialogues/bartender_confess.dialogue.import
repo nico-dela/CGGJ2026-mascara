@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bhlimabd6h4ef"
+path="res://.godot/imported/bartender_confess.dialogue-bfc93f1f7b644d2fe7eeda06c5c8344c.tres"
+
+[deps]
+
+source_file="res://dialogues/bartender_confess.dialogue"
+dest_files=["res://.godot/imported/bartender_confess.dialogue-bfc93f1f7b644d2fe7eeda06c5c8344c.tres"]
+
+[params]
+
+defaults=true

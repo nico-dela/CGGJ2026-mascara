@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0oqlt26o1ln3"
+path="res://.godot/imported/Scrol list.wav-cf0ff2783134c0a41d2d593f216b1d71.sample"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list.wav"
+dest_files=["res://.godot/imported/Scrol list.wav-cf0ff2783134c0a41d2d593f216b1d71.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

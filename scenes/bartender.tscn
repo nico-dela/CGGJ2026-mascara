@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://dsmx0ego51jb0"]
+
+[ext_resource type="Script" uid="uid://daovryrtjcrbu" path="res://scripts/bartender.gd" id="1_sxo6c"]
+[ext_resource type="Resource" uid="uid://b08shewcmmcsv" path="res://dialogues/bartender_no_info.dialogue" id="2_cnj15"]
+[ext_resource type="Resource" uid="uid://bhlimabd6h4ef" path="res://dialogues/bartender_confess.dialogue" id="3_apgwd"]
+[ext_resource type="Texture2D" uid="uid://byg2smibqwrqp" path="res://spritesheets/Mozo_Idle.png" id="3_cnj15"]
+[ext_resource type="Texture2D" uid="uid://bq81uku4mtuad" path="res://spritesheets/Leñador_Idle.png" id="7_3gqjc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3gqjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apgwd"]
+atlas = ExtResource("3_cnj15")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pnpq"]
+atlas = ExtResource("3_cnj15")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gqjc"]
+atlas = ExtResource("3_cnj15")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27qx0"]
+atlas = ExtResource("3_cnj15")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phuym"]
+atlas = ExtResource("7_3gqjc")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiohv"]
+atlas = ExtResource("7_3gqjc")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8gfv"]
+atlas = ExtResource("7_3gqjc")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx61m"]
+atlas = ExtResource("7_3gqjc")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u8gfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apgwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pnpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gqjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27qx0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phuym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiohv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8gfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx61m")
+}],
+"loop": true,
+"name": &"lenador_idle",
+"speed": 7.0
+}]
+
+[node name="Bartender" type="Area2D" unique_id=1592255677]
+script = ExtResource("1_sxo6c")
+dialogue_no_info = ExtResource("2_cnj15")
+dialogue_confess = ExtResource("3_apgwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=794744751]
+shape = SubResource("CapsuleShape2D_3gqjc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=451460503]
+sprite_frames = SubResource("SpriteFrames_u8gfv")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.30355054

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bo3u1fdty0beb"
+path="res://.godot/imported/FOREST.wav-ed3a130d8c61c72522301cb7454b7430.sample"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/AMBIENTES/FOREST.wav"
+dest_files=["res://.godot/imported/FOREST.wav-ed3a130d8c61c72522301cb7454b7430.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

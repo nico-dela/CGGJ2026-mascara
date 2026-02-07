@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://bcs5ske44y082"]
+
+[ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/room_transition.tscn" id="2_ydwoj"]
+[ext_resource type="Texture2D" uid="uid://bjdlisyc8ta3d" path="res://images/fondo exteriores.png" id="3_wy464"]
+[ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/player.tscn" id="4_irjyx"]
+[ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/inventory_ui.tscn" id="5_0akh5"]
+[ext_resource type="Texture2D" uid="uid://50e3uulxumxh" path="res://images/hacha y tronco.png" id="9_4wlnl"]
+[ext_resource type="Script" uid="uid://dejdtuisrlttb" path="res://scripts/hacha_tronco_area.gd" id="9_f05lu"]
+[ext_resource type="AudioStream" uid="uid://dg1q6eng6em7u" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Madera.wav" id="9_k86bo"]
+[ext_resource type="AudioStream" uid="uid://b77pss8mwiweq" path="res://audios/AMBIENTES Y SFX/AMBIENTES/PUEBLO.wav" id="10_4wlnl"]
+[ext_resource type="Texture2D" uid="uid://bfp0q7t1ds33u" path="res://images/HIEDRAt.png" id="11_f05lu"]
+[ext_resource type="Script" uid="uid://dai53jswdincy" path="res://scripts/hiedra_area.gd" id="11_ncuik"]
+[ext_resource type="Texture2D" uid="uid://c1ybvq1l7qiaw" path="res://images/FOREGROUND 2.png" id="12_4xhvh"]
+[ext_resource type="Script" uid="uid://bs2j4e1v20pye" path="res://scripts/oso_area.gd" id="13_hv3v0"]
+[ext_resource type="Texture2D" uid="uid://b4rxr76cc5pt7" path="res://images/coleccionables/BearHead.png" id="14_gu0is"]
+[ext_resource type="Texture2D" uid="uid://c2lftt6k0abxk" path="res://images/coleccionables/Patito de hule-export.png" id="15_1afn8"]
+[ext_resource type="Script" uid="uid://b5uhf43b1cnqd" path="res://scripts/patito_area.gd" id="15_m0003"]
+[ext_resource type="Texture2D" uid="uid://dsvjbvep2mcaw" path="res://images/coleccionables/Pelota futbol americano-export2.png" id="16_y5mqv"]
+[ext_resource type="Script" uid="uid://cn8re2jjfp3vb" path="res://scripts/pelota_area.gd" id="17_ncuik"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k86bo"]
+a = Vector2(202.00005, 1081)
+b = Vector2(1288, 1085)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f05lu"]
+a = Vector2(0, 1080)
+b = Vector2(6123, 1084)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4xhvh"]
+a = Vector2(6107, -2)
+b = Vector2(6129, 1071)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ncuik"]
+a = Vector2(-3, 659)
+b = Vector2(-7, 683)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k86bo"]
+size = Vector2(380.00012, 180.76926)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv3v0"]
+size = Vector2(261, 496)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1afn8"]
+radius = 72.1734
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0003"]
+radius = 28.635643
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncuik"]
+radius = 21.0
+height = 59.635254
+
+[node name="Room1" type="Node2D" unique_id=445341437]
+z_index = -1
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=189922967]
+position = Vector2(3064, 545)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_wy464")
+
+[node name="Player" parent="." unique_id=1174022349 instance=ExtResource("4_irjyx")]
+position = Vector2(90, 923)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=695570126]
+limit_left = 0
+limit_top = 0
+limit_right = 6123
+limit_bottom = 1080
+position_smoothing_enabled = true
+
+[node name="Room2Transition" parent="." unique_id=1597323543 instance=ExtResource("2_ydwoj")]
+position = Vector2(504.99997, 695.00006)
+rotation = 3.1415927
+scale = Vector2(5.984138, -2.8656726)
+target_scene = "res://scenes/room_2.tscn"
+target_spawn_id = "Room2Marker"
+transition_sound = ExtResource("9_k86bo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1007142986]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=657581513 instance=ExtResource("5_0akh5")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=826315348]
+stream = ExtResource("10_4wlnl")
+autoplay = true
+
+[node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1242395800]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomLimits" unique_id=2091715809]
+position = Vector2(-263, 479)
+polygon = PackedVector2Array(24, -5, 12, 253, 212, 206, 340, 218, 670, 218, 669, 21, 854.60266, 17.566467, 851, 249, 1261, 253, 1269, 17, 1482, 21, 1478, 234, 1770, 218, 2423, 196, 3177, 119, 4657, 94, 6101, 253, 6107, -3, 19, -20)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomLimits" unique_id=899502228]
+position = Vector2(1079, -202)
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_k86bo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLimits" unique_id=1965399352]
+shape = SubResource("SegmentShape2D_f05lu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomLimits" unique_id=167833169]
+shape = SubResource("SegmentShape2D_4xhvh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RoomLimits" unique_id=658744923]
+position = Vector2(4195, 403)
+shape = SubResource("SegmentShape2D_ncuik")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1798616645]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=989587525]
+position = Vector2(585, 924)
+
+[node name="Spawn_Bar_to_Town" type="Marker2D" parent="SpawnPoints" unique_id=1242876121]
+position = Vector2(1393, 986)
+
+[node name="Room3Transition" parent="." unique_id=253777366 instance=ExtResource("2_ydwoj")]
+position = Vector2(1131.0001, 679)
+scale = Vector2(8.041754, 6.1667633)
+target_scene = "res://scenes/room_3.tscn"
+target_spawn_id = ""
+transition_sound = ExtResource("9_k86bo")
+
+[node name="HachaTroncoArea" type="Area2D" parent="." unique_id=1616461379]
+position = Vector2(3192, 691)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("9_f05lu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HachaTroncoArea" unique_id=1010730675]
+position = Vector2(482.3081, 641.92316)
+shape = SubResource("RectangleShape2D_k86bo")
+
+[node name="Sprite2D" type="Sprite2D" parent="HachaTroncoArea" unique_id=1567189916]
+z_index = 4096
+texture = ExtResource("9_4wlnl")
+
+[node name="HiedraArea" type="Area2D" parent="." unique_id=358117250]
+z_index = 4096
+position = Vector2(864, 16)
+script = ExtResource("11_ncuik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiedraArea" unique_id=592402336]
+position = Vector2(3459.5, 809)
+shape = SubResource("RectangleShape2D_hv3v0")
+
+[node name="Sprite2D" type="Sprite2D" parent="HiedraArea" unique_id=1814206068]
+z_index = 4096
+position = Vector2(3574, 723)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_f05lu")
+
+[node name="ForegroundArea" type="StaticBody2D" parent="." unique_id=1466888589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundArea" unique_id=55316177]
+
+[node name="Sprite2D" type="Sprite2D" parent="ForegroundArea" unique_id=55461565]
+z_index = 4096
+position = Vector2(3039, 539)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("12_4xhvh")
+
+[node name="MascaraOsoArea" type="Area2D" parent="." unique_id=722852910]
+position = Vector2(3977, 763.0001)
+rotation = 0.57072264
+scale = Vector2(0.6999999, 0.6999999)
+script = ExtResource("13_hv3v0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MascaraOsoArea" unique_id=1037035184]
+shape = SubResource("CircleShape2D_1afn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="MascaraOsoArea" unique_id=832340726]
+texture = ExtResource("14_gu0is")
+
+[node name="PatitoArea" type="Area2D" parent="." unique_id=1696679341]
+script = ExtResource("15_m0003")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatitoArea" unique_id=1553476503]
+position = Vector2(2679, 820)
+shape = SubResource("CircleShape2D_m0003")
+
+[node name="Sprite2D" type="Sprite2D" parent="PatitoArea" unique_id=341458952]
+position = Vector2(2680.0005, 819.9999)
+rotation = 0.45204028
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_1afn8")
+
+[node name="PelotaArea" type="Area2D" parent="." unique_id=1723847748]
+position = Vector2(2, 0)
+script = ExtResource("17_ncuik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PelotaArea" unique_id=1925394734]
+position = Vector2(3201, 803)
+rotation = -0.7225663
+shape = SubResource("CapsuleShape2D_ncuik")
+
+[node name="Sprite2D" type="Sprite2D" parent="PelotaArea" unique_id=1412248721]
+position = Vector2(3203, 804)
+rotation = -0.7225663
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_y5mqv")

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b31hurlcv6r26"]
+
+[ext_resource type="Script" uid="uid://dcl6kihb4jmjm" path="res://scripts/main_menu.gd" id="1_eema0"]
+[ext_resource type="Texture2D" uid="uid://cmdqpbbxn4hof" path="res://images/play button.png" id="2_8ln24"]
+[ext_resource type="AudioStream" uid="uid://0oqlt26o1ln3" path="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list.wav" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://btseemkb8nvf5" path="res://images/exit button.png" id="3_rtw2f"]
+[ext_resource type="AudioStream" uid="uid://tq7cvks6lmei" path="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list o play.wav" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://bx07s2dkbigos" path="res://images/MIniatura 1.png" id="6_rtw2f"]
+
+[node name="MainMenu" type="Control" unique_id=356583490]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eema0")
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="." unique_id=2055828156]
+stream = ExtResource("2_bqqt6")
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="." unique_id=1385901276]
+stream = ExtResource("3_wu84c")
+
+[node name="IniciarButton" type="Button" parent="." unique_id=1503218968]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -359.0
+offset_top = -168.0
+offset_right = -186.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("2_8ln24")
+
+[node name="SalirButton" type="Button" parent="." unique_id=885650249]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -173.0
+offset_top = -168.0
+grow_horizontal = 0
+grow_vertical = 0
+icon = ExtResource("3_rtw2f")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=248279826]
+z_index = -1
+position = Vector2(969, 543)
+texture = ExtResource("6_rtw2f")
+
+[connection signal="mouse_entered" from="IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
+[connection signal="pressed" from="IniciarButton" to="." method="_on_Iniciar_pressed"]
+[connection signal="mouse_entered" from="SalirButton" to="." method="_on_salir_button_mouse_entered"]
+[connection signal="pressed" from="SalirButton" to="." method="_on_Salir_pressed"]

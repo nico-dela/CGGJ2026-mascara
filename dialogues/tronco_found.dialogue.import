@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://nmc0m0njaghm"
+path="res://.godot/imported/tronco_found.dialogue-981f9748917abcc9bf8db94e70cfd25f.tres"
+
+[deps]
+
+source_file="res://dialogues/tronco_found.dialogue"
+dest_files=["res://.godot/imported/tronco_found.dialogue-981f9748917abcc9bf8db94e70cfd25f.tres"]
+
+[params]
+
+defaults=true

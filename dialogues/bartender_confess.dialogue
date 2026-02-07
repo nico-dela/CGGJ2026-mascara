@@ -1,0 +1,16 @@
+~ start
+Detective: Hola cantinero, soy yo de nuevo.. Reconoce esto? Creo que le pertenece, y curiosamente estaba en el bosque que usted no frecuenta... justo en el lugar donde desapareció el leñador. Le pido que diga lo que tenga que decir antes de que sea más tarde aún...
+Cantinero: Oh! yo juro que no hice nada. Es cierto que pasé por ahí.. Es cierto que ví el hacha del leñador desolada, al igual que su máscara. Pero le juro que no tuve nada que ver con eso! Tenga, me quedé con la máscara del leñador solamente para cuidársela..
+Detective: Yo a usted no le creo nada. Pero quizas el leñador pueda ayudarme
+
+- Poner mascara
+	do GameManager.poner_mascara_cantinero()
+	Cantinero: ooaagghh
+	Detective: Buenas noches leñador
+	Leñador: Oh, detective. Qué hace por acá? Que hago yo acá?
+	Detective: El leñador está acá, pero usted no. No le pido que me entienda.. Podría decirme qué es lo último que recuerda?
+	Leñador: Claro.. como es normal, yo estaba talando y talando. Esa tarea forzoza y repetitiva hasta el cansancio, la cual también erosiona el bosque donde tanto me gusta vivir.. De repente me siento cansado.. muy cansado.. por no querer más hacer esto.. y me dan ganas de dar un salto. Atravesar mi propia naturaleza... la natura..aagghhaggg......
+	(se saca la máscara y vuelve a ser el cantinero)
+	do GameManager.quitar_mascara_cantinero()
+	Cantinero:- Uh, creo que me dió un escalofrío 
+	Cantinero:- Ya le dije todo lo que sé...

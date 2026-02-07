@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bo5bs8g2gdip7"]
+
+[ext_resource type="Texture2D" uid="uid://c5ajd2p4tki5h" path="res://images/Comisario dentro.png" id="1_4et86"]
+[ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/room_transition.tscn" id="2_lfpqd"]
+[ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/player.tscn" id="4_ktm03"]
+[ext_resource type="AudioStream" uid="uid://dg1q6eng6em7u" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Madera.wav" id="5_flmds"]
+[ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/inventory_ui.tscn" id="5_lsxps"]
+[ext_resource type="Texture2D" uid="uid://dx2bsekmkpt4i" path="res://images/Escritorio comisaria.png" id="8_hbe2o"]
+[ext_resource type="PackedScene" uid="uid://b1ix0urhuwm17" path="res://scenes/comisario.tscn" id="9_guunk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbe2o"]
+size = Vector2(820.15405, 48.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hbe2o"]
+a = Vector2(1848, 7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_guunk"]
+a = Vector2(76, 99)
+b = Vector2(74, -344)
+
+[node name="Room2" type="Node2D" unique_id=300390011]
+z_index = -1
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=456485076]
+position = Vector2(1016, 529)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_4et86")
+
+[node name="RoomTransition" parent="." unique_id=960042085 instance=ExtResource("2_lfpqd")]
+position = Vector2(71.99999, 1005.00006)
+scale = Vector2(8.407385, 6.911458)
+target_scene = "res://scenes/room_1.tscn"
+target_spawn_id = "Marker2D"
+transition_sound = ExtResource("5_flmds")
+
+[node name="Player" parent="." unique_id=1174022349 instance=ExtResource("4_ktm03")]
+position = Vector2(489, 792)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1241034508]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=657581513 instance=ExtResource("5_lsxps")]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=246093374]
+
+[node name="Room2Marker" type="Marker2D" parent="SpawnPoints" unique_id=1290261192]
+position = Vector2(271, 902)
+
+[node name="RoomLimits" type="StaticBody2D" parent="." unique_id=596217492]
+
+[node name="Sprite2D" type="Sprite2D" parent="RoomLimits" unique_id=496357325]
+z_index = 1
+position = Vector2(792, 352)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("8_hbe2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLimits" unique_id=369748695]
+position = Vector2(860, 641)
+shape = SubResource("RectangleShape2D_hbe2o")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomLimits" unique_id=2049842558]
+position = Vector2(245.99998, 563.99994)
+rotation = -0.18849556
+shape = SubResource("RectangleShape2D_hbe2o")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomLimits" unique_id=934243544]
+position = Vector2(1658, 587)
+rotation = 0.015707964
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_hbe2o")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RoomLimits" unique_id=1446582568]
+position = Vector2(182, 1049)
+shape = SubResource("SegmentShape2D_hbe2o")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RoomLimits" unique_id=1450385467]
+position = Vector2(1844, 962)
+shape = SubResource("SegmentShape2D_guunk")
+
+[node name="Comisario" parent="." unique_id=1247389019 instance=ExtResource("9_guunk")]
+position = Vector2(868, 581)
+scale = Vector2(3.6, 3.6)

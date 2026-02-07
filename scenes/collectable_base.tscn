@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dbvkf46357fu5"]
+
+[sub_resource type="GDScript" id="GDScript_bx82s"]
+script/source = "extends Area2D
+
+func _ready():
+	# Configurar la detección de colisiones para detectar al jugador
+	connect(\"body_entered\", Callable(self, \"_on_body_entered\"))
+
+# Método que se ejecuta cuando algo entra en contacto con el ítem (como el jugador)
+func _on_body_entered(body):
+	if body.name == \"Player\":  # Asegúrate de que el nodo del jugador se llame \"Player\"
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqltc"]
+
+[node name="CollectableBase" type="Area2D" unique_id=1666050594]
+script = SubResource("GDScript_bx82s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=7723358]
+shape = SubResource("RectangleShape2D_hqltc")

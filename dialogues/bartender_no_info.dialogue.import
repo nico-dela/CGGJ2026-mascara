@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b08shewcmmcsv"
+path="res://.godot/imported/bartender_no_info.dialogue-88b3394981cf78f37b957f07b4d7b7b8.tres"
+
+[deps]
+
+source_file="res://dialogues/bartender_no_info.dialogue"
+dest_files=["res://.godot/imported/bartender_no_info.dialogue-88b3394981cf78f37b957f07b4d7b7b8.tres"]
+
+[params]
+
+defaults=true

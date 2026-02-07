@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://l51nv2k4xitx"
+path="res://.godot/imported/Puerta Metal.wav-d5a988096ac925fa105c53fe5651fbf2.sample"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Metal.wav"
+dest_files=["res://.godot/imported/Puerta Metal.wav-d5a988096ac925fa105c53fe5651fbf2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

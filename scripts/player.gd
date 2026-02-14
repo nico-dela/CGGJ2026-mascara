@@ -4,7 +4,6 @@ const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footsteps = $Footsteps
-#@onready var leitmotiv = $Leitmotiv
 
 enum PlayerState { IDLE, WALKING }
 var state := PlayerState.IDLE
@@ -23,9 +22,10 @@ func _ready():
 	add_to_group("player")
 	set_process_input(true)
 	
-	if GameManager.next_spawn_id != "":
+	# MEJORA: Comprobar que GameManager existe
+	if GameManager and GameManager.next_spawn_id != "":
 		var spawn_points = get_tree().current_scene.get_node("SpawnPoints")
-		if spawn_points.has_node(GameManager.next_spawn_id):
+		if spawn_points and spawn_points.has_node(GameManager.next_spawn_id):
 			global_position = spawn_points.get_node(GameManager.next_spawn_id).global_position
 		GameManager.next_spawn_id = ""
 

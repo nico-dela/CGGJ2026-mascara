@@ -5,6 +5,7 @@ extends Node
 # ======================
 var inventory := []
 var selected_item := ""
+var collected_items := []
 
 signal inventoryChange
 
@@ -16,13 +17,11 @@ var cantinero_mascara := false
 signal cantinero_mascara_puesta
 signal cantinero_mascara_quitada
 
-func poner_mascara_cantinero():
-	cantinero_mascara = true
-	cantinero_mascara_puesta.emit()
-
-func quitar_mascara_cantinero():
-	cantinero_mascara = false
-	cantinero_mascara_quitada.emit()
+# ======================
+# CONTROL DE PASOS / PUERTAS
+# ======================
+var paso_abierto := false
+signal paso_abierto_signal
 
 # ======================
 # TRANSICIÓN
@@ -35,7 +34,18 @@ func _ready():
 	add_child(transition_audio)
 
 # ======================
-# INVENTARIO
+# MÁSCARA DEL CANTINERO
+# ======================
+func poner_mascara_cantinero():
+	cantinero_mascara = true
+	cantinero_mascara_puesta.emit()
+
+func quitar_mascara_cantinero():
+	cantinero_mascara = false
+	cantinero_mascara_quitada.emit()
+
+# ======================
+# INVENTARIO (ACTUAL)
 # ======================
 func add_item(item_id: String):
 	if item_id not in inventory:
@@ -48,6 +58,30 @@ func remove_item(item_id: String):
 
 func has_item(item_id: String) -> bool:
 	return item_id in inventory
+
+# ======================
+# OBJETOS RECOGIDOS (PERMANENTES)
+# ======================
+func mark_as_collected(item_id: String):
+	if item_id not in collected_items:
+		collected_items.append(item_id)
+
+func is_collected(item_id: String) -> bool:
+	return item_id in collected_items
+
+# ======================
+# PASOS / PUERTAS
+# ======================
+func abrir_paso():
+	paso_abierto = true
+	paso_abierto_signal.emit()
+	print("¡Paso abierto!")
+
+func cerrar_paso():
+	paso_abierto = false
+
+func is_paso_abierto() -> bool:
+	return paso_abierto
 
 # ======================
 # CAMBIO DE ESCENA

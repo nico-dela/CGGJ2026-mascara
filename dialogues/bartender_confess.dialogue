@@ -5,6 +5,8 @@ Detective: Yo a usted no le creo nada. Pero quizas el leñador pueda ayudarme
 
 - Poner mascara
 	do GameManager.poner_mascara_cantinero()
+	do GameManager.remove_item("oso")  # ← NUEVA LÍNEA: quitar del inventario
+	do GameManager.abrir_paso()        # ← NUEVA LÍNEA: función para abrir el camino
 	Cantinero: ooaagghh
 	Detective: Buenas noches leñador
 	Leñador: Oh, detective. Qué hace por acá? Que hago yo acá?

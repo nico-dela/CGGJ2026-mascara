@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjdlisyc8ta3d" path="res://images/fondo exteriores.png" id="3_wy464"]
 [ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/player.tscn" id="4_irjyx"]
 [ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/inventory_ui.tscn" id="5_0akh5"]
+[ext_resource type="Script" uid="uid://b0ijxpcan0x8e" path="res://scenes/collision_shape_2d_4.gd" id="8_ncuik"]
 [ext_resource type="Texture2D" uid="uid://50e3uulxumxh" path="res://images/hacha y tronco.png" id="9_4wlnl"]
 [ext_resource type="Script" uid="uid://dejdtuisrlttb" path="res://scripts/hacha_tronco_area.gd" id="9_f05lu"]
 [ext_resource type="AudioStream" uid="uid://dg1q6eng6em7u" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Madera.wav" id="9_k86bo"]
@@ -32,7 +33,7 @@ a = Vector2(6107, -2)
 b = Vector2(6129, 1071)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ncuik"]
-a = Vector2(-3, 659)
+a = Vector2(0, -399)
 b = Vector2(-7, 683)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k86bo"]
@@ -87,6 +88,7 @@ stream = ExtResource("10_4wlnl")
 autoplay = true
 
 [node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1242395800]
+script = ExtResource("8_ncuik")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomLimits" unique_id=2091715809]
 position = Vector2(-263, 479)

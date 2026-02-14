@@ -1,12 +1,11 @@
 extends Area2D
 
 func _input_event(_viewport, event, _shape_idx):
+	# Si el paso ya está abierto, no hago nada
+	if GameManager.is_paso_abierto():
+		return
+	
 	if event is InputEventMouseButton and event.pressed:
-		#GameManager.add_item("pelota")
-
-		#var ui = get_tree().get_first_node_in_group("inventory_ui")
-		#if ui:
-			#ui.refresh()
-
+		# Aquí puedes poner el diálogo de "la hiedra bloquea el paso"
 		DialogueManager.show_dialogue_balloon(load("res://dialogues/hiedra.dialogue"), "start")
-		#queue_free()
+		# No haces queue_free() porque el objeto sigue en la escena

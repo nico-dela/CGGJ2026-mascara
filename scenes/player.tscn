@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cwt6gmtkgf5jk" path="res://spritesheets/Detective_Idle.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://ue7pjf6htxh4" path="res://spritesheets/Detective_walk.png" id="3_dqkch"]
 [ext_resource type="AudioStream" uid="uid://etspsonhopqj" path="res://audios/Pasos exterior.wav" id="4_dqkch"]
-[ext_resource type="AudioStream" uid="uid://c0dwm1mtemljd" path="res://audios/Detective.wav" id="5_qlg0r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 51.0
@@ -109,9 +108,5 @@ frame_progress = 0.9644744
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="." unique_id=397086018]
 stream = ExtResource("4_dqkch")
-
-[node name="Leitmotiv" type="AudioStreamPlayer2D" parent="." unique_id=577762446]
-stream = ExtResource("5_qlg0r")
-autoplay = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

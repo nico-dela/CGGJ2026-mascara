@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://co578sh7lv6tn"]
+
+[ext_resource type="Script" uid="uid://du8u7kdejar4l" path="res://autoload/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://c0dwm1mtemljd" path="res://audios/Detective.wav" id="2_liach"]
+
+[node name="AudioManager" type="Node" unique_id=574418672]
+script = ExtResource("1_8qd8g")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1485417306]
+stream = ExtResource("2_liach")

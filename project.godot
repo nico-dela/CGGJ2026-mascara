@@ -17,12 +17,18 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="Point&Click"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+run/max_fps=30
 
 [autoload]
 
 DialogueManager="*uid://c3rodes2l3gxb"
 GameManager="*uid://p37cor5g3yrr"
 InventoryState="*uid://rfnl7lsa31s7"
+AudioManager="*uid://co578sh7lv6tn"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://custom_balloon//balloon.tscn"
 
 [display]
 

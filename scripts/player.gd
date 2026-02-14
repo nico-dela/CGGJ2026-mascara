@@ -4,7 +4,7 @@ const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footsteps = $Footsteps
-@onready var leitmotiv = $Leitmotiv
+#@onready var leitmotiv = $Leitmotiv
 
 enum PlayerState { IDLE, WALKING }
 var state := PlayerState.IDLE

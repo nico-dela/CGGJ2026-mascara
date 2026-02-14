@@ -51,7 +51,8 @@ icon = ExtResource("3_rtw2f")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=248279826]
 z_index = -1
-position = Vector2(969, 543)
+position = Vector2(964.5, 540)
+scale = Vector2(1.0046875, 1)
 texture = ExtResource("6_rtw2f")
 
 [connection signal="mouse_entered" from="IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]

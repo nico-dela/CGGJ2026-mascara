@@ -27,7 +27,7 @@ texture = ExtResource("1_1nud3")
 
 [node name="RoomTransition" parent="." unique_id=253777366 instance=ExtResource("2_pmnxm")]
 position = Vector2(981, 1035)
-scale = Vector2(18.064516, 2.3333333)
+scale = Vector2(18.064516, 2.9333334)
 target_scene = "res://scenes/room_1.tscn"
 target_spawn_id = "Spawn_Bar_to_Town"
 transition_sound = ExtResource("3_1bltn")

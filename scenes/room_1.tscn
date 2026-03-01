@@ -88,6 +88,7 @@ stream = ExtResource("10_4wlnl")
 autoplay = true
 
 [node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1242395800]
+visible = false
 script = ExtResource("8_ncuik")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomLimits" unique_id=2091715809]

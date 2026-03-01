@@ -22,7 +22,7 @@ b = Vector2(74, -344)
 z_index = -1
 
 [node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=456485076]
-position = Vector2(1016, 529)
+position = Vector2(1020.00006, 539)
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("1_4et86")
 

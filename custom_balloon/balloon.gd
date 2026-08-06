@@ -81,11 +81,37 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
+	_adapt_for_device()
+	if DisplayAdapt:
+		DisplayAdapt.adapted.connect(_adapt_for_device)
 
 	if auto_start:
 		if not is_instance_valid(dialogue_resource):
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		start()
+
+
+func _adapt_for_device() -> void:
+	if balloon == null:
+		return
+	var margin: MarginContainer = balloon.get_node_or_null("MarginContainer")
+	if margin == null:
+		return
+	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
+	var touch := DisplayAdapt.is_touch_device if DisplayAdapt else false
+	var panel_height := 280.0 * ui if touch else 219.0
+	margin.offset_top = -panel_height
+	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
+	margin.add_theme_constant_override("margin_left", int(20 + safe.x))
+	margin.add_theme_constant_override("margin_right", int(20 + safe.z))
+	margin.add_theme_constant_override("margin_bottom", int(12 + safe.w))
+	if touch and balloon.theme:
+		balloon.theme.default_font_size = int(26 * ui)
+	var responses: Control = balloon.get_node_or_null("ResponsesMenu")
+	if responses:
+		var half_w := 320.0 * ui if touch else 290.5
+		responses.offset_left = -half_w
+		responses.offset_right = half_w
 
 
 func _process(_delta: float) -> void:

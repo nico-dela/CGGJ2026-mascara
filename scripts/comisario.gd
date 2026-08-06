@@ -1,15 +1,16 @@
-extends Area2D
+extends NpcInteractable
 
-#@export var mascara_prueba: ItemResource
-#@export var mascaras_decomisadas: Array[ItemResource]
+func _ready() -> void:
+	if dialogue == null:
+		dialogue = load("res://dialogues/comisario.dialogue")
+	super._ready()
 
-func _input_event(_viewport, event, _shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		#GameManager.add_item("patito")
-#
-		#var ui = get_tree().get_first_node_in_group("inventory_ui")
-		#if ui:
-			#ui.refresh()
-
-		DialogueManager.show_dialogue_balloon(load("res://dialogues/comisario.dialogue"), "start")
-		#queue_free()
+func _interact() -> void:
+	# Pick dialogue branch from story progress
+	if StoryFlags.caso_resuelto:
+		dialogue = load("res://dialogues/comisario_resolved.dialogue")
+	elif StoryFlags.is_paso_abierto() or StoryFlags.has_seen_clue("oso"):
+		dialogue = load("res://dialogues/comisario_clues.dialogue")
+	else:
+		dialogue = load("res://dialogues/comisario.dialogue")
+	super._interact()

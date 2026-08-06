@@ -1,0 +1,14 @@
+~ start
+Policía: Detective, veo que ya trajo pistas. Cuénteme qué encontró.
+if GameManager.has_seen_clue("oso")
+	Detective: Encontré la máscara del oso cerca del bosque. El cantinero sabe más de lo que admite.
+	Policía: Interesante... Confronte a ese hombre. Si confiesa, abriremos el paso al este.
+else
+	Detective: Hay objetos extraños por el pueblo. Estoy reuniendo indicios.
+	Policía: Bien. Cuando tenga algo contundente, vuelva.
+if GameManager.has_seen_clue("tronco")
+	Detective: También vi el hacha y el tronco del leñador. Parece que abandonó su trabajo a medias.
+if GameManager.has_seen_clue("patito") or GameManager.has_seen_clue("pelota")
+	Detective: Hay juguetes tirados... como si alguien desapareció a mitad del juego.
+Policía: Siga investigando. El pueblo cuenta con usted.
+=> END

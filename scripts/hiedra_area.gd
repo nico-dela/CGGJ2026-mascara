@@ -1,11 +1,8 @@
-extends Area2D
+extends Interactable
 
-func _input_event(_viewport, event, _shape_idx):
-	# Si el paso ya está abierto, no hago nada
-	if GameManager.is_paso_abierto():
-		return
-	
-	if event is InputEventMouseButton and event.pressed:
-		# Aquí puedes poner el diálogo de "la hiedra bloquea el paso"
-		DialogueManager.show_dialogue_balloon(load("res://dialogues/hiedra.dialogue"), "start")
-		# No haces queue_free() porque el objeto sigue en la escena
+func _ready() -> void:
+	dialogue = load("res://dialogues/hiedra.dialogue")
+	require_paso_cerrado = true
+	use_hover_feedback = false
+	interact_sound = load("res://audios/AMBIENTES Y SFX/FOLEYS FINALES/rama.ogg")
+	super._ready()

@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://0wss7x84ijj5" path="res://scenes/room_1.gd" id="1_m0003"]
 [ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/room_transition.tscn" id="2_ydwoj"]
-[ext_resource type="Texture2D" uid="uid://bjdlisyc8ta3d" path="res://images/fondo exteriores.png" id="3_wy464"]
+[ext_resource type="Texture2D" uid="uid://cngfpbawdvn8w" path="res://images/fondo exteriores.webp" id="3_wy464"]
 [ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/player.tscn" id="4_irjyx"]
 [ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/inventory_ui.tscn" id="5_0akh5"]
 [ext_resource type="Script" uid="uid://b0ijxpcan0x8e" path="res://scenes/collision_shape_2d_4.gd" id="8_ncuik"]
-[ext_resource type="Texture2D" uid="uid://50e3uulxumxh" path="res://images/hacha y tronco.png" id="9_4wlnl"]
+[ext_resource type="Texture2D" uid="uid://cyog47486wmku" path="res://images/hacha y tronco.webp" id="9_4wlnl"]
+[ext_resource type="AudioStream" uid="uid://b11jf0t4who6k" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/puertaComisaría.ogg" id="9_comisaria"]
 [ext_resource type="Script" uid="uid://dejdtuisrlttb" path="res://scripts/hacha_tronco_area.gd" id="9_f05lu"]
-[ext_resource type="AudioStream" uid="uid://dg1q6eng6em7u" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/Puerta Madera.wav" id="9_k86bo"]
-[ext_resource type="AudioStream" uid="uid://b77pss8mwiweq" path="res://audios/AMBIENTES Y SFX/AMBIENTES/PUEBLO.wav" id="10_4wlnl"]
-[ext_resource type="Texture2D" uid="uid://bfp0q7t1ds33u" path="res://images/HIEDRAt.png" id="11_f05lu"]
+[ext_resource type="AudioStream" uid="uid://c27d8sir7ynjc" path="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/puertaTaberna.ogg" id="10_taberna"]
+[ext_resource type="Texture2D" uid="uid://65glrg0ivmtr" path="res://images/HIEDRAt.webp" id="11_f05lu"]
 [ext_resource type="Script" uid="uid://dai53jswdincy" path="res://scripts/hiedra_area.gd" id="11_ncuik"]
-[ext_resource type="Texture2D" uid="uid://c1ybvq1l7qiaw" path="res://images/FOREGROUND 2.png" id="12_4xhvh"]
+[ext_resource type="Texture2D" uid="uid://jilmrkpsbhq1" path="res://images/FOREGROUND 2.webp" id="12_4xhvh"]
 [ext_resource type="Script" uid="uid://bs2j4e1v20pye" path="res://scripts/oso_area.gd" id="13_hv3v0"]
 [ext_resource type="Texture2D" uid="uid://b4rxr76cc5pt7" path="res://images/coleccionables/BearHead.png" id="14_gu0is"]
 [ext_resource type="Texture2D" uid="uid://c2lftt6k0abxk" path="res://images/coleccionables/Patito de hule-export.png" id="15_1afn8"]
@@ -64,28 +64,17 @@ texture = ExtResource("3_wy464")
 [node name="Player" parent="." unique_id=1174022349 instance=ExtResource("4_irjyx")]
 position = Vector2(90, 923)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=695570126]
-limit_left = 0
-limit_top = 0
-limit_right = 6123
-limit_bottom = 1080
-position_smoothing_enabled = true
-
 [node name="Room2Transition" parent="." unique_id=1597323543 instance=ExtResource("2_ydwoj")]
 position = Vector2(504.99997, 695.00006)
 rotation = 3.1415927
 scale = Vector2(5.984138, -2.8656726)
 target_scene = "res://scenes/room_2.tscn"
 target_spawn_id = "Room2Marker"
-transition_sound = ExtResource("9_k86bo")
+transition_sound = ExtResource("9_comisaria")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1007142986]
 
 [node name="InventoryUI" parent="CanvasLayer" unique_id=657581513 instance=ExtResource("5_0akh5")]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=826315348]
-stream = ExtResource("10_4wlnl")
-autoplay = true
 
 [node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1242395800]
 visible = false
@@ -122,8 +111,8 @@ position = Vector2(1393, 986)
 position = Vector2(1131.0001, 679)
 scale = Vector2(8.041754, 6.1667633)
 target_scene = "res://scenes/room_3.tscn"
-target_spawn_id = ""
-transition_sound = ExtResource("9_k86bo")
+target_spawn_id = "Marker2D"
+transition_sound = ExtResource("10_taberna")
 
 [node name="HachaTroncoArea" type="Area2D" parent="." unique_id=1616461379]
 position = Vector2(3192, 691)

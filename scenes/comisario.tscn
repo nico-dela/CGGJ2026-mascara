@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cswh61182ddcl" path="res://spritesheets/Poli_Idle.png" id="1_t3thw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17t4n"]
+radius = 18.0
+height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bs7ht"]
 atlas = ExtResource("1_t3thw")

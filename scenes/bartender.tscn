@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bq81uku4mtuad" path="res://spritesheets/Leñador_Idle.png" id="7_3gqjc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3gqjc"]
+radius = 18.0
+height = 64.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apgwd"]
 atlas = ExtResource("3_cnj15")
@@ -79,8 +81,10 @@ animations = [{
 
 [node name="Bartender" type="Area2D" unique_id=1592255677]
 script = ExtResource("1_sxo6c")
-dialogue_no_info = ExtResource("2_cnj15")
-dialogue_confess = ExtResource("3_apgwd")
+dialogue = ExtResource("2_cnj15")
+dialogue_with_item = ExtResource("3_apgwd")
+required_item = "oso"
+listen_mask_signals = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=794744751]
 shape = SubResource("CapsuleShape2D_3gqjc")

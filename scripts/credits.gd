@@ -1,10 +1,11 @@
 extends Control
 
+const CREDITS_MUSIC := preload("res://audios/AMBIENTES Y SFX/AMBIENTES/musicaCreditos.ogg")
+
 func _ready() -> void:
-	# Keep music only if we're in-game end credits; menu overlay should stay quiet.
-	if get_tree().current_scene == self and AudioManager:
-		AudioManager.stop_music()
+	if AudioManager:
 		AudioManager.fade_out_ambient()
+		AudioManager.set_music(CREDITS_MUSIC)
 	if has_node("BackButton"):
 		$BackButton.pressed.connect(_on_back_pressed)
 	_adapt_layout()
@@ -27,6 +28,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_on_back_pressed()
 
 func _on_back_pressed() -> void:
+	if AudioManager:
+		AudioManager.stop_music()
 	if get_tree().current_scene == self:
 		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	else:

@@ -14,39 +14,36 @@ func _ready() -> void:
 	_layout_for_device()
 
 func _layout_for_device() -> void:
-	var scale := DisplayAdapt.ui_scale
-	var touch := DisplayAdapt.is_touch_device
-	var min_h := (72.0 if touch else 56.0) * scale
-	var min_w := (360.0 if touch else 300.0) * scale
-	var separation := int((14.0 if touch else 12.0) * scale)
-	var icon_w := int((44.0 if touch else 36.0) * scale)
-	var bottom_pad := 40.0 + DisplayAdapt.safe_margin.w
-	var right_pad := 40.0 + DisplayAdapt.safe_margin.z
-	if touch:
-		bottom_pad = maxf(bottom_pad, 56.0)
-		right_pad = maxf(right_pad, 48.0)
+	# Misma posición y tamaño en design-space (1920x1080) en desktop y móvil.
+	# El stretch del viewport ya adapta el canvas; no mover con safe-area/ui_scale.
+	const MIN_H := 56.0
+	const MIN_W := 300.0
+	const SEPARATION := 12
+	const ICON_W := 40
+	const BOTTOM_PAD := 48.0
+	const RIGHT_PAD := 48.0
 
-	button_bar.add_theme_constant_override("separation", separation)
+	button_bar.add_theme_constant_override("separation", SEPARATION)
 
 	var visible_buttons := 0
 	for child in button_bar.get_children():
 		if child is Button:
 			var btn := child as Button
-			btn.custom_minimum_size = Vector2(min_w, min_h)
-			btn.add_theme_font_size_override("font_size", int((28.0 if touch else 26.0) * scale))
-			btn.add_theme_constant_override("icon_max_width", icon_w)
-			btn.expand_icon = false
+			btn.custom_minimum_size = Vector2(MIN_W, MIN_H)
+			btn.add_theme_font_size_override("font_size", 26)
+			btn.add_theme_constant_override("icon_max_width", ICON_W)
+			btn.expand_icon = true
 			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			btn.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
 			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_CENTER
 			if btn.visible:
 				visible_buttons += 1
 
-	var bar_height := visible_buttons * min_h + maxi(0, visible_buttons - 1) * separation
-	button_bar.offset_right = -right_pad
-	button_bar.offset_left = -(right_pad + min_w)
-	button_bar.offset_bottom = -bottom_pad
-	button_bar.offset_top = -(bottom_pad + bar_height)
+	var bar_height := visible_buttons * MIN_H + maxi(0, visible_buttons - 1) * SEPARATION
+	button_bar.offset_right = -RIGHT_PAD
+	button_bar.offset_left = -(RIGHT_PAD + MIN_W)
+	button_bar.offset_bottom = -BOTTOM_PAD
+	button_bar.offset_top = -(BOTTOM_PAD + bar_height)
 
 func _on_Iniciar_pressed() -> void:
 	click_sound.play()

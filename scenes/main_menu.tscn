@@ -44,7 +44,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -380.0
+offset_left = -348.0
 offset_top = -320.0
 offset_right = -48.0
 offset_bottom = -48.0
@@ -59,12 +59,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
-theme_override_constants/icon_max_width = 36
+theme_override_constants/icon_max_width = 40
 text = "Jugar"
 icon = ExtResource("2_8ln24")
 alignment = 0
 icon_alignment = 0
-expand_icon = false
+expand_icon = true
 vertical_icon_alignment = 1
 
 [node name="ConfiguracionButton" type="Button" parent="ButtonBar"]
@@ -73,12 +73,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
-theme_override_constants/icon_max_width = 36
+theme_override_constants/icon_max_width = 40
 text = "Configuración"
 icon = ExtResource("4_config")
 alignment = 0
 icon_alignment = 0
-expand_icon = false
+expand_icon = true
 vertical_icon_alignment = 1
 
 [node name="CreditosButton" type="Button" parent="ButtonBar"]
@@ -87,12 +87,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
-theme_override_constants/icon_max_width = 36
+theme_override_constants/icon_max_width = 40
 text = "Créditos"
 icon = ExtResource("5_credits")
 alignment = 0
 icon_alignment = 0
-expand_icon = false
+expand_icon = true
 vertical_icon_alignment = 1
 
 [node name="SalirButton" type="Button" parent="ButtonBar"]
@@ -101,12 +101,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
-theme_override_constants/icon_max_width = 36
+theme_override_constants/icon_max_width = 40
 text = "Salir"
 icon = ExtResource("3_rtw2f")
 alignment = 0
 icon_alignment = 0
-expand_icon = false
+expand_icon = true
 vertical_icon_alignment = 1
 
 [connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]

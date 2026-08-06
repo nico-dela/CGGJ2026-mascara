@@ -108,8 +108,11 @@ func clue_count() -> int:
 
 func resolver_caso() -> void:
 	StoryFlags.resolver_caso()
-	_pending_credits = true
 	save_game()
+
+## Call from the closing comisario dialogue so credits start after it ends.
+func finalizar_juego() -> void:
+	_pending_credits = true
 	# Backup if dialogue_ended doesn't fire (e.g. balloon edge cases).
 	get_tree().create_timer(1.0).timeout.connect(_go_to_credits_when_ready)
 

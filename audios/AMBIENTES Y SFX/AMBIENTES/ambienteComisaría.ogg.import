@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4nh6puphyq2n"
+path="res://.godot/imported/ambienteComisaría.ogg-705f0edb92ba90ca66f49f7cac6973b2.oggvorbisstr"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/AMBIENTES/ambienteComisaría.ogg"
+dest_files=["res://.godot/imported/ambienteComisaría.ogg-705f0edb92ba90ca66f49f7cac6973b2.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

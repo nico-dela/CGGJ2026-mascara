@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqqj51nld4pi2"
+path="res://.godot/imported/ambienteRio.ogg-ccc924d81d3c581197a05524d99f52b8.oggvorbisstr"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/AMBIENTES/ambienteRio.ogg"
+dest_files=["res://.godot/imported/ambienteRio.ogg-ccc924d81d3c581197a05524d99f52b8.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

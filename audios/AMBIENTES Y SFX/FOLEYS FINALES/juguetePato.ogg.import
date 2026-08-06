@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cm0hmygtw03f6"
+path="res://.godot/imported/juguetePato.ogg-291b2341f8820a46be5ff50aab4b70df.oggvorbisstr"
+
+[deps]
+
+source_file="res://audios/AMBIENTES Y SFX/FOLEYS FINALES/juguetePato.ogg"
+dest_files=["res://.godot/imported/juguetePato.ogg-291b2341f8820a46be5ff50aab4b70df.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

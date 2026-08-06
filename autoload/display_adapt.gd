@@ -34,9 +34,15 @@ func _apply() -> void:
 	adapted.emit()
 
 func _update_safe_margin() -> void:
+	# Desktop (incl. web en PC) no necesita insets de notch; además en
+	# navegadores get_display_safe_area() no mapea bien al canvas del juego.
+	if not is_touch_device:
+		safe_margin = Vector4.ZERO
+		return
+
 	var window_size := DisplayServer.window_get_size()
 	if window_size.x <= 0 or window_size.y <= 0:
-		safe_margin = Vector4.ZERO
+		safe_margin = Vector4(24, 16, 24, 24)
 		return
 
 	var safe := DisplayServer.get_display_safe_area()
@@ -49,17 +55,16 @@ func _update_safe_margin() -> void:
 	var scale_x := BASE_SIZE.x / maxf(1.0, float(window_size.x))
 	var scale_y := BASE_SIZE.y / maxf(1.0, float(window_size.y))
 	safe_margin = Vector4(
-		left * scale_x,
-		top * scale_y,
-		right * scale_x,
-		bottom * scale_y
+		maxf(24.0, left * scale_x),
+		maxf(16.0, top * scale_y),
+		maxf(24.0, right * scale_x),
+		maxf(24.0, bottom * scale_y)
 	)
-
-	if is_touch_device:
-		safe_margin.x = maxf(safe_margin.x, 24.0)
-		safe_margin.y = maxf(safe_margin.y, 16.0)
-		safe_margin.z = maxf(safe_margin.z, 24.0)
-		safe_margin.w = maxf(safe_margin.w, 24.0)
+	# Evita márgenes absurdos si el safe-area del OS no coincide col canvas.
+	safe_margin.x = minf(safe_margin.x, 120.0)
+	safe_margin.y = minf(safe_margin.y, 120.0)
+	safe_margin.z = minf(safe_margin.z, 120.0)
+	safe_margin.w = minf(safe_margin.w, 160.0)
 
 func _update_ui_scale() -> void:
 	var window_size := Vector2(DisplayServer.window_get_size())

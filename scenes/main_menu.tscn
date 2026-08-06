@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b31hurlcv6r26"]
+[gd_scene load_steps=10 format=3 uid="uid://b31hurlcv6r26"]
 
 [ext_resource type="Script" uid="uid://dcl6kihb4jmjm" path="res://scripts/main_menu.gd" id="1_eema0"]
 [ext_resource type="Texture2D" uid="uid://cmdqpbbxn4hof" path="res://images/play button.png" id="2_8ln24"]
 [ext_resource type="AudioStream" path="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list.ogg" id="2_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://btseemkb8nvf5" path="res://images/exit button.png" id="3_rtw2f"]
 [ext_resource type="AudioStream" path="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list o play.ogg" id="3_wu84c"]
+[ext_resource type="Texture2D" path="res://images/config button.png" id="4_config"]
+[ext_resource type="Texture2D" path="res://images/credits button.png" id="5_credits"]
 [ext_resource type="Texture2D" path="res://images/MIniatura 1.webp" id="6_rtw2f"]
+[ext_resource type="FontFile" path="res://fonts/SpecialElite-Regular.ttf" id="7_font"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -32,50 +35,77 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_rtw2f")
 expand_mode = 1
-stretch_mode = 0
+stretch_mode = 5
 
-[node name="SafeArea" type="MarginContainer" parent="."]
+[node name="ButtonBar" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="ButtonBar" type="VBoxContainer" parent="SafeArea"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
+offset_left = -380.0
+offset_top = -320.0
+offset_right = -48.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_constants/separation = 12
+alignment = 1
 
-[node name="IniciarButton" type="Button" parent="SafeArea/ButtonBar"]
-custom_minimum_size = Vector2(240, 64)
+[node name="IniciarButton" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 26
 text = "Jugar"
 icon = ExtResource("2_8ln24")
 alignment = 0
 icon_alignment = 0
 expand_icon = true
 
-[node name="SalirButton" type="Button" parent="SafeArea/ButtonBar"]
-custom_minimum_size = Vector2(240, 64)
+[node name="ConfiguracionButton" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 26
+text = "Configuración"
+icon = ExtResource("4_config")
+alignment = 0
+icon_alignment = 0
+expand_icon = true
+
+[node name="CreditosButton" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 26
+text = "Créditos"
+icon = ExtResource("5_credits")
+alignment = 0
+icon_alignment = 0
+expand_icon = true
+
+[node name="SalirButton" type="Button" parent="ButtonBar"]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 26
 text = "Salir"
 icon = ExtResource("3_rtw2f")
 alignment = 0
 icon_alignment = 0
 expand_icon = true
 
-[connection signal="mouse_entered" from="SafeArea/ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
-[connection signal="pressed" from="SafeArea/ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]
-[connection signal="mouse_entered" from="SafeArea/ButtonBar/SalirButton" to="." method="_on_salir_button_mouse_entered"]
-[connection signal="pressed" from="SafeArea/ButtonBar/SalirButton" to="." method="_on_Salir_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/ConfiguracionButton" to="." method="_on_configuracion_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/ConfiguracionButton" to="." method="_on_Configuracion_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/CreditosButton" to="." method="_on_creditos_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/CreditosButton" to="." method="_on_Creditos_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/SalirButton" to="." method="_on_salir_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/SalirButton" to="." method="_on_Salir_pressed"]

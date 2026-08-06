@@ -100,5 +100,9 @@ releases/
 *.exe
 *.apk
 *.pck
+!build/*.pck
 *.zip
 *.7z
+
+# Godot no debe importar assets del export web
+build/*.import

@@ -95,7 +95,6 @@ $RECYCLE.BIN/
 # 📦 Exportaciones y builds
 # =============================
 
-build/
 export/
 releases/
 *.exe

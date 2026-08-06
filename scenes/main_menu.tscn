@@ -59,11 +59,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
+theme_override_constants/icon_max_width = 36
 text = "Jugar"
 icon = ExtResource("2_8ln24")
 alignment = 0
 icon_alignment = 0
-expand_icon = true
+expand_icon = false
+vertical_icon_alignment = 1
 
 [node name="ConfiguracionButton" type="Button" parent="ButtonBar"]
 custom_minimum_size = Vector2(300, 56)
@@ -71,11 +73,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
+theme_override_constants/icon_max_width = 36
 text = "Configuración"
 icon = ExtResource("4_config")
 alignment = 0
 icon_alignment = 0
-expand_icon = true
+expand_icon = false
+vertical_icon_alignment = 1
 
 [node name="CreditosButton" type="Button" parent="ButtonBar"]
 custom_minimum_size = Vector2(300, 56)
@@ -83,11 +87,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
+theme_override_constants/icon_max_width = 36
 text = "Créditos"
 icon = ExtResource("5_credits")
 alignment = 0
 icon_alignment = 0
-expand_icon = true
+expand_icon = false
+vertical_icon_alignment = 1
 
 [node name="SalirButton" type="Button" parent="ButtonBar"]
 custom_minimum_size = Vector2(300, 56)
@@ -95,11 +101,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
 theme_override_font_sizes/font_size = 26
+theme_override_constants/icon_max_width = 36
 text = "Salir"
 icon = ExtResource("3_rtw2f")
 alignment = 0
 icon_alignment = 0
-expand_icon = true
+expand_icon = false
+vertical_icon_alignment = 1
 
 [connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
 [connection signal="pressed" from="ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]

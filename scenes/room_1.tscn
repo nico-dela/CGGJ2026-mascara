@@ -58,7 +58,7 @@ script = ExtResource("1_m0003")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=189922967]
 position = Vector2(3064, 545)
-scale = Vector2(0.65, 0.65)
+scale = Vector2(1.61643, 1.61643)
 texture = ExtResource("3_wy464")
 
 [node name="Player" parent="." unique_id=1174022349 instance=ExtResource("4_irjyx")]
@@ -125,6 +125,7 @@ shape = SubResource("RectangleShape2D_k86bo")
 
 [node name="Sprite2D" type="Sprite2D" parent="HachaTroncoArea" unique_id=1567189916]
 z_index = 4096
+scale = Vector2(2.48682, 2.48682)
 texture = ExtResource("9_4wlnl")
 
 [node name="HiedraArea" type="Area2D" parent="." unique_id=358117250]
@@ -149,7 +150,7 @@ texture = ExtResource("11_f05lu")
 [node name="Sprite2D" type="Sprite2D" parent="ForegroundArea" unique_id=55461565]
 z_index = 4096
 position = Vector2(3039, 539)
-scale = Vector2(0.65, 0.65)
+scale = Vector2(1.61643, 1.61643)
 texture = ExtResource("12_4xhvh")
 
 [node name="MascaraOsoArea" type="Area2D" parent="." unique_id=722852910]

@@ -40,6 +40,12 @@ func _update_safe_margin() -> void:
 		safe_margin = Vector4.ZERO
 		return
 
+	# En web móvil el safe-area del OS suele incluir la UI del browser y
+	# desfasar controles respecto del viewport 1920x1080.
+	if OS.has_feature("web"):
+		safe_margin = Vector4(24, 20, 24, 48)
+		return
+
 	var window_size := DisplayServer.window_get_size()
 	if window_size.x <= 0 or window_size.y <= 0:
 		safe_margin = Vector4(24, 16, 24, 24)

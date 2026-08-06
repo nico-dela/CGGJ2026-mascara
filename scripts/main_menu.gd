@@ -15,27 +15,34 @@ func _ready() -> void:
 
 func _layout_for_device() -> void:
 	var scale := DisplayAdapt.ui_scale
-	var min_h := (64.0 if DisplayAdapt.is_touch_device else 56.0) * scale
-	var min_w := (320.0 if DisplayAdapt.is_touch_device else 300.0) * scale
-	var separation := int(12.0 * scale)
-	var bottom_pad := 48.0 + DisplayAdapt.safe_margin.w
-	if DisplayAdapt.is_touch_device:
-		bottom_pad = maxf(bottom_pad, 64.0)
+	var touch := DisplayAdapt.is_touch_device
+	var min_h := (72.0 if touch else 56.0) * scale
+	var min_w := (360.0 if touch else 300.0) * scale
+	var separation := int((14.0 if touch else 12.0) * scale)
+	var icon_w := int((44.0 if touch else 36.0) * scale)
+	var bottom_pad := 40.0 + DisplayAdapt.safe_margin.w
+	var right_pad := 40.0 + DisplayAdapt.safe_margin.z
+	if touch:
+		bottom_pad = maxf(bottom_pad, 56.0)
+		right_pad = maxf(right_pad, 48.0)
 
 	button_bar.add_theme_constant_override("separation", separation)
 
 	var visible_buttons := 0
 	for child in button_bar.get_children():
 		if child is Button:
-			child.custom_minimum_size = Vector2(min_w, min_h)
-			child.add_theme_font_size_override("font_size", int(26.0 * scale))
-			if child.visible:
+			var btn := child as Button
+			btn.custom_minimum_size = Vector2(min_w, min_h)
+			btn.add_theme_font_size_override("font_size", int((28.0 if touch else 26.0) * scale))
+			btn.add_theme_constant_override("icon_max_width", icon_w)
+			btn.expand_icon = false
+			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			btn.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
+			btn.vertical_icon_alignment = VERTICAL_ALIGNMENT_CENTER
+			if btn.visible:
 				visible_buttons += 1
 
 	var bar_height := visible_buttons * min_h + maxi(0, visible_buttons - 1) * separation
-	var right_pad := 48.0 + DisplayAdapt.safe_margin.z
-	if DisplayAdapt.is_touch_device:
-		right_pad = maxf(right_pad, 56.0)
 	button_bar.offset_right = -right_pad
 	button_bar.offset_left = -(right_pad + min_w)
 	button_bar.offset_bottom = -bottom_pad

@@ -79,7 +79,11 @@ libraries/ = SubResource("AnimationLibrary_h8r56")
 autoplay = &"fade_in"
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=375967241]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 stream = ExtResource("2_kkt6c")
+expand = true

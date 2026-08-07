@@ -56,9 +56,11 @@ func _on_dialogue_started(_resource) -> void:
 	moving = false
 	velocity = Vector2.ZERO
 	set_state(PlayerState.IDLE)
+	InteractionHint.set_suppressed(true)
 
 func _on_dialogue_ended(_resource) -> void:
 	dialogue_active = false
+	InteractionHint.set_suppressed(false)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if dialogue_active:

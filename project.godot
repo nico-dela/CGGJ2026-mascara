@@ -32,6 +32,7 @@ StoryFlags="*res://autoload/story_flags.gd"
 SceneRouter="*res://autoload/scene_router.gd"
 GameManager="*res://autoload/game_manager.gd"
 AudioManager="*uid://co578sh7lv6tn"
+InteractionHint="*res://autoload/interaction_hint.gd"
 
 [dialogue_manager]
 

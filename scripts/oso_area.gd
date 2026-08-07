@@ -6,5 +6,7 @@ func _ready() -> void:
 	persist_id = "oso"
 	clue_id = "oso"
 	despawn_on_interact = true
+	verb = "Recoger"
+	interact_label = "la máscara"
 	interact_sound = load("res://audios/AMBIENTES Y SFX/FOLEYS FINALES/mascaraOso.ogg")
 	super._ready()

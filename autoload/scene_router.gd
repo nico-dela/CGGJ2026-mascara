@@ -1,5 +1,7 @@
 extends Node
 
+signal scene_changed(scene_path: String)
+
 const FADE_DURATION := 0.35
 
 var next_spawn_id: String = ""
@@ -34,6 +36,8 @@ func _setup_fade() -> void:
 func request_scene_change(scene_path: String, spawn_id: String = "", sound: AudioStream = null) -> void:
 	if _busy:
 		return
+	if InteractionHint:
+		InteractionHint.clear()
 	next_spawn_id = spawn_id
 	if sound:
 		_transition_audio.stream = sound
@@ -49,6 +53,7 @@ func _change_with_fade(scene_path: String) -> void:
 	await _fade(0.0, 1.0)
 	get_tree().change_scene_to_file(scene_path)
 	await get_tree().process_frame
+	scene_changed.emit(scene_path)
 	await _fade(1.0, 0.0)
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_busy = false

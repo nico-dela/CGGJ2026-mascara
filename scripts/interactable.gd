@@ -12,6 +12,8 @@ class_name Interactable
 @export var hover_scale_multiplier: float = 1.05
 @export var use_hover_feedback: bool = true
 @export var interact_sound: AudioStream
+@export var verb: String = "Mirar"
+@export var interact_label: String = ""
 
 @onready var sprite: Node2D = get_node_or_null("Sprite2D")
 
@@ -25,6 +27,8 @@ func _ready() -> void:
 	collision_layer = 1
 	collision_mask = 0
 	add_to_group("interactable")
+	if sprite == null:
+		sprite = get_node_or_null("AnimatedSprite2D")
 	if sprite:
 		_base_scale = sprite.scale
 	if persist_id != "" and Inventory.is_collected(persist_id):
@@ -34,9 +38,8 @@ func _ready() -> void:
 		StoryFlags.paso_abierto_signal.connect(_on_paso_abierto)
 		if StoryFlags.is_paso_abierto():
 			_on_paso_abierto()
-	if use_hover_feedback and sprite:
-		mouse_entered.connect(_on_mouse_entered)
-		mouse_exited.connect(_on_mouse_exited)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
 ## Called by the player click router (reliable on desktop + touch).
 func try_interact() -> bool:
@@ -46,6 +49,11 @@ func try_interact() -> bool:
 		return false
 	_interact()
 	return true
+
+func get_verb_text() -> String:
+	if interact_label.is_empty():
+		return verb
+	return "%s %s" % [verb, interact_label]
 
 func _interact() -> void:
 	if _interact_cooldown:
@@ -76,6 +84,7 @@ func _interact() -> void:
 	if use_special and required_item != "":
 		Inventory.selected_item = ""
 
+	InteractionHint.hide_hint()
 	DialogueManager.show_dialogue_balloon(resource, "start")
 
 	if despawn_on_interact:
@@ -93,13 +102,20 @@ func _on_paso_abierto() -> void:
 	monitoring = false
 	monitorable = false
 	input_pickable = false
+	InteractionHint.hide_hint()
 
 func _on_mouse_entered() -> void:
+	if not visible or not input_pickable:
+		return
+	if require_paso_cerrado and StoryFlags.is_paso_abierto():
+		return
+	InteractionHint.show_hint(get_verb_text(), self)
 	if use_hover_feedback and sprite:
 		sprite.scale = _base_scale * hover_scale_multiplier
 		sprite.modulate = Color(1.2, 1.2, 1.2)
 
 func _on_mouse_exited() -> void:
+	InteractionHint.hide_hint_from(self)
 	if use_hover_feedback and sprite:
 		sprite.scale = _base_scale
 		sprite.modulate = Color.WHITE

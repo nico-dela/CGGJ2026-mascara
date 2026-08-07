@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://b5uhf43b1cnqd" path="res://scripts/patito_area.gd" id="15_m0003"]
 [ext_resource type="Texture2D" uid="uid://dsvjbvep2mcaw" path="res://images/coleccionables/Pelota futbol americano-export2.png" id="16_y5mqv"]
 [ext_resource type="Script" uid="uid://cn8re2jjfp3vb" path="res://scripts/pelota_area.gd" id="17_ncuik"]
+[ext_resource type="PackedScene" uid="uid://c6gpgr8mhuw6w" path="res://scenes/pescador.tscn" id="20_lwgnx"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k86bo"]
 a = Vector2(202.00005, 1081)
@@ -65,12 +66,13 @@ texture = ExtResource("3_wy464")
 position = Vector2(90, 923)
 
 [node name="Room2Transition" parent="." unique_id=1597323543 instance=ExtResource("2_ydwoj")]
-position = Vector2(504.99997, 695.00006)
+position = Vector2(504.99997, 784)
 rotation = 3.1415927
-scale = Vector2(5.984138, -2.8656726)
+scale = Vector2(5.984138, -10.545672)
 target_scene = "res://scenes/room_2.tscn"
 target_spawn_id = "Room2Marker"
 transition_sound = ExtResource("9_comisaria")
+interact_label = "la comisaría"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1007142986]
 
@@ -108,11 +110,12 @@ position = Vector2(585, 924)
 position = Vector2(1393, 986)
 
 [node name="Room3Transition" parent="." unique_id=253777366 instance=ExtResource("2_ydwoj")]
-position = Vector2(1131.0001, 679)
-scale = Vector2(8.041754, 6.1667633)
+position = Vector2(1131.0001, 775)
+scale = Vector2(8.041754, 11.006765)
 target_scene = "res://scenes/room_3.tscn"
 target_spawn_id = "Marker2D"
 transition_sound = ExtResource("10_taberna")
+interact_label = "la taberna"
 
 [node name="HachaTroncoArea" type="Area2D" parent="." unique_id=1616461379]
 position = Vector2(3192, 691)
@@ -192,3 +195,6 @@ position = Vector2(3203, 804)
 rotation = -0.7225663
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_y5mqv")
+
+[node name="Pescador" parent="." unique_id=1525991505 instance=ExtResource("20_lwgnx")]
+position = Vector2(5883, 831)

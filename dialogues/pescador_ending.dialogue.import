@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ctkj284ksjmi5"
+path="res://.godot/imported/pescador_ending.dialogue-c9ecf1edb91e4fcdf35182cf29fc66d4.tres"
+
+[deps]
+
+source_file="res://dialogues/pescador_ending.dialogue"
+dest_files=["res://.godot/imported/pescador_ending.dialogue-c9ecf1edb91e4fcdf35182cf29fc66d4.tres"]
+
+[params]
+
+defaults=true

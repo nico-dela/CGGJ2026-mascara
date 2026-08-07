@@ -110,7 +110,7 @@ func resolver_caso() -> void:
 	StoryFlags.resolver_caso()
 	save_game()
 
-## Call from the closing comisario dialogue so credits start after it ends.
+## Call from the closing pescador dialogue so credits start after it ends.
 func finalizar_juego() -> void:
 	_pending_credits = true
 	# Backup if dialogue_ended doesn't fire (e.g. balloon edge cases).

@@ -60,3 +60,5 @@ func go_to_next_scene() -> void:
 		anim.play("fade_out")
 		await anim.animation_finished
 	get_tree().change_scene_to_file(next_scene)
+	if SceneRouter and SceneRouter.has_signal("scene_changed"):
+		SceneRouter.scene_changed.emit(next_scene)

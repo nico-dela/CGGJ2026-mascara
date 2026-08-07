@@ -8,14 +8,35 @@ const SETTINGS_PATH := "user://settings.cfg"
 @onready var back_button: Button = %BackButton
 @onready var card: PanelContainer = $Card
 
+var _from_pause := false
+
+func setup_as_pause() -> void:
+	_from_pause = true
+
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	_load_settings()
 	volume_slider.value_changed.connect(_on_volume_changed)
 	fullscreen_check.toggled.connect(_on_fullscreen_toggled)
 	_on_volume_changed(volume_slider.value)
+	await get_tree().process_frame
+	_center_card()
 	_adapt_layout()
 	if DisplayAdapt:
-		DisplayAdapt.adapted.connect(_adapt_layout)
+		DisplayAdapt.adapted.connect(_on_display_adapted)
+
+func _on_display_adapted() -> void:
+	_center_card()
+	_adapt_layout()
+
+func _center_card() -> void:
+	if card == null:
+		return
+	card.set_anchors_preset(Control.PRESET_CENTER)
+	card.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	card.grow_vertical = Control.GROW_DIRECTION_BOTH
 
 func _adapt_layout() -> void:
 	var s := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
@@ -76,5 +97,7 @@ func _on_back_button_pressed() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
+		if _from_pause:
+			return
 		_on_back_button_pressed()
 		get_viewport().set_input_as_handled()

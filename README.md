@@ -29,7 +29,8 @@ El juego fue diseñado para ser completado en una sola sesión, priorizando atm�
 ## Controles
 
 - **Mouse / Click izquierdo / Touch**: moverse e interactuar
-- **Inventario**: tap/click en un ítem para seleccionarlo y usarlo sobre NPCs
+- **Inventario**: tap/click en un ítem para seleccionarlo y usarlo sobre NPCs/objetos
+- **Máscaras**: con una máscara seleccionada, click en el detective (o segundo click en el slot) para equiparla; el sprite cambia si es la de oso
 - **Escape**: cancelar / volver
 
 El juego está pensado en **horizontal (landscape)**. En tablet/celular escala manteniendo 16:9, con botones e inventario más grandes y márgenes seguros.

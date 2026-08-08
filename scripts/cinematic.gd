@@ -1,6 +1,6 @@
 extends Control
 
-@export var next_scene := "res://scenes/room_1.tscn"
+@export var next_scene := "res://scenes/room_road.tscn"
 
 const INTRO_AUDIO := preload("res://audios/AMBIENTES Y SFX/AMBIENTES/cinematicaIntro.ogg")
 

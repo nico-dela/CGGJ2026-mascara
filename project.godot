@@ -71,7 +71,7 @@ interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/bartender_no_info.dialogue", "res://dialogues/bartender_confess.dialogue", "res://dialogues/tronco_found.dialogue", "res://dialogues/oso_mask_found.dialogue", "res://dialogues/patito_found.dialogue", "res://dialogues/pelota_found.dialogue", "res://dialogues/hiedra.dialogue", "res://dialogues/comisario.dialogue", "res://dialogues/comisario_clues.dialogue", "res://dialogues/comisario_resolved.dialogue", "res://dialogues/pescador.dialogue", "res://dialogues/pescador_ending.dialogue", "res://dialogues/item_no_use.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/bartender_no_info.dialogue", "res://dialogues/bartender_confess.dialogue", "res://dialogues/bartender_patito.dialogue", "res://dialogues/bartender_mask_swap.dialogue", "res://dialogues/bartender_mask_return.dialogue", "res://dialogues/tronco_found.dialogue", "res://dialogues/oso_mask_found.dialogue", "res://dialogues/patito_found.dialogue", "res://dialogues/pelota_found.dialogue", "res://dialogues/hiedra.dialogue", "res://dialogues/comisario.dialogue", "res://dialogues/comisario_clues.dialogue", "res://dialogues/comisario_resolved.dialogue", "res://dialogues/comisario_pelota.dialogue", "res://dialogues/comisario_mask_swap.dialogue", "res://dialogues/pescador.dialogue", "res://dialogues/pescador_ending.dialogue", "res://dialogues/pescador_river.dialogue", "res://dialogues/road_police.dialogue", "res://dialogues/road_bag.dialogue", "res://dialogues/cartel_town.dialogue", "res://dialogues/item_no_use.dialogue", "res://dialogues/wear_mozo.dialogue", "res://dialogues/wear_poli.dialogue", "res://dialogues/comisario_mask_return.dialogue")
 
 [rendering]
 

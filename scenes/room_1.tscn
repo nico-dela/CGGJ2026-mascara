@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://dsvjbvep2mcaw" path="res://images/coleccionables/Pelota futbol americano-export2.png" id="16_y5mqv"]
 [ext_resource type="Script" uid="uid://cn8re2jjfp3vb" path="res://scripts/pelota_area.gd" id="17_ncuik"]
 [ext_resource type="PackedScene" uid="uid://c6gpgr8mhuw6w" path="res://scenes/pescador.tscn" id="20_lwgnx"]
+[ext_resource type="Script" path="res://scripts/cartel_area.gd" id="21_cartel"]
+[ext_resource type="FontFile" path="res://fonts/SpecialElite-Regular.ttf" id="22_font"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k86bo"]
 a = Vector2(202.00005, 1081)
@@ -52,6 +54,9 @@ radius = 28.635643
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncuik"]
 radius = 21.0
 height = 59.635254
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cartel"]
+size = Vector2(160, 200)
 
 [node name="Room1" type="Node2D" unique_id=445341437]
 z_index = -1
@@ -108,6 +113,17 @@ position = Vector2(585, 924)
 
 [node name="Spawn_Bar_to_Town" type="Marker2D" parent="SpawnPoints" unique_id=1242876121]
 position = Vector2(1393, 913)
+
+[node name="Spawn_From_Road" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(220, 923)
+
+[node name="RoomRoadTransition" parent="." instance=ExtResource("2_ydwoj")]
+position = Vector2(48, 860)
+scale = Vector2(4.5, 9.0)
+target_scene = "res://scenes/room_road.tscn"
+target_spawn_id = "Spawn_From_Town"
+verb = "Volver a"
+interact_label = "la ruta"
 
 [node name="Room3Transition" parent="." unique_id=253777366 instance=ExtResource("2_ydwoj")]
 position = Vector2(1131.0001, 775)
@@ -197,4 +213,37 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_y5mqv")
 
 [node name="Pescador" parent="." unique_id=1525991505 instance=ExtResource("20_lwgnx")]
-position = Vector2(5883, 831)
+position = Vector2(1499, 816)
+
+[node name="CartelArea" type="Area2D" parent="."]
+position = Vector2(280, 780)
+script = ExtResource("21_cartel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CartelArea"]
+shape = SubResource("RectangleShape2D_cartel")
+
+[node name="CartelPanel" type="ColorRect" parent="CartelArea"]
+offset_left = -70.0
+offset_top = -90.0
+offset_right = 70.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.45, 0.32, 0.18, 0.92)
+
+[node name="CartelLabel" type="Label" parent="CartelArea"]
+offset_left = -60.0
+offset_top = -70.0
+offset_right = 60.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("22_font")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.98, 0.9, 0.65, 1)
+text = "SE BUSCA
+EL LEÑADOR
+Sin leña,
+la caldera
+se apaga"
+horizontal_alignment = 1
+vertical_alignment = 1
+

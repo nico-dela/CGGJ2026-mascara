@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
+const SELF_USE_RADIUS := 110.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footsteps = $Footsteps
@@ -21,8 +22,9 @@ func _ready() -> void:
 
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	StoryFlags.mask_equipped_changed.connect(_on_mask_equipped_changed)
 
-	animated_sprite.play("poroto_idle")
+	_play_idle()
 	add_to_group("player")
 
 	if SceneRouter.next_spawn_id != "":
@@ -62,6 +64,14 @@ func _on_dialogue_ended(_resource) -> void:
 	dialogue_active = false
 	InteractionHint.set_suppressed(false)
 
+func _on_mask_equipped_changed() -> void:
+	set_state(state)  # refresh anim for current state
+	# Force anim update even if state unchanged
+	if state == PlayerState.WALKING:
+		_play_walk()
+	else:
+		_play_idle()
+
 func _unhandled_input(event: InputEvent) -> void:
 	if dialogue_active:
 		return
@@ -95,6 +105,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 func _try_interact_at(world_pos: Vector2) -> bool:
+	# Use selected item on self (masks equip; others reject).
+	if _try_use_item_on_self(world_pos):
+		return true
+
 	var space := get_world_2d().direct_space_state
 	var query := PhysicsPointQueryParameters2D.new()
 	query.position = world_pos
@@ -102,7 +116,6 @@ func _try_interact_at(world_pos: Vector2) -> bool:
 	query.collide_with_bodies = false
 	query.collision_mask = 0x7FFFFFFF
 	var hits := space.intersect_point(query, 32)
-	# Prefer the topmost interactable (highest z_index / canvas layer order).
 	hits.sort_custom(func(a, b):
 		var na: Node2D = a.collider
 		var nb: Node2D = b.collider
@@ -116,6 +129,24 @@ func _try_interact_at(world_pos: Vector2) -> bool:
 			if collider.try_interact():
 				return true
 	return false
+
+func _try_use_item_on_self(world_pos: Vector2) -> bool:
+	if Inventory.selected_item == "":
+		return false
+	if global_position.distance_to(world_pos) > SELF_USE_RADIUS:
+		return false
+	var item := Inventory.get_item(Inventory.selected_item)
+	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA:
+		GameManager.toggle_equip_mask(Inventory.selected_item)
+		InteractionHint.hide_hint()
+		return true
+	# Non-mask items on the detective: polite reject.
+	Inventory.selected_item = ""
+	InteractionHint.hide_hint()
+	var reject: Resource = load("res://dialogues/item_no_use.dialogue")
+	if reject:
+		DialogueManager.show_dialogue_balloon(reject, "start")
+	return true
 
 func _physics_process(_delta) -> void:
 	if moving:
@@ -151,8 +182,26 @@ func set_state(new_state: PlayerState) -> void:
 	state = new_state
 	match state:
 		PlayerState.WALKING:
-			animated_sprite.play("poroto_walk")
+			_play_walk()
 			update_walk_state(true)
 		PlayerState.IDLE:
-			animated_sprite.play("poroto_idle")
+			_play_idle()
 			update_walk_state(false)
+
+func _play_idle() -> void:
+	if animated_sprite == null:
+		return
+	if StoryFlags.is_wearing_mask("oso") and animated_sprite.sprite_frames.has_animation("lenador_idle"):
+		animated_sprite.play("lenador_idle")
+	else:
+		animated_sprite.play("poroto_idle")
+
+func _play_walk() -> void:
+	if animated_sprite == null:
+		return
+	if StoryFlags.is_wearing_mask("oso") and animated_sprite.sprite_frames.has_animation("lenador_walk"):
+		animated_sprite.play("lenador_walk")
+	elif StoryFlags.is_wearing_mask("oso") and animated_sprite.sprite_frames.has_animation("lenador_idle"):
+		animated_sprite.play("lenador_idle")
+	else:
+		animated_sprite.play("poroto_walk")

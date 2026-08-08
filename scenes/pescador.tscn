@@ -2,8 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://ba7daal35lbk1" path="res://images/Personaje pesca pesca.png" id="1_qr5tn"]
 [ext_resource type="Texture2D" uid="uid://sgg2qxwnqh3a" path="res://images/Personaje pesca habla.png" id="2_hiy1s"]
-[ext_resource type="Script" path="res://scripts/pescador.gd" id="3_pesc"]
-[ext_resource type="Resource" path="res://dialogues/pescador.dialogue" id="4_dlg"]
+[ext_resource type="Script" uid="uid://bvbmn46plrcab" path="res://scripts/pescador.gd" id="3_pesc"]
+[ext_resource type="Texture2D" uid="uid://f4e1m05waqyg" path="res://images/el otro npc al final bueno animacion.png" id="4_bj7la"]
+[ext_resource type="Resource" uid="uid://duq05rgao3fjr" path="res://dialogues/pescador.dialogue" id="4_dlg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qm6ux"]
 radius = 39.0
@@ -44,6 +45,62 @@ region = Rect2(525, 0, 75, 75)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7yfr"]
 atlas = ExtResource("1_qr5tn")
 region = Rect2(600, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a6yy"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(0, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqijv"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(75, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jryf0"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(150, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1cc0"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(225, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecp0b"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(300, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_840c4"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(375, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ernv6"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(450, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqy6j"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(525, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af3le"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(600, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fv7q"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(675, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o361"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(750, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1itr7"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(825, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmrlm"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(900, 0, 75, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nktd0"]
+atlas = ExtResource("4_bj7la")
+region = Rect2(975, 0, 75, 75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgvcv"]
 atlas = ExtResource("2_hiy1s")
@@ -156,6 +213,53 @@ animations = [{
 "texture": SubResource("AtlasTexture_k7yfr")
 }],
 "loop": 1,
+"name": &"fishing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a6yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqijv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jryf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1cc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecp0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_840c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ernv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqy6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af3le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fv7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o361")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1itr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmrlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nktd0")
+}],
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -230,16 +334,14 @@ script = ExtResource("3_pesc")
 dialogue = ExtResource("4_dlg")
 verb = "Hablar con"
 interact_label = "el pescador"
-anim_idle = "idle"
-anim_talk = "talk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729799248]
 position = Vector2(50, -5)
 shape = SubResource("CapsuleShape2D_qm6ux")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=614340154]
+position = Vector2(59, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_wqcsw")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.24973449

@@ -14,9 +14,20 @@ func setup(id: String, texture: Texture2D) -> void:
 	update_selection_visual()
 
 func update_selection_visual() -> void:
-	modulate = Color.YELLOW if Inventory.selected_item == item_id else Color.WHITE
+	if StoryFlags.mascara_equipada == item_id:
+		modulate = Color(0.55, 1.0, 0.55)
+	elif Inventory.selected_item == item_id:
+		modulate = Color.YELLOW
+	else:
+		modulate = Color.WHITE
 
 func _pressed() -> void:
+	# Double-select a mask while already selected equips it on the detective.
+	var item := Inventory.get_item(item_id)
+	if item and item.tipo == ItemResource.ItemTypes.MASCARA and Inventory.selected_item == item_id:
+		GameManager.toggle_equip_mask(item_id)
+		update_selection_visual()
+		return
 	if Inventory.selected_item == item_id:
 		Inventory.selected_item = ""
 	else:

@@ -12,6 +12,7 @@ func _ready() -> void:
 	refresh()
 	Inventory.inventory_changed.connect(refresh)
 	Inventory.selection_changed.connect(_on_selection_changed)
+	StoryFlags.mask_equipped_changed.connect(_on_selection_changed)
 
 func _on_selection_changed() -> void:
 	if hbox == null:

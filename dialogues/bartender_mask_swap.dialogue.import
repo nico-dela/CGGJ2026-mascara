@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ba21lfxndfsxj"
+path="res://.godot/imported/bartender_mask_swap.dialogue-21023b17d708f607bedae312baf64648.tres"
+
+[deps]
+
+source_file="res://dialogues/bartender_mask_swap.dialogue"
+dest_files=["res://.godot/imported/bartender_mask_swap.dialogue-21023b17d708f607bedae312baf64648.tres"]
+
+[params]
+
+defaults=true

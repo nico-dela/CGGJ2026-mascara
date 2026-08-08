@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bdfqom783vyf2"
+path="res://.godot/imported/wear_mozo.dialogue-d748052d0325b6411a4cd14c4c35e620.tres"
+
+[deps]
+
+source_file="res://dialogues/wear_mozo.dialogue"
+dest_files=["res://.godot/imported/wear_mozo.dialogue-d748052d0325b6411a4cd14c4c35e620.tres"]
+
+[params]
+
+defaults=true

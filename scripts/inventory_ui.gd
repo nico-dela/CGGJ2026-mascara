@@ -11,6 +11,14 @@ func _ready() -> void:
 	_apply_layout()
 	refresh()
 	Inventory.inventory_changed.connect(refresh)
+	Inventory.selection_changed.connect(_on_selection_changed)
+
+func _on_selection_changed() -> void:
+	if hbox == null:
+		return
+	for child in hbox.get_children():
+		if child.has_method("update_selection_visual"):
+			child.update_selection_visual()
 
 func _apply_layout() -> void:
 	var safe := DisplayAdapt.safe_margin

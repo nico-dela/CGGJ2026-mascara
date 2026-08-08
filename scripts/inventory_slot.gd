@@ -11,12 +11,13 @@ func setup(id: String, texture: Texture2D) -> void:
 		var placeholder := PlaceholderTexture2D.new()
 		placeholder.size = Vector2(64, 64)
 		texture_normal = placeholder
+	update_selection_visual()
+
+func update_selection_visual() -> void:
 	modulate = Color.YELLOW if Inventory.selected_item == item_id else Color.WHITE
 
 func _pressed() -> void:
 	if Inventory.selected_item == item_id:
 		Inventory.selected_item = ""
-		modulate = Color.WHITE
 	else:
 		Inventory.selected_item = item_id
-		modulate = Color(1, 1, 0)

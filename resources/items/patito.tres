@@ -8,3 +8,4 @@ script = ExtResource("1_script")
 itemId = "patito"
 tipo = 0
 imagem = ExtResource("2_tex")
+display_name = "el patito"

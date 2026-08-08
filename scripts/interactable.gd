@@ -3,6 +3,7 @@ class_name Interactable
 
 @export var dialogue: Resource
 @export var dialogue_with_item: Resource
+@export var dialogue_item_reject: Resource
 @export var required_item: String = ""
 @export var item_to_give: String = ""
 @export var persist_id: String = ""
@@ -19,6 +20,8 @@ class_name Interactable
 
 var _base_scale: Vector2 = Vector2.ONE
 var _interact_cooldown := false
+var _hovered := false
+var _default_reject: Resource = null
 
 func _ready() -> void:
 	input_pickable = true
@@ -40,6 +43,7 @@ func _ready() -> void:
 			_on_paso_abierto()
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	Inventory.selection_changed.connect(_on_selection_changed)
 
 ## Called by the player click router (reliable on desktop + touch).
 func try_interact() -> bool:
@@ -51,6 +55,11 @@ func try_interact() -> bool:
 	return true
 
 func get_verb_text() -> String:
+	if Inventory.selected_item != "":
+		var item_name := Inventory.get_display_name(Inventory.selected_item)
+		if interact_label.is_empty():
+			return "Usar %s" % item_name
+		return "Usar %s con %s" % [item_name, interact_label]
 	if interact_label.is_empty():
 		return verb
 	return "%s %s" % [verb, interact_label]
@@ -61,14 +70,32 @@ func _interact() -> void:
 	_interact_cooldown = true
 	get_tree().create_timer(0.25).timeout.connect(func(): _interact_cooldown = false)
 
+	# Item selected: try Use-with-target (Monkey Island style).
+	if Inventory.selected_item != "":
+		if _should_use_item_dialogue():
+			_start_dialogue(dialogue_with_item, true)
+		else:
+			_start_reject_dialogue()
+		return
+
+	_start_dialogue(dialogue, false)
+
+func _start_reject_dialogue() -> void:
+	var resource: Resource = dialogue_item_reject
+	if resource == null:
+		if _default_reject == null:
+			_default_reject = load("res://dialogues/item_no_use.dialogue")
+		resource = _default_reject
+	InteractionHint.hide_hint()
+	DialogueManager.show_dialogue_balloon(resource, "start")
+
+func _start_dialogue(resource: Resource, used_item: bool) -> void:
 	if interact_sound and AudioManager:
 		AudioManager.play_sfx(interact_sound)
 
 	if clue_id != "":
 		GameManager.mark_clue_seen(clue_id)
 
-	var use_special := _should_use_item_dialogue()
-	var resource: Resource = dialogue_with_item if use_special else dialogue
 	if resource == null:
 		push_warning("%s: no dialogue resource assigned" % name)
 		return
@@ -81,7 +108,7 @@ func _interact() -> void:
 		if ui and ui.has_method("refresh"):
 			ui.refresh()
 
-	if use_special and required_item != "":
+	if used_item:
 		Inventory.selected_item = ""
 
 	InteractionHint.hide_hint()
@@ -95,7 +122,7 @@ func _should_use_item_dialogue() -> bool:
 		return false
 	if not Inventory.has_item(required_item):
 		return false
-	return Inventory.selected_item == required_item or Inventory.selected_item == ""
+	return Inventory.selected_item == required_item
 
 func _on_paso_abierto() -> void:
 	visible = false
@@ -104,17 +131,26 @@ func _on_paso_abierto() -> void:
 	input_pickable = false
 	InteractionHint.hide_hint()
 
+func _on_selection_changed() -> void:
+	if not _hovered or not visible or not input_pickable:
+		return
+	if require_paso_cerrado and StoryFlags.is_paso_abierto():
+		return
+	InteractionHint.show_hint(get_verb_text(), self)
+
 func _on_mouse_entered() -> void:
 	if not visible or not input_pickable:
 		return
 	if require_paso_cerrado and StoryFlags.is_paso_abierto():
 		return
+	_hovered = true
 	InteractionHint.show_hint(get_verb_text(), self)
 	if use_hover_feedback and sprite:
 		sprite.scale = _base_scale * hover_scale_multiplier
 		sprite.modulate = Color(1.2, 1.2, 1.2)
 
 func _on_mouse_exited() -> void:
+	_hovered = false
 	InteractionHint.hide_hint_from(self)
 	if use_hover_feedback and sprite:
 		sprite.scale = _base_scale

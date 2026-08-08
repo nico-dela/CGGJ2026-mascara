@@ -107,7 +107,7 @@ shape = SubResource("SegmentShape2D_ncuik")
 position = Vector2(585, 924)
 
 [node name="Spawn_Bar_to_Town" type="Marker2D" parent="SpawnPoints" unique_id=1242876121]
-position = Vector2(1393, 986)
+position = Vector2(1393, 913)
 
 [node name="Room3Transition" parent="." unique_id=253777366 instance=ExtResource("2_ydwoj")]
 position = Vector2(1131.0001, 775)

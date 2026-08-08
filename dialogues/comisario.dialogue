@@ -1,5 +1,16 @@
 ~ start
-Policía: Buenas noches detective. Lo llamé de inmediato porque tenemos un asunto muy importante que atender. Ha ocurrido algo terrible en este tranquilo y ordenado pueblo. Se ha reportado la misteriosa desaparición del leñador. Este pueblo se ha quedado sin leña para calentar nuestras caldera y cocinar nuestra comida.
-Detective: Oh, ya veo. Parece que tendré que ir tras la pista de su desaparición...
-Policía: Si, es importante que cumpla unicamente su rol de investigación. Cuando tenga alguna pista puede traérmela para que decida como continuar el proceso. Mucha suerte.
+if GameManager.is_bartender_expuesto()
+	Policía: Ya oyó la verdad. El río. No me haga perder más tiempo.
+	=> END
+if GameManager.has_huellas_pelota()
+	Policía: Las huellas son del cantinero. Eso es todo lo que le digo.
+	Policía: El resto... averígüelo usted.
+	=> END
+Policía: ...El guardia de la ruta avisó que venía un forastero con hambre. Usted es.
+Detective: Vi el cartel. El leñador. La caldera. El pueblo pasa frío.
+Policía: Exacto. Él abastecía la leña. Sin él no pueden bañarse ni calefaccionar. Y murmuran cosas feas.
+Detective: Las máscaras de este pueblo... no las había visto en ningún lado.
+Policía: ...Máscaras. Esa palabra no la use delante de la gente. Ellos no entienden de qué habla. Y mejor así.
+Detective: ¿Por dónde empiezo?
+Policía: Taberna. Bosque. Traiga algo que valga mi tiempo... o siga de paso.
 => END

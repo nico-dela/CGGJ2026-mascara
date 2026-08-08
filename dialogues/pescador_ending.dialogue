@@ -1,9 +1,13 @@
 ~ start
-Pescador: Ah... ya lo veo en su mirada. El caso quedó atrás, ¿verdad?
-Detective: El leñador no fue raptado. Se perdió en su propio cansancio. La máscara guardaba su verdad.
-Pescador: Entonces el río puede volver a cantar. El pueblo descansará... y usted también.
-Detective: ¿Eso es un adiós?
-Pescador: Es un hasta luego, detective. Las historias como la suya siempre vuelven a la orilla.
+Pescador: Ah... ya lo veo en su mirada. Trajo lo que dejé atrás.
+Detective: Esta máscara es suya. Usted era el leñador. El golpe en el bosque... la pelota... el cantinero.
+Pescador: Desde que dejé de usarla dejé de sentir presión. Empecé a disfrutar de no tener obligaciones. El río entiende eso.
+Detective: El pueblo necesita leña. La caldera. La gente.
+Pescador: ...No voy a vivir otra vez solo como leñador. Pero puedo usarla a ratos. Abastecer la caldera. Dar leña a quien la necesite. Sin que me coma entero.
+Detective: Un trato, entonces.
+Pescador: Un trato. El pueblo come calor... y yo sigo teniendo orilla.
 Detective: Hasta la próxima.
+do GameManager.remove_item("oso")
+do GameManager.resolver_caso()
 do GameManager.finalizar_juego()
 => END

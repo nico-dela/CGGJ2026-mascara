@@ -1,3 +1,6 @@
 ~ start
-Detective: No voy a pasar a través de la hiedra
+if GameManager.is_wearing_mask("oso")
+	Detective: La hiedra... el río más allá. Cuando la verdad salga, este paso dejará de cerrarse.
+else
+	Detective: La hiedra tapa el camino al río. Por ahora el pueblo no quiere que pase.
 => END

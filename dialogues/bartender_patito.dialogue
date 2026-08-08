@@ -1,0 +1,6 @@
+~ start
+Detective: Traje esto. Parece suyo.
+Cantinero: ¡El patito! Pensé que no lo volvía a ver... Gracias, detective. De verdad.
+Cantinero: A veces, cuando el bar se pone raro, iba al bosque a despejarme. No es que... bueno. Da igual. Quédese con la comida caliente cuando pueda.
+do GameManager.mark_patito_devuelto()
+=> END

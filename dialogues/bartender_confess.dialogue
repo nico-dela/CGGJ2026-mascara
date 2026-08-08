@@ -1,18 +1,16 @@
 ~ start
-Detective: Hola cantinero, soy yo de nuevo.. Reconoce esto? Creo que le pertenece, y curiosamente estaba en el bosque que usted no frecuenta... justo en el lugar donde desapareció el leñador. Le pido que diga lo que tenga que decir antes de que sea más tarde aún...
-Cantinero: Oh! yo juro que no hice nada. Es cierto que pasé por ahí.. Es cierto que ví el hacha del leñador desolada, al igual que su máscara. Pero le juro que no tuve nada que ver con eso! Tenga, me quedé con la máscara del leñador solamente para cuidársela..
-Detective: Yo a usted no le creo nada. Pero quizas el leñador pueda ayudarme
-do GameManager.poner_mascara_cantinero()
-do GameManager.remove_item("oso")
-do GameManager.abrir_paso()
-Cantinero: ooaagghh
-Detective: Buenas noches leñador
-Leñador: Oh, detective. Qué hace por acá? Que hago yo acá?
-Detective: El leñador está acá, pero usted no. No le pido que me entienda.. Podría decirme qué es lo último que recuerda?
-Leñador: Claro.. como es normal, yo estaba talando y talando. Esa tarea forzoza y repetitiva hasta el cansancio, la cual también erosiona el bosque donde tanto me gusta vivir.. De repente me siento cansado.. muy cansado.. por no querer más hacer esto.. y me dan ganas de dar un salto. Atravesar mi propia naturaleza... la natura..aagghhaggg......
-(se saca la máscara y vuelve a ser el cantinero)
-do GameManager.quitar_mascara_cantinero()
-Cantinero: Uh, creo que me dió un escalofrío
-Cantinero: Ya le dije todo lo que sé...
-do GameManager.resolver_caso()
+if not GameManager.has_huellas_pelota()
+	Detective: (Con la máscara puesta siento el bosque... pero me falta una prueba. Mejor no improvise.)
+	=> END
+Detective: Cantinero. Ya no vengo solo a comer.
+Cantinero: ¿Otra vez lo del leñador? Ya le dije: hace años que no piso el bosque.
+Detective: Miente. Las huellas en la pelota del bosque son suyas. Y esto... esto guarda lo que usted provocó.
+Cantinero: No entiendo de qué habla—
+Detective: Voy a dejar que la máscara hable.
+Leñador: El bosque... la pelota... alguien jugaba. Un golpe. El aire se me fue. La máscara... se me cae. Pánico. Frío. Y usted... usted salió corriendo como si no hubiera pasado nada.
+Detective: Usted le pegó sin querer. Él perdió la conciencia... y la máscara. Y usted negó el bosque.
+Cantinero: Yo... solo estaba jugando. Fue un accidente. Juraría que no hice nada malo. Después... fingí. Sí. Fingí.
+Detective: Ahora el pueblo puede saber la verdad. El paso al este ya no tiene por qué cerrarse.
+do GameManager.exponer_bartender()
+Cantinero: ...Vaya a buscarlo. Al que dejó de ser leñador. Creo que el río lo entiende mejor que yo.
 => END

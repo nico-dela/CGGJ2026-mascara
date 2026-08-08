@@ -1,14 +1,22 @@
 ~ start
-Policía: Detective, veo que ya trajo pistas. Cuénteme qué encontró.
-if GameManager.has_seen_clue("oso")
-	Detective: Encontré la máscara del oso cerca del bosque. El cantinero sabe más de lo que admite.
-	Policía: Interesante... Confronte a ese hombre. Si confiesa, abriremos el paso al este.
+Policía: ...Volvió. Hable. Rápido.
+if GameManager.has_huellas_pelota()
+	Detective: Las huellas apuntan al cantinero. Él negó el bosque.
+	Policía: Ya sabe lo que yo sé. El resto es suyo.
+elif GameManager.has_seen_clue("oso")
+	Detective: Encontré una máscara cerca del bosque. Parece del leñador.
+	Policía: Cuide cómo la nombra. Si encuentra algo con huellas... tráigalo. Todavía no le debo más.
 else
-	Detective: Hay objetos extraños por el pueblo. Estoy reuniendo indicios.
-	Policía: Bien. Cuando tenga algo contundente, vuelva.
+	Detective: Hay objetos raros por el pueblo. Estoy juntando indicios.
+	Policía: Indicios. Todos traen indicios. Vuelva cuando tenga algo que duela.
 if GameManager.has_seen_clue("tronco")
-	Detective: También vi el hacha y el tronco del leñador. Parece que abandonó su trabajo a medias.
+	Detective: El hacha y el tronco quedaron a medias. Como si alguien hubiera caído ahí.
+	Policía: Mm. Observe. No invente herramientas donde hay recuerdos.
 if GameManager.has_seen_clue("patito") or GameManager.has_seen_clue("pelota")
-	Detective: Hay juguetes tirados... como si alguien desapareció a mitad del juego.
-Policía: Siga investigando. El pueblo cuenta con usted.
+	Detective: También hay cosas tiradas. Un patito. Una pelota.
+	Policía: El pueblo deja cosas donde duele recordarlas. Siga.
+if GameManager.has_huellas_pelota()
+	Policía: Las huellas son del cantinero. Eso es todo.
+else
+	Policía: Todavía no ganó mi confianza. Investigue.
 => END

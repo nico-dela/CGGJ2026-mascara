@@ -7,10 +7,12 @@ signal cantinero_mascara_puesta
 signal cantinero_mascara_quitada
 signal paso_abierto_signal
 signal caso_resuelto_signal
+signal mask_equipped_changed
 
 const SAVE_PATH := "user://save.json"
 
 var _pending_credits := false
+var _pending_town := false
 
 var inventory: Array:
 	get:
@@ -60,6 +62,7 @@ func _ready() -> void:
 	StoryFlags.cantinero_mascara_quitada.connect(func(): cantinero_mascara_quitada.emit())
 	StoryFlags.paso_abierto_signal.connect(func(): paso_abierto_signal.emit())
 	StoryFlags.caso_resuelto_signal.connect(func(): caso_resuelto_signal.emit())
+	StoryFlags.mask_equipped_changed.connect(func(): mask_equipped_changed.emit())
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func add_item(item_id: String) -> void:
@@ -67,6 +70,8 @@ func add_item(item_id: String) -> void:
 	save_game()
 
 func remove_item(item_id: String) -> void:
+	if StoryFlags.mascara_equipada == item_id:
+		StoryFlags.unequip_mask()
 	Inventory.remove_item(item_id)
 	save_game()
 
@@ -85,6 +90,48 @@ func poner_mascara_cantinero() -> void:
 
 func quitar_mascara_cantinero() -> void:
 	StoryFlags.quitar_mascara_cantinero()
+
+func equip_mask(mask_id: String) -> void:
+	StoryFlags.equip_mask(mask_id)
+	Inventory.selected_item = ""
+	save_game()
+
+func unequip_mask() -> void:
+	StoryFlags.unequip_mask()
+	save_game()
+
+func toggle_equip_mask(mask_id: String) -> void:
+	StoryFlags.toggle_equip_mask(mask_id)
+	Inventory.selected_item = ""
+	save_game()
+
+func is_wearing_mask(mask_id: String = "") -> bool:
+	return StoryFlags.is_wearing_mask(mask_id)
+
+func mark_huellas_pelota() -> void:
+	StoryFlags.mark_huellas_pelota()
+	if has_item("pelota"):
+		remove_item("pelota")
+	save_game()
+
+func has_huellas_pelota() -> bool:
+	return StoryFlags.has_huellas_pelota()
+
+func mark_patito_devuelto() -> void:
+	StoryFlags.mark_patito_devuelto()
+	if has_item("patito"):
+		remove_item("patito")
+	save_game()
+
+func has_patito_devuelto() -> bool:
+	return StoryFlags.has_patito_devuelto()
+
+func exponer_bartender() -> void:
+	StoryFlags.exponer_bartender()
+	save_game()
+
+func is_bartender_expuesto() -> bool:
+	return StoryFlags.is_bartender_expuesto()
 
 func abrir_paso() -> void:
 	StoryFlags.abrir_paso()
@@ -106,6 +153,13 @@ func has_seen_clue(clue_id: String) -> bool:
 func clue_count() -> int:
 	return StoryFlags.clue_count()
 
+func mark_hablado_cantinero() -> void:
+	StoryFlags.mark_hablado_cantinero()
+	save_game()
+
+func has_hablado_cantinero() -> bool:
+	return StoryFlags.has_hablado_cantinero()
+
 func resolver_caso() -> void:
 	StoryFlags.resolver_caso()
 	save_game()
@@ -119,8 +173,12 @@ func finalizar_juego() -> void:
 func request_scene_change(scene_path: String, spawn_id: String = "", sound: AudioStream = null) -> void:
 	SceneRouter.request_scene_change(scene_path, spawn_id, sound)
 
+func go_to_town() -> void:
+	_pending_town = true
+
 func start_new_game() -> void:
 	_pending_credits = false
+	_pending_town = false
 	Inventory.clear()
 	StoryFlags.reset()
 	clear_save()
@@ -157,6 +215,10 @@ func clear_save() -> void:
 		DirAccess.open("user://").remove("save.json")
 
 func _on_dialogue_ended(_resource) -> void:
+	if _pending_town:
+		_pending_town = false
+		request_scene_change("res://scenes/room_1.tscn", "Spawn_From_Road")
+		return
 	_go_to_credits_when_ready()
 
 func _go_to_credits_when_ready() -> void:

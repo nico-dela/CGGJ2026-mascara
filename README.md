@@ -28,10 +28,11 @@ El juego fue diseñado para ser completado en una sola sesión, priorizando atm�
 
 ## Controles
 
-- **Mouse / Click izquierdo / Touch**: moverse e interactuar
-- **Inventario**: tap/click en un ítem para seleccionarlo y usarlo sobre NPCs/objetos
-- **Máscaras**: con una máscara seleccionada, click en el detective (o segundo click en el slot) para equiparla; el sprite cambia si es la de oso
-- **Escape**: cancelar / volver
+- Estilo **Full Throttle**: click en un objeto/persona abre la **moneda de acciones** (Mirar · Hablar · Usar · Tomar). Mirar y Hablar son distintos.
+- En la ruta: hablá con el **guardia**, tomá el **bolso** (pasa a ser el botón de la esquina; tutorial breve) y recién ahí entrá al pueblo.
+- **Bolso**: inventario; seleccioná un ítem y click en el objetivo (`Usar la pelota con el policía`).
+- **Máscaras**: segundo click en el slot (o ítem + click en el detective) para equipar.
+- Escape: cerrar la moneda / pausa.
 
 El juego está pensado en **horizontal (landscape)**. En tablet/celular escala manteniendo 16:9, con botones e inventario más grandes y márgenes seguros.
 
@@ -68,7 +69,7 @@ El juego está pensado en **horizontal (landscape)**. En tablet/celular escala m
 | `GameManager` | Fachada compatible con mutations de Dialogue Manager + save |
 | `AudioManager` | Música |
 
-Interactables comparten `scripts/interactable.gd` / `npc_interactable.gd`. Los ítems viven en `resources/items/`.
+Interactables comparten `scripts/core/interactable.gd` / `npc_interactable.gd`. Contenido en `content/` (diálogos + ítems); arte/audio en `assets/`; escenas en `scenes/{rooms,actors,ui,systems}/`.
 
 ---
 

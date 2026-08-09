@@ -35,6 +35,13 @@ func _play_talk() -> void:
 		return
 	super._play_talk()
 
+func get_verb_text() -> String:
+	if Inventory.selected_item == "credencial":
+		return "Usar la credencial con el pescador"
+	if Inventory.selected_item == "oso" and StoryFlags.is_bartender_expuesto():
+		return "Usar la máscara con el pescador"
+	return super.get_verb_text()
+
 func _interact() -> void:
 	var selected := Inventory.selected_item
 
@@ -42,6 +49,13 @@ func _interact() -> void:
 	if selected == "oso" and StoryFlags.is_bartender_expuesto():
 		dialogue_with_item = load("res://content/dialogue/pescador/pescador_ending.dialogue")
 		required_item = "oso"
+		super._interact()
+		required_item = ""
+		return
+
+	if selected == "credencial":
+		dialogue_with_item = load("res://content/dialogue/pescador/pescador_credencial.dialogue")
+		required_item = "credencial"
 		super._interact()
 		required_item = ""
 		return

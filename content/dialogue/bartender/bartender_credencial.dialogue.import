@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cy1th1wvc363n"
+path="res://.godot/imported/bartender_credencial.dialogue-336e606426a3478a94f49d320e72b4b2.tres"
+
+[deps]
+
+source_file="res://content/dialogue/bartender/bartender_credencial.dialogue"
+dest_files=["res://.godot/imported/bartender_credencial.dialogue-336e606426a3478a94f49d320e72b4b2.tres"]
+
+[params]
+
+defaults=true

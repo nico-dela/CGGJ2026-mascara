@@ -13,6 +13,8 @@ func _ready() -> void:
 func get_verb_text() -> String:
 	if Inventory.selected_item == "patito":
 		return "Usar el patito con el cantinero"
+	if Inventory.selected_item == "credencial":
+		return "Usar la credencial con el cantinero"
 	if Inventory.selected_item == "oso":
 		return "Usar la máscara con el cantinero"
 	if Inventory.selected_item == "mascara_mozo" and StoryFlags.cantinero_mascara:
@@ -27,6 +29,13 @@ func _interact() -> void:
 	if selected == "patito" and not StoryFlags.has_patito_devuelto():
 		dialogue_with_item = load("res://content/dialogue/bartender/bartender_patito.dialogue")
 		required_item = "patito"
+		super._interact()
+		required_item = ""
+		return
+
+	if selected == "credencial":
+		dialogue_with_item = load("res://content/dialogue/bartender/bartender_credencial.dialogue")
+		required_item = "credencial"
 		super._interact()
 		required_item = ""
 		return

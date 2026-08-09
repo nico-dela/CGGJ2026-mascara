@@ -57,7 +57,7 @@ addons/             # no editar Dialogue Manager
 ## Controles / UX
 
 - Estilo **Full Throttle**: click en un hotspot abre la **verb coin** (Mirar / Hablar / Usar / Tomar). **Mirar ≠ Hablar** en NPCs. **Usar** solo se habilita si el hotspot tiene efecto real (no reject).
-- En la ruta: el bolso del mundo se **toma** y se convierte en el botón **Bolso** (esquina). Sin bolso no se pueden tomar ítems. Tutorial breve al tomarlo.
+- En la ruta: el bolso del mundo se **toma** y se convierte en el botón **Bolso** (esquina). Trae la **credencial** de detective (ítem); **Usar** con NPCs para presentarse. Sin bolso no se pueden tomar ítems. Tutorial breve al tomarlo.
 - `TownTransition` (pueblo) requiere `hablado_guardia`.
 - Inventario en **Bolso**; seleccionar ítem y click en objetivo = usar con…
 - Máscara: segundo click en el slot o Usar + click en el detective.

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c6j8nw788cvwc"
+path="res://.godot/imported/road_police_credencial.dialogue-b8b1e74e06108fd7b0c7e21dbc2ab79a.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_police_credencial.dialogue"
+dest_files=["res://.godot/imported/road_police_credencial.dialogue-b8b1e74e06108fd7b0c7e21dbc2ab79a.tres"]
+
+[params]
+
+defaults=true

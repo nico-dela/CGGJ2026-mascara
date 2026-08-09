@@ -1,0 +1,12 @@
+~ start
+if GameManager.has_comisario_briefing()
+	Policía: Ya vi su placa. No hace falta mostrarla otra vez.
+	Policía: Traiga prueba. Taberna. Bosque. Huellas.
+	=> END
+Detective: Policía. Soy detective. Aquí está mi credencial.
+Policía: ...Placa. Firma. Mire, no le pedí nada. Pero si de verdad sabe mirar...
+Detective: Cuénteme.
+Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
+Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.
+do GameManager.mark_comisario_briefing()
+=> END

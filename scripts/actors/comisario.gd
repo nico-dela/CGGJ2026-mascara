@@ -11,6 +11,8 @@ func _ready() -> void:
 func get_verb_text() -> String:
 	if Inventory.selected_item == "pelota" and not StoryFlags.has_huellas_pelota():
 		return "Usar la pelota con el policía"
+	if Inventory.selected_item == "credencial":
+		return "Usar la credencial con el policía"
 	if Inventory.selected_item == "oso":
 		return "Usar la máscara con el policía"
 	if Inventory.selected_item == "mascara_poli" and StoryFlags.comisario_tiene_oso:
@@ -23,6 +25,13 @@ func _interact() -> void:
 	if selected == "pelota" and not StoryFlags.has_huellas_pelota():
 		dialogue_with_item = load("res://content/dialogue/comisario/comisario_pelota.dialogue")
 		required_item = "pelota"
+		super._interact()
+		required_item = ""
+		return
+
+	if selected == "credencial":
+		dialogue_with_item = load("res://content/dialogue/comisario/comisario_credencial.dialogue")
+		required_item = "credencial"
 		super._interact()
 		required_item = ""
 		return

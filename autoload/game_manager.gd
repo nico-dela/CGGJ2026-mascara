@@ -226,6 +226,9 @@ func load_game() -> bool:
 	var data: Dictionary = parsed
 	Inventory.from_dict(data.get("inventory", {}))
 	StoryFlags.from_dict(data.get("flags", {}))
+	# Saves from before the credential item: bag already taken → grant ID.
+	if StoryFlags.has_tiene_bolso() and not Inventory.has_item("credencial"):
+		Inventory.add_item("credencial")
 	return true
 
 func has_save() -> bool:

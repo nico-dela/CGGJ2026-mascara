@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b3s31l20q4apt"
+path="res://.godot/imported/oso_observe.dialogue-eb5080954c2c55763c675c753d4b2be3.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/oso_observe.dialogue"
+dest_files=["res://.godot/imported/oso_observe.dialogue-eb5080954c2c55763c675c753d4b2be3.tres"]
+
+[params]
+
+defaults=true

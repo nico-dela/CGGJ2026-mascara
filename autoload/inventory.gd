@@ -24,7 +24,7 @@ func _ready() -> void:
 	_load_item_library()
 
 func _load_item_library() -> void:
-	var dir := DirAccess.open("res://resources/items")
+	var dir := DirAccess.open("res://content/items")
 	if dir == null:
 		return
 	dir.list_dir_begin()
@@ -33,7 +33,7 @@ func _load_item_library() -> void:
 		if not dir.current_is_dir():
 			var clean := file_name.replace(".remap", "")
 			if clean.ends_with(".tres"):
-				var item: ItemResource = load("res://resources/items/" + clean) as ItemResource
+				var item: ItemResource = load("res://content/items/" + clean) as ItemResource
 				if item and item.itemId != "":
 					_items[item.itemId] = item
 		file_name = dir.get_next()

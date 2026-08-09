@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bdw26q48fgvqv"
+path="res://.godot/imported/comisario_mask_return.dialogue-ead2af43b1f4e79ae31b66b4995c2606.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_mask_return.dialogue"
+dest_files=["res://.godot/imported/comisario_mask_return.dialogue-ead2af43b1f4e79ae31b66b4995c2606.tres"]
+
+[params]
+
+defaults=true

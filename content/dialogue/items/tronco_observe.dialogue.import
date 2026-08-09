@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://di0iuaj2tm1"
+path="res://.godot/imported/tronco_observe.dialogue-be97a480aecd64cc741b0d5f8da87122.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/tronco_observe.dialogue"
+dest_files=["res://.godot/imported/tronco_observe.dialogue-be97a480aecd64cc741b0d5f8da87122.tres"]
+
+[params]
+
+defaults=true

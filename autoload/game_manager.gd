@@ -160,6 +160,27 @@ func mark_hablado_cantinero() -> void:
 func has_hablado_cantinero() -> bool:
 	return StoryFlags.has_hablado_cantinero()
 
+func mark_hablado_guardia() -> void:
+	StoryFlags.mark_hablado_guardia()
+	save_game()
+
+func has_hablado_guardia() -> bool:
+	return StoryFlags.has_hablado_guardia()
+
+func mark_tiene_bolso() -> void:
+	StoryFlags.mark_tiene_bolso()
+	save_game()
+
+func has_tiene_bolso() -> bool:
+	return StoryFlags.has_tiene_bolso()
+
+func mark_comisario_briefing() -> void:
+	StoryFlags.mark_comisario_briefing()
+	save_game()
+
+func has_comisario_briefing() -> bool:
+	return StoryFlags.has_comisario_briefing()
+
 func resolver_caso() -> void:
 	StoryFlags.resolver_caso()
 	save_game()
@@ -182,7 +203,7 @@ func start_new_game() -> void:
 	Inventory.clear()
 	StoryFlags.reset()
 	clear_save()
-	SceneRouter.change_scene("res://scenes/cinematic.tscn")
+	SceneRouter.change_scene("res://scenes/systems/cinematic.tscn")
 
 func save_game() -> void:
 	var data := {
@@ -217,7 +238,7 @@ func clear_save() -> void:
 func _on_dialogue_ended(_resource) -> void:
 	if _pending_town:
 		_pending_town = false
-		request_scene_change("res://scenes/room_1.tscn", "Spawn_From_Road")
+		request_scene_change("res://scenes/rooms/room_1.tscn", "Spawn_From_Road")
 		return
 	_go_to_credits_when_ready()
 
@@ -227,4 +248,4 @@ func _go_to_credits_when_ready() -> void:
 	_pending_credits = false
 	await get_tree().process_frame
 	clear_save()
-	SceneRouter.change_scene("res://scenes/credits.tscn")
+	SceneRouter.change_scene("res://scenes/ui/credits.tscn")

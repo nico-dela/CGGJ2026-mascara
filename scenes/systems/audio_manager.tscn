@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://co578sh7lv6tn"]
+
+[ext_resource type="Script" uid="uid://du8u7kdejar4l" path="res://autoload/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/musica_principal.ogg" id="2_music"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_8qd8g")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_music")
+
+[node name="AmbientA" type="AudioStreamPlayer" parent="."]
+
+[node name="AmbientB" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]

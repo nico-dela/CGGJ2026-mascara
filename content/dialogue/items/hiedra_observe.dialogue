@@ -1,0 +1,6 @@
+~ start
+if GameManager.is_wearing_mask("oso")
+	Detective: La hiedra tapa el río. Con el hacha... podría abrirme paso.
+else
+	Detective: La hiedra tapa el camino al río. A mano no. Haría falta un hacha... y saber usarla.
+=> END

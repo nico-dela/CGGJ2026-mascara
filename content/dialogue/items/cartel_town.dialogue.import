@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://d25d360ft0v7"
+path="res://.godot/imported/cartel_town.dialogue-c931e44b92521caeef5069a50ee32777.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/cartel_town.dialogue"
+dest_files=["res://.godot/imported/cartel_town.dialogue-c931e44b92521caeef5069a50ee32777.tres"]
+
+[params]
+
+defaults=true

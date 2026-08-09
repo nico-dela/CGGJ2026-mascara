@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b83bqbjgd31vt"
+path="res://.godot/imported/road_police_observe.dialogue-436760f1ec08859559f574d8459cf970.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_police_observe.dialogue"
+dest_files=["res://.godot/imported/road_police_observe.dialogue-436760f1ec08859559f574d8459cf970.tres"]
+
+[params]
+
+defaults=true

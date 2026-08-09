@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://65ipef3amhlq"
+path="res://.godot/imported/comisario_mask_swap.dialogue-12ebb29f7c6ea34e52a240e658c10d6b.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_mask_swap.dialogue"
+dest_files=["res://.godot/imported/comisario_mask_swap.dialogue-12ebb29f7c6ea34e52a240e658c10d6b.tres"]
+
+[params]
+
+defaults=true

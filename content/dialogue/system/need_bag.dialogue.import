@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ds55n8spnlmmt"
+path="res://.godot/imported/need_bag.dialogue-4d3b963aad7de26a6bc91031f6bc2513.tres"
+
+[deps]
+
+source_file="res://content/dialogue/system/need_bag.dialogue"
+dest_files=["res://.godot/imported/need_bag.dialogue-4d3b963aad7de26a6bc91031f6bc2513.tres"]
+
+[params]
+
+defaults=true

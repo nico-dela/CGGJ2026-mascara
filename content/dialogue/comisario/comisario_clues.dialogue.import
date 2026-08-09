@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b4ggc4gql0ug5"
+path="res://.godot/imported/comisario_clues.dialogue-4df796e7152225bc9b1e0f584c0db112.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_clues.dialogue"
+dest_files=["res://.godot/imported/comisario_clues.dialogue-4df796e7152225bc9b1e0f584c0db112.tres"]
+
+[params]
+
+defaults=true

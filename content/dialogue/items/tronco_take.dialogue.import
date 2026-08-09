@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dryuxtrbeewy3"
+path="res://.godot/imported/tronco_take.dialogue-1cacef8c9d64feb72c0f9bbf35a47ddc.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/tronco_take.dialogue"
+dest_files=["res://.godot/imported/tronco_take.dialogue-1cacef8c9d64feb72c0f9bbf35a47ddc.tres"]
+
+[params]
+
+defaults=true

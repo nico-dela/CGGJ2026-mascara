@@ -1,0 +1,7 @@
+~ start
+if not GameManager.has_hablado_guardia()
+	Detective: Mejor hablo primero con el guardia. Después agarro el bolso.
+	=> END
+Detective: Listo. Bolso al hombro.
+do GameManager.mark_tiene_bolso()
+=> END

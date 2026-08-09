@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3]
+
+[ext_resource type="Script" path="res://scripts/core/item_resource.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/mozo_idle.png" id="2_tex"]
+
+[resource]
+script = ExtResource("1_script")
+itemId = "mascara_mozo"
+tipo = 1
+imagem = ExtResource("2_tex")
+display_name = "la máscara del cantinero"

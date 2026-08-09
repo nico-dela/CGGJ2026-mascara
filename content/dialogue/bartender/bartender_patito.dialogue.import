@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://beyq86p52hca7"
+path="res://.godot/imported/bartender_patito.dialogue-d9527fe81fb1f268c5fb205eaef3378a.tres"
+
+[deps]
+
+source_file="res://content/dialogue/bartender/bartender_patito.dialogue"
+dest_files=["res://.godot/imported/bartender_patito.dialogue-d9527fe81fb1f268c5fb205eaef3378a.tres"]
+
+[params]
+
+defaults=true

@@ -3,13 +3,14 @@ extends CanvasLayer
 ## Opens the configuration overlay as a pause menu during gameplay.
 ## Includes an on-screen button so the game can be played mouse-only.
 
-const CONFIG_SCENE := preload("res://scenes/configuration.tscn")
-const CONFIG_ICON := preload("res://images/config button.png")
-const UI_FONT: Font = preload("res://fonts/SpecialElite-Regular.ttf")
+const CONFIG_SCENE := preload("res://scenes/ui/configuration.tscn")
+const CONFIG_ICON := preload("res://assets/art/ui/config_button.png")
+const UI_FONT: Font = preload("res://assets/fonts/SpecialElite-Regular.ttf")
 const GAMEPLAY_SCENES := [
-	"res://scenes/room_1.tscn",
-	"res://scenes/room_2.tscn",
-	"res://scenes/room_3.tscn",
+	"res://scenes/rooms/room_1.tscn",
+	"res://scenes/rooms/room_2.tscn",
+	"res://scenes/rooms/room_3.tscn",
+	"res://scenes/rooms/room_road.tscn",
 ]
 
 var _dialogue_active := false

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bw4vxrxqbwd1c"
+path="res://.godot/imported/tronco_take_success.dialogue-6f085eff2af09bb26cb2c011a8407799.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/tronco_take_success.dialogue"
+dest_files=["res://.godot/imported/tronco_take_success.dialogue-6f085eff2af09bb26cb2c011a8407799.tres"]
+
+[params]
+
+defaults=true

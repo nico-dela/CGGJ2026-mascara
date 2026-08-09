@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dsg3jm5c5od1j"
+path="res://.godot/imported/comisario_pelota.dialogue-37bb09d5455f1ec5f67748482d986ab0.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_pelota.dialogue"
+dest_files=["res://.godot/imported/comisario_pelota.dialogue-37bb09d5455f1ec5f67748482d986ab0.tres"]
+
+[params]
+
+defaults=true

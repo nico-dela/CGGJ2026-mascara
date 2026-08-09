@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cgtwwrkuybrg7"
+path="res://.godot/imported/road_town_blocked.dialogue-800e3e739fc704dd8c019b7adbc15eef.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_town_blocked.dialogue"
+dest_files=["res://.godot/imported/road_town_blocked.dialogue-800e3e739fc704dd8c019b7adbc15eef.tres"]
+
+[params]
+
+defaults=true

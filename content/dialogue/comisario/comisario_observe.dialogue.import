@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://2fayeng3ktpv"
+path="res://.godot/imported/comisario_observe.dialogue-1b4d23e9ec8b45be6c12b28c503dc9df.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_observe.dialogue"
+dest_files=["res://.godot/imported/comisario_observe.dialogue-1b4d23e9ec8b45be6c12b28c503dc9df.tres"]
+
+[params]
+
+defaults=true

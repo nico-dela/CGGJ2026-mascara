@@ -94,7 +94,7 @@ func _update_cursor() -> void:
 		Input.set_custom_mouse_cursor(null)
 		return
 
-	var source := load("res://images/cursor.png") as Texture2D
+	var source := load("res://assets/art/ui/cursor.png") as Texture2D
 	if source == null:
 		return
 

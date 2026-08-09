@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cslrxcocwrj3"
+path="res://.godot/imported/patito_found.dialogue-94a78d430a07d69fe963caac1227ae6f.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/patito_found.dialogue"
+dest_files=["res://.godot/imported/patito_found.dialogue-94a78d430a07d69fe963caac1227ae6f.tres"]
+
+[params]
+
+defaults=true

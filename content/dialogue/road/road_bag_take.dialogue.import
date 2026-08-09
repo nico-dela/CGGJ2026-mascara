@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://crc4k5j6rl4xv"
+path="res://.godot/imported/road_bag_take.dialogue-44da8b2577364d8131e17d383d951249.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_bag_take.dialogue"
+dest_files=["res://.godot/imported/road_bag_take.dialogue-44da8b2577364d8131e17d383d951249.tres"]
+
+[params]
+
+defaults=true

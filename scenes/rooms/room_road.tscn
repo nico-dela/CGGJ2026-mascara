@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://bm4xrnasquuki"]
+
+[ext_resource type="Script" uid="uid://1y4x20w066cr" path="res://scenes/rooms/room_road.gd" id="1_road"]
+[ext_resource type="Texture2D" uid="uid://dit5jyfyjg1gx" path="res://assets/art/rooms/road/fondo_ruta.webp" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/actors/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/ui/inventory_ui.tscn" id="4_inv"]
+[ext_resource type="Script" uid="uid://dtcjac2t48q13" path="res://scripts/actors/road_police.gd" id="5_police"]
+[ext_resource type="Texture2D" uid="uid://d4jkuonoloxml" path="res://assets/art/characters/guardia_idle.png" id="6_poli"]
+[ext_resource type="Script" uid="uid://buvm1ljygqg5s" path="res://scripts/interactables/road_bag.gd" id="7_bag"]
+[ext_resource type="FontFile" uid="uid://wlpqsrxdoo02" path="res://assets/fonts/SpecialElite-Regular.ttf" id="8_font"]
+[ext_resource type="Texture2D" uid="uid://de2k3hdt2ixvp" path="res://assets/art/rooms/road/moto.png" id="9_moto"]
+[ext_resource type="Texture2D" uid="uid://bmocoxprlxd8n" path="res://assets/art/rooms/road/bolso.png" id="10_bolso"]
+[ext_resource type="Texture2D" uid="uid://ctflr3xnqkwyq" path="res://assets/art/rooms/road/arbol.png" id="11_arbol"]
+[ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/systems/room_transition.tscn" id="12_trans"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ground"]
+a = Vector2(0, 980)
+b = Vector2(1920, 980)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_police"]
+radius = 28.0
+height = 120.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0"]
+atlas = ExtResource("6_poli")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1"]
+atlas = ExtResource("6_poli")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2"]
+atlas = ExtResource("6_poli")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3"]
+atlas = ExtResource("6_poli")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_poli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bag"]
+size = Vector2(140, 100)
+
+[node name="RoomRoad" type="Node2D" unique_id=119779304]
+position = Vector2(0, 12000)
+script = ExtResource("1_road")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1398439983]
+position = Vector2(960, 540)
+texture = ExtResource("2_bg")
+
+[node name="TreeLeft" type="Sprite2D" parent="." unique_id=1983295764]
+z_index = 1
+position = Vector2(80, 620)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("11_arbol")
+
+[node name="TreeRight" type="Sprite2D" parent="." unique_id=1775606151]
+modulate = Color(0.75, 0.7, 0.9, 1)
+z_index = 1
+position = Vector2(1780, 600)
+scale = Vector2(-0.75, 0.75)
+texture = ExtResource("11_arbol")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=963724045]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=2131569496]
+shape = SubResource("SegmentShape2D_ground")
+
+[node name="Moto" type="Sprite2D" parent="." unique_id=414603875]
+z_index = 2
+position = Vector2(380, 900)
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("9_moto")
+
+[node name="Player" parent="." unique_id=1161566690 instance=ExtResource("3_player")]
+position = Vector2(560, 900)
+
+[node name="RoadPolice" type="Area2D" parent="." unique_id=590921576]
+z_index = 4096
+position = Vector2(980, 875)
+script = ExtResource("5_police")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoadPolice" unique_id=152022636]
+shape = SubResource("CapsuleShape2D_police")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RoadPolice" unique_id=114515102]
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_poli")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="RoadBag" type="Area2D" parent="." unique_id=1490693918]
+z_index = 4
+position = Vector2(300, 930)
+script = ExtResource("7_bag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoadBag" unique_id=664097883]
+shape = SubResource("RectangleShape2D_bag")
+
+[node name="Sprite2D" type="Sprite2D" parent="RoadBag" unique_id=769294144]
+texture = ExtResource("10_bolso")
+
+[node name="HintLabel" type="Label" parent="." unique_id=636756534]
+z_index = 20
+offset_left = 40.0
+offset_top = 36.0
+offset_right = 980.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(1, 0.92, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 28
+text = "La ruta. Las luces del pueblo están al este..."
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=760224479]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=1453381655 instance=ExtResource("4_inv")]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=944565594]
+
+[node name="Start" type="Marker2D" parent="SpawnPoints" unique_id=1606444938]
+position = Vector2(560, 900)
+
+[node name="Spawn_From_Town" type="Marker2D" parent="SpawnPoints" unique_id=264851637]
+position = Vector2(1600, 900)
+
+[node name="TownTransition" parent="." unique_id=1558430801 instance=ExtResource("12_trans")]
+z_index = 5
+position = Vector2(1852.0001, 913)
+scale = Vector2(6.5, 11)
+target_scene = "res://scenes/rooms/room_1.tscn"
+target_spawn_id = "Spawn_From_Road"
+verb = "Ir al"
+interact_label = "pueblo"
+require_hablado_guardia = true

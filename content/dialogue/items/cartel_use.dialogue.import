@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cj4yxavvcgfx0"
+path="res://.godot/imported/cartel_use.dialogue-a49451895e2758d55ccf2c1ad987ce92.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/cartel_use.dialogue"
+dest_files=["res://.godot/imported/cartel_use.dialogue-a49451895e2758d55ccf2c1ad987ce92.tres"]
+
+[params]
+
+defaults=true

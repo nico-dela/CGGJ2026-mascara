@@ -2,7 +2,7 @@ extends CanvasLayer
 
 ## Desktop verb hint that follows the mouse (Monkey Island style).
 
-const UI_FONT: Font = preload("res://fonts/SpecialElite-Regular.ttf")
+const UI_FONT: Font = preload("res://assets/fonts/SpecialElite-Regular.ttf")
 const SELF_HINT_RADIUS := 110.0
 
 var _label: Label

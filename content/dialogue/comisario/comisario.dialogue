@@ -1,0 +1,21 @@
+~ start
+if GameManager.is_bartender_expuesto()
+	Policía: Ya oyó la verdad. El río. No me haga perder más tiempo.
+	=> END
+if GameManager.has_huellas_pelota()
+	Policía: Las huellas son del cantinero. Eso es todo lo que le digo.
+	Policía: El resto... averígüelo usted.
+	=> END
+if GameManager.has_comisario_briefing()
+	Policía: Ya le dije: taberna, bosque. Algo con huellas. Traiga prueba.
+	=> END
+Policía: ...El guardia de la ruta avisó que venía un forastero con hambre. Usted es.
+Detective: Sí. Buscaba algo caliente... y vi el cartel del leñador.
+Policía: Todo el pueblo pasa frío sin él. La caldera, la leña. Y murmuran cosas feas.
+Detective: Yo investigo desapariciones. Soy detective.
+Policía: ...Detective. Mire, no le pedí nada. Pero si de verdad sabe mirar...
+Detective: Cuénteme.
+Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
+Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.
+do GameManager.mark_comisario_briefing()
+=> END

@@ -9,6 +9,10 @@ signal mask_equipped_changed
 signal bartender_expuesto_signal
 signal huellas_changed
 signal patito_devuelto_signal
+signal hablado_guardia_signal
+signal tiene_bolso_signal
+signal comisario_briefing_signal
+signal hablado_cantinero_signal
 
 var cantinero_mascara := false
 var paso_abierto := false
@@ -17,6 +21,11 @@ var hablado_cantinero := false
 var huellas_pelota := false
 var patito_devuelto := false
 var bartender_expuesto := false
+var hablado_guardia := false
+## World bag collected — enables Bolso HUD / taking items (not an inventory slot).
+var tiene_bolso := false
+## Comisario asked for help / case briefing done.
+var comisario_briefing := false
 ## Mask id currently worn by the detective (e.g. "oso"), or "".
 var mascara_equipada := ""
 ## True while the police is holding the oso mask from a swap.
@@ -27,7 +36,7 @@ var clues_seen: Array[String] = []
 func poner_mascara_cantinero() -> void:
 	cantinero_mascara = true
 	if AudioManager:
-		var sfx: AudioStream = load("res://audios/AMBIENTES Y SFX/FOLEYS FINALES/mascaraTaberna.ogg")
+		var sfx: AudioStream = load("res://assets/audio/sfx/mascara_taberna.ogg")
 		AudioManager.play_sfx(sfx)
 	cantinero_mascara_puesta.emit()
 
@@ -40,7 +49,7 @@ func equip_mask(mask_id: String) -> void:
 		return
 	mascara_equipada = mask_id
 	if AudioManager and mask_id == "oso":
-		var sfx: AudioStream = load("res://audios/AMBIENTES Y SFX/FOLEYS FINALES/mascaraOso.ogg")
+		var sfx: AudioStream = load("res://assets/audio/sfx/mascara_oso.ogg")
 		AudioManager.play_sfx(sfx)
 	mask_equipped_changed.emit()
 
@@ -84,7 +93,7 @@ func exponer_bartender() -> void:
 		return
 	bartender_expuesto = true
 	hablado_cantinero = true
-	abrir_paso()
+	# Path to the river opens when the lumberjack cuts the ivy (hacha), not here.
 	bartender_expuesto_signal.emit()
 
 func is_bartender_expuesto() -> bool:
@@ -115,10 +124,40 @@ func clue_count() -> int:
 	return clues_seen.size()
 
 func mark_hablado_cantinero() -> void:
+	if hablado_cantinero:
+		return
 	hablado_cantinero = true
+	hablado_cantinero_signal.emit()
 
 func has_hablado_cantinero() -> bool:
 	return hablado_cantinero
+
+func mark_hablado_guardia() -> void:
+	if hablado_guardia:
+		return
+	hablado_guardia = true
+	hablado_guardia_signal.emit()
+
+func has_hablado_guardia() -> bool:
+	return hablado_guardia
+
+func mark_tiene_bolso() -> void:
+	if tiene_bolso:
+		return
+	tiene_bolso = true
+	tiene_bolso_signal.emit()
+
+func has_tiene_bolso() -> bool:
+	return tiene_bolso
+
+func mark_comisario_briefing() -> void:
+	if comisario_briefing:
+		return
+	comisario_briefing = true
+	comisario_briefing_signal.emit()
+
+func has_comisario_briefing() -> bool:
+	return comisario_briefing
 
 func resolver_caso() -> void:
 	caso_resuelto = true
@@ -134,11 +173,15 @@ func reset() -> void:
 	huellas_pelota = false
 	patito_devuelto = false
 	bartender_expuesto = false
+	hablado_guardia = false
+	tiene_bolso = false
+	comisario_briefing = false
 	mascara_equipada = ""
 	comisario_tiene_oso = false
 	clues_seen.clear()
 	clues_changed.emit()
 	mask_equipped_changed.emit()
+	tiene_bolso_signal.emit()
 
 func to_dict() -> Dictionary:
 	return {
@@ -149,6 +192,9 @@ func to_dict() -> Dictionary:
 		"huellas_pelota": huellas_pelota,
 		"patito_devuelto": patito_devuelto,
 		"bartender_expuesto": bartender_expuesto,
+		"hablado_guardia": hablado_guardia,
+		"tiene_bolso": tiene_bolso,
+		"comisario_briefing": comisario_briefing,
 		"mascara_equipada": mascara_equipada,
 		"comisario_tiene_oso": comisario_tiene_oso,
 		"clues_seen": clues_seen.duplicate(),
@@ -162,6 +208,9 @@ func from_dict(data: Dictionary) -> void:
 	huellas_pelota = bool(data.get("huellas_pelota", false))
 	patito_devuelto = bool(data.get("patito_devuelto", false))
 	bartender_expuesto = bool(data.get("bartender_expuesto", false))
+	hablado_guardia = bool(data.get("hablado_guardia", false))
+	tiene_bolso = bool(data.get("tiene_bolso", false))
+	comisario_briefing = bool(data.get("comisario_briefing", false))
 	mascara_equipada = str(data.get("mascara_equipada", ""))
 	comisario_tiene_oso = bool(data.get("comisario_tiene_oso", false))
 	clues_seen.clear()
@@ -175,3 +224,11 @@ func from_dict(data: Dictionary) -> void:
 		bartender_expuesto_signal.emit()
 	if caso_resuelto:
 		caso_resuelto_signal.emit()
+	if hablado_guardia:
+		hablado_guardia_signal.emit()
+	if tiene_bolso:
+		tiene_bolso_signal.emit()
+	if comisario_briefing:
+		comisario_briefing_signal.emit()
+	if hablado_cantinero:
+		hablado_cantinero_signal.emit()

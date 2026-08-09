@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cttlx6vsrumal"
+path="res://.godot/imported/oso_take.dialogue-49ecbe48e858045f9f2f6159e1df76e2.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/oso_take.dialogue"
+dest_files=["res://.godot/imported/oso_take.dialogue-49ecbe48e858045f9f2f6159e1df76e2.tres"]
+
+[params]
+
+defaults=true

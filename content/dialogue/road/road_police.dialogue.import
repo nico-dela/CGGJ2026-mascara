@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://lpmpth8tuj17"
+path="res://.godot/imported/road_police.dialogue-9f2e45820e5f5fe66c7eadd976a5a482.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_police.dialogue"
+dest_files=["res://.godot/imported/road_police.dialogue-9f2e45820e5f5fe66c7eadd976a5a482.tres"]
+
+[params]
+
+defaults=true

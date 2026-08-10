@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://ctflr3xnqkwyq" path="res://assets/art/rooms/road/arbol.png" id="11_arbol"]
 [ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/systems/room_transition.tscn" id="12_trans"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wqcsw"]
+a = Vector2(1915, 12)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ground"]
 a = Vector2(0, 980)
 b = Vector2(1920, 980)
@@ -80,6 +83,12 @@ z_index = 1
 position = Vector2(1780, 600)
 scale = Vector2(-0.75, 0.75)
 texture = ExtResource("11_arbol")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=866026326]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2026501319]
+position = Vector2(1, 712)
+shape = SubResource("SegmentShape2D_wqcsw")
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=963724045]
 
@@ -153,5 +162,5 @@ scale = Vector2(6.5, 11)
 target_scene = "res://scenes/rooms/room_1.tscn"
 target_spawn_id = "Spawn_From_Road"
 verb = "Ir al"
-interact_label = "pueblo"
+interact_label = "Pueblo"
 require_hablado_guardia = true

@@ -263,7 +263,16 @@ func _on_paso_abierto() -> void:
 	monitoring = false
 	monitorable = false
 	input_pickable = false
+	collision_layer = 0
+	collision_mask = 0
+	for child in get_children():
+		if child is CollisionShape2D:
+			(child as CollisionShape2D).disabled = true
+		elif child is CollisionPolygon2D:
+			(child as CollisionPolygon2D).disabled = true
 	InteractionHint.hide_hint()
+	# Remove from picking so clicks fall through to walk / other hotspots.
+	queue_free()
 
 func _on_selection_changed() -> void:
 	if not _hovered or not visible or not input_pickable:

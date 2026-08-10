@@ -143,6 +143,8 @@ func _try_interact_at(world_pos: Vector2, screen_pos: Vector2 = Vector2.ZERO) ->
 		var collider = hit.collider
 		if collider == null:
 			continue
+		if not _is_active_hotspot(collider):
+			continue
 		# Item selected → immediate use-with / transition.
 		if Inventory.selected_item != "" and collider.has_method("try_interact"):
 			if collider.try_interact():
@@ -162,6 +164,13 @@ func _try_interact_at(world_pos: Vector2, screen_pos: Vector2 = Vector2.ZERO) ->
 			if collider.try_interact():
 				return true
 	return false
+
+func _is_active_hotspot(collider: Object) -> bool:
+	if collider is CanvasItem and not (collider as CanvasItem).visible:
+		return false
+	if collider is CollisionObject2D and not (collider as CollisionObject2D).input_pickable:
+		return false
+	return true
 
 func _try_use_item_on_self(world_pos: Vector2) -> bool:
 	if Inventory.selected_item == "":
@@ -198,7 +207,7 @@ func _find_verb_coin_target(world_pos: Vector2) -> Node:
 	)
 	for hit in hits:
 		var collider = hit.collider
-		if collider != null and collider.has_method("apply_verb"):
+		if collider != null and collider.has_method("apply_verb") and _is_active_hotspot(collider):
 			return collider
 	return null
 

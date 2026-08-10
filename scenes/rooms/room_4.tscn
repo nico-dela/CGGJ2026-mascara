@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dhhy1skitstum"]
+
+[ext_resource type="Script" uid="uid://d112g4lgh6wy8" path="res://scenes/rooms/room_4.gd" id="1_room"]
+[ext_resource type="Texture2D" uid="uid://di6hspgc6mwlg" path="res://assets/art/rooms/town/fondo_rio.webp" id="2_bg"]
+[ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/actors/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/ui/inventory_ui.tscn" id="4_inv"]
+[ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/systems/room_transition.tscn" id="5_trans"]
+[ext_resource type="Texture2D" uid="uid://17y7wh3x3xw4" path="res://assets/art/rooms/town/foreground_rio.webp" id="8_fg"]
+[ext_resource type="PackedScene" uid="uid://c6gpgr8mhuw6w" path="res://scenes/actors/pescador.tscn" id="9_pesc"]
+[ext_resource type="Script" uid="uid://b0ijxpcan0x8e" path="res://scenes/rooms/collision_shape_2d_4.gd" id="10_paso"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_floor"]
+a = Vector2(0, 1080)
+b = Vector2(2224, 1084)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_left"]
+a = Vector2(0, -20)
+b = Vector2(-4, 1080)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_right"]
+a = Vector2(2220, -20)
+b = Vector2(2228, 1080)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_paso"]
+a = Vector2(0, -400)
+b = Vector2(0, 700)
+
+[node name="Room4" type="Node2D" unique_id=1386258815]
+z_index = -1
+script = ExtResource("1_room")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1437632158]
+position = Vector2(1112, 545)
+scale = Vector2(1.61643, 1.61643)
+texture = ExtResource("2_bg")
+
+[node name="Player" parent="." unique_id=235056303 instance=ExtResource("3_player")]
+position = Vector2(160, 923)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=464370776]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=146212313 instance=ExtResource("4_inv")]
+
+[node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1089295205]
+script = ExtResource("10_paso")
+
+[node name="Floor" type="CollisionShape2D" parent="RoomLimits" unique_id=1218224894]
+shape = SubResource("SegmentShape2D_floor")
+
+[node name="LeftWall" type="CollisionShape2D" parent="RoomLimits" unique_id=655392774]
+shape = SubResource("SegmentShape2D_left")
+
+[node name="RightWall" type="CollisionShape2D" parent="RoomLimits" unique_id=510567584]
+shape = SubResource("SegmentShape2D_right")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RoomLimits" unique_id=840654601]
+position = Vector2(45, 403)
+shape = SubResource("SegmentShape2D_paso")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=302778276]
+
+[node name="Spawn_From_Town" type="Marker2D" parent="SpawnPoints" unique_id=591926868]
+position = Vector2(140, 923)
+
+[node name="PescadorRiver" type="Marker2D" parent="SpawnPoints" unique_id=1900271198]
+position = Vector2(1750, 831)
+
+[node name="TownTransition" parent="." unique_id=161537205 instance=ExtResource("5_trans")]
+position = Vector2(48, 860)
+scale = Vector2(4.5, 9)
+target_scene = "res://scenes/rooms/room_1.tscn"
+target_spawn_id = "Spawn_To_Rio"
+verb = "Volver al"
+interact_label = "Bosque"
+
+[node name="ForegroundArea" type="StaticBody2D" parent="." unique_id=1683047830]
+
+[node name="Sprite2D" type="Sprite2D" parent="ForegroundArea" unique_id=1812957032]
+z_index = 4096
+position = Vector2(1112, 539)
+scale = Vector2(1.61643, 1.61643)
+texture = ExtResource("8_fg")
+
+[node name="Pescador" parent="." unique_id=1813691801 instance=ExtResource("9_pesc")]
+position = Vector2(1750, 831)

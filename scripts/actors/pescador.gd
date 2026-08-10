@@ -1,11 +1,10 @@
 extends NpcInteractable
 
 const POS_INICIAL := Vector2(1499, 816)
-const POS_FINAL := Vector2(5900, 831)
 
 func _ready() -> void:
 	verb = "Hablar con"
-	interact_label = "el pescador"
+	interact_label = "Pescador"
 	anim_idle = "idle"
 	anim_talk = "talk"
 	if dialogue == null:
@@ -20,7 +19,7 @@ func _ready() -> void:
 		_aplicar_estado_resuelto()
 
 func _aplicar_estado_rio() -> void:
-	position = POS_FINAL
+	# Scene placement owns the riverside position (room_4). Only update anims here.
 	anim_idle = "fishing"
 	anim_talk = "talk"
 	if animated_sprite:
@@ -30,16 +29,16 @@ func _aplicar_estado_resuelto() -> void:
 	_aplicar_estado_rio()
 
 func _play_talk() -> void:
-	# En la orilla inicial solo idle; fishing/talk solo en la posición final.
+	# En la orilla del pueblo solo idle; fishing/talk en el río (room_4).
 	if not StoryFlags.is_bartender_expuesto() and not StoryFlags.caso_resuelto:
 		return
 	super._play_talk()
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "credencial":
-		return "Usar la credencial con el pescador"
+		return "Usar Credencial con Pescador"
 	if Inventory.selected_item == "oso" and StoryFlags.is_bartender_expuesto():
-		return "Usar la máscara con el pescador"
+		return "Usar Máscara con Pescador"
 	return super.get_verb_text()
 
 func _interact() -> void:

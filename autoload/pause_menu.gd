@@ -10,6 +10,7 @@ const GAMEPLAY_SCENES := [
 	"res://scenes/rooms/room_1.tscn",
 	"res://scenes/rooms/room_2.tscn",
 	"res://scenes/rooms/room_3.tscn",
+	"res://scenes/rooms/room_4.tscn",
 	"res://scenes/rooms/room_road.tscn",
 ]
 

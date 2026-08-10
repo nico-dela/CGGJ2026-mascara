@@ -215,17 +215,6 @@ func _inventory_slot_size() -> Vector2:
 		return Vector2(72, 72) * ui
 	return Vector2(44, 44) * ui
 
-## Called once after the road bag is taken — teaches the HUD briefly.
-func play_ui_tutorial() -> void:
-	_sync_bolso_visibility()
-	_pulse_bolso_button()
-	var tutorial: Resource = load("res://content/dialogue/system/ui_tutorial.dialogue")
-	if tutorial:
-		# Defer so the take balloon can finish closing first.
-		get_tree().create_timer(0.05).timeout.connect(func():
-			DialogueManager.show_dialogue_balloon(tutorial, "start")
-		)
-
 func _on_tiene_bolso_changed() -> void:
 	_sync_bolso_visibility()
 	_update_pocket_button()
@@ -237,14 +226,6 @@ func _sync_bolso_visibility() -> void:
 	if _pocket_panel and not has_bag:
 		_pocket_panel.visible = false
 		_pocket_open = false
-
-func _pulse_bolso_button() -> void:
-	if _pocket_btn == null or not _pocket_btn.visible:
-		return
-	var tween := create_tween()
-	tween.set_loops(3)
-	tween.tween_property(_pocket_btn, "modulate", COL_HOT, 0.25)
-	tween.tween_property(_pocket_btn, "modulate", Color.WHITE, 0.25)
 
 func _get_coin_target() -> Node:
 	if _coin_target == null:
@@ -386,7 +367,7 @@ func _adapt() -> void:
 	_intent.offset_bottom = -(safe.w + pad + 48 * ui + 4 * ui)
 
 	if _inv_box:
-		_inv_box.add_theme_constant_override("separation", int(12 * ui if touch else 8))
+		_inv_box.add_theme_constant_override("separation", int(12.0 * ui if touch else 8.0))
 
 	refresh_inventory()
 

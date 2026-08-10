@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cwujbp6q0llo5"
+path="res://.godot/imported/inv_hacha.dialogue-a685a22ad08bd48ab8814ad3c82e91a8.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_hacha.dialogue"
+dest_files=["res://.godot/imported/inv_hacha.dialogue-a685a22ad08bd48ab8814ad3c82e91a8.tres"]
+
+[params]
+
+defaults=true

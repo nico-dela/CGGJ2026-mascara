@@ -21,15 +21,7 @@ func update_selection_visual() -> void:
 		modulate = Color.WHITE
 
 func _pressed() -> void:
-	var item := Inventory.get_item(item_id)
-	# Second click on a selected mask equips/unequips on the detective.
-	if item and item.tipo == ItemResource.ItemTypes.MASCARA and Inventory.selected_item == item_id:
-		GameManager.toggle_equip_mask(item_id)
-		update_selection_visual()
+	if item_id == "" or AdventureUI == null:
 		return
-	if Inventory.selected_item == item_id:
-		Inventory.selected_item = ""
-	else:
-		Inventory.selected_item = item_id
-		if AdventureUI:
-			AdventureUI.set_verb(AdventureUI.Verb.USE)
+	var center := get_global_rect().get_center()
+	AdventureUI.show_bag_item_coin(item_id, center)

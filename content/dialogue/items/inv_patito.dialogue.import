@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://05oqcd5cevll"
+path="res://.godot/imported/inv_patito.dialogue-31a0363d56619a2548966352a0693036.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_patito.dialogue"
+dest_files=["res://.godot/imported/inv_patito.dialogue-31a0363d56619a2548966352a0693036.tres"]
+
+[params]
+
+defaults=true

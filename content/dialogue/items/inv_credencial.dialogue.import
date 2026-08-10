@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://blysjbt2lgljn"
+path="res://.godot/imported/inv_credencial.dialogue-3c83acff79c8c2981220880d792f89c8.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_credencial.dialogue"
+dest_files=["res://.godot/imported/inv_credencial.dialogue-3c83acff79c8c2981220880d792f89c8.tres"]
+
+[params]
+
+defaults=true

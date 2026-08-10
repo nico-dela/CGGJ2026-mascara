@@ -1,6 +1,3 @@
 ~ start
-Detective: Bien. Si toco a alguien o algo, sale la rueda: Mirar, Hablar, Usar, Tomar.
-Detective: El Bolso abajo a la derecha guarda lo que recoja. Ahí lo abro.
-Detective: Si elijo algo del bolso y toco un objetivo... lo uso con eso.
-Detective: Escape cierra la rueda. Las salidas, click directo. Al pueblo.
+Detective: Bien. Toco algo → rueda de acciones. El Bolso (abajo a la derecha) guarda lo que recoja: ahí puedo Mirar o Usar. Escape cierra la rueda; las salidas, click directo.
 => END

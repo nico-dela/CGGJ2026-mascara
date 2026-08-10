@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ckco2cmo6a8g"
+path="res://.godot/imported/inv_pelota.dialogue-355f4586bbf0d1d043a07b24d572437b.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_pelota.dialogue"
+dest_files=["res://.godot/imported/inv_pelota.dialogue-355f4586bbf0d1d043a07b24d572437b.tres"]
+
+[params]
+
+defaults=true

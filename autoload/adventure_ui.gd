@@ -120,7 +120,33 @@ func show_verb_coin(target: Node, screen_pos: Vector2) -> void:
 	_update_coin_enables(target)
 	_place_coin(screen_pos)
 	_update_sentence_for_target(target)
-	InteractionHint.hide_hint()
+	if DisplayAdapt and DisplayAdapt.is_touch_device:
+		var hint_text := _coin_hint_text(target)
+		if hint_text != "":
+			InteractionHint.show_hint_at(hint_text, screen_pos)
+		else:
+			InteractionHint.hide_hint()
+	else:
+		InteractionHint.hide_hint()
+
+## Verb coin for an inventory item (Mirar / Usar only).
+func show_bag_item_coin(item_id: String, screen_pos: Vector2) -> void:
+	if item_id == "" or not Inventory.has_item(item_id):
+		return
+	var proxy := _ensure_bag_proxy(item_id)
+	show_verb_coin(proxy, screen_pos)
+
+func _ensure_bag_proxy(item_id: String) -> Node:
+	var existing := get_node_or_null("BagItemProxy") as Node
+	if existing == null:
+		var script: GDScript = load("res://scripts/ui/bag_item_target.gd") as GDScript
+		existing = Node.new()
+		existing.set_script(script)
+		existing.name = "BagItemProxy"
+		add_child(existing)
+	if existing.has_method("setup"):
+		existing.call("setup", item_id)
+	return existing
 
 func hide_verb_coin() -> void:
 	var was_open := _coin_open
@@ -132,6 +158,7 @@ func hide_verb_coin() -> void:
 		_intent.visible = false
 		_intent.text = ""
 	if was_open:
+		InteractionHint.hide_hint()
 		coin_closed.emit()
 
 func build_sentence_for(target: Node = null) -> String:
@@ -243,13 +270,21 @@ func _on_selection_changed() -> void:
 func _update_sentence() -> void:
 	refresh_sentence(null)
 
+func _coin_hint_text(target: Node) -> String:
+	if target != null and target.has_method("get_verb_text"):
+		var verb_text: String = target.get_verb_text()
+		if verb_text != "":
+			return verb_text
+	if target != null and target.has_method("get_interact_label"):
+		var label: String = target.get_interact_label()
+		if label != "":
+			return label
+	return "¿Qué hacés?"
+
 func _update_sentence_for_target(target: Node) -> void:
 	if _intent == null:
 		return
-	var label := ""
-	if target != null and target.has_method("get_interact_label"):
-		label = target.get_interact_label()
-	_intent.text = label if label != "" else "¿Qué hacés?"
+	_intent.text = _coin_hint_text(target)
 	_intent.visible = true
 
 func _update_coin_enables(target: Node) -> void:
@@ -315,7 +350,8 @@ func _adapt() -> void:
 	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
 	var pad := 14.0 * ui
 
-	_intent.add_theme_font_size_override("font_size", int(22 * ui))
+	var intent_font := 26 if (DisplayAdapt and DisplayAdapt.is_touch_device) else 22
+	_intent.add_theme_font_size_override("font_size", int(intent_font * ui))
 	_pocket_btn.add_theme_font_size_override("font_size", int(20 * ui))
 	_pocket_btn.custom_minimum_size = Vector2(130 * ui, 44 * ui)
 
@@ -338,9 +374,11 @@ func _adapt() -> void:
 	_pocket_panel.offset_top = -(safe.w + pad + 48 * ui + 78 * ui)
 	_pocket_panel.offset_bottom = -(safe.w + pad + 56 * ui)
 
+	# Sit above Bolso; lift a bit more on touch so fingers don't cover the sentence.
+	var intent_lift := 56.0 * ui if (DisplayAdapt and DisplayAdapt.is_touch_device) else 36.0 * ui
 	_intent.offset_left = safe.x + pad
 	_intent.offset_right = -(safe.z + pad)
-	_intent.offset_top = -(safe.w + pad + 48 * ui + 36 * ui)
+	_intent.offset_top = -(safe.w + pad + 48 * ui + intent_lift)
 	_intent.offset_bottom = -(safe.w + pad + 48 * ui + 4 * ui)
 
 	refresh_inventory()

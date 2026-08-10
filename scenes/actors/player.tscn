@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ue7pjf6htxh4" path="res://assets/art/characters/detective_walk.png" id="3_dqkch"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/pasos_tierra.ogg" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bq81uku4mtuad" path="res://assets/art/characters/lenador_idle.png" id="5_lenador"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/lenador_walk.png" id="6_lenwalk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
 radius = 51.0
@@ -65,6 +66,30 @@ region = Rect2(64, 0, 32, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_len3"]
 atlas = ExtResource("5_lenador")
 region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenw0"]
+atlas = ExtResource("6_lenwalk")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenw1"]
+atlas = ExtResource("6_lenwalk")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenw2"]
+atlas = ExtResource("6_lenwalk")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenw3"]
+atlas = ExtResource("6_lenwalk")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenw4"]
+atlas = ExtResource("6_lenwalk")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenw5"]
+atlas = ExtResource("6_lenwalk")
+region = Rect2(160, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uq2vy"]
 animations = [{
@@ -127,20 +152,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_len0")
+"texture": SubResource("AtlasTexture_lenw0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_len1")
+"texture": SubResource("AtlasTexture_lenw1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_len2")
+"texture": SubResource("AtlasTexture_lenw2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_len3")
+"texture": SubResource("AtlasTexture_lenw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lenw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lenw5")
 }],
 "loop": true,
 "name": &"lenador_walk",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1174022349]

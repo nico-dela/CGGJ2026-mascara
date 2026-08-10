@@ -109,9 +109,31 @@ func _adapt_for_device() -> void:
 		balloon.theme.default_font_size = int(26 * ui)
 	var responses: Control = balloon.get_node_or_null("ResponsesMenu")
 	if responses:
-		var half_w := 320.0 * ui if touch else 290.5
+		var half_w := 360.0 * ui if touch else 290.5
 		responses.offset_left = -half_w
 		responses.offset_right = half_w
+		# More vertical space so choice taps don't miss on phones.
+		var sep := int(14 * ui) if touch else 2
+		responses.add_theme_constant_override("separation", sep)
+		var example := responses.get_node_or_null("ResponseExample") as Button
+		if example:
+			var min_h := 56.0 * ui if touch else 36.0
+			example.custom_minimum_size = Vector2(0, min_h)
+			example.add_theme_font_size_override("font_size", int(24 * ui) if touch else 20)
+			var pad_y := int(12 * ui) if touch else 6
+			var pad_x := int(16 * ui) if touch else 10
+			for style_name in ["normal", "hover", "pressed", "disabled", "focus"]:
+				var base := example.get_theme_stylebox(style_name)
+				if base == null:
+					continue
+				var styled := base.duplicate() as StyleBox
+				if styled is StyleBoxFlat:
+					var flat := styled as StyleBoxFlat
+					flat.content_margin_top = pad_y
+					flat.content_margin_bottom = pad_y
+					flat.content_margin_left = pad_x
+					flat.content_margin_right = pad_x
+				example.add_theme_stylebox_override(style_name, styled)
 
 
 func _process(_delta: float) -> void:
@@ -167,6 +189,7 @@ func apply_dialogue_line() -> void:
 
 	responses_menu.hide()
 	responses_menu.responses = dialogue_line.responses
+	_polish_response_buttons()
 
 	# Show our balloon
 	balloon.show()
@@ -194,6 +217,25 @@ func apply_dialogue_line() -> void:
 		is_waiting_for_input = true
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
+
+
+func _polish_response_buttons() -> void:
+	if responses_menu == null:
+		return
+	var touch := DisplayAdapt != null and DisplayAdapt.is_touch_device
+	if not touch:
+		return
+	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
+	var min_h := 56.0 * ui
+	var font_size := int(24 * ui)
+	for child in responses_menu.get_children():
+		if child == responses_menu.response_template:
+			continue
+		if child is Button:
+			var btn := child as Button
+			btn.custom_minimum_size = Vector2(0, min_h)
+			btn.add_theme_font_size_override("font_size", font_size)
+			btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 
 ## Go to the next line

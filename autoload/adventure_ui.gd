@@ -211,9 +211,8 @@ func refresh_inventory() -> void:
 
 func _inventory_slot_size() -> Vector2:
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
-	# Compact icons — source art is large; don't use full touch_slot_size.
 	if DisplayAdapt and DisplayAdapt.is_touch_device:
-		return Vector2(52, 52) * ui
+		return Vector2(72, 72) * ui
 	return Vector2(44, 44) * ui
 
 ## Called once after the road bag is taken — teaches the HUD briefly.
@@ -355,11 +354,14 @@ func _adapt() -> void:
 	_pocket_btn.add_theme_font_size_override("font_size", int(20 * ui))
 	_pocket_btn.custom_minimum_size = Vector2(130 * ui, 44 * ui)
 
+	var touch := DisplayAdapt != null and DisplayAdapt.is_touch_device
+	var verb_font := 20 if touch else 15
+	var verb_btn := 92.0 if touch else 76.0
 	for btn in _verb_buttons.values():
-		btn.add_theme_font_size_override("font_size", int(15 * ui))
-		btn.custom_minimum_size = Vector2(76 * ui, 76 * ui)
+		btn.add_theme_font_size_override("font_size", int(verb_font * ui))
+		btn.custom_minimum_size = Vector2(verb_btn, verb_btn) * ui
 
-	var coin_size := 240.0 * ui
+	var coin_size := (300.0 if touch else 240.0) * ui
 	_coin.custom_minimum_size = Vector2(coin_size, coin_size)
 	_coin.size = Vector2(coin_size, coin_size)
 	_layout_coin_buttons(coin_size)
@@ -369,17 +371,22 @@ func _adapt() -> void:
 	_pocket_btn.offset_top = -(safe.w + pad + 48 * ui)
 	_pocket_btn.offset_bottom = -(safe.w + pad)
 
-	_pocket_panel.offset_left = -(safe.z + pad + 460 * ui)
+	var pocket_w := 520.0 * ui if touch else 460.0 * ui
+	var pocket_h := 100.0 * ui if touch else 78.0 * ui
+	_pocket_panel.offset_left = -(safe.z + pad + pocket_w)
 	_pocket_panel.offset_right = -(safe.z + pad)
-	_pocket_panel.offset_top = -(safe.w + pad + 48 * ui + 78 * ui)
+	_pocket_panel.offset_top = -(safe.w + pad + 48 * ui + pocket_h)
 	_pocket_panel.offset_bottom = -(safe.w + pad + 56 * ui)
 
 	# Sit above Bolso; lift a bit more on touch so fingers don't cover the sentence.
-	var intent_lift := 56.0 * ui if (DisplayAdapt and DisplayAdapt.is_touch_device) else 36.0 * ui
+	var intent_lift := 56.0 * ui if touch else 36.0 * ui
 	_intent.offset_left = safe.x + pad
 	_intent.offset_right = -(safe.z + pad)
 	_intent.offset_top = -(safe.w + pad + 48 * ui + intent_lift)
 	_intent.offset_bottom = -(safe.w + pad + 48 * ui + 4 * ui)
+
+	if _inv_box:
+		_inv_box.add_theme_constant_override("separation", int(12 * ui if touch else 8))
 
 	refresh_inventory()
 
@@ -505,10 +512,10 @@ func _build_ui() -> void:
 	hub.add_theme_stylebox_override("panel", hub_style)
 	_coin.add_child(hub)
 
-	_add_verb_button(Verb.OBSERVE, "Mirar", "◉")
-	_add_verb_button(Verb.TALK, "Hablar", "◎")
-	_add_verb_button(Verb.USE, "Usar", "✦")
-	_add_verb_button(Verb.TAKE, "Tomar", "▣")
+	_add_verb_button(Verb.OBSERVE, "Mirar")
+	_add_verb_button(Verb.TALK, "Hablar")
+	_add_verb_button(Verb.USE, "Usar")
+	_add_verb_button(Verb.TAKE, "Tomar")
 
 	_pocket_btn = Button.new()
 	_pocket_btn.text = "Bolso"
@@ -557,9 +564,9 @@ func _style_metal_button(btn: Button) -> void:
 	btn.add_theme_stylebox_override("hover", normal)
 	btn.add_theme_stylebox_override("pressed", normal)
 
-func _add_verb_button(verb: Verb, text: String, glyph: String) -> void:
+func _add_verb_button(verb: Verb, text: String) -> void:
 	var btn := Button.new()
-	btn.text = "%s\n%s" % [glyph, text]
+	btn.text = text
 	btn.focus_mode = Control.FOCUS_NONE
 	btn.add_theme_font_override("font", UI_FONT)
 	btn.add_theme_font_size_override("font_size", 15)
@@ -571,10 +578,10 @@ func _add_verb_button(verb: Verb, text: String, glyph: String) -> void:
 	style.border_color = COL_METAL_EDGE
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(999)
-	style.content_margin_left = 4
-	style.content_margin_right = 4
-	style.content_margin_top = 8
-	style.content_margin_bottom = 8
+	style.content_margin_left = 6
+	style.content_margin_right = 6
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
 	btn.add_theme_stylebox_override("normal", style)
 	btn.add_theme_stylebox_override("hover", style)
 	btn.add_theme_stylebox_override("pressed", style)

@@ -185,12 +185,13 @@ offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 2
+theme_override_constants/separation = 10
 alignment = 1
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu" unique_id=1181438956]
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 text = "Response example"
 

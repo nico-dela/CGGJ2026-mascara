@@ -12,15 +12,15 @@ func _ready() -> void:
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "patito":
-		return "Usar el patito con el mozo"
+		return "Usar Patito con Mozo"
 	if Inventory.selected_item == "credencial":
-		return "Usar la credencial con el mozo"
+		return "Usar Credencial con Mozo"
 	if Inventory.selected_item == "oso":
-		return "Usar la máscara con el mozo"
+		return "Usar Máscara con Mozo"
 	if Inventory.selected_item == "mascara_mozo" and StoryFlags.cantinero_mascara:
 		return "Devolverle su máscara"
 	if Inventory.selected_item == "" and StoryFlags.is_wearing_mask("oso") and StoryFlags.has_huellas_pelota() and not StoryFlags.is_bartender_expuesto():
-		return "Hablar con el mozo (máscara puesta)"
+		return "Hablar con Mozo (máscara puesta)"
 	return super.get_verb_text()
 
 func _interact() -> void:

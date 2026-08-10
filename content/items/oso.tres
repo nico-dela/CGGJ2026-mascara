@@ -8,4 +8,4 @@ script = ExtResource("1_script")
 itemId = "oso"
 tipo = 1
 imagem = ExtResource("2_tex")
-display_name = "la máscara"
+display_name = "Máscara"

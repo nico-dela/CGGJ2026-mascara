@@ -46,7 +46,7 @@ animations = [{
 [node name="Comisario" type="Area2D" unique_id=1247389019]
 script = ExtResource("1_17t4n")
 verb = "Hablar con"
-interact_label = "el policía"
+interact_label = "Policía"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1858912340]
 shape = SubResource("CapsuleShape2D_17t4n")

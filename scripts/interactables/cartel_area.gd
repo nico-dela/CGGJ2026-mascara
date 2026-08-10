@@ -10,6 +10,6 @@ func _ready() -> void:
 	dialogue = dialogue_observe
 	clue_id = "cartel"
 	verb = "Mirar"
-	interact_label = "el cartel"
+	interact_label = "Cartel"
 	use_hover_feedback = true
 	super._ready()

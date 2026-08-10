@@ -4,14 +4,14 @@ extends NpcInteractable
 
 func _ready() -> void:
 	verb = "Hablar con"
-	interact_label = "el guardia"
+	interact_label = "Guardia"
 	dialogue = load("res://content/dialogue/road/road_police.dialogue")
 	dialogue_observe = load("res://content/dialogue/road/road_police_observe.dialogue")
 	super._ready()
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "credencial":
-		return "Usar la credencial con el guardia"
+		return "Usar Credencial con Guardia"
 	return super.get_verb_text()
 
 func _interact() -> void:

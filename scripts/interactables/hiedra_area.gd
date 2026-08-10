@@ -14,13 +14,13 @@ func _ready() -> void:
 	require_paso_cerrado = true
 	use_hover_feedback = false
 	verb = "Examinar"
-	interact_label = "la hiedra"
+	interact_label = "Hiedra"
 	interact_sound = load("res://assets/audio/sfx/rama.ogg")
 	super._ready()
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "hacha":
-		return "Usar el hacha con la hiedra"
+		return "Usar Hacha con Hiedra"
 	return super.get_verb_text()
 
 func get_verb_actions() -> Array:

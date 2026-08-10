@@ -16,7 +16,7 @@ func _ready() -> void:
 	despawn_on_interact = false
 	use_hover_feedback = false
 	verb = "Examinar"
-	interact_label = "el hacha"
+	interact_label = "Hacha"
 	visible = false
 	input_pickable = false
 	super._ready()
@@ -42,7 +42,7 @@ func _on_briefing() -> void:
 func _refresh_take_state() -> void:
 	if StoryFlags.is_paso_abierto() or Inventory.is_collected("hacha"):
 		can_take = false
-		interact_label = "el tronco"
+		interact_label = "Tronco"
 		return
 	# Only the leñador (oso worn) can pull the axe free.
 	can_take = StoryFlags.is_wearing_mask("oso")
@@ -63,7 +63,7 @@ func _do_take() -> void:
 
 func get_verb_text() -> String:
 	if StoryFlags.is_paso_abierto() or Inventory.is_collected("hacha"):
-		interact_label = "el tronco"
+		interact_label = "Tronco"
 	else:
-		interact_label = "el hacha"
+		interact_label = "Hacha"
 	return super.get_verb_text()

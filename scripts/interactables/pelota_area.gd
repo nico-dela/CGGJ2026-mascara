@@ -15,7 +15,7 @@ func _ready() -> void:
 	clue_id = "pelota"
 	despawn_on_interact = true
 	verb = "Examinar"
-	interact_label = "la pelota"
+	interact_label = "Pelota"
 	hover_scale_multiplier = 1.125
 	interact_sound = load("res://assets/audio/sfx/juguete_pelota.ogg")
 	visible = false

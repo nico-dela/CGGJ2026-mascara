@@ -35,7 +35,7 @@ target_scene = "res://scenes/rooms/room_1.tscn"
 target_spawn_id = "Marker2D"
 transition_sound = ExtResource("5_flmds")
 verb = "Volver al"
-interact_label = "pueblo"
+interact_label = "Pueblo"
 
 [node name="Player" parent="." unique_id=2142533604 instance=ExtResource("4_ktm03")]
 position = Vector2(489, 792)

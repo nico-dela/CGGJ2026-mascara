@@ -16,7 +16,7 @@ func _ready() -> void:
 	clue_id = "oso"
 	despawn_on_interact = true
 	verb = "Recoger"
-	interact_label = "la máscara"
+	interact_label = "Máscara"
 	interact_sound = load("res://assets/audio/sfx/mascara_oso.ogg")
 	visible = false
 	input_pickable = false

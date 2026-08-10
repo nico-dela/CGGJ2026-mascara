@@ -85,7 +85,7 @@ dialogue = ExtResource("2_cnj15")
 dialogue_with_item = ExtResource("3_apgwd")
 required_item = "oso"
 verb = "Hablar con"
-interact_label = "el mozo"
+interact_label = "Mozo"
 listen_mask_signals = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=794744751]

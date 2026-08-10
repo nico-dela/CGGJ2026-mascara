@@ -10,11 +10,11 @@ func _ready() -> void:
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "pelota" and not StoryFlags.has_huellas_pelota():
-		return "Usar la pelota con el policía"
+		return "Usar Pelota con Policía"
 	if Inventory.selected_item == "credencial":
-		return "Usar la credencial con el policía"
+		return "Usar Credencial con Policía"
 	if Inventory.selected_item == "oso":
-		return "Usar la máscara con el policía"
+		return "Usar Máscara con Policía"
 	if Inventory.selected_item == "mascara_poli" and StoryFlags.comisario_tiene_oso:
 		return "Devolverle su máscara"
 	return super.get_verb_text()

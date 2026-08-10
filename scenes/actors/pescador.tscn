@@ -333,7 +333,7 @@ animations = [{
 script = ExtResource("3_pesc")
 dialogue = ExtResource("4_dlg")
 verb = "Hablar con"
-interact_label = "el pescador"
+interact_label = "Pescador"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729799248]
 position = Vector2(50, -5)

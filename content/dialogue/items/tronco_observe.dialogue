@@ -3,6 +3,10 @@ if GameManager.is_paso_abierto()
 	Detective: El tronco vacío. El hacha ya cumplió su función.
 elif GameManager.is_wearing_mask("oso")
 	Detective: El hacha... el tronco. Yo estaba talando. Cansancio. Después... un golpe. Y nada.
+elif GameManager.has_item("oso")
+	Detective: Un hacha clavada en el tronco. Quedó a medias, como si alguien hubiera caído de golpe.
+	Detective: Está trabada. Solo un leñador la sacaría...
+	Detective: La máscara del oso. Si me la pongo, quizá el cuerpo recuerde cómo se tala.
 else
 	Detective: Un hacha clavada en el tronco. Quedó a medias, como si alguien hubiera caído de golpe.
 	Detective: Está trabada. Quizá solo un leñador podría arrancarla.

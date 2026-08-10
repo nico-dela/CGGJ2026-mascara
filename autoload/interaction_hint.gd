@@ -61,6 +61,23 @@ func show_hint(text: String, source: Node = null) -> void:
 	_label.reset_size()
 	_place_label(get_viewport().get_mouse_position())
 
+## Touch-friendly hint anchored near a tap / verb coin (ignores desktop mouse-follow gate).
+func show_hint_at(text: String, screen_pos: Vector2) -> void:
+	if text.is_empty():
+		hide_hint()
+		return
+	_source = null
+	_selection_follow = false
+	if _suppressed:
+		_visible_text = text
+		return
+	_visible_text = text
+	_apply_font()
+	_label.text = text
+	_label.visible = true
+	_label.reset_size()
+	_place_label(screen_pos)
+
 func _place_label(mouse: Vector2) -> void:
 	if _label == null:
 		return

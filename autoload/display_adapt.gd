@@ -123,3 +123,9 @@ func apply_safe_margins_to(control: Control) -> void:
 
 func touch_slot_size() -> Vector2:
 	return Vector2(96, 96) * ui_scale if is_touch_device else Vector2(72, 72)
+
+func is_portrait() -> bool:
+	var window_size := DisplayServer.window_get_size()
+	if window_size.x <= 0 or window_size.y <= 0:
+		return false
+	return window_size.y > window_size.x

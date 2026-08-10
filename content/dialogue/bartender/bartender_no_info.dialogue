@@ -1,15 +1,45 @@
 ~ start
 if GameManager.has_patito_devuelto()
-	Detective: Cantinero. Ya comí, ya devolví el patito... ¿algo más sobre la leña?
-	Cantinero: Solo lo de siempre. Sin leñador no hay fuego de verdad. Y yo... hace años que no piso el bosque.
+	Detective: Mozo. Ya comí, ya devolví el patito... ¿algo más sobre la leña?
+	Mozo: Solo lo de siempre. Sin leñador no hay fuego de verdad. Y yo... hace años que no piso el bosque.
 	=> END
-Detective: Buenas. Me muero de hambre. ¿Se puede comer algo caliente?
-Cantinero: Depende. Sin leña de verdad, la cocina anda a medias. Puedo armarle un plato tibio... nada de guiso largo.
-Detective: ¿Sin leña? ¿Qué pasó?
-Cantinero: El leñador desapareció. Él abastecía la caldera del pueblo y a quien necesitara. Mientras tanto la taberna se queda fría... como todas las casas.
-Detective: Y ese patito de adorno vacío... ¿falta algo?
-Cantinero: Mi patito. Lo perdí. Tiene más años que la barra. Si lo ve por ahí... me haría un favor enorme.
-Detective: Lo tendré en cuenta. Mientras, ese plato tibio me viene bien.
-Cantinero: Siéntese. Y si pregunta por el leñador... yo no lo vi. Hace años que no voy por el bosque, es un tanto tenebroso.
-do GameManager.mark_hablado_cantinero()
-=> END
+if GameManager.has_hablado_cantinero()
+	Mozo: ¿Otra vez? El plato está. El patito no. El leñador tampoco.
+	- ¿Nada más sobre el leñador?
+		Mozo: Ya le dije: hace años que no piso el bosque. Es tenebroso.
+		=> END
+	- Sigo buscando su patito.
+		Mozo: Si lo ve... me haría un favor enorme.
+		=> END
+	- Solo pasaba.
+		Mozo: Entonces siéntese o siga. La barra no muerde.
+		=> END
+Detective: Buenas. Me muero de hambre.
+Mozo: Depende. Sin leña de verdad, la cocina anda a medias. Puedo armarle un plato tibio... nada de guiso largo.
+- Un plato tibio me viene bien. ¿Qué pasó con la leña?
+	Mozo: El leñador desapareció. Él abastecía la caldera del pueblo y a quien necesitara.
+	Mozo: Mientras tanto la taberna se queda fría... como todas las casas.
+	=> after_lena
+- ¿Sin leña? Suena grave.
+	Mozo: El leñador desapareció. Él abastecía la caldera del pueblo y a quien necesitara.
+	Mozo: Mientras tanto la taberna se queda fría... como todas las casas.
+	=> after_lena
+- Mejor cuénteme del pueblo. Estoy de paso.
+	Mozo: De paso y con hambre. El leñador no vuelve; sin él no hay fuego de verdad.
+	=> after_lena
+
+~ after_lena
+Mozo: Y ese hueco en el adorno... mi patito. Lo perdí. Tiene más años que la barra.
+- Lo voy a tener en cuenta. Gracias por el plato.
+	Mozo: Siéntese. Y si pregunta por el leñador... yo no lo vi. Hace años que no voy por el bosque, es un tanto tenebroso.
+	do GameManager.mark_hablado_cantinero()
+	=> END
+- ¿Lo perdió en el bosque?
+	Mozo: ...No. O sea. Yo no piso el bosque. Hace años. Es tenebroso.
+	Mozo: Si lo ve por ahí... me haría un favor enorme.
+	do GameManager.mark_hablado_cantinero()
+	=> END
+- ¿Y usted no sabe nada del leñador?
+	Mozo: Yo no lo vi. Hace años que no voy por el bosque. Punto.
+	do GameManager.mark_hablado_cantinero()
+	=> END

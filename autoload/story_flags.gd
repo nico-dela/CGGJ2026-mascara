@@ -70,6 +70,18 @@ func is_wearing_mask(mask_id: String = "") -> bool:
 		return mascara_equipada != ""
 	return mascara_equipada == mask_id
 
+## Balloon speaker for detective lines; shows worn mask role when equipped.
+func get_detective_speaker_name() -> String:
+	match mascara_equipada:
+		"oso":
+			return "Detective (Leñador)"
+		"mascara_mozo":
+			return "Detective (Mozo)"
+		"mascara_poli":
+			return "Detective (Policía)"
+		_:
+			return "Detective"
+
 func mark_huellas_pelota() -> void:
 	if huellas_pelota:
 		return

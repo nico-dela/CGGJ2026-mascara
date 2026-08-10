@@ -2,16 +2,16 @@
 if not GameManager.has_huellas_pelota()
 	Detective: (Con la máscara puesta siento el bosque... pero me falta una prueba. Mejor no improvise.)
 	=> END
-Detective: Cantinero. Ya no vengo solo a comer.
-Cantinero: ¿Otra vez lo del leñador? Ya le dije: hace años que no piso el bosque.
+Detective: Mozo. Ya no vengo solo a comer.
+Mozo: ¿Otra vez lo del leñador? Ya le dije: hace años que no piso el bosque.
 Detective: Miente. Las huellas en la pelota del bosque son suyas. Y esto... esto guarda lo que usted provocó.
-Cantinero: No entiendo de qué habla—
-Detective: Voy a dejar que la máscara hable.
+Mozo: No entiendo de qué habla—
+Detective: Entonces que hable lo que usted dejó atrás.
 Leñador: El bosque... la pelota... alguien jugaba. Un golpe. El aire se me fue. La máscara... se me cae. Pánico. Frío. Y usted... usted salió corriendo como si no hubiera pasado nada.
-Detective: Usted le pegó sin querer. Él perdió la conciencia... y la máscara. Y usted negó el bosque.
-Cantinero: Yo... solo estaba jugando. Fue un accidente. Juraría que no hice nada malo. Después... fingí. Sí. Fingí.
+Detective: Usted le pegó sin querer. Él perdió la conciencia... y lo que llevaba puesto. Y usted negó el bosque.
+Mozo: Yo... solo estaba jugando. Fue un accidente. Juraría que no hice nada malo. Después... fingí. Sí. Fingí.
 Detective: Ahora el pueblo puede saber la verdad.
-Cantinero: ...Vaya a buscarlo. Al que dejó de ser leñador. El río lo entiende mejor que yo.
-Cantinero: Si aún hay leñador en usted... la hiedra no debería detenerlo.
+Mozo: ...Vaya a buscarlo. Al que dejó de ser leñador. El río lo entiende mejor que yo.
+Mozo: Si aún hay leñador en usted... la hiedra no debería detenerlo.
 do GameManager.exponer_bartender()
 => END

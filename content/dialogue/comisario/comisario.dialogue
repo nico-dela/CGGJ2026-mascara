@@ -3,7 +3,7 @@ if GameManager.is_bartender_expuesto()
 	Policía: Ya oyó la verdad. El río. No me haga perder más tiempo.
 	=> END
 if GameManager.has_huellas_pelota()
-	Policía: Las huellas son del cantinero. Eso es todo lo que le digo.
+	Policía: Las huellas son del mozo. Eso es todo lo que le digo.
 	Policía: El resto... averígüelo usted.
 	=> END
 if GameManager.has_comisario_briefing()
@@ -12,8 +12,35 @@ if GameManager.has_comisario_briefing()
 Policía: ...El guardia de la ruta avisó que venía un forastero con hambre. Usted es.
 Detective: Sí. Buscaba algo caliente... y vi el cartel del leñador.
 Policía: Todo el pueblo pasa frío sin él. La caldera, la leña. Y murmuran cosas feas.
-Detective: Yo investigo desapariciones. Soy detective.
+Policía: ¿Y usted qué hace en mi comisaría, forastero?
+- Solo busco un plato caliente. El frío me ganó.
+	Policía: El bar atiende... a medias. Sin leña no hay milagros.
+	Policía: Si solo tiene hambre, no me robe más tiempo. Y no pregunte de más.
+	=> END
+- Vi el cartel. ¿Qué pasó con el leñador?
+	Policía: Desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
+	Policía: La gente murmura. Yo necesito prueba, no cuentos.
+	Policía: ¿Y por qué le importa tanto a un forastero?
+	- Porque el pueblo necesita calor. Nada más.
+		Policía: Mm. Si ve algo raro... no lo toque. Tráigalo. O déjelo.
+		=> END
+	- Porque investigo estas cosas. Soy detective.
+		=> reveal
+	- Porque tengo esta credencial. => show_badge
+- Vengo por trabajo. Soy detective.
+	=> reveal
+
+~ reveal
 Policía: ...Detective. Mire, no le pedí nada. Pero si de verdad sabe mirar...
+Detective: Cuénteme.
+Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
+Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.
+do GameManager.mark_comisario_briefing()
+=> END
+
+~ show_badge
+Detective: Tengo mi placa. Puedo mostrársela.
+Policía: ...Placa. Firma. Mire, no le pedí nada. Pero si de verdad sabe mirar...
 Detective: Cuénteme.
 Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
 Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.

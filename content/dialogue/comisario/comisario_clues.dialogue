@@ -1,11 +1,11 @@
 ~ start
 Policía: ...Volvió. Hable. Rápido.
 if GameManager.has_huellas_pelota()
-	Detective: Las huellas apuntan al cantinero. Él negó el bosque.
+	Detective: Las huellas apuntan al mozo. Él negó el bosque.
 	Policía: Ya sabe lo que yo sé. El resto es suyo.
 elif GameManager.has_seen_clue("oso")
-	Detective: Encontré una máscara cerca del bosque. Parece del leñador.
-	Policía: Cuide cómo la nombra. Si encuentra algo con huellas... tráigalo. Todavía no le debo más.
+	Detective: Encontré una cara abandonada cerca del bosque. Parece del leñador.
+	Policía: Traiga algo con huellas si quiere que le crea. Todavía no le debo más.
 else
 	Detective: Hay objetos raros por el pueblo. Estoy juntando indicios.
 	Policía: Indicios. Todos traen indicios. Vuelva cuando tenga algo que duela.
@@ -16,7 +16,7 @@ if GameManager.has_seen_clue("patito") or GameManager.has_seen_clue("pelota")
 	Detective: También hay cosas tiradas. Un patito. Una pelota.
 	Policía: El pueblo deja cosas donde duele recordarlas. Siga.
 if GameManager.has_huellas_pelota()
-	Policía: Las huellas son del cantinero. Eso es todo.
+	Policía: Las huellas son del mozo. Eso es todo.
 else
 	Policía: Todavía no ganó mi confianza. Investigue.
 => END

@@ -108,6 +108,9 @@ func toggle_equip_mask(mask_id: String) -> void:
 func is_wearing_mask(mask_id: String = "") -> bool:
 	return StoryFlags.is_wearing_mask(mask_id)
 
+func get_detective_speaker_name() -> String:
+	return StoryFlags.get_detective_speaker_name()
+
 func mark_huellas_pelota() -> void:
 	StoryFlags.mark_huellas_pelota()
 	if has_item("pelota"):

@@ -1,12 +1,26 @@
 ~ start
 if GameManager.is_wearing_mask("mascara_poli")
-	Guardia: ¿Compañero? ...No. Esa máscara no es suya. Mejor no juegue a eso en la ruta.
+	Guardia: ¿Compañero? ...No. La voz no es la de él. Mejor no juegue a eso en la ruta.
 elif GameManager.is_wearing_mask("mascara_mozo")
 	Guardia: ¿El del bar? Fuera de la cocina se ve raro. Si busca pueblo, siga.
-Detective: Buenas... me quedé varado en la ruta. Vi las luces del pueblo y me arrimé. Tengo un hambre...
+if GameManager.has_hablado_guardia()
+	Guardia: Todavía acá. El bolso. El pueblo. Yo miro el camino.
+	=> END
+Detective: Buenas... me quedé varado en la ruta. Vi las luces del pueblo y me arrimé.
 Guardia: Control de ruta. El pueblo más adelante está raro esta noche. Yo solo miro el camino; adentro se encargan otros.
-Detective: Disculpe... ¿lleva una máscara?
-Guardia: ...Mejor no pregunte eso en voz alta. Si busca algo caliente, vaya al bar. Si busca al que manda el caso... la comisaría.
+- Tengo un hambre... ¿hay dónde comer?
+	Guardia: El bar. Si busca algo caliente, ahí. Si busca al que manda el caso... la comisaría.
+	=> wrap
+- ¿Raro cómo? ¿Pasó algo?
+	Guardia: Murmullos. Frío. Un leñador que no vuelve. Yo no entro a eso.
+	Guardia: Si pregunta, pregunte adentro. Yo miro el camino.
+	=> wrap
+- Disculpe... ¿lleva una máscara?
+	Guardia: ¿Máscara? ¿De qué habla?
+	Guardia: Si busca algo caliente, vaya al bar. Si busca al que manda el caso... la comisaría.
+	=> wrap
+
+~ wrap
 Detective: Gracias. Voy a mirar un poco y después entro al pueblo.
 Guardia: Agarre su bolso antes de irse. Allá adentro va a querer manos libres.
 do GameManager.mark_hablado_guardia()

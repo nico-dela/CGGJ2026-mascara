@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bvlrn152l1yxu"]
+
+[node name="MainMenu" type="Control" unique_id=2143574952]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=1453179122]
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=802736215]
+
+[node name="Background" type="TextureRect" parent="." unique_id=898457518]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonBar" type="VBoxContainer" parent="." unique_id=1231189384]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -348.0
+offset_top = -320.0
+offset_right = -48.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="IniciarButton" type="Button" parent="ButtonBar" unique_id=1369375229]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
+text = "Jugar"
+alignment = 0
+expand_icon = true
+
+[node name="ConfiguracionButton" type="Button" parent="ButtonBar" unique_id=514525583]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
+text = "Configuración"
+alignment = 0
+expand_icon = true
+
+[node name="CreditosButton" type="Button" parent="ButtonBar" unique_id=1686578711]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
+text = "Créditos"
+alignment = 0
+expand_icon = true
+
+[node name="SalirButton" type="Button" parent="ButtonBar" unique_id=1066145057]
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
+text = "Salir"
+alignment = 0
+expand_icon = true
+
+[connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/ConfiguracionButton" to="." method="_on_configuracion_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/ConfiguracionButton" to="." method="_on_Configuracion_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/CreditosButton" to="." method="_on_creditos_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/CreditosButton" to="." method="_on_Creditos_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/SalirButton" to="." method="_on_salir_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/SalirButton" to="." method="_on_Salir_pressed"]

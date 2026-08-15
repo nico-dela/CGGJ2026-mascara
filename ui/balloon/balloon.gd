@@ -99,27 +99,27 @@ func _adapt_for_device() -> void:
 		return
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
 	var touch := DisplayAdapt.is_touch_device if DisplayAdapt else false
-	var panel_height := 280.0 * ui if touch else 219.0
+	var panel_height := 230.0 * ui if touch else 168.0
 	margin.offset_top = -panel_height
 	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
-	margin.add_theme_constant_override("margin_left", int(20 + safe.x))
-	margin.add_theme_constant_override("margin_right", int(20 + safe.z))
-	margin.add_theme_constant_override("margin_bottom", int(12 + safe.w))
-	if touch and balloon.theme:
-		balloon.theme.default_font_size = int(26 * ui)
+	margin.add_theme_constant_override("margin_left", int(120 + safe.x) if not touch else int(28 + safe.x))
+	margin.add_theme_constant_override("margin_right", int(120 + safe.z) if not touch else int(28 + safe.z))
+	margin.add_theme_constant_override("margin_bottom", int(20 + safe.w))
+	if balloon.theme:
+		balloon.theme.default_font_size = int(34 * ui) if touch else 32
 	var responses: Control = balloon.get_node_or_null("ResponsesMenu")
 	if responses:
-		var half_w := 360.0 * ui if touch else 290.5
+		var half_w := 400.0 * ui if touch else 340.0
 		responses.offset_left = -half_w
 		responses.offset_right = half_w
 		# More vertical space so choice taps don't miss on phones.
-		var sep := int(14 * ui) if touch else 2
+		var sep := int(14 * ui) if touch else 4
 		responses.add_theme_constant_override("separation", sep)
 		var example := responses.get_node_or_null("ResponseExample") as Button
 		if example:
-			var min_h := 56.0 * ui if touch else 36.0
+			var min_h := 60.0 * ui if touch else 44.0
 			example.custom_minimum_size = Vector2(0, min_h)
-			example.add_theme_font_size_override("font_size", int(24 * ui) if touch else 20)
+			example.add_theme_font_size_override("font_size", int(32 * ui) if touch else 28)
 			var pad_y := int(12 * ui) if touch else 6
 			var pad_x := int(16 * ui) if touch else 10
 			for style_name in ["normal", "hover", "pressed", "disabled", "focus"]:
@@ -182,7 +182,8 @@ func apply_dialogue_line() -> void:
 	var speaker := dialogue_line.character
 	if speaker == "Detective" and StoryFlags:
 		speaker = StoryFlags.get_detective_speaker_name()
-	character_label.text = tr(speaker, "dialogue")
+	character_label.auto_translate = false
+	character_label.text = "[b]%s[/b]" % tr(speaker)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -223,11 +224,9 @@ func _polish_response_buttons() -> void:
 	if responses_menu == null:
 		return
 	var touch := DisplayAdapt != null and DisplayAdapt.is_touch_device
-	if not touch:
-		return
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
-	var min_h := 56.0 * ui
-	var font_size := int(24 * ui)
+	var min_h := (60.0 if touch else 44.0) * ui
+	var font_size := int((32 if touch else 28) * ui)
 	for child in responses_menu.get_children():
 		if child == responses_menu.response_template:
 			continue

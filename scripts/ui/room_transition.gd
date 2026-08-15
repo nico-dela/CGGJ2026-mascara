@@ -59,10 +59,15 @@ func try_interact() -> bool:
 	)
 	return true
 
+func get_interact_label() -> String:
+	if interact_label.is_empty():
+		return ""
+	return tr(interact_label)
+
 func get_verb_text() -> String:
 	if interact_label.is_empty():
-		return verb
-	return "%s %s" % [verb, interact_label]
+		return tr(verb)
+	return "%s %s" % [tr(verb), get_interact_label()]
 
 func _on_mouse_entered() -> void:
 	if not visible or not input_pickable:

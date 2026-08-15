@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://cn8re2jjfp3vb" path="res://scripts/interactables/pelota_area.gd" id="17_ncuik"]
 [ext_resource type="PackedScene" uid="uid://c6gpgr8mhuw6w" path="res://scenes/actors/pescador.tscn" id="20_lwgnx"]
 [ext_resource type="Script" uid="uid://bn4y0o025w2e0" path="res://scripts/interactables/cartel_area.gd" id="21_cartel"]
-[ext_resource type="FontFile" uid="uid://wlpqsrxdoo02" path="res://assets/fonts/SpecialElite-Regular.ttf" id="22_font"]
+[ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="22_font"]
 [ext_resource type="Script" uid="uid://b0ijxpcan0x8e" path="res://scenes/rooms/collision_shape_2d_4.gd" id="23_paso"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_k86bo"]
@@ -257,7 +257,7 @@ offset_right = 60.0
 offset_bottom = 50.0
 theme_override_colors/font_color = Color(0.98, 0.9, 0.65, 1)
 theme_override_fonts/font = ExtResource("22_font")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "SE BUSCA
 EL LEÑADOR
 Sin leña,

@@ -20,13 +20,13 @@ func _ready() -> void:
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "hacha":
-		return "Usar Hacha con Hiedra"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("hacha"), get_interact_label()]
 	return super.get_verb_text()
 
 func get_verb_actions() -> Array:
 	var actions: Array = []
-	actions.append({"id": "observe", "text": "Observar", "enabled": true})
-	actions.append({"id": "take", "text": "Agarrar", "enabled": true})
+	actions.append({"id": "observe", "text": tr("Observar"), "enabled": true})
+	actions.append({"id": "take", "text": tr("Agarrar"), "enabled": true})
 	return actions
 
 func run_verb_action(action_id: String) -> void:

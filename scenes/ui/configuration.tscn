@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/configuration.gd" id="1_tpf8s"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/back_button.png" id="2_back"]
-[ext_resource type="FontFile" path="res://assets/fonts/SpecialElite-Regular.ttf" id="3_font"]
+[ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="3_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dim"]
 bg_color = Color(0.04, 0.03, 0.06, 0.78)
@@ -83,7 +83,7 @@ alignment = 1
 [node name="Title" type="Label" parent="Card/VBox"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 44
 theme_override_colors/font_color = Color(0.95, 0.9, 0.55, 1)
 text = "Configuración"
 horizontal_alignment = 1
@@ -99,7 +99,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 theme_override_colors/font_color = Color(0.95, 0.95, 0.92, 1)
 text = "Volumen"
 
@@ -107,7 +107,7 @@ text = "Volumen"
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 theme_override_colors/font_color = Color(0.9, 0.82, 0.35, 1)
 text = "50%"
 horizontal_alignment = 2
@@ -123,11 +123,30 @@ max_value = 100.0
 step = 1.0
 value = 50.0
 
+[node name="LanguageRow" type="HBoxContainer" parent="Card/VBox"]
+layout_mode = 2
+
+[node name="LanguageLabel" type="Label" parent="Card/VBox/LanguageRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.95, 0.95, 0.92, 1)
+text = "Idioma"
+
+[node name="LanguageButton" type="Button" parent="Card/VBox/LanguageRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 28
+text = "Español"
+auto_translate_mode = 2
+
 [node name="FullscreenCheck" type="CheckButton" parent="Card/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 28
 theme_override_colors/font_color = Color(0.95, 0.95, 0.92, 1)
 text = "Pantalla completa"
 
@@ -140,7 +159,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 28
 text = "Volver"
 icon = ExtResource("2_back")
 alignment = 0

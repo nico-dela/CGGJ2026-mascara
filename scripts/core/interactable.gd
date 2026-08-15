@@ -58,7 +58,9 @@ func _ready() -> void:
 		AdventureUI.verb_changed.connect(_on_selection_changed)
 
 func get_interact_label() -> String:
-	return interact_label
+	if interact_label.is_empty():
+		return ""
+	return tr(interact_label)
 
 ## Called by the player click router (reliable on desktop + touch).
 func try_interact() -> bool:
@@ -110,26 +112,26 @@ func get_verb_text() -> String:
 	if Inventory.selected_item != "":
 		var item_name := Inventory.get_display_name(Inventory.selected_item)
 		if interact_label.is_empty():
-			return "Usar %s" % item_name
-		return "Usar %s con %s" % [item_name, interact_label]
+			return tr("Usar %s") % item_name
+		return tr("Usar %s con %s") % [item_name, get_interact_label()]
 	if AdventureUI and AdventureUI.is_gameplay_visible():
 		var built := AdventureUI.build_sentence_for(self)
 		if built != "":
 			return built
 	if interact_label.is_empty():
-		return verb
-	return "%s %s" % [verb, interact_label]
+		return tr(verb)
+	return "%s %s" % [tr(verb), get_interact_label()]
 
 func get_verb_actions() -> Array:
 	# Kept for VerbMenu fallback; AdventureUI does not use this.
 	var actions: Array = []
 	if can_observe:
-		actions.append({"id": "observe", "text": "Observar", "enabled": true})
+		actions.append({"id": "observe", "text": tr("Observar"), "enabled": true})
 	if can_take:
 		var taken := persist_id != "" and Inventory.is_collected(persist_id)
-		actions.append({"id": "take", "text": "Agarrar", "enabled": not taken and item_to_give != ""})
+		actions.append({"id": "take", "text": tr("Agarrar"), "enabled": not taken and item_to_give != ""})
 	if can_use:
-		actions.append({"id": "use", "text": "Usar", "enabled": true})
+		actions.append({"id": "use", "text": tr("Usar"), "enabled": true})
 	return actions
 
 func run_verb_action(action_id: String) -> void:

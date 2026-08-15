@@ -3,7 +3,7 @@ extends CanvasLayer
 ## HUD estilo Full Throttle: verb coin radial + bolso de evidencia.
 ## Click en hotspot → moneda de acciones; el mundo queda limpio.
 
-const UI_FONT: Font = preload("res://assets/fonts/SpecialElite-Regular.ttf")
+const UI_FONT: Font = preload("res://assets/fonts/PixelifySans.ttf")
 const SLOT_SCENE := preload("res://scenes/ui/inventory_slot.tscn")
 
 enum Verb { OBSERVE, TAKE, USE, TALK }
@@ -54,6 +54,8 @@ func _ready() -> void:
 		_set_gameplay_interactive(false)
 	)
 	DialogueManager.dialogue_ended.connect(func(_r): _set_gameplay_interactive(true))
+	if GameSettings:
+		GameSettings.locale_changed.connect(_on_locale_changed)
 	_adapt()
 	refresh_inventory()
 	_refresh_visibility()
@@ -167,8 +169,8 @@ func build_sentence_for(target: Node = null) -> String:
 		if target != null and target.has_method("get_interact_label"):
 			var label: String = target.get_interact_label()
 			if label != "":
-				return "Usar %s con %s" % [item_name, label]
-		return "Usar %s con…" % item_name
+				return tr("Usar %s con %s") % [item_name, label]
+		return tr("Usar %s con…") % item_name
 	if target != null and target.has_method("get_interact_label"):
 		var label2: String = target.get_interact_label()
 		if label2 != "":
@@ -259,7 +261,7 @@ func _coin_hint_text(target: Node) -> String:
 		var label: String = target.get_interact_label()
 		if label != "":
 			return label
-	return "¿Qué hacés?"
+	return tr("¿Qué hacés?")
 
 func _update_sentence_for_target(target: Node) -> void:
 	if _intent == null:
@@ -330,13 +332,13 @@ func _adapt() -> void:
 	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
 	var pad := 14.0 * ui
 
-	var intent_font := 26 if (DisplayAdapt and DisplayAdapt.is_touch_device) else 22
+	var intent_font := 32 if (DisplayAdapt and DisplayAdapt.is_touch_device) else 28
 	_intent.add_theme_font_size_override("font_size", int(intent_font * ui))
-	_pocket_btn.add_theme_font_size_override("font_size", int(20 * ui))
-	_pocket_btn.custom_minimum_size = Vector2(130 * ui, 44 * ui)
+	_pocket_btn.add_theme_font_size_override("font_size", int(26 * ui))
+	_pocket_btn.custom_minimum_size = Vector2(150 * ui, 48 * ui)
 
 	var touch := DisplayAdapt != null and DisplayAdapt.is_touch_device
-	var verb_font := 20 if touch else 15
+	var verb_font := 26 if touch else 22
 	var verb_btn := 92.0 if touch else 76.0
 	for btn in _verb_buttons.values():
 		btn.add_theme_font_size_override("font_size", int(verb_font * ui))
@@ -347,7 +349,7 @@ func _adapt() -> void:
 	_coin.size = Vector2(coin_size, coin_size)
 	_layout_coin_buttons(coin_size)
 
-	_pocket_btn.offset_left = -(safe.z + pad + 130 * ui)
+	_pocket_btn.offset_left = -(safe.z + pad + 150 * ui)
 	_pocket_btn.offset_right = -(safe.z + pad)
 	_pocket_btn.offset_top = -(safe.w + pad + 48 * ui)
 	_pocket_btn.offset_bottom = -(safe.w + pad)
@@ -422,7 +424,8 @@ func _set_pocket_open(open: bool) -> void:
 func _update_pocket_button() -> void:
 	if _pocket_btn == null:
 		return
-	_pocket_btn.text = "Bolso"
+	_pocket_btn.auto_translate = false
+	_pocket_btn.text = tr("Bolso")
 	_pocket_btn.modulate = COL_HOT if _pocket_open or Inventory.selected_item != "" else Color.WHITE
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -449,6 +452,7 @@ func _build_ui() -> void:
 
 	_intent = Label.new()
 	_intent.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_intent.auto_translate = false
 	_intent.add_theme_font_override("font", UI_FONT)
 	_intent.add_theme_color_override("font_color", COL_HOT)
 	_intent.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.85))
@@ -499,7 +503,8 @@ func _build_ui() -> void:
 	_add_verb_button(Verb.TAKE, "Tomar")
 
 	_pocket_btn = Button.new()
-	_pocket_btn.text = "Bolso"
+	_pocket_btn.auto_translate = false
+	_pocket_btn.text = tr("Bolso")
 	_pocket_btn.focus_mode = Control.FOCUS_NONE
 	_pocket_btn.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
 	_pocket_btn.add_theme_font_override("font", UI_FONT)
@@ -545,12 +550,23 @@ func _style_metal_button(btn: Button) -> void:
 	btn.add_theme_stylebox_override("hover", normal)
 	btn.add_theme_stylebox_override("pressed", normal)
 
+func _on_locale_changed(_locale: String) -> void:
+	for verb in _verb_buttons.keys():
+		var btn: Button = _verb_buttons[verb]
+		var key := str(btn.get_meta("tr_key", btn.text))
+		btn.auto_translate = false
+		btn.text = tr(key)
+	_update_pocket_button()
+	refresh_sentence()
+
 func _add_verb_button(verb: Verb, text: String) -> void:
 	var btn := Button.new()
-	btn.text = text
+	btn.auto_translate = false
+	btn.set_meta("tr_key", text)
+	btn.text = tr(text)
 	btn.focus_mode = Control.FOCUS_NONE
 	btn.add_theme_font_override("font", UI_FONT)
-	btn.add_theme_font_size_override("font_size", 15)
+	btn.add_theme_font_size_override("font_size", 22)
 	btn.add_theme_color_override("font_color", COL_INK)
 	btn.add_theme_color_override("font_hover_color", COL_HOT)
 	btn.add_theme_color_override("font_disabled_color", COL_DIM)

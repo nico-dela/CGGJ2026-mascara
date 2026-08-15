@@ -2,7 +2,7 @@ extends CanvasLayer
 
 ## Small verb popup for world props (Observar / Agarrar / Usar).
 
-const UI_FONT: Font = preload("res://assets/fonts/SpecialElite-Regular.ttf")
+const UI_FONT: Font = preload("res://assets/fonts/PixelifySans.ttf")
 
 signal closed
 
@@ -37,12 +37,13 @@ func show_for(target: Node, screen_pos: Vector2) -> void:
 	var label_name := ""
 	if target.has_method("get_interact_label"):
 		label_name = target.get_interact_label()
-	_title.text = label_name if label_name != "" else "Objeto"
+	_title.text = label_name if label_name != "" else tr("Objeto")
 	for action in actions:
 		var id := str(action.get("id", ""))
 		var text := str(action.get("text", id))
 		var enabled := bool(action.get("enabled", true))
 		var btn := Button.new()
+		btn.auto_translate = false
 		btn.text = text
 		btn.disabled = not enabled
 		btn.focus_mode = Control.FOCUS_NONE
@@ -112,17 +113,17 @@ func _adapt() -> void:
 	if _title == null:
 		return
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
-	_title.add_theme_font_size_override("font_size", int(22 * ui))
+	_title.add_theme_font_size_override("font_size", int(28 * ui))
 	for child in _vbox.get_children():
 		if child is Button:
-			child.add_theme_font_size_override("font_size", int(24 * ui))
-			child.custom_minimum_size = Vector2(220 * ui, 44 * ui)
+			child.add_theme_font_size_override("font_size", int(28 * ui))
+			child.custom_minimum_size = Vector2(240 * ui, 48 * ui)
 
 func _style_button(btn: Button, enabled: bool) -> void:
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
 	btn.add_theme_font_override("font", UI_FONT)
-	btn.add_theme_font_size_override("font_size", int(24 * ui))
-	btn.custom_minimum_size = Vector2(220 * ui, 44 * ui)
+	btn.add_theme_font_size_override("font_size", int(28 * ui))
+	btn.custom_minimum_size = Vector2(240 * ui, 48 * ui)
 	btn.add_theme_color_override("font_color", Color(1, 0.92, 0.55) if enabled else Color(0.55, 0.55, 0.55))
 	btn.add_theme_color_override("font_hover_color", Color(1, 1, 0.75))
 	btn.add_theme_color_override("font_pressed_color", Color(0.9, 0.8, 0.4))

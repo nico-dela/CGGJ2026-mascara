@@ -21,7 +21,7 @@ func get_verb_text() -> String:
 	var label := get_interact_label()
 	if label == "":
 		return ""
-	return "Mirar %s" % label
+	return tr("Mirar %s") % label
 
 func apply_verb(verb_id: String) -> void:
 	match verb_id:

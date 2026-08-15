@@ -36,9 +36,9 @@ func _play_talk() -> void:
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "credencial":
-		return "Usar Credencial con Pescador"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("credencial"), get_interact_label()]
 	if Inventory.selected_item == "oso" and StoryFlags.is_bartender_expuesto():
-		return "Usar Máscara con Pescador"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("oso"), get_interact_label()]
 	return super.get_verb_text()
 
 func _interact() -> void:

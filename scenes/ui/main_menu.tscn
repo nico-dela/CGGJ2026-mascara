@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" path="res://assets/art/ui/config_button.png" id="4_config"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/credits_button.png" id="5_credits"]
 [ext_resource type="Texture2D" path="res://assets/art/ui/menu_bg.webp" id="6_rtw2f"]
-[ext_resource type="FontFile" path="res://assets/fonts/SpecialElite-Regular.ttf" id="7_font"]
+[ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="7_font"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,7 +58,7 @@ custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 theme_override_constants/icon_max_width = 40
 text = "Jugar"
 icon = ExtResource("2_8ln24")
@@ -67,12 +67,34 @@ icon_alignment = 0
 expand_icon = true
 vertical_icon_alignment = 1
 
+[node name="LanguageButton" type="Button" parent="ButtonBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 32
+theme_override_constants/icon_max_width = 40
+text = "Español"
+alignment = 0
+auto_translate_mode = 2
+
+[node name="FullscreenCheck" type="CheckButton" parent="ButtonBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 32
+text = "Pantalla completa"
+alignment = 0
+
 [node name="ConfiguracionButton" type="Button" parent="ButtonBar"]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 theme_override_constants/icon_max_width = 40
 text = "Configuración"
 icon = ExtResource("4_config")
@@ -86,7 +108,7 @@ custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 theme_override_constants/icon_max_width = 40
 text = "Créditos"
 icon = ExtResource("5_credits")
@@ -100,7 +122,7 @@ custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 theme_override_constants/icon_max_width = 40
 text = "Salir"
 icon = ExtResource("3_rtw2f")
@@ -111,6 +133,10 @@ vertical_icon_alignment = 1
 
 [connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
 [connection signal="pressed" from="ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/LanguageButton" to="." method="_on_language_button_mouse_entered"]
+[connection signal="pressed" from="ButtonBar/LanguageButton" to="." method="_on_language_pressed"]
+[connection signal="mouse_entered" from="ButtonBar/FullscreenCheck" to="." method="_on_fullscreen_check_mouse_entered"]
+[connection signal="toggled" from="ButtonBar/FullscreenCheck" to="." method="_on_fullscreen_toggled"]
 [connection signal="mouse_entered" from="ButtonBar/ConfiguracionButton" to="." method="_on_configuracion_button_mouse_entered"]
 [connection signal="pressed" from="ButtonBar/ConfiguracionButton" to="." method="_on_Configuracion_pressed"]
 [connection signal="mouse_entered" from="ButtonBar/CreditosButton" to="." method="_on_creditos_button_mouse_entered"]

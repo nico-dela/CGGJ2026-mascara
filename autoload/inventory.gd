@@ -51,7 +51,7 @@ func get_texture(item_id: String) -> Texture2D:
 func get_display_name(item_id: String) -> String:
 	var item := get_item(item_id)
 	if item and item.display_name != "":
-		return item.display_name
+		return tr(item.display_name)
 	return item_id
 
 func add_item(item_id: String) -> void:

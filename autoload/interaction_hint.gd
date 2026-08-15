@@ -2,7 +2,7 @@ extends CanvasLayer
 
 ## Desktop verb hint that follows the mouse (Monkey Island style).
 
-const UI_FONT: Font = preload("res://assets/fonts/SpecialElite-Regular.ttf")
+const UI_FONT: Font = preload("res://assets/fonts/PixelifySans.ttf")
 const SELF_HINT_RADIUS := 110.0
 
 var _label: Label
@@ -23,6 +23,8 @@ func _ready() -> void:
 	_adapt()
 	get_tree().node_removed.connect(_on_node_removed)
 	Inventory.selection_changed.connect(_on_selection_changed)
+	if GameSettings:
+		GameSettings.locale_changed.connect(_on_locale_changed)
 
 func _process(_delta: float) -> void:
 	if _label == null:
@@ -127,6 +129,10 @@ func set_suppressed(value: bool) -> void:
 		hide_hint()
 		_on_selection_changed()
 
+func _on_locale_changed(_locale: String) -> void:
+	if _label and _label.visible:
+		_refresh_from_cursor()
+
 func _on_selection_changed() -> void:
 	if _suppressed or (DisplayAdapt and DisplayAdapt.is_touch_device):
 		return
@@ -157,7 +163,7 @@ func _refresh_from_cursor() -> void:
 
 func _show_selection_prompt() -> void:
 	var item_name := Inventory.get_display_name(Inventory.selected_item)
-	show_hint("Usar %s con..." % item_name, null)
+	show_hint(tr("Usar %s con...") % item_name, null)
 	_selection_follow = true
 
 func _self_use_verb() -> String:
@@ -166,9 +172,9 @@ func _self_use_verb() -> String:
 	var item := Inventory.get_item(item_id)
 	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA:
 		if StoryFlags.is_wearing_mask(item_id):
-			return "Quitarme %s" % item_name
-		return "Usar %s conmigo" % item_name
-	return "Usar %s conmigo" % item_name
+			return tr("Quitarme %s") % item_name
+		return tr("Usar %s conmigo") % item_name
+	return tr("Usar %s conmigo") % item_name
 
 func _on_node_removed(node: Node) -> void:
 	if _source == null:
@@ -257,7 +263,7 @@ func _apply_font() -> void:
 		return
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
 	_label.add_theme_font_override("font", UI_FONT)
-	_label.add_theme_font_size_override("font_size", int(26 * ui))
+	_label.add_theme_font_size_override("font_size", int(34 * ui))
 
 func _ensure_label() -> Label:
 	var existing := get_node_or_null("HintLabel") as Label
@@ -266,12 +272,13 @@ func _ensure_label() -> Label:
 	var label := Label.new()
 	label.name = "HintLabel"
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.auto_translate = false
 	label.add_theme_font_override("font", UI_FONT)
 	label.add_theme_color_override("font_color", Color(1, 0.92, 0.55))
 	label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.9))
 	label.add_theme_constant_override("shadow_offset_x", 2)
 	label.add_theme_constant_override("shadow_offset_y", 2)
-	label.add_theme_font_size_override("font_size", 26)
+	label.add_theme_font_size_override("font_size", 34)
 	label.visible = false
 	add_child(label)
 	return label

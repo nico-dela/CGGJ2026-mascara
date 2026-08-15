@@ -1,6 +1,6 @@
 extends Control
 
-const UI_FONT: Font = preload("res://assets/fonts/SpecialElite-Regular.ttf")
+const UI_FONT: Font = preload("res://assets/fonts/PixelifySans.ttf")
 
 @onready var hover_sound = $HoverSound
 @onready var click_sound = $ClickSound
@@ -16,13 +16,17 @@ func _ready() -> void:
 		var salir := button_bar.get_node_or_null("SalirButton") as Button
 		if salir:
 			salir.visible = false
+	_sync_settings_controls()
+	if GameSettings:
+		GameSettings.locale_changed.connect(_on_locale_changed)
+		GameSettings.fullscreen_changed.connect(_on_fullscreen_changed)
 	_layout_for_device()
 
 func _layout_for_device() -> void:
 	# Misma posición y tamaño en design-space (1920x1080) en desktop y móvil.
 	# El stretch del viewport ya adapta el canvas; no mover con safe-area/ui_scale.
-	const MIN_H := 56.0
-	const MIN_W := 300.0
+	const MIN_H := 64.0
+	const MIN_W := 360.0
 	const SEPARATION := 12
 	const ICON_W := 40
 	const BOTTOM_PAD := 48.0
@@ -35,7 +39,7 @@ func _layout_for_device() -> void:
 		if child is Button:
 			var btn := child as Button
 			btn.custom_minimum_size = Vector2(MIN_W, MIN_H)
-			btn.add_theme_font_size_override("font_size", 26)
+			btn.add_theme_font_size_override("font_size", 32)
 			btn.add_theme_constant_override("icon_max_width", ICON_W)
 			btn.expand_icon = true
 			btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -104,12 +108,13 @@ func _ensure_landscape_tip() -> void:
 
 	var label := Label.new()
 	label.name = "TipLabel"
-	label.text = "Para una mejor experiencia, girá la pantalla en horizontal."
+	label.auto_translate = false
+	label.text = tr("Para una mejor experiencia, girá la pantalla en horizontal.")
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.add_theme_font_override("font", UI_FONT)
-	label.add_theme_font_size_override("font_size", 24)
+	label.add_theme_font_size_override("font_size", 30)
 	label.add_theme_color_override("font_color", Color(0.92, 0.88, 0.78))
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	card.add_child(label)
@@ -121,6 +126,46 @@ func _update_landscape_tip() -> void:
 		return
 	var show_tip := DisplayAdapt != null and DisplayAdapt.is_touch_device and DisplayAdapt.is_portrait()
 	_landscape_tip.visible = show_tip
+
+func _sync_settings_controls() -> void:
+	var lang_btn := button_bar.get_node_or_null("LanguageButton") as Button
+	if lang_btn and GameSettings:
+		lang_btn.auto_translate = false
+		lang_btn.text = GameSettings.language_display_name()
+	var fs := button_bar.get_node_or_null("FullscreenCheck") as CheckButton
+	if fs and GameSettings:
+		fs.set_pressed_no_signal(GameSettings.fullscreen)
+
+func _refresh_landscape_tip_text() -> void:
+	if _landscape_tip == null:
+		return
+	var label := _landscape_tip.get_node_or_null("Card/TipLabel") as Label
+	if label:
+		label.text = tr("Para una mejor experiencia, girá la pantalla en horizontal.")
+
+func _on_locale_changed(_locale: String) -> void:
+	_sync_settings_controls()
+	_refresh_landscape_tip_text()
+
+func _on_fullscreen_changed(enabled: bool) -> void:
+	var fs := button_bar.get_node_or_null("FullscreenCheck") as CheckButton
+	if fs:
+		fs.set_pressed_no_signal(enabled)
+
+func _on_language_pressed() -> void:
+	click_sound.play()
+	if GameSettings:
+		GameSettings.toggle_language()
+
+func _on_fullscreen_toggled(pressed: bool) -> void:
+	if GameSettings:
+		GameSettings.set_fullscreen(pressed)
+
+func _on_language_button_mouse_entered() -> void:
+	hover_sound.play()
+
+func _on_fullscreen_check_mouse_entered() -> void:
+	hover_sound.play()
 
 func _on_Iniciar_pressed() -> void:
 	click_sound.play()

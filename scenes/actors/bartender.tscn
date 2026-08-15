@@ -87,6 +87,7 @@ required_item = "oso"
 verb = "Hablar con"
 interact_label = "Mozo"
 listen_mask_signals = true
+visual_oso_flag = "cantinero_mascara"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=794744751]
 shape = SubResource("CapsuleShape2D_3gqjc")

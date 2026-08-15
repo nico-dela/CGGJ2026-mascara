@@ -1,6 +1,6 @@
 ~ start
 if not GameManager.has_hablado_guardia()
-	Detective: Mejor hablo primero con el guardia. Después agarro el bolso.
+	Detective: Mejor hablo primero con el vendedor. Después agarro el bolso.
 	=> END
 Detective: Listo. Bolso al hombro.
 Detective: Adentro, la credencial. Por si hace falta presentarme.

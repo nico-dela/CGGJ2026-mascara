@@ -6,17 +6,18 @@ func _ready() -> void:
 	if dialogue == null:
 		dialogue = load("res://content/dialogue/comisario/comisario.dialogue")
 	dialogue_observe = load("res://content/dialogue/comisario/comisario_observe.dialogue")
+	visual_oso_flag = "comisario_tiene_oso"
 	super._ready()
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "pelota" and not StoryFlags.has_huellas_pelota():
-		return "Usar Pelota con Policía"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("pelota"), get_interact_label()]
 	if Inventory.selected_item == "credencial":
-		return "Usar Credencial con Policía"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("credencial"), get_interact_label()]
 	if Inventory.selected_item == "oso":
-		return "Usar Máscara con Policía"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("oso"), get_interact_label()]
 	if Inventory.selected_item == "mascara_poli" and StoryFlags.comisario_tiene_oso:
-		return "Devolverle su máscara"
+		return tr("Devolverle su máscara")
 	return super.get_verb_text()
 
 func _interact() -> void:
@@ -49,6 +50,16 @@ func _interact() -> void:
 		super._interact()
 		return
 
+	if selected == "" and StoryFlags.is_wearing_mask("mascara_mozo"):
+		dialogue = load("res://content/dialogue/system/wear_mozo_station.dialogue")
+		super._interact()
+		return
+
+	if selected == "" and StoryFlags.is_wearing_mask("mascara_vendedor"):
+		dialogue = load("res://content/dialogue/system/wear_vendedor_station.dialogue")
+		super._interact()
+		return
+
 	if StoryFlags.caso_resuelto:
 		dialogue = load("res://content/dialogue/comisario/comisario_resolved.dialogue")
 	elif StoryFlags.has_comisario_briefing() and (
@@ -66,7 +77,7 @@ func _swap_oso_onto_npc() -> void:
 		StoryFlags.unequip_mask()
 	GameManager.remove_item("oso")
 	Inventory.selected_item = ""
-	StoryFlags.comisario_tiene_oso = true
+	StoryFlags.set_comisario_tiene_oso(true)
 	if npc_mask_item != "" and not Inventory.has_item(npc_mask_item):
 		GameManager.add_item(npc_mask_item)
 	GameManager.save_game()
@@ -74,7 +85,7 @@ func _swap_oso_onto_npc() -> void:
 	DialogueManager.show_dialogue_balloon(load("res://content/dialogue/comisario/comisario_mask_swap.dialogue"), "start")
 
 func _swap_back_from_npc() -> void:
-	StoryFlags.comisario_tiene_oso = false
+	StoryFlags.set_comisario_tiene_oso(false)
 	GameManager.remove_item("mascara_poli")
 	Inventory.selected_item = ""
 	GameManager.add_item("oso")

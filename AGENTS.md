@@ -41,7 +41,7 @@ addons/             # no editar Dialogue Manager
 
 - La **máscara de oso** convierte en leñador. Portador original = **pescador** → leñador = pescador.
 - Objetivo: resolver el caso para **reabastecer caldera y leña**.
-- Parte 1: ruta → hablar con **guardia de ruta** → tomar el **bolso** (tutorial UI) → pueblo; hambre → bar; **cartel** fija el objetivo.
+- Parte 1: ruta → hablar con el **vendedor de ruta** → tomar el **bolso** (tutorial UI) → pueblo; hambre → bar; **cartel** fija el objetivo.
 - Briefing del caso / huellas: **comisario** en la comisaría (no sabe que el jugador es detective hasta que conversan; ahí pide ayuda → `comisario_briefing`).
 - Objetos del bosque aparecen al exponerse el problema ([Why Adventure Games Suck](https://grumpygamer.com/why_adventure_games_suck/) — no solución antes del problema):
   - **Patito** tras el bartender mencionarlo.
@@ -69,5 +69,5 @@ addons/             # no editar Dialogue Manager
 - Estado narrativo en `StoryFlags`; diálogos solo llaman `GameManager.*`.
 - Puzzles deben avanzar la historia (Gilbert): objetivo claro, problema antes que solución, eventos conectados al abrir el río.
 - Preferir assets existentes o CC0 jam-friendly; no sobre-engineerar.
-- Stretch (opcional): máscaras propias de bartender/policía con personalidad.
+- Stretch (opcional): máscaras propias de bartender/policía/vendedor con personalidad.
 - No tocar `addons/dialogue_manager/`. No regenerar `build/` salvo que pidan export.

@@ -8,19 +8,20 @@ func _ready() -> void:
 	dialogue_observe = load("res://content/dialogue/bartender/bartender_observe.dialogue")
 	required_item = ""
 	listen_mask_signals = true
+	visual_oso_flag = "cantinero_mascara"
 	super._ready()
 
 func get_verb_text() -> String:
 	if Inventory.selected_item == "patito":
-		return "Usar Patito con Mozo"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("patito"), get_interact_label()]
 	if Inventory.selected_item == "credencial":
-		return "Usar Credencial con Mozo"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("credencial"), get_interact_label()]
 	if Inventory.selected_item == "oso":
-		return "Usar Máscara con Mozo"
+		return tr("Usar %s con %s") % [Inventory.get_display_name("oso"), get_interact_label()]
 	if Inventory.selected_item == "mascara_mozo" and StoryFlags.cantinero_mascara:
-		return "Devolverle su máscara"
+		return tr("Devolverle su máscara")
 	if Inventory.selected_item == "" and StoryFlags.is_wearing_mask("oso") and StoryFlags.has_huellas_pelota() and not StoryFlags.is_bartender_expuesto():
-		return "Hablar con Mozo (máscara puesta)"
+		return tr("Hablar con Mozo (máscara puesta)")
 	return super.get_verb_text()
 
 func _interact() -> void:
@@ -53,6 +54,16 @@ func _interact() -> void:
 	# Wearing stretch masks → short flavour lines.
 	if selected == "" and StoryFlags.is_wearing_mask("mascara_mozo"):
 		dialogue = load("res://content/dialogue/system/wear_mozo.dialogue")
+		super._interact()
+		return
+
+	if selected == "" and StoryFlags.is_wearing_mask("mascara_poli"):
+		dialogue = load("res://content/dialogue/system/wear_poli_bar.dialogue")
+		super._interact()
+		return
+
+	if selected == "" and StoryFlags.is_wearing_mask("mascara_vendedor"):
+		dialogue = load("res://content/dialogue/system/wear_vendedor_bar.dialogue")
 		super._interact()
 		return
 

@@ -5,6 +5,9 @@ if GameManager.is_wearing_mask("mascara_mozo")
 if GameManager.is_wearing_mask("mascara_poli")
 	Pescador: Esa cara... el de la comisaría. Pero su voz no es la de él.
 	=> END
+if GameManager.is_wearing_mask("mascara_vendedor")
+	Pescador: El de la ruta... el que vende. Pero la voz no es de feria.
+	=> END
 Pescador: ...Alguien nuevo. El pueblo murmura; usted también mira.
 - Buenas. ¿Qué hace aquí, sentado?
 	Pescador: Miro el pueblo. Hoy guarda secretos viejos... y usted anda con preguntas en la cara.

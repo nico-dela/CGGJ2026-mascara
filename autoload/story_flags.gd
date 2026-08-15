@@ -13,6 +13,7 @@ signal hablado_guardia_signal
 signal tiene_bolso_signal
 signal comisario_briefing_signal
 signal hablado_cantinero_signal
+signal npc_oso_visual_changed
 
 var cantinero_mascara := false
 var paso_abierto := false
@@ -30,6 +31,8 @@ var comisario_briefing := false
 var mascara_equipada := ""
 ## True while the police is holding the oso mask from a swap.
 var comisario_tiene_oso := false
+## True while the road vendor is holding the oso mask from a swap.
+var vendedor_tiene_oso := false
 ## Clue ids the player has inspected (patito, pelota, tronco, oso, etc.)
 var clues_seen: Array[String] = []
 
@@ -39,10 +42,12 @@ func poner_mascara_cantinero() -> void:
 		var sfx: AudioStream = load("res://assets/audio/sfx/mascara_taberna.ogg")
 		AudioManager.play_sfx(sfx)
 	cantinero_mascara_puesta.emit()
+	npc_oso_visual_changed.emit()
 
 func quitar_mascara_cantinero() -> void:
 	cantinero_mascara = false
 	cantinero_mascara_quitada.emit()
+	npc_oso_visual_changed.emit()
 
 func equip_mask(mask_id: String) -> void:
 	if mask_id == "" or not Inventory.has_item(mask_id):
@@ -70,6 +75,18 @@ func is_wearing_mask(mask_id: String = "") -> bool:
 		return mascara_equipada != ""
 	return mascara_equipada == mask_id
 
+func set_comisario_tiene_oso(value: bool) -> void:
+	if comisario_tiene_oso == value:
+		return
+	comisario_tiene_oso = value
+	npc_oso_visual_changed.emit()
+
+func set_vendedor_tiene_oso(value: bool) -> void:
+	if vendedor_tiene_oso == value:
+		return
+	vendedor_tiene_oso = value
+	npc_oso_visual_changed.emit()
+
 ## Balloon speaker for detective lines; shows worn mask role when equipped.
 func get_detective_speaker_name() -> String:
 	match mascara_equipada:
@@ -79,6 +96,8 @@ func get_detective_speaker_name() -> String:
 			return "Detective (Mozo)"
 		"mascara_poli":
 			return "Detective (Policía)"
+		"mascara_vendedor":
+			return "Detective (Vendedor)"
 		_:
 			return "Detective"
 
@@ -190,9 +209,11 @@ func reset() -> void:
 	comisario_briefing = false
 	mascara_equipada = ""
 	comisario_tiene_oso = false
+	vendedor_tiene_oso = false
 	clues_seen.clear()
 	clues_changed.emit()
 	mask_equipped_changed.emit()
+	npc_oso_visual_changed.emit()
 	tiene_bolso_signal.emit()
 
 func to_dict() -> Dictionary:
@@ -209,6 +230,7 @@ func to_dict() -> Dictionary:
 		"comisario_briefing": comisario_briefing,
 		"mascara_equipada": mascara_equipada,
 		"comisario_tiene_oso": comisario_tiene_oso,
+		"vendedor_tiene_oso": vendedor_tiene_oso,
 		"clues_seen": clues_seen.duplicate(),
 	}
 
@@ -225,11 +247,13 @@ func from_dict(data: Dictionary) -> void:
 	comisario_briefing = bool(data.get("comisario_briefing", false))
 	mascara_equipada = str(data.get("mascara_equipada", ""))
 	comisario_tiene_oso = bool(data.get("comisario_tiene_oso", false))
+	vendedor_tiene_oso = bool(data.get("vendedor_tiene_oso", false))
 	clues_seen.clear()
 	for id in data.get("clues_seen", []):
 		clues_seen.append(str(id))
 	clues_changed.emit()
 	mask_equipped_changed.emit()
+	npc_oso_visual_changed.emit()
 	if paso_abierto:
 		paso_abierto_signal.emit()
 	if bartender_expuesto:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dth10xa84q1to" path="res://scripts/actors/comisario.gd" id="1_17t4n"]
 [ext_resource type="Texture2D" uid="uid://cswh61182ddcl" path="res://assets/art/characters/poli_idle.png" id="1_t3thw"]
+[ext_resource type="Texture2D" uid="uid://bq81uku4mtuad" path="res://assets/art/characters/lenador_idle.png" id="2_lenador"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17t4n"]
 radius = 18.0
@@ -23,6 +24,22 @@ region = Rect2(64, 0, 32, 64)
 atlas = ExtResource("1_t3thw")
 region = Rect2(96, 0, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_len0"]
+atlas = ExtResource("2_lenador")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_len1"]
+atlas = ExtResource("2_lenador")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_len2"]
+atlas = ExtResource("2_lenador")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_len3"]
+atlas = ExtResource("2_lenador")
+region = Rect2(96, 0, 32, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_we72q"]
 animations = [{
 "frames": [{
@@ -41,12 +58,30 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len3")
+}],
+"loop": true,
+"name": &"lenador_idle",
+"speed": 7.0
 }]
 
 [node name="Comisario" type="Area2D" unique_id=1247389019]
 script = ExtResource("1_17t4n")
 verb = "Hablar con"
 interact_label = "Policía"
+visual_oso_flag = "comisario_tiene_oso"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1858912340]
 shape = SubResource("CapsuleShape2D_17t4n")

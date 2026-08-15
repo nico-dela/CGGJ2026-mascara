@@ -3,6 +3,8 @@ class_name NpcInteractable
 
 ## Optional animated sprite for NPCs that swap visuals (e.g. bartender mask).
 @export var listen_mask_signals: bool = false
+## StoryFlags bool that makes this NPC play anim_masked (oso on them).
+@export var visual_oso_flag: String = ""
 @export var anim_idle: String = "idle"
 @export var anim_masked: String = "lenador_idle"
 @export var anim_talk: String = "talk"
@@ -20,13 +22,33 @@ func _ready() -> void:
 	can_take = false
 	can_use = false
 	super._ready()
-	if animated_sprite:
+	if _resolved_oso_flag() != "":
+		if not StoryFlags.npc_oso_visual_changed.is_connected(_refresh_oso_visual):
+			StoryFlags.npc_oso_visual_changed.connect(_refresh_oso_visual)
+		_refresh_oso_visual()
+	elif animated_sprite:
 		animated_sprite.play(anim_idle)
+
+func _resolved_oso_flag() -> String:
+	if visual_oso_flag != "":
+		return visual_oso_flag
 	if listen_mask_signals:
-		StoryFlags.cantinero_mascara_puesta.connect(_on_mask_on)
-		StoryFlags.cantinero_mascara_quitada.connect(_on_mask_off)
-		if StoryFlags.cantinero_mascara:
-			_on_mask_on()
+		return "cantinero_mascara"
+	return ""
+
+func _is_visually_masked() -> bool:
+	var flag := _resolved_oso_flag()
+	if flag == "":
+		return false
+	return bool(StoryFlags.get(flag))
+
+func _refresh_oso_visual() -> void:
+	if animated_sprite == null:
+		return
+	if _is_visually_masked() and animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(anim_masked):
+		animated_sprite.play(anim_masked)
+	else:
+		animated_sprite.play(anim_idle)
 
 func _interact() -> void:
 	_play_talk()
@@ -76,17 +98,4 @@ func _play_talk() -> void:
 
 func _on_dialogue_ended_talk(_resource) -> void:
 	_talk_connected = false
-	if animated_sprite == null:
-		return
-	if StoryFlags.cantinero_mascara and listen_mask_signals:
-		animated_sprite.play(anim_masked)
-	else:
-		animated_sprite.play(anim_idle)
-
-func _on_mask_on() -> void:
-	if animated_sprite:
-		animated_sprite.play(anim_masked)
-
-func _on_mask_off() -> void:
-	if animated_sprite:
-		animated_sprite.play(anim_idle)
+	_refresh_oso_visual()

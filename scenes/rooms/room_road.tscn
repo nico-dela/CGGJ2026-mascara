@@ -5,13 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/actors/player.tscn" id="3_player"]
 [ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/ui/inventory_ui.tscn" id="4_inv"]
 [ext_resource type="Script" uid="uid://dtcjac2t48q13" path="res://scripts/actors/road_police.gd" id="5_police"]
-[ext_resource type="Texture2D" uid="uid://d4jkuonoloxml" path="res://assets/art/characters/guardia_idle.png" id="6_poli"]
+[ext_resource type="Texture2D" uid="uid://c5xig7ck5q542" path="res://assets/art/characters/Vendedor_Idle.png" id="6_poli"]
 [ext_resource type="Script" uid="uid://buvm1ljygqg5s" path="res://scripts/interactables/road_bag.gd" id="7_bag"]
-[ext_resource type="FontFile" uid="uid://wlpqsrxdoo02" path="res://assets/fonts/SpecialElite-Regular.ttf" id="8_font"]
+[ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="8_font"]
 [ext_resource type="Texture2D" uid="uid://de2k3hdt2ixvp" path="res://assets/art/rooms/road/moto.png" id="9_moto"]
 [ext_resource type="Texture2D" uid="uid://bmocoxprlxd8n" path="res://assets/art/rooms/road/bolso.png" id="10_bolso"]
 [ext_resource type="Texture2D" uid="uid://ctflr3xnqkwyq" path="res://assets/art/rooms/road/arbol.png" id="11_arbol"]
 [ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/systems/room_transition.tscn" id="12_trans"]
+[ext_resource type="Texture2D" uid="uid://bq81uku4mtuad" path="res://assets/art/characters/lenador_idle.png" id="13_lenador"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wqcsw"]
 a = Vector2(1915, 12)
@@ -40,6 +41,22 @@ region = Rect2(64, 0, 32, 64)
 atlas = ExtResource("6_poli")
 region = Rect2(96, 0, 32, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_len0"]
+atlas = ExtResource("13_lenador")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_len1"]
+atlas = ExtResource("13_lenador")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_len2"]
+atlas = ExtResource("13_lenador")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_len3"]
+atlas = ExtResource("13_lenador")
+region = Rect2(96, 0, 32, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_poli"]
 animations = [{
 "frames": [{
@@ -57,6 +74,23 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_len3")
+}],
+"loop": 1,
+"name": &"lenador_idle",
 "speed": 7.0
 }]
 
@@ -108,6 +142,7 @@ position = Vector2(560, 900)
 z_index = 4096
 position = Vector2(980, 875)
 script = ExtResource("5_police")
+visual_oso_flag = "vendedor_tiene_oso"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RoadPolice" unique_id=152022636]
 shape = SubResource("CapsuleShape2D_police")
@@ -140,7 +175,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("8_font")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 34
 text = "La ruta. Las luces del pueblo están al este..."
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=760224479]

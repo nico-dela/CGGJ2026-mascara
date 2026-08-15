@@ -29,7 +29,7 @@ El juego fue diseñado para ser completado en una sola sesión, priorizando atm�
 ## Controles
 
 - Estilo **Full Throttle**: click en un objeto/persona abre la **moneda de acciones** (Mirar · Hablar · Usar · Tomar). Mirar y Hablar son distintos.
-- En la ruta: hablá con el **guardia**, tomá el **bolso** (pasa a ser el botón de la esquina; tutorial breve) y recién ahí entrá al pueblo.
+- En la ruta: hablá con el **vendedor**, tomá el **bolso** (pasa a ser el botón de la esquina; tutorial breve) y recién ahí entrá al pueblo.
 - **Bolso**: inventario; seleccioná un ítem y click en el objetivo (`Usar la pelota con el policía`).
 - **Máscaras**: segundo click en el slot (o ítem + click en el detective) para equipar.
 - Escape: cerrar la moneda / pausa.

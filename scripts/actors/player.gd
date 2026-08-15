@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 const SPEED = 500.0
 const SELF_USE_RADIUS := 110.0
+const MASK_ANIMS := {
+	"oso": ["lenador_idle", "lenador_walk"],
+	"mascara_mozo": ["mozo_idle", "mozo_walk"],
+	"mascara_poli": ["poli_idle", "poli_walk"],
+	"mascara_vendedor": ["vendedor_idle", "vendedor_walk"],
+}
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var footsteps = $Footsteps
@@ -254,17 +260,24 @@ func set_state(new_state: PlayerState) -> void:
 func _play_idle() -> void:
 	if animated_sprite == null:
 		return
-	if StoryFlags.is_wearing_mask("oso") and animated_sprite.sprite_frames.has_animation("lenador_idle"):
-		animated_sprite.play("lenador_idle")
-	else:
-		animated_sprite.play("poroto_idle")
+	animated_sprite.play(_mask_anim("idle"))
 
 func _play_walk() -> void:
 	if animated_sprite == null:
 		return
-	if StoryFlags.is_wearing_mask("oso") and animated_sprite.sprite_frames.has_animation("lenador_walk"):
-		animated_sprite.play("lenador_walk")
-	elif StoryFlags.is_wearing_mask("oso") and animated_sprite.sprite_frames.has_animation("lenador_idle"):
-		animated_sprite.play("lenador_idle")
-	else:
-		animated_sprite.play("poroto_walk")
+	animated_sprite.play(_mask_anim("walk"))
+
+func _mask_anim(kind: String) -> String:
+	var pair: Array = MASK_ANIMS.get(StoryFlags.mascara_equipada, ["poroto_idle", "poroto_walk"])
+	var idle_name: String = pair[0]
+	var walk_name: String = pair[1]
+	var frames: SpriteFrames = animated_sprite.sprite_frames
+	if kind == "walk":
+		if frames.has_animation(walk_name):
+			return walk_name
+		if frames.has_animation(idle_name):
+			return idle_name
+		return "poroto_walk"
+	if frames.has_animation(idle_name):
+		return idle_name
+	return "poroto_idle"

@@ -9,7 +9,7 @@ if GameManager.has_huellas_pelota()
 if GameManager.has_comisario_briefing()
 	Policía: Ya le dije: taberna, bosque. Algo con huellas. Traiga prueba.
 	=> END
-Policía: ...El guardia de la ruta avisó que venía un forastero con hambre. Usted es.
+Policía: ...El vendedor de la ruta dijo que venía un forastero con hambre. Usted es.
 Detective: Sí. Buscaba algo caliente... y vi el cartel del leñador.
 Policía: Todo el pueblo pasa frío sin él. La caldera, la leña. Y murmuran cosas feas.
 Policía: ¿Y usted qué hace en mi comisaría, forastero?

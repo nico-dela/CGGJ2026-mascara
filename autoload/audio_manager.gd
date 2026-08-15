@@ -7,16 +7,21 @@ const FADE_SEC := 0.65
 @onready var ambient_b: AudioStreamPlayer = $AmbientB
 @onready var sfx: AudioStreamPlayer = $SFX
 
+var _game_music: AudioStream
 var _active_ambient: AudioStreamPlayer
 var _idle_ambient: AudioStreamPlayer
 var _current_ambient_path: String = ""
 var _fade_tween: Tween
 
 func _ready() -> void:
+	_game_music = music.stream
 	_active_ambient = ambient_a
 	_idle_ambient = ambient_b
 	_ensure_loop(music.stream)
-	_apply_saved_master_volume()
+	if GameSettings:
+		GameSettings.apply_all()
+	else:
+		_apply_saved_master_volume()
 
 func _apply_saved_master_volume() -> void:
 	var cfg := ConfigFile.new()
@@ -28,16 +33,24 @@ func _apply_saved_master_volume() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db)
 
 func start_music() -> void:
-	if music.stream == null:
+	if _game_music == null:
 		return
-	_ensure_loop(music.stream)
-	if not music.playing:
-		music.volume_db = 0.0
-		music.play()
+	_ensure_loop(_game_music)
+	if music.stream == _game_music and music.playing:
+		return
+	music.stream = _game_music
+	music.volume_db = 0.0
+	music.play()
 
 func stop_music() -> void:
 	if music.playing:
 		music.stop()
+
+func restore_game_music() -> void:
+	music.stop()
+	if _game_music:
+		music.stream = _game_music
+		_ensure_loop(_game_music)
 
 func set_music(stream: AudioStream) -> void:
 	if music.stream == stream and music.playing:
@@ -45,6 +58,7 @@ func set_music(stream: AudioStream) -> void:
 	music.stream = stream
 	_ensure_loop(stream)
 	if stream:
+		music.volume_db = 0.0
 		music.play()
 	else:
 		music.stop()

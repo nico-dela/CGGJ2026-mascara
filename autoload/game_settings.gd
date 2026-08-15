@@ -11,10 +11,11 @@ const CSV_PATHS := [
 	"res://locale/ui.csv",
 	"res://locale/dialogue.csv",
 ]
+const TRANSLATION_PATHS := [
+	"res://locale/ui.en.translation",
+	"res://locale/dialogue.en.translation",
+]
 const LOCALES := ["es", "en"]
-## Keep imported CSV translations in the export pack (web remaps them).
-const _UI_TRANSLATION: Resource = preload("res://locale/ui.csv")
-const _DIALOGUE_TRANSLATION: Resource = preload("res://locale/dialogue.csv")
 
 var volume: float = 50.0
 var fullscreen: bool = false
@@ -94,36 +95,42 @@ func _save_settings() -> void:
 	cfg.save(SETTINGS_PATH)
 
 func _load_translations() -> void:
-	# On web export the CSV is remapped to a Translation resource; FileAccess cannot read it.
-	var added := false
-	for res in [_UI_TRANSLATION, _DIALOGUE_TRANSLATION]:
-		if res is Translation:
-			TranslationServer.add_translation(res)
-			added = true
-	if added:
-		return
-	for path in CSV_PATHS:
-		var trans := _load_translation_resource(path)
+	# Never load the CSV as a Resource: the csv_translation importer remaps it and
+	# preload/load(res://locale/*.csv) circular-fails in the editor.
+	var english: Array[Translation] = []
+	for path in TRANSLATION_PATHS:
+		var trans := _try_load_translation(path)
 		if trans:
-			TranslationServer.add_translation(trans)
-			continue
-		var parsed := Translation.new()
-		parsed.locale = "en"
-		_load_csv_into(parsed, path)
-		if parsed.get_message_count() > 0:
-			TranslationServer.add_translation(parsed)
+			english.append(trans)
+	if english.is_empty():
+		for path in CSV_PATHS:
+			var parsed := Translation.new()
+			parsed.locale = "en"
+			_load_csv_into(parsed, path)
+			if parsed.get_message_count() > 0:
+				english.append(parsed)
+	for trans in english:
+		TranslationServer.add_translation(trans)
+	# Godot remaps set_locale() to a loaded locale. Without an "es" translation,
+	# Spanish is rewritten to English and the toggle appears stuck.
+	_add_spanish_identity(english)
 
-func _load_translation_resource(path: String) -> Translation:
-	if ResourceLoader.exists(path):
-		var res := load(path)
-		if res is Translation:
-			return res
-	var generated := "%s.en.translation" % path.get_basename()
-	if ResourceLoader.exists(generated):
-		var res := load(generated)
-		if res is Translation:
-			return res
-	return null
+func _add_spanish_identity(english: Array[Translation]) -> void:
+	var spanish := Translation.new()
+	spanish.locale = "es"
+	for src in english:
+		for key in src.get_message_list():
+			if key.is_empty():
+				continue
+			spanish.add_message(key, key)
+			spanish.add_message(key, key, "dialogue")
+	TranslationServer.add_translation(spanish)
+
+func _try_load_translation(path: String) -> Translation:
+	if not ResourceLoader.exists(path):
+		return null
+	var res := ResourceLoader.load(path)
+	return res as Translation
 
 func _load_csv_into(translation: Translation, path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)

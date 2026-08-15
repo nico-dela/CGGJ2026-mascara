@@ -50,6 +50,9 @@ func _adapt_layout() -> void:
 
 func _refresh_text() -> void:
 	var s := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
+	if back_button:
+		back_button.auto_translate = false
+		back_button.text = tr("Menú principal")
 	if left_body:
 		left_body.text = _left_page(s)
 	if right_body:

@@ -8,9 +8,13 @@ class_name RoomRoad
 const STEPS_DIRT := preload("res://assets/audio/sfx/pasos_tierra.ogg")
 const AMB_PUEBLO := preload("res://assets/audio/ambience/ambiente_pueblo.ogg")
 const ROOM_SIZE := Vector2i(1920, 1080)
+const ROAD_HINT := "La ruta. Las luces del pueblo están al este..."
 
 func _ready() -> void:
 	_disable_world_mouse_picking(self)
+	_refresh_hint()
+	if GameSettings:
+		GameSettings.locale_changed.connect(_on_locale_changed)
 	AudioManager.start_music()
 	AudioManager.set_ambient(AMB_PUEBLO)
 	var player = get_tree().get_first_node_in_group("player")
@@ -24,6 +28,17 @@ func _ready() -> void:
 		)
 	if player and player.has_method("set_footstep_stream"):
 		player.set_footstep_stream(STEPS_DIRT)
+
+func _on_locale_changed(_locale: String) -> void:
+	_refresh_hint()
+
+func _refresh_hint() -> void:
+	var hint := get_node_or_null("%HintLabel") as Label
+	if hint == null:
+		hint = get_node_or_null("HintLabel") as Label
+	if hint:
+		hint.auto_translate = false
+		hint.text = tr(ROAD_HINT)
 
 func _disable_world_mouse_picking(node: Node) -> void:
 	for child in node.get_children():

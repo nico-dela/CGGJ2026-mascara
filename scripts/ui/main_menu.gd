@@ -16,7 +16,7 @@ func _ready() -> void:
 		var salir := button_bar.get_node_or_null("SalirButton") as Button
 		if salir:
 			salir.visible = false
-	_sync_settings_controls()
+	_refresh_menu_labels()
 	if GameSettings:
 		GameSettings.locale_changed.connect(_on_locale_changed)
 		GameSettings.fullscreen_changed.connect(_on_fullscreen_changed)
@@ -136,6 +136,24 @@ func _sync_settings_controls() -> void:
 	if fs and GameSettings:
 		fs.set_pressed_no_signal(GameSettings.fullscreen)
 
+func _refresh_menu_labels() -> void:
+	_set_button_tr("IniciarButton", "Jugar")
+	_set_button_tr("ConfiguracionButton", "Configuración")
+	_set_button_tr("CreditosButton", "Créditos")
+	_set_button_tr("SalirButton", "Salir")
+	var fs := button_bar.get_node_or_null("FullscreenCheck") as CheckButton
+	if fs:
+		fs.auto_translate = false
+		fs.text = tr("Pantalla completa")
+	_sync_settings_controls()
+
+func _set_button_tr(node_name: String, key: String) -> void:
+	var btn := button_bar.get_node_or_null(node_name) as Button
+	if btn == null:
+		return
+	btn.auto_translate = false
+	btn.text = tr(key)
+
 func _refresh_landscape_tip_text() -> void:
 	if _landscape_tip == null:
 		return
@@ -144,7 +162,7 @@ func _refresh_landscape_tip_text() -> void:
 		label.text = tr("Para una mejor experiencia, girá la pantalla en horizontal.")
 
 func _on_locale_changed(_locale: String) -> void:
-	_sync_settings_controls()
+	_refresh_menu_labels()
 	_refresh_landscape_tip_text()
 
 func _on_fullscreen_changed(enabled: bool) -> void:

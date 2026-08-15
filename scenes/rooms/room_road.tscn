@@ -165,6 +165,7 @@ shape = SubResource("RectangleShape2D_bag")
 texture = ExtResource("10_bolso")
 
 [node name="HintLabel" type="Label" parent="." unique_id=636756534]
+unique_name_in_owner = true
 z_index = 20
 offset_left = 40.0
 offset_top = 36.0

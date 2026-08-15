@@ -5,6 +5,9 @@ extends Control
 @onready var fullscreen_check: CheckButton = %FullscreenCheck
 @onready var language_button: Button = %LanguageButton
 @onready var back_button: Button = %BackButton
+@onready var title_label: Label = %Title
+@onready var volume_label: Label = %VolumeLabel
+@onready var language_label: Label = %LanguageLabel
 @onready var card: PanelContainer = $Card
 
 var _from_pause := false
@@ -17,6 +20,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	_sync_from_settings()
+	_refresh_texts()
 	volume_slider.value_changed.connect(_on_volume_changed)
 	fullscreen_check.toggled.connect(_on_fullscreen_toggled)
 	language_button.pressed.connect(_on_language_pressed)
@@ -72,8 +76,22 @@ func _refresh_language_button() -> void:
 	language_button.auto_translate = false
 	language_button.text = GameSettings.language_display_name()
 
-func _on_locale_changed(_locale: String) -> void:
+func _refresh_texts() -> void:
+	_set_tr_text(title_label, "Configuración")
+	_set_tr_text(volume_label, "Volumen")
+	_set_tr_text(language_label, "Idioma")
+	_set_tr_text(fullscreen_check, "Pantalla completa")
+	_set_tr_text(back_button, "Volver")
 	_refresh_language_button()
+
+func _set_tr_text(node: Control, key: String) -> void:
+	if node == null:
+		return
+	node.auto_translate = false
+	node.set("text", tr(key))
+
+func _on_locale_changed(_locale: String) -> void:
+	_refresh_texts()
 
 func _on_fullscreen_changed(enabled: bool) -> void:
 	if fullscreen_check:

@@ -12,6 +12,9 @@ const CSV_PATHS := [
 	"res://locale/dialogue.csv",
 ]
 const LOCALES := ["es", "en"]
+## Keep imported CSV translations in the export pack (web remaps them).
+const _UI_TRANSLATION: Resource = preload("res://locale/ui.csv")
+const _DIALOGUE_TRANSLATION: Resource = preload("res://locale/dialogue.csv")
 
 var volume: float = 50.0
 var fullscreen: bool = false
@@ -25,7 +28,7 @@ func _ready() -> void:
 func apply_all() -> void:
 	_apply_volume()
 	_apply_fullscreen()
-	TranslationServer.set_locale(language)
+	_apply_locale()
 
 func is_english() -> bool:
 	return language.begins_with("en")
@@ -37,7 +40,7 @@ func set_language(locale: String) -> void:
 	if locale not in LOCALES:
 		locale = "es"
 	language = locale
-	TranslationServer.set_locale(language)
+	_apply_locale()
 	_save_settings()
 	locale_changed.emit(language)
 
@@ -67,6 +70,12 @@ func _apply_fullscreen() -> void:
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
+func _apply_locale() -> void:
+	TranslationServer.set_locale(language)
+	var tree := get_tree()
+	if tree and tree.root:
+		tree.root.propagate_notification(CanvasItem.NOTIFICATION_TRANSLATION_CHANGED)
+
 func _load_settings() -> void:
 	var cfg := ConfigFile.new()
 	if cfg.load(SETTINGS_PATH) != OK:
@@ -85,11 +94,36 @@ func _save_settings() -> void:
 	cfg.save(SETTINGS_PATH)
 
 func _load_translations() -> void:
-	var translation := Translation.new()
-	translation.locale = "en"
+	# On web export the CSV is remapped to a Translation resource; FileAccess cannot read it.
+	var added := false
+	for res in [_UI_TRANSLATION, _DIALOGUE_TRANSLATION]:
+		if res is Translation:
+			TranslationServer.add_translation(res)
+			added = true
+	if added:
+		return
 	for path in CSV_PATHS:
-		_load_csv_into(translation, path)
-	TranslationServer.add_translation(translation)
+		var trans := _load_translation_resource(path)
+		if trans:
+			TranslationServer.add_translation(trans)
+			continue
+		var parsed := Translation.new()
+		parsed.locale = "en"
+		_load_csv_into(parsed, path)
+		if parsed.get_message_count() > 0:
+			TranslationServer.add_translation(parsed)
+
+func _load_translation_resource(path: String) -> Translation:
+	if ResourceLoader.exists(path):
+		var res := load(path)
+		if res is Translation:
+			return res
+	var generated := "%s.en.translation" % path.get_basename()
+	if ResourceLoader.exists(generated):
+		var res := load(generated)
+		if res is Translation:
+			return res
+	return null
 
 func _load_csv_into(translation: Translation, path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)

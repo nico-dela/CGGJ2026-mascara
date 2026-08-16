@@ -36,6 +36,9 @@ var will_hide_balloon: bool = false
 var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
+var _speech: MarginContainer
+var _speech_width := 440.0
+var _speaker: WeakRef = null
 
 ## The current line
 var dialogue_line: DialogueLine:
@@ -81,6 +84,7 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
+	_speech = balloon.get_node_or_null("MarginContainer") as MarginContainer
 	_adapt_for_device()
 	if DisplayAdapt:
 		DisplayAdapt.adapted.connect(_adapt_for_device)
@@ -94,17 +98,18 @@ func _ready() -> void:
 func _adapt_for_device() -> void:
 	if balloon == null:
 		return
-	var margin: MarginContainer = balloon.get_node_or_null("MarginContainer")
-	if margin == null:
-		return
+	if _speech == null:
+		_speech = balloon.get_node_or_null("MarginContainer") as MarginContainer
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
 	var touch := DisplayAdapt.is_touch_device if DisplayAdapt else false
-	var panel_height := 230.0 * ui if touch else 168.0
-	margin.offset_top = -panel_height
-	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
-	margin.add_theme_constant_override("margin_left", int(120 + safe.x) if not touch else int(28 + safe.x))
-	margin.add_theme_constant_override("margin_right", int(120 + safe.z) if not touch else int(28 + safe.z))
-	margin.add_theme_constant_override("margin_bottom", int(20 + safe.w))
+	_speech_width = 520.0 * ui if touch else 440.0
+	if _speech and dialogue_label and character_label:
+		_speech.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		dialogue_label.custom_minimum_size = Vector2(_speech_width, 0)
+		dialogue_label.fit_content = true
+		dialogue_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		dialogue_label.add_theme_constant_override("outline_size", int(8 * ui) if touch else 8)
+		character_label.add_theme_constant_override("outline_size", int(8 * ui) if touch else 8)
 	if balloon.theme:
 		balloon.theme.default_font_size = int(34 * ui) if touch else 32
 	var responses: Control = balloon.get_node_or_null("ResponsesMenu")
@@ -139,6 +144,8 @@ func _adapt_for_device() -> void:
 func _process(_delta: float) -> void:
 	if is_instance_valid(dialogue_line):
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
+		if balloon.visible:
+			_place_next_to_speaker()
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -184,6 +191,7 @@ func apply_dialogue_line() -> void:
 		speaker = StoryFlags.get_detective_speaker_name()
 	character_label.auto_translate = false
 	character_label.text = "[b]%s[/b]" % tr(speaker)
+	_speaker = weakref(_find_speaker_node(dialogue_line.character))
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -195,6 +203,7 @@ func apply_dialogue_line() -> void:
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
+	_place_next_to_speaker()
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
@@ -240,6 +249,79 @@ func _polish_response_buttons() -> void:
 ## Go to the next line
 func next(next_id: String) -> void:
 	dialogue_line = await dialogue_resource.get_next_dialogue_line(next_id, temporary_game_states)
+
+
+func _find_speaker_node(character: String) -> Node2D:
+	var tree := get_tree()
+	if tree == null:
+		return null
+	var key := character.strip_edges()
+	if key.is_empty() or key.begins_with("Detective"):
+		return tree.get_first_node_in_group("player") as Node2D
+	for node in tree.get_nodes_in_group("interactable"):
+		if not (node is Node2D):
+			continue
+		if not node.has_method("get_interact_label"):
+			continue
+		var label := ""
+		if "interact_label" in node:
+			label = str(node.interact_label)
+		if label.is_empty():
+			label = str(node.get_interact_label())
+		if label == key:
+			return node as Node2D
+	return tree.get_first_node_in_group("player") as Node2D
+
+
+func _speaker_extent(node: Node2D) -> Vector2:
+	var spr := node.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+	if spr == null:
+		spr = node.find_child("AnimatedSprite2D", true, false) as AnimatedSprite2D
+	if spr and spr.sprite_frames:
+		var anim := spr.animation
+		if anim != "" and spr.sprite_frames.has_animation(anim):
+			var tex := spr.sprite_frames.get_frame_texture(anim, spr.frame)
+			if tex:
+				return tex.get_size() * spr.global_scale.abs()
+	return Vector2(80, 160)
+
+
+func _place_next_to_speaker() -> void:
+	if _speech == null or balloon == null:
+		return
+	var speaker_node: Node2D = null
+	if _speaker != null:
+		speaker_node = _speaker.get_ref() as Node2D
+	if speaker_node == null or not is_instance_valid(speaker_node):
+		speaker_node = _find_speaker_node(dialogue_line.character if is_instance_valid(dialogue_line) else "")
+		_speaker = weakref(speaker_node) if speaker_node else null
+	if speaker_node == null:
+		return
+
+	_speech.reset_size()
+	var size := _speech.get_combined_minimum_size()
+	if size.x < 8.0:
+		size.x = _speech_width
+	if size.y < 8.0:
+		size.y = 80.0
+
+	var view := get_viewport().get_visible_rect().size
+	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
+	var pad := Vector2(16.0 + safe.x, 16.0 + safe.y)
+	var pad_br := Vector2(16.0 + safe.z, 16.0 + safe.w)
+	var extent := _speaker_extent(speaker_node)
+	var origin := speaker_node.get_global_transform_with_canvas().origin
+	var prefer_right := origin.x < view.x * 0.55
+	var pos := Vector2.ZERO
+	if prefer_right:
+		pos = origin + Vector2(extent.x * 0.45, -extent.y * 0.85)
+	else:
+		pos = origin + Vector2(-extent.x * 0.45 - size.x, -extent.y * 0.85)
+
+	pos.x = clampf(pos.x, pad.x, maxf(pad.x, view.x - size.x - pad_br.x))
+	pos.y = clampf(pos.y, pad.y, maxf(pad.y, view.y - size.y - pad_br.y))
+	_speech.position = pos
+	_speech.size = size
 
 
 #region Signals

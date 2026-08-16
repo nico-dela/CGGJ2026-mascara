@@ -24,6 +24,8 @@ var language: String = "es"
 func _ready() -> void:
 	_load_translations()
 	_load_settings()
+	# Always boot windowed; the player can still toggle fullscreen in-session.
+	fullscreen = false
 	apply_all()
 
 func apply_all() -> void:
@@ -113,17 +115,14 @@ func _load_translations() -> void:
 		TranslationServer.add_translation(trans)
 	# Godot remaps set_locale() to a loaded locale. Without an "es" translation,
 	# Spanish is rewritten to English and the toggle appears stuck.
-	_add_spanish_identity(english)
+	# Keys come from CSV: OptimizedTranslation does not expose get_message_list().
+	_add_spanish_identity()
 
-func _add_spanish_identity(english: Array[Translation]) -> void:
+func _add_spanish_identity() -> void:
 	var spanish := Translation.new()
 	spanish.locale = "es"
-	for src in english:
-		for key in src.get_message_list():
-			if key.is_empty():
-				continue
-			spanish.add_message(key, key)
-			spanish.add_message(key, key, "dialogue")
+	for path in CSV_PATHS:
+		_load_csv_into(spanish, path, true)
 	TranslationServer.add_translation(spanish)
 
 func _try_load_translation(path: String) -> Translation:
@@ -132,7 +131,7 @@ func _try_load_translation(path: String) -> Translation:
 	var res := ResourceLoader.load(path)
 	return res as Translation
 
-func _load_csv_into(translation: Translation, path: String) -> void:
+func _load_csv_into(translation: Translation, path: String, identity: bool = false) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_warning("GameSettings: missing translation file %s" % path)
@@ -148,11 +147,17 @@ func _load_csv_into(translation: Translation, path: String) -> void:
 				en_i = i
 	while not file.eof_reached():
 		var row := file.get_csv_line()
-		if row.size() <= maxi(key_i, en_i):
+		var needed := key_i if identity else maxi(key_i, en_i)
+		if row.size() <= needed:
 			continue
 		var key := row[key_i]
-		var en := row[en_i]
-		if key.is_empty() or key == "keys" or en.is_empty():
+		if key.is_empty() or key == "keys":
 			continue
-		translation.add_message(key, en)
-		translation.add_message(key, en, "dialogue")
+		var value := key
+		if not identity:
+			var en := row[en_i]
+			if en.is_empty():
+				continue
+			value = en
+		translation.add_message(key, value)
+		translation.add_message(key, value, "dialogue")

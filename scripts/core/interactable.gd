@@ -296,9 +296,10 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	_hovered = false
-	InteractionHint.hide_hint_from(self)
-	if AdventureUI:
-		AdventureUI.refresh_sentence(null)
+	if not InteractionHint.should_keep_on_mouse_exit():
+		InteractionHint.hide_hint_from(self)
+		if AdventureUI:
+			AdventureUI.refresh_sentence(null)
 	if use_hover_feedback and sprite:
 		sprite.scale = _base_scale
 		sprite.modulate = Color.WHITE

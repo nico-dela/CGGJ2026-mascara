@@ -64,7 +64,7 @@ func show_hint(text: String, source: Node = null) -> void:
 	_place_label(get_viewport().get_mouse_position())
 
 ## Touch-friendly hint anchored near a tap / verb coin (ignores desktop mouse-follow gate).
-func show_hint_at(text: String, screen_pos: Vector2) -> void:
+func show_hint_at(text: String, screen_pos: Vector2, place_above: bool = false) -> void:
 	if text.is_empty():
 		hide_hint()
 		return
@@ -78,7 +78,17 @@ func show_hint_at(text: String, screen_pos: Vector2) -> void:
 	_label.text = text
 	_label.visible = true
 	_label.reset_size()
-	_place_label(screen_pos)
+	if place_above:
+		_place_label_above(screen_pos)
+	else:
+		_place_label(screen_pos)
+
+func should_keep_on_mouse_exit() -> bool:
+	if DisplayAdapt and DisplayAdapt.is_touch_device:
+		return true
+	if AdventureUI and AdventureUI.is_coin_open():
+		return true
+	return false
 
 func _place_label(mouse: Vector2) -> void:
 	if _label == null:
@@ -94,6 +104,19 @@ func _place_label(mouse: Vector2) -> void:
 		pos.x = mouse.x - size.x - 12.0
 	if pos.y + size.y > view.y - margin:
 		pos.y = mouse.y - size.y - 12.0
+	pos.x = clampf(pos.x, margin, maxf(margin, view.x - size.x - margin))
+	pos.y = clampf(pos.y, margin, maxf(margin, view.y - size.y - margin))
+	_label.global_position = pos
+
+func _place_label_above(anchor: Vector2) -> void:
+	if _label == null:
+		return
+	var margin := 8.0
+	var size := _label.get_minimum_size()
+	if size.x < 1.0 or size.y < 1.0:
+		size = _label.size
+	var view := get_viewport().get_visible_rect().size
+	var pos := Vector2(anchor.x - size.x * 0.5, anchor.y - size.y - 8.0)
 	pos.x = clampf(pos.x, margin, maxf(margin, view.x - size.x - margin))
 	pos.y = clampf(pos.y, margin, maxf(margin, view.y - size.y - margin))
 	_label.global_position = pos

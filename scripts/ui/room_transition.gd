@@ -51,7 +51,8 @@ func try_interact() -> bool:
 	if target_scene.is_empty():
 		push_warning("%s: no target_scene assigned" % name)
 		return false
-	InteractionHint.hide_hint()
+	if DisplayAdapt == null or not DisplayAdapt.is_touch_device:
+		InteractionHint.hide_hint()
 	SceneRouter.request_scene_change(
 		target_scene,
 		target_spawn_id,
@@ -75,4 +76,5 @@ func _on_mouse_entered() -> void:
 	InteractionHint.show_hint(get_verb_text(), self)
 
 func _on_mouse_exited() -> void:
-	InteractionHint.hide_hint_from(self)
+	if not InteractionHint.should_keep_on_mouse_exit():
+		InteractionHint.hide_hint_from(self)

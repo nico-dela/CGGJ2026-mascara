@@ -167,6 +167,13 @@ func _try_interact_at(world_pos: Vector2, screen_pos: Vector2 = Vector2.ZERO) ->
 			set_state(PlayerState.IDLE)
 			return true
 		if collider.has_method("try_interact"):
+			if DisplayAdapt and DisplayAdapt.is_touch_device and collider.has_method("get_verb_text"):
+				var verb_text: String = collider.get_verb_text()
+				if verb_text != "" and AdventureUI:
+					var pos := screen_pos
+					if pos == Vector2.ZERO:
+						pos = get_viewport().get_mouse_position()
+					AdventureUI.show_touch_hint(verb_text, pos)
 			if collider.try_interact():
 				return true
 	return false

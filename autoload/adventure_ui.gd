@@ -45,6 +45,11 @@ func _ready() -> void:
 	if SceneRouter and SceneRouter.has_signal("scene_changed"):
 		SceneRouter.scene_changed.connect(func(p):
 			hide_verb_coin()
+			if InteractionHint:
+				InteractionHint.hide_hint()
+			if _intent:
+				_intent.visible = false
+				_intent.text = ""
 			# change_scene_to_file is deferred; wait a frame then use emitted path.
 			await get_tree().process_frame
 			_refresh_visibility(p)
@@ -125,11 +130,23 @@ func show_verb_coin(target: Node, screen_pos: Vector2) -> void:
 	if DisplayAdapt and DisplayAdapt.is_touch_device:
 		var hint_text := _coin_hint_text(target)
 		if hint_text != "":
-			InteractionHint.show_hint_at(hint_text, screen_pos)
+			var above := Vector2(_coin.position.x + _coin.size.x * 0.5, _coin.position.y)
+			InteractionHint.show_hint_at(hint_text, above, true)
 		else:
 			InteractionHint.hide_hint()
 	else:
 		InteractionHint.hide_hint()
+
+func show_touch_hint(text: String, screen_pos: Vector2) -> void:
+	if text.is_empty():
+		return
+	if _intent:
+		_intent.text = text
+		_intent.visible = true
+	var pos := screen_pos
+	if _coin_open and _coin:
+		pos = Vector2(_coin.position.x + _coin.size.x * 0.5, _coin.position.y)
+	InteractionHint.show_hint_at(text, pos, true)
 
 ## Verb coin for an inventory item (Mirar / Usar only).
 func show_bag_item_coin(item_id: String, screen_pos: Vector2) -> void:

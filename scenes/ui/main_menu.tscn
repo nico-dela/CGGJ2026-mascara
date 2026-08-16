@@ -37,6 +37,33 @@ texture = ExtResource("6_rtw2f")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="SettingsBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 560.0
+offset_bottom = 112.0
+theme_override_constants/separation = 16
+
+[node name="LanguageButton" type="Button" parent="SettingsBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 56)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 28
+text = "Español"
+alignment = 1
+auto_translate_mode = 2
+
+[node name="FullscreenCheck" type="CheckButton" parent="SettingsBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 56)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 28
+text = "Pantalla completa"
+alignment = 0
+
 [node name="ButtonBar" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -66,28 +93,6 @@ alignment = 0
 icon_alignment = 0
 expand_icon = true
 vertical_icon_alignment = 1
-
-[node name="LanguageButton" type="Button" parent="ButtonBar"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 56)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 32
-theme_override_constants/icon_max_width = 40
-text = "Español"
-alignment = 0
-auto_translate_mode = 2
-
-[node name="FullscreenCheck" type="CheckButton" parent="ButtonBar"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 56)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 32
-text = "Pantalla completa"
-alignment = 0
 
 [node name="ConfiguracionButton" type="Button" parent="ButtonBar"]
 custom_minimum_size = Vector2(300, 56)
@@ -133,10 +138,10 @@ vertical_icon_alignment = 1
 
 [connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
 [connection signal="pressed" from="ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]
-[connection signal="mouse_entered" from="ButtonBar/LanguageButton" to="." method="_on_language_button_mouse_entered"]
-[connection signal="pressed" from="ButtonBar/LanguageButton" to="." method="_on_language_pressed"]
-[connection signal="mouse_entered" from="ButtonBar/FullscreenCheck" to="." method="_on_fullscreen_check_mouse_entered"]
-[connection signal="toggled" from="ButtonBar/FullscreenCheck" to="." method="_on_fullscreen_toggled"]
+[connection signal="mouse_entered" from="SettingsBar/LanguageButton" to="." method="_on_language_button_mouse_entered"]
+[connection signal="pressed" from="SettingsBar/LanguageButton" to="." method="_on_language_pressed"]
+[connection signal="mouse_entered" from="SettingsBar/FullscreenCheck" to="." method="_on_fullscreen_check_mouse_entered"]
+[connection signal="toggled" from="SettingsBar/FullscreenCheck" to="." method="_on_fullscreen_toggled"]
 [connection signal="mouse_entered" from="ButtonBar/ConfiguracionButton" to="." method="_on_configuracion_button_mouse_entered"]
 [connection signal="pressed" from="ButtonBar/ConfiguracionButton" to="." method="_on_Configuracion_pressed"]
 [connection signal="mouse_entered" from="ButtonBar/CreditosButton" to="." method="_on_creditos_button_mouse_entered"]

@@ -5,6 +5,9 @@ const UI_FONT: Font = preload("res://assets/fonts/PixelifySans.ttf")
 @onready var hover_sound = $HoverSound
 @onready var click_sound = $ClickSound
 @onready var button_bar: VBoxContainer = $ButtonBar
+@onready var settings_bar: HBoxContainer = $SettingsBar
+@onready var language_button: Button = %LanguageButton
+@onready var fullscreen_check: CheckButton = %FullscreenCheck
 
 var _landscape_tip: Control
 
@@ -54,6 +57,22 @@ func _layout_for_device() -> void:
 	button_bar.offset_bottom = -BOTTOM_PAD
 	button_bar.offset_top = -(BOTTOM_PAD + bar_height)
 
+	const SETTINGS_H := 56.0
+	const LEFT_PAD := 48.0
+	const TOP_PAD := 48.0
+	if settings_bar:
+		settings_bar.add_theme_constant_override("separation", 16)
+		if language_button:
+			language_button.custom_minimum_size = Vector2(160, SETTINGS_H)
+			language_button.add_theme_font_size_override("font_size", 28)
+		if fullscreen_check:
+			fullscreen_check.custom_minimum_size = Vector2(280, SETTINGS_H)
+			fullscreen_check.add_theme_font_size_override("font_size", 28)
+		settings_bar.offset_left = LEFT_PAD
+		settings_bar.offset_top = TOP_PAD
+		settings_bar.offset_right = LEFT_PAD + 160.0 + 16.0 + 280.0
+		settings_bar.offset_bottom = TOP_PAD + SETTINGS_H
+
 	_update_landscape_tip()
 
 func _ensure_landscape_tip() -> void:
@@ -66,8 +85,8 @@ func _ensure_landscape_tip() -> void:
 	tip.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	tip.visible = false
 	add_child(tip)
-	# Keep above background, below modal config if opened later.
-	move_child(tip, button_bar.get_index())
+	# Above chrome (settings + actions), below modal config if opened later.
+	move_child(tip, get_child_count() - 1)
 
 	var dim := Panel.new()
 	dim.name = "Dim"
@@ -128,23 +147,20 @@ func _update_landscape_tip() -> void:
 	_landscape_tip.visible = show_tip
 
 func _sync_settings_controls() -> void:
-	var lang_btn := button_bar.get_node_or_null("LanguageButton") as Button
-	if lang_btn and GameSettings:
-		lang_btn.auto_translate = false
-		lang_btn.text = GameSettings.language_display_name()
-	var fs := button_bar.get_node_or_null("FullscreenCheck") as CheckButton
-	if fs and GameSettings:
-		fs.set_pressed_no_signal(GameSettings.fullscreen)
+	if language_button and GameSettings:
+		language_button.auto_translate = false
+		language_button.text = GameSettings.language_display_name()
+	if fullscreen_check and GameSettings:
+		fullscreen_check.set_pressed_no_signal(GameSettings.fullscreen)
 
 func _refresh_menu_labels() -> void:
 	_set_button_tr("IniciarButton", "Jugar")
 	_set_button_tr("ConfiguracionButton", "Configuración")
 	_set_button_tr("CreditosButton", "Créditos")
 	_set_button_tr("SalirButton", "Salir")
-	var fs := button_bar.get_node_or_null("FullscreenCheck") as CheckButton
-	if fs:
-		fs.auto_translate = false
-		fs.text = tr("Pantalla completa")
+	if fullscreen_check:
+		fullscreen_check.auto_translate = false
+		fullscreen_check.text = tr("Pantalla completa")
 	_sync_settings_controls()
 
 func _set_button_tr(node_name: String, key: String) -> void:
@@ -166,9 +182,8 @@ func _on_locale_changed(_locale: String) -> void:
 	_refresh_landscape_tip_text()
 
 func _on_fullscreen_changed(enabled: bool) -> void:
-	var fs := button_bar.get_node_or_null("FullscreenCheck") as CheckButton
-	if fs:
-		fs.set_pressed_no_signal(enabled)
+	if fullscreen_check:
+		fullscreen_check.set_pressed_no_signal(enabled)
 
 func _on_language_pressed() -> void:
 	click_sound.play()

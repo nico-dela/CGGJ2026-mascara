@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dovmg6rfyglxv"
+path="res://.godot/imported/road_vendedor_mask_swap.dialogue-2e6512a8e91819a884df79e6ea196413.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_vendedor_mask_swap.dialogue"
+dest_files=["res://.godot/imported/road_vendedor_mask_swap.dialogue-2e6512a8e91819a884df79e6ea196413.tres"]
+
+[params]
+
+defaults=true

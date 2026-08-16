@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bo36qd4manufk"
+path="res://.godot/imported/pelota_observe.dialogue-829e784a2cab8e6db67e29569d735334.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/pelota_observe.dialogue"
+dest_files=["res://.godot/imported/pelota_observe.dialogue-829e784a2cab8e6db67e29569d735334.tres"]
+
+[params]
+
+defaults=true

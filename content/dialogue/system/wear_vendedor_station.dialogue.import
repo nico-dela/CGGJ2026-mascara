@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ckmdertrbq4by"
+path="res://.godot/imported/wear_vendedor_station.dialogue-c84aca86d2e6e6aa838cb19757819dde.tres"
+
+[deps]
+
+source_file="res://content/dialogue/system/wear_vendedor_station.dialogue"
+dest_files=["res://.godot/imported/wear_vendedor_station.dialogue-c84aca86d2e6e6aa838cb19757819dde.tres"]
+
+[params]
+
+defaults=true

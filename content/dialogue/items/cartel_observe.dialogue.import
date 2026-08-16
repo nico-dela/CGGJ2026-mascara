@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bi7hib5if0aul"
+path="res://.godot/imported/cartel_observe.dialogue-07a1b67af397209d6ebfda793bab69b9.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/cartel_observe.dialogue"
+dest_files=["res://.godot/imported/cartel_observe.dialogue-07a1b67af397209d6ebfda793bab69b9.tres"]
+
+[params]
+
+defaults=true

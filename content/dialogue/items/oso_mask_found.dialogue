@@ -1,0 +1,8 @@
+~ start
+Detective: Una máscara abandonada... Aquí nadie pareciera notarla. Como si no existiera para ellos.
+Detective: Puedo ponérmela... o acercársela a alguien. Las máscaras de este pueblo guardan memorias.
+if GameManager.has_hablado_cantinero()
+	Detective: El mozo juró que hace años no va al bosque. Esto podría decir más que su boca.
+else
+	Detective: Mejor la guardo. Puede decir más que cualquier testimonio.
+=> END

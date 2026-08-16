@@ -1,0 +1,32 @@
+~ start
+if GameManager.is_wearing_mask("mascara_vendedor")
+	Vendedor: ¡Ésa es MI cara! Si quiere copiar el negocio, al menos pague la mercadería.
+	=> END
+if GameManager.is_wearing_mask("mascara_poli")
+	Vendedor: ¿El de la comisaría? En la ruta no hay multa que vender. Siga, "compañero".
+elif GameManager.is_wearing_mask("mascara_mozo")
+	Vendedor: El del bar... ¿vino a comprarme el almuerzo? Tengo nada. El pueblo está raro.
+elif GameManager.is_wearing_mask("oso")
+	Vendedor: ¿El leñador? Pensé que no volvía. Si busca leña, yo no vendo. El pueblo, más adelante.
+if GameManager.has_hablado_guardia()
+	Vendedor: Todavía acá. El bolso es suyo. El pueblo, allá. Yo espero a que alguien compre algo.
+	=> END
+Detective: Buenas... me quedé varado en la ruta. Vi las luces del pueblo y me arrimé.
+Vendedor: Vendedor de paso. Esta noche no se mueve ni un cobre. El pueblo más adelante está raro... yo me quedé en la ruta, a ver si pasa alguien con hambre de chucherías.
+- Tengo un hambre... ¿hay dónde comer?
+	Vendedor: Comida de verdad, en el bar. Yo vendo lo que quepa en el carrito... y hoy el carrito está vacío.
+	Vendedor: Si busca al que manda el caso... la comisaría.
+	=> wrap
+- ¿Raro cómo? ¿Pasó algo?
+	Vendedor: Murmullos. Frío. Un leñador que no vuelve. Malo para el comercio.
+	Vendedor: Si pregunta, pregunte adentro. Yo atiendo la ruta.
+	=> wrap
+- Disculpe... ¿lleva una máscara?
+	Vendedor: ¿Máscara? ¿De qué habla? Si busca algo caliente, vaya al bar. Si busca al que manda el caso... la comisaría.
+	=> wrap
+
+~ wrap
+Detective: Gracias. Voy a mirar un poco y después entro al pueblo.
+Vendedor: Agarre su bolso antes de irse. Allá adentro va a querer manos libres... y yo no se lo voy a guardar.
+do GameManager.mark_hablado_guardia()
+=> END

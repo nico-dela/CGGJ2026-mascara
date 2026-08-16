@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dtnqy2wg7i0k0"
+path="res://.godot/imported/road_bag_blocked.dialogue-9a9e1abcb63f94d7e280b8e6f2e55729.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/road_bag_blocked.dialogue"
+dest_files=["res://.godot/imported/road_bag_blocked.dialogue-9a9e1abcb63f94d7e280b8e6f2e55729.tres"]
+
+[params]
+
+defaults=true

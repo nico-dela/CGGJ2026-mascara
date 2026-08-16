@@ -1,0 +1,9 @@
+Road scene assets (CC0 / public domain):
+- fondo_ruta.webp: composed from Magical Road Pixel Art Environment by ansimuz (CC0) + night grading for this jam
+- moto.png: 2D Bike Sprite by Chasersgaming (CC0) via OpenGameArt
+- bolso.png: original pixel prop for this jam
+- arbol.png: Magical Road tree layer by ansimuz (CC0)
+
+Sources:
+- https://opengameart.org/content/magical-road-pixel-art-environment
+- https://opengameart.org/content/2d-bike-sprite-0

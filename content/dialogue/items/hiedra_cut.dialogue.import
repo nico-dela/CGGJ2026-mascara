@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://3y8udawcc7cn"
+path="res://.godot/imported/hiedra_cut.dialogue-d3b35228a854302dd6027992ce2ea998.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/hiedra_cut.dialogue"
+dest_files=["res://.godot/imported/hiedra_cut.dialogue-d3b35228a854302dd6027992ce2ea998.tres"]
+
+[params]
+
+defaults=true

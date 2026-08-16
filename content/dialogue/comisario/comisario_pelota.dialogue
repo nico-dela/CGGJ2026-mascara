@@ -1,0 +1,12 @@
+~ start
+if GameManager.has_huellas_pelota()
+	Policía: Ya le dije: las huellas son del mozo. No me haga repetir.
+	=> END
+Detective: Encontré esta pelota en el bosque. Parece evidencia.
+Policía: Déjemela.
+Policía: ...Huellas. Claras. Son del mozo.
+Detective: ¿Del mozo? Él dijo que hace años no pisa el bosque.
+Policía: Entonces miente. O usted malinterpretó. Yo solo le digo lo que dicen las huellas.
+Policía: El resto... averígüelo usted. Si el bosque guardó más que una pelota... mírelo otra vez.
+do GameManager.mark_huellas_pelota()
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cmv1neuftgnto"
+path="res://.godot/imported/comisario_credencial.dialogue-1ca9d02e39ca3acf5d9e76a971eaadc4.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_credencial.dialogue"
+dest_files=["res://.godot/imported/comisario_credencial.dialogue-1ca9d02e39ca3acf5d9e76a971eaadc4.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,267 @@
+[gd_scene format=3 uid="uid://bcs5ske44y082"]
+
+[ext_resource type="Script" uid="uid://0wss7x84ijj5" path="res://scenes/rooms/room_1.gd" id="1_m0003"]
+[ext_resource type="PackedScene" uid="uid://cr4pdu6w7tueb" path="res://scenes/systems/room_transition.tscn" id="2_ydwoj"]
+[ext_resource type="Texture2D" uid="uid://cknt6nq5ogkma" path="res://assets/art/rooms/town/fondo_pueblo_bosque.webp" id="3_wy464"]
+[ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/actors/player.tscn" id="4_irjyx"]
+[ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/ui/inventory_ui.tscn" id="5_0akh5"]
+[ext_resource type="Texture2D" uid="uid://cyog47486wmku" path="res://assets/art/rooms/town/hacha_tronco.webp" id="9_4wlnl"]
+[ext_resource type="AudioStream" uid="uid://b11jf0t4who6k" path="res://assets/audio/sfx/puerta_comisaria.ogg" id="9_comisaria"]
+[ext_resource type="Script" uid="uid://dejdtuisrlttb" path="res://scripts/interactables/hacha_tronco_area.gd" id="9_f05lu"]
+[ext_resource type="AudioStream" uid="uid://c27d8sir7ynjc" path="res://assets/audio/sfx/puerta_taberna.ogg" id="10_taberna"]
+[ext_resource type="Texture2D" uid="uid://65glrg0ivmtr" path="res://assets/art/rooms/town/hiedra.webp" id="11_f05lu"]
+[ext_resource type="Script" uid="uid://dai53jswdincy" path="res://scripts/interactables/hiedra_area.gd" id="11_ncuik"]
+[ext_resource type="Texture2D" uid="uid://cwgw6kilw55s2" path="res://assets/art/rooms/town/foreground_pueblo_bosque.webp" id="12_4xhvh"]
+[ext_resource type="Script" uid="uid://bs2j4e1v20pye" path="res://scripts/interactables/oso_area.gd" id="13_hv3v0"]
+[ext_resource type="Texture2D" uid="uid://b4rxr76cc5pt7" path="res://assets/art/items/oso.png" id="14_gu0is"]
+[ext_resource type="Texture2D" uid="uid://c2lftt6k0abxk" path="res://assets/art/items/patito.png" id="15_1afn8"]
+[ext_resource type="Script" uid="uid://b5uhf43b1cnqd" path="res://scripts/interactables/patito_area.gd" id="15_m0003"]
+[ext_resource type="Texture2D" uid="uid://dsvjbvep2mcaw" path="res://assets/art/items/pelota.png" id="16_y5mqv"]
+[ext_resource type="Script" uid="uid://cn8re2jjfp3vb" path="res://scripts/interactables/pelota_area.gd" id="17_ncuik"]
+[ext_resource type="PackedScene" uid="uid://c6gpgr8mhuw6w" path="res://scenes/actors/pescador.tscn" id="20_lwgnx"]
+[ext_resource type="Script" uid="uid://bn4y0o025w2e0" path="res://scripts/interactables/cartel_area.gd" id="21_cartel"]
+[ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="22_font"]
+[ext_resource type="Script" uid="uid://b0ijxpcan0x8e" path="res://scenes/rooms/collision_shape_2d_4.gd" id="23_paso"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_k86bo"]
+a = Vector2(202.00005, 1081)
+b = Vector2(1288, 1085)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f05lu"]
+a = Vector2(0, 1080)
+b = Vector2(4397, 1084)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4xhvh"]
+a = Vector2(4390, -2)
+b = Vector2(4405, 1071)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omxow"]
+size = Vector2(69.55554, 82.58329)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_paso"]
+a = Vector2(0, -400)
+b = Vector2(0, 700)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k86bo"]
+size = Vector2(380.00012, 180.76926)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1afn8"]
+radius = 72.1734
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0003"]
+radius = 28.635643
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ncuik"]
+radius = 21.0
+height = 59.635254
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cartel"]
+size = Vector2(160, 200)
+
+[node name="Room1" type="Node2D" unique_id=445341437]
+z_index = -1
+script = ExtResource("1_m0003")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=189922967]
+position = Vector2(2198, 545)
+scale = Vector2(1.61643, 1.61643)
+texture = ExtResource("3_wy464")
+
+[node name="Player" parent="." unique_id=1174022349 instance=ExtResource("4_irjyx")]
+position = Vector2(467, 855)
+
+[node name="Room2Transition" parent="." unique_id=1597323543 instance=ExtResource("2_ydwoj")]
+position = Vector2(744.00006, 784)
+rotation = 3.1415927
+scale = Vector2(5.984138, -10.545672)
+target_scene = "res://scenes/rooms/room_2.tscn"
+target_spawn_id = "Room2Marker"
+transition_sound = ExtResource("9_comisaria")
+interact_label = "Comisaría"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1007142986]
+
+[node name="InventoryUI" parent="CanvasLayer" unique_id=657581513 instance=ExtResource("5_0akh5")]
+
+[node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1242395800]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomLimits" unique_id=2091715809]
+position = Vector2(-263, 479)
+polygon = PackedVector2Array(24, -5, 12, 253, 212, 206, 340, 218, 670, 218, 669, 21, 854.60266, 17.566467, 851, 249, 1261, 253, 1269, 17, 1482, 21, 1478, 234, 1770, 218, 2423, 196, 3177, 119, 4400, 120, 4405, -3, 19, -20)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomLimits" unique_id=899502228]
+position = Vector2(1079, -202)
+rotation = 1.5707964
+shape = SubResource("SegmentShape2D_k86bo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomLimits" unique_id=1965399352]
+shape = SubResource("SegmentShape2D_f05lu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomLimits" unique_id=167833169]
+shape = SubResource("SegmentShape2D_4xhvh")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1798616645]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=989587525]
+position = Vector2(585, 924)
+
+[node name="Spawn_Bar_to_Town" type="Marker2D" parent="SpawnPoints" unique_id=1242876121]
+position = Vector2(1393, 913)
+
+[node name="Spawn_From_Road" type="Marker2D" parent="SpawnPoints" unique_id=1131907757]
+position = Vector2(474, 923)
+
+[node name="Spawn_To_Rio" type="Marker2D" parent="SpawnPoints" unique_id=70020512]
+position = Vector2(4000, 923)
+
+[node name="RoomRoadTransition" parent="." unique_id=1203521239 instance=ExtResource("2_ydwoj")]
+position = Vector2(48, 860)
+scale = Vector2(4.5, 9)
+target_scene = "res://scenes/rooms/room_road.tscn"
+target_spawn_id = "Spawn_From_Town"
+verb = "Volver a"
+interact_label = "Ruta"
+
+[node name="Room3Transition" parent="." unique_id=253777366 instance=ExtResource("2_ydwoj")]
+position = Vector2(1363, 775)
+scale = Vector2(8.041754, 11.006765)
+target_scene = "res://scenes/rooms/room_3.tscn"
+target_spawn_id = "Marker2D"
+transition_sound = ExtResource("10_taberna")
+interact_label = "Taberna"
+
+[node name="HiedraArea" type="Area2D" parent="." unique_id=1624636415]
+z_index = 4096
+position = Vector2(3360, -3257)
+scale = Vector2(4.5, 9)
+script = ExtResource("11_ncuik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HiedraArea" unique_id=775166784]
+position = Vector2(194.55554, 440.73608)
+shape = SubResource("RectangleShape2D_omxow")
+
+[node name="Sprite2D" type="Sprite2D" parent="HiedraArea" unique_id=1628009732]
+z_index = 4096
+position = Vector2(199.55556, 440.88892)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("11_f05lu")
+
+[node name="PasoWall" type="StaticBody2D" parent="." unique_id=692771151]
+script = ExtResource("23_paso")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="PasoWall" unique_id=1163690930]
+position = Vector2(4120, 403)
+shape = SubResource("SegmentShape2D_paso")
+
+[node name="RoomRioTransition" parent="." unique_id=958730949 instance=ExtResource("2_ydwoj")]
+visible = false
+position = Vector2(4348, 860)
+scale = Vector2(4.5, 9)
+target_scene = "res://scenes/rooms/room_4.tscn"
+target_spawn_id = "Spawn_From_Town"
+verb = "Ir al"
+interact_label = "Río"
+require_paso_abierto = true
+
+[node name="HachaTroncoArea" type="Area2D" parent="." unique_id=1616461379]
+visible = false
+position = Vector2(3192, 691)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("9_f05lu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HachaTroncoArea" unique_id=1010730675]
+position = Vector2(482.3081, 641.92316)
+shape = SubResource("RectangleShape2D_k86bo")
+
+[node name="Sprite2D" type="Sprite2D" parent="HachaTroncoArea" unique_id=1567189916]
+z_index = 4096
+scale = Vector2(2.48682, 2.48682)
+texture = ExtResource("9_4wlnl")
+
+[node name="ForegroundArea" type="StaticBody2D" parent="." unique_id=1466888589]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForegroundArea" unique_id=55316177]
+
+[node name="Sprite2D" type="Sprite2D" parent="ForegroundArea" unique_id=55461565]
+z_index = 4096
+position = Vector2(2198, 539)
+scale = Vector2(1.61643, 1.61643)
+texture = ExtResource("12_4xhvh")
+
+[node name="MascaraOsoArea" type="Area2D" parent="." unique_id=722852910]
+visible = false
+position = Vector2(3868.0002, 790)
+rotation = 0.57072264
+scale = Vector2(0.6999999, 0.6999999)
+script = ExtResource("13_hv3v0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MascaraOsoArea" unique_id=1037035184]
+shape = SubResource("CircleShape2D_1afn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="MascaraOsoArea" unique_id=832340726]
+texture = ExtResource("14_gu0is")
+
+[node name="PatitoArea" type="Area2D" parent="." unique_id=1696679341]
+visible = false
+script = ExtResource("15_m0003")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PatitoArea" unique_id=1553476503]
+position = Vector2(2679, 820)
+shape = SubResource("CircleShape2D_m0003")
+
+[node name="Sprite2D" type="Sprite2D" parent="PatitoArea" unique_id=341458952]
+position = Vector2(2680.0005, 819.9999)
+rotation = 0.45204028
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("15_1afn8")
+
+[node name="PelotaArea" type="Area2D" parent="." unique_id=1723847748]
+visible = false
+position = Vector2(97, 0)
+script = ExtResource("17_ncuik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PelotaArea" unique_id=1925394734]
+position = Vector2(3201, 803)
+rotation = -0.7225663
+shape = SubResource("CapsuleShape2D_ncuik")
+
+[node name="Sprite2D" type="Sprite2D" parent="PelotaArea" unique_id=1412248721]
+position = Vector2(3203, 804)
+rotation = -0.7225663
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_y5mqv")
+
+[node name="Pescador" parent="." unique_id=1525991505 instance=ExtResource("20_lwgnx")]
+position = Vector2(1738, 816)
+
+[node name="CartelArea" type="Area2D" parent="." unique_id=1917610779]
+position = Vector2(465, 692)
+script = ExtResource("21_cartel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CartelArea" unique_id=1120780733]
+shape = SubResource("RectangleShape2D_cartel")
+
+[node name="CartelPanel" type="ColorRect" parent="CartelArea" unique_id=1051022895]
+offset_left = -70.0
+offset_top = -90.0
+offset_right = 70.0
+offset_bottom = 70.0
+mouse_filter = 2
+color = Color(0.45, 0.32, 0.18, 0.92)
+
+[node name="CartelLabel" type="Label" parent="CartelArea" unique_id=637065691]
+offset_left = -60.0
+offset_top = -70.0
+offset_right = 60.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.98, 0.9, 0.65, 1)
+theme_override_fonts/font = ExtResource("22_font")
+theme_override_font_sizes/font_size = 20
+text = "SE BUSCA
+EL LEÑADOR
+Sin leña,
+la caldera
+se apaga"
+horizontal_alignment = 1
+vertical_alignment = 1

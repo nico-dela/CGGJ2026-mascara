@@ -1,0 +1,42 @@
+~ start
+if GameManager.is_wearing_mask("mascara_mozo")
+	Pescador: El del bar... ¿o no? La cara engaña. Hoy más que nunca.
+	=> END
+if GameManager.is_wearing_mask("mascara_poli")
+	Pescador: Esa cara... el de la comisaría. Pero su voz no es la de él.
+	=> END
+if GameManager.is_wearing_mask("mascara_vendedor")
+	Pescador: El de la ruta... el que vende. Pero la voz no es de feria.
+	=> END
+Pescador: ...Alguien nuevo. El pueblo murmura; usted también mira.
+- Buenas. ¿Qué hace aquí, sentado?
+	Pescador: Miro el pueblo. Hoy guarda secretos viejos... y usted anda con preguntas en la cara.
+	=> ask
+- Disculpe la molestia. Solo pasaba.
+	Pescador: Nadie "solo pasa" esta noche. Siéntese o pregunte de una.
+	=> ask
+
+~ ask
+- En este pueblo todos cubren la cara. Usted no.
+	Pescador: ¿Cubrir la cara? No sé a qué se refiere. Un día sentí que algo se me caía... entró el pánico, como si me hubieran dejado desnudo.
+	Pescador: Después me acostumbré a quedarme aquí, mirando en silencio.
+	=> lumber
+- ¿Sabe algo del leñador? El pueblo se queda sin leña.
+	=> lumber_direct
+- ¿Vio algo raro en el bosque?
+	Pescador: El bosque calla cuando quiere. Yo solo veo lo que pasa frente a mí.
+	=> lumber
+
+~ lumber_direct
+Pescador: El leñador abastecía la caldera... y a quien lo pidiera.
+Pescador: Cuando el bosque calla, el pueblo pasa frío. Vuelva cuando haya escuchado la verdad.
+=> END
+
+~ lumber
+- ¿Y el leñador? El pueblo necesita leña.
+	Pescador: El leñador abastecía la caldera... y a quien lo pidiera. Yo solo veo lo que pasa frente a mí.
+	Pescador: Cuando el bosque calla, el pueblo pasa frío. Vuelva cuando haya escuchado la verdad.
+	=> END
+- Gracias. Seguiré mirando.
+	Pescador: El río entiende mejor que yo. Si trae la verdad... vuelva.
+	=> END

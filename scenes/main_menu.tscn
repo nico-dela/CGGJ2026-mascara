@@ -1,31 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://b31hurlcv6r26"]
+[gd_scene format=3 uid="uid://bvlrn152l1yxu"]
 
-[ext_resource type="Script" uid="uid://dcl6kihb4jmjm" path="res://scripts/main_menu.gd" id="1_eema0"]
-[ext_resource type="Texture2D" uid="uid://cmdqpbbxn4hof" path="res://images/play button.png" id="2_8ln24"]
-[ext_resource type="AudioStream" path="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list.ogg" id="2_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://btseemkb8nvf5" path="res://images/exit button.png" id="3_rtw2f"]
-[ext_resource type="AudioStream" path="res://audios/AMBIENTES Y SFX/MENÚ /Scrol list o play.ogg" id="3_wu84c"]
-[ext_resource type="Texture2D" path="res://images/config button.png" id="4_config"]
-[ext_resource type="Texture2D" path="res://images/credits button.png" id="5_credits"]
-[ext_resource type="Texture2D" path="res://images/MIniatura 1.webp" id="6_rtw2f"]
-[ext_resource type="FontFile" path="res://fonts/SpecialElite-Regular.ttf" id="7_font"]
-
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=2143574952]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eema0")
 
-[node name="HoverSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_bqqt6")
+[node name="HoverSound" type="AudioStreamPlayer" parent="." unique_id=1453179122]
 
-[node name="ClickSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_wu84c")
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=802736215]
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=898457518]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,11 +20,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_rtw2f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ButtonBar" type="VBoxContainer" parent="."]
+[node name="ButtonBar" type="VBoxContainer" parent="." unique_id=1231189384]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -53,61 +39,45 @@ grow_vertical = 0
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="IniciarButton" type="Button" parent="ButtonBar"]
+[node name="IniciarButton" type="Button" parent="ButtonBar" unique_id=1369375229]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
 theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
 text = "Jugar"
-icon = ExtResource("2_8ln24")
 alignment = 0
-icon_alignment = 0
 expand_icon = true
-vertical_icon_alignment = 1
 
-[node name="ConfiguracionButton" type="Button" parent="ButtonBar"]
+[node name="ConfiguracionButton" type="Button" parent="ButtonBar" unique_id=514525583]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
 theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
 text = "Configuración"
-icon = ExtResource("4_config")
 alignment = 0
-icon_alignment = 0
 expand_icon = true
-vertical_icon_alignment = 1
 
-[node name="CreditosButton" type="Button" parent="ButtonBar"]
+[node name="CreditosButton" type="Button" parent="ButtonBar" unique_id=1686578711]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
 theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
 text = "Créditos"
-icon = ExtResource("5_credits")
 alignment = 0
-icon_alignment = 0
 expand_icon = true
-vertical_icon_alignment = 1
 
-[node name="SalirButton" type="Button" parent="ButtonBar"]
+[node name="SalirButton" type="Button" parent="ButtonBar" unique_id=1066145057]
 custom_minimum_size = Vector2(300, 56)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("7_font")
-theme_override_font_sizes/font_size = 26
 theme_override_constants/icon_max_width = 40
+theme_override_font_sizes/font_size = 26
 text = "Salir"
-icon = ExtResource("3_rtw2f")
 alignment = 0
-icon_alignment = 0
 expand_icon = true
-vertical_icon_alignment = 1
 
 [connection signal="mouse_entered" from="ButtonBar/IniciarButton" to="." method="_on_iniciar_button_mouse_entered"]
 [connection signal="pressed" from="ButtonBar/IniciarButton" to="." method="_on_Iniciar_pressed"]

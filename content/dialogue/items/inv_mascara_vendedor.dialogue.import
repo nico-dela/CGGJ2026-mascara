@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c2gx6ud8c7pdq"
+path="res://.godot/imported/inv_mascara_vendedor.dialogue-a1b4547c2ef2b02231a1af2c02ad407b.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_mascara_vendedor.dialogue"
+dest_files=["res://.godot/imported/inv_mascara_vendedor.dialogue-a1b4547c2ef2b02231a1af2c02ad407b.tres"]
+
+[params]
+
+defaults=true

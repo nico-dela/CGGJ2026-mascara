@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://byuqg5xotl67c"
+path="res://.godot/imported/comisario_resolved.dialogue-586811d6cc1818881f1fa0a47c86fffd.tres"
+
+[deps]
+
+source_file="res://content/dialogue/comisario/comisario_resolved.dialogue"
+dest_files=["res://.godot/imported/comisario_resolved.dialogue-586811d6cc1818881f1fa0a47c86fffd.tres"]
+
+[params]
+
+defaults=true

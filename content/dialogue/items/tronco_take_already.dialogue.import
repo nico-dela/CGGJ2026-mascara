@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cky7tjx6d5nvk"
+path="res://.godot/imported/tronco_take_already.dialogue-e575dd7d34e4bba5d9c1869ee6ae5bd3.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/tronco_take_already.dialogue"
+dest_files=["res://.godot/imported/tronco_take_already.dialogue-e575dd7d34e4bba5d9c1869ee6ae5bd3.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dff4g4nmil7rk"]
+
+[ext_resource type="Script" uid="uid://b5x2pltgsyoam" path="res://scripts/ui/credits.gd" id="1_credits"]
+[ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="3_2fbfq"]
+[ext_resource type="Texture2D" uid="uid://bmui2ev66b6qw" path="res://assets/art/ui/back_button.png" id="3_back"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_page"]
+bg_color = Color(0.84, 0.76, 0.58, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.42, 0.28, 0.14, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 28
+content_margin_top = 24
+content_margin_right = 24
+content_margin_bottom = 24
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_credits")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.06, 0.16, 1)
+
+[node name="Book" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 36.0
+offset_right = -72.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="LeftPage" type="PanelContainer" parent="Book"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_page")
+
+[node name="LeftScroll" type="ScrollContainer" parent="Book/LeftPage"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="LeftBody" type="RichTextLabel" parent="Book/LeftPage/LeftScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.16, 0.11, 0.07, 1)
+theme_override_fonts/normal_font = ExtResource("3_2fbfq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+
+[node name="Spine" type="ColorRect" parent="Book"]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.28, 0.16, 0.08, 1)
+
+[node name="RightPage" type="PanelContainer" parent="Book"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_page")
+
+[node name="RightScroll" type="ScrollContainer" parent="Book/RightPage"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="RightBody" type="RichTextLabel" parent="Book/RightPage/RightScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.16, 0.11, 0.07, 1)
+theme_override_fonts/normal_font = ExtResource("3_2fbfq")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -72.0
+offset_right = 110.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_2fbfq")
+theme_override_font_sizes/font_size = 28
+text = "Menú principal"
+icon = ExtResource("3_back")
+alignment = 0
+expand_icon = true

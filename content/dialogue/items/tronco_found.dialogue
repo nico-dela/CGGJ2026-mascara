@@ -1,0 +1,9 @@
+~ start
+if GameManager.is_wearing_mask("oso")
+	Detective: El hacha... el tronco. Yo estaba talando. Cansancio. Después... un golpe. Y nada.
+	Detective: Aquí cayó la máscara. Aquí empezó el olvido.
+else
+	Detective: Aquí quedó un hacha junto al tronco. Como si alguien hubiera caído a medias.
+	Detective: Los rastros no son claros. Parece la escena de un accidente... o de alguien que huyó.
+	Detective: El hacha es un recuerdo de lo que pasó. No una llave para abrir caminos.
+=> END

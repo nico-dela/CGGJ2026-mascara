@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bbvjp1pb4ugjy"
+path="res://.godot/imported/pelota_take.dialogue-66db2eab1c9a1800a4c5273a98e46fe1.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/pelota_take.dialogue"
+dest_files=["res://.godot/imported/pelota_take.dialogue-66db2eab1c9a1800a4c5273a98e46fe1.tres"]
+
+[params]
+
+defaults=true

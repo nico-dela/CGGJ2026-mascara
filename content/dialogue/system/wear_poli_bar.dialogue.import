@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dvsbqdaaetren"
+path="res://.godot/imported/wear_poli_bar.dialogue-d7460d2f86d9e0e20ece0a3fb325f274.tres"
+
+[deps]
+
+source_file="res://content/dialogue/system/wear_poli_bar.dialogue"
+dest_files=["res://.godot/imported/wear_poli_bar.dialogue-d7460d2f86d9e0e20ece0a3fb325f274.tres"]
+
+[params]
+
+defaults=true

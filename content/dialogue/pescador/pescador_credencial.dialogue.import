@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ck8gqipm5j4m3"
+path="res://.godot/imported/pescador_credencial.dialogue-34ea4dd773e8060b80e9c6eee81b66a8.tres"
+
+[deps]
+
+source_file="res://content/dialogue/pescador/pescador_credencial.dialogue"
+dest_files=["res://.godot/imported/pescador_credencial.dialogue-34ea4dd773e8060b80e9c6eee81b66a8.tres"]
+
+[params]
+
+defaults=true

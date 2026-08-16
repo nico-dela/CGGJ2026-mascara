@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bmj1yqw3w867g"
+path="res://.godot/imported/pescador_observe.dialogue-35c6a71e3624f8f86d423c4c4707a685.tres"
+
+[deps]
+
+source_file="res://content/dialogue/pescador/pescador_observe.dialogue"
+dest_files=["res://.godot/imported/pescador_observe.dialogue-35c6a71e3624f8f86d423c4c4707a685.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://eb1uyg2pihq0"
+path="res://.godot/imported/patito_take.dialogue-f9aa8cd481f20bb28eb78a6fbd13651f.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/patito_take.dialogue"
+dest_files=["res://.godot/imported/patito_take.dialogue-f9aa8cd481f20bb28eb78a6fbd13651f.tres"]
+
+[params]
+
+defaults=true

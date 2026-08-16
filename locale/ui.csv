@@ -1,0 +1,91 @@
+keys,en
+Jugar,Play
+Configuración,Settings
+Créditos,Credits
+Salir,Quit
+Volver,Back
+Volumen,Volume
+Pantalla completa,Fullscreen
+Menú principal,Main menu
+Config,Settings
+Idioma,Language
+Español,Español
+English,English
+Mirar,Look
+Hablar,Talk
+Usar,Use
+Tomar,Take
+Bolso,Bag
+Observar,Look
+Agarrar,Take
+Objeto,Object
+¿Qué hacés?,What now?
+"Usar %s con %s","Use %s with %s"
+"Usar %s con…","Use %s with…"
+"Usar %s con...","Use %s with..."
+"Usar %s","Use %s"
+"Quitarme %s","Take off %s"
+"Usar %s conmigo","Use %s on myself"
+"Mirar %s","Look at %s"
+Devolverle su máscara,Give him his mask back
+Hablar con Mozo (máscara puesta),Talk to Bartender (mask on)
+Hablar con,Talk to
+Examinar,Examine
+Recoger,Pick up
+Ir al,Go to
+Volver al,Back to
+Volver a,Back to
+Entrar a,Enter
+Mozo,Bartender
+Policía,Chief
+Pescador,Fisherman
+Vendedor,Vendor
+Leñador,Lumberjack
+Detective,Detective
+Detective (Leñador),Detective (Lumberjack)
+Detective (Mozo),Detective (Bartender)
+Detective (Policía),Detective (Chief)
+Detective (Vendedor),Detective (Vendor)
+Credencial,Badge
+Patito,Duck
+Pelota,Ball
+Máscara,Mask
+Máscara del mozo,Bartender's mask
+Máscara del policía,Chief's mask
+Máscara del vendedor,Vendor's mask
+Hacha,Axe
+Cartel,Poster
+Tronco,Log
+Hiedra,Ivy
+Pueblo,Town
+Comisaría,Station
+Taberna,Tavern
+Ruta,Road
+Río,River
+Bosque,Woods
+"Para una mejor experiencia, girá la pantalla en horizontal.","For a better experience, turn your screen sideways."
+"La ruta. Las luces del pueblo están al este...","The road. Town lights to the east..."
+"SE BUSCA
+EL LEÑADOR
+Sin leña,
+la caldera
+se apaga","WANTED
+THE LUMBERJACK
+No firewood,
+the boiler
+goes cold"
+El Caso del Leñador,The Case of the Lumberjack
+Dirección y producción,Direction & production
+Programación,Programming
+Arte,Art
+Pixel art,Pixel art
+Animación,Animation
+Concept art,Concept art
+Diseño,Design
+Game design,Game design
+Audio,Audio
+Diseño de sonido,Sound design
+Música,Music
+Implementación de audio,Audio implementation
+Córdoba Global Game Jam 2026,Córdoba Global Game Jam 2026
+Producción y game design: todo el equipo.,Production and game design: the whole team.

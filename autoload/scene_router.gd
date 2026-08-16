@@ -36,8 +36,6 @@ func _setup_fade() -> void:
 func request_scene_change(scene_path: String, spawn_id: String = "", sound: AudioStream = null) -> void:
 	if _busy:
 		return
-	if InteractionHint:
-		InteractionHint.clear()
 	next_spawn_id = spawn_id
 	if sound:
 		_transition_audio.stream = sound

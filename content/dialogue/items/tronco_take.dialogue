@@ -1,0 +1,7 @@
+~ start
+if GameManager.has_item("oso") and not GameManager.is_wearing_mask("oso")
+	Detective: No cede. Como si solo respondiera a quien sabe talar.
+	Detective: Tengo la máscara del oso. Si me la pongo... ¿volveré a ser leñador, aunque sea un rato?
+else
+	Detective: Está clavada. No cede. Como si solo respondiera a quien sabe talar.
+=> END

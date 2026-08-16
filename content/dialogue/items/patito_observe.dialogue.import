@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dma6s5k22nbqp"
+path="res://.godot/imported/patito_observe.dialogue-4dbf881b573d88d02c025ab5c7cae336.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/patito_observe.dialogue"
+dest_files=["res://.godot/imported/patito_observe.dialogue-4dbf881b573d88d02c025ab5c7cae336.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://gxjgu5ph8j75"
+path="res://.godot/imported/inv_mascara_poli.dialogue-8f0b0d90712609fd7391ce210abb6d54.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_mascara_poli.dialogue"
+dest_files=["res://.godot/imported/inv_mascara_poli.dialogue-8f0b0d90712609fd7391ce210abb6d54.tres"]
+
+[params]
+
+defaults=true

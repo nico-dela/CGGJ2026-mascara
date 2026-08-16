@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://djcqrjpwkb4om"
+path="res://.godot/imported/bartender_observe.dialogue-a7767603fe959ea8bd382602e2e34c1e.tres"
+
+[deps]
+
+source_file="res://content/dialogue/bartender/bartender_observe.dialogue"
+dest_files=["res://.godot/imported/bartender_observe.dialogue-a7767603fe959ea8bd382602e2e34c1e.tres"]
+
+[params]
+
+defaults=true

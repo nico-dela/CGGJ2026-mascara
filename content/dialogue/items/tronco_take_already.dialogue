@@ -1,0 +1,6 @@
+~ start
+if GameManager.is_paso_abierto()
+	Detective: Ya cumplió su función. Solo queda el tronco... y el recuerdo del golpe.
+else
+	Detective: Ya tengo el hacha. Queda el tronco... y el recuerdo del golpe.
+=> END

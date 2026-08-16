@@ -1,9 +1,0 @@
-~ start
-Pescador: Ah... ya lo veo en su mirada. El caso quedó atrás, ¿verdad?
-Detective: El leñador no fue raptado. Se perdió en su propio cansancio. La máscara guardaba su verdad.
-Pescador: Entonces el río puede volver a cantar. El pueblo descansará... y usted también.
-Detective: ¿Eso es un adiós?
-Pescador: Es un hasta luego, detective. Las historias como la suya siempre vuelven a la orilla.
-Detective: Hasta la próxima.
-do GameManager.finalizar_juego()
-=> END

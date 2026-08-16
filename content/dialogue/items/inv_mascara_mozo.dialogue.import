@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bf41rha657xlm"
+path="res://.godot/imported/inv_mascara_mozo.dialogue-b1e0fded3711f45931294779997869d6.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/inv_mascara_mozo.dialogue"
+dest_files=["res://.godot/imported/inv_mascara_mozo.dialogue-b1e0fded3711f45931294779997869d6.tres"]
+
+[params]
+
+defaults=true

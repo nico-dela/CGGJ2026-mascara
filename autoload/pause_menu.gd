@@ -3,13 +3,15 @@ extends CanvasLayer
 ## Opens the configuration overlay as a pause menu during gameplay.
 ## Includes an on-screen button so the game can be played mouse-only.
 
-const CONFIG_SCENE := preload("res://scenes/configuration.tscn")
-const CONFIG_ICON := preload("res://images/config button.png")
-const UI_FONT: Font = preload("res://fonts/SpecialElite-Regular.ttf")
+const CONFIG_SCENE := preload("res://scenes/ui/configuration.tscn")
+const CONFIG_ICON := preload("res://assets/art/ui/config_button.png")
+const UI_FONT: Font = preload("res://assets/fonts/PixelifySans.ttf")
 const GAMEPLAY_SCENES := [
-	"res://scenes/room_1.tscn",
-	"res://scenes/room_2.tscn",
-	"res://scenes/room_3.tscn",
+	"res://scenes/rooms/room_1.tscn",
+	"res://scenes/rooms/room_2.tscn",
+	"res://scenes/rooms/room_3.tscn",
+	"res://scenes/rooms/room_4.tscn",
+	"res://scenes/rooms/room_road.tscn",
 ]
 
 var _dialogue_active := false
@@ -108,7 +110,8 @@ func _build_ui() -> void:
 
 	_button = Button.new()
 	_button.name = "SettingsButton"
-	_button.text = "Config"
+	_button.auto_translate = false
+	_button.text = tr("Config")
 	_button.icon = CONFIG_ICON
 	_button.expand_icon = true
 	_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
@@ -123,17 +126,24 @@ func _build_ui() -> void:
 	_layout_button()
 	if DisplayAdapt:
 		DisplayAdapt.adapted.connect(_layout_button)
+	if GameSettings:
+		GameSettings.locale_changed.connect(_on_locale_changed)
+
+func _on_locale_changed(_locale: String) -> void:
+	if _button:
+		_button.text = tr("Config")
+	_layout_button()
 
 func _layout_button() -> void:
 	if _button == null:
 		return
 	var ui := DisplayAdapt.ui_scale if DisplayAdapt else 1.0
 	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
-	var w := 168.0 * ui
-	var h := 56.0 * ui
+	var w := 200.0 * ui
+	var h := 60.0 * ui
 	var margin := 20.0 * ui
 	_button.add_theme_font_override("font", UI_FONT)
-	_button.add_theme_font_size_override("font_size", int(22 * ui))
+	_button.add_theme_font_size_override("font_size", int(28 * ui))
 	_button.custom_minimum_size = Vector2(w, h)
 	_button.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	_button.grow_horizontal = Control.GROW_DIRECTION_BEGIN

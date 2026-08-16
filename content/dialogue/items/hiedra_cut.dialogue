@@ -1,0 +1,6 @@
+~ start
+Detective: Con el hacha del leñador...
+Detective: ¡Ya! El paso al río queda libre.
+do GameManager.remove_item("hacha")
+do GameManager.abrir_paso()
+=> END

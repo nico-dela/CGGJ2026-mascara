@@ -65,6 +65,12 @@ position = Vector2(140, 923)
 [node name="PescadorRiver" type="Marker2D" parent="SpawnPoints" unique_id=1900271198]
 position = Vector2(1750, 831)
 
+[node name="Stone_Left" type="Marker2D" parent="SpawnPoints" unique_id=1824869]
+position = Vector2(921, 952)
+
+[node name="Stone_Right" type="Marker2D" parent="SpawnPoints" unique_id=1347337853]
+position = Vector2(1374, 744)
+
 [node name="TownTransition" parent="." unique_id=161537205 instance=ExtResource("5_trans")]
 position = Vector2(48, 860)
 scale = Vector2(4.5, 9)
@@ -72,6 +78,13 @@ target_scene = "res://scenes/rooms/room_1.tscn"
 target_spawn_id = "Spawn_To_Rio"
 verb = "Volver al"
 interact_label = "Bosque"
+
+[node name="RiverBlock" type="StaticBody2D" parent="." unique_id=1732000398]
+collision_mask = 0
+
+[node name="WaterBody" type="CollisionPolygon2D" parent="RiverBlock" unique_id=161439338]
+position = Vector2(-11, 6)
+polygon = PackedVector2Array(1508, 1081, 1303, 1015, 1060, 867, 1075, 811, 1219, 725, 1238, 702, 1144, 661, 1247, 646, 1285, 710, 1208, 805, 1225, 852, 1277, 875, 1717, 827, 1805, 885, 2031, 870, 2150, 834, 2229, 820, 2222, 1081, 2134, 1070)
 
 [node name="ForegroundArea" type="StaticBody2D" parent="." unique_id=1683047830]
 

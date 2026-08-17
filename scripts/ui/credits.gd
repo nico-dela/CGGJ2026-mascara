@@ -59,10 +59,10 @@ func _refresh_text() -> void:
 		right_body.text = _right_page(s)
 
 func _left_page(s: float) -> String:
-	var title_s := int(40 * s)
-	var head_s := int(28 * s)
-	var role_s := int(20 * s)
-	var name_s := int(20 * s)
+	var title_s := int(56 * s)
+	var head_s := int(38 * s)
+	var role_s := int(28 * s)
+	var name_s := int(28 * s)
 	var gap := int(10 * s)
 	var out := ""
 	out += _center(_colored(COL_TITLE, title_s, tr("El Caso del Leñador").to_upper()))
@@ -89,9 +89,9 @@ func _left_page(s: float) -> String:
 	return out
 
 func _right_page(s: float) -> String:
-	var head_s := int(28 * s)
-	var role_s := int(20 * s)
-	var name_s := int(20 * s)
+	var head_s := int(38 * s)
+	var role_s := int(28 * s)
+	var name_s := int(28 * s)
 	var out := ""
 	out += _block(tr("Concept art"), ["Tobeco (Tobías Gencarelli)"], role_s, name_s)
 	out += _colored(COL_ROLE, head_s, tr("Diseño").to_upper()) + "\n"
@@ -105,7 +105,7 @@ func _right_page(s: float) -> String:
 	out += _pad(int(16 * s))
 	out += _colored(COL_INK, name_s, tr("Córdoba Global Game Jam 2026"))
 	out += "\n"
-	out += _colored(COL_INK, int(18 * s), tr("Producción y game design: todo el equipo."))
+	out += _colored(COL_INK, int(24 * s), tr("Producción y game design: todo el equipo."))
 	return out
 
 func _block(role: String, names: Array, role_s: int, name_s: int) -> String:

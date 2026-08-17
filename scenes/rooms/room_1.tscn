@@ -84,11 +84,10 @@ interact_label = "Comisaría"
 [node name="InventoryUI" parent="CanvasLayer" unique_id=657581513 instance=ExtResource("5_0akh5")]
 
 [node name="RoomLimits" type="StaticBody2D" parent="." unique_id=1242395800]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RoomLimits" unique_id=2091715809]
 position = Vector2(-263, 479)
-polygon = PackedVector2Array(24, -5, 12, 253, 212, 206, 340, 218, 670, 218, 669, 21, 854.60266, 17.566467, 851, 249, 1261, 253, 1269, 17, 1482, 21, 1478, 234, 1770, 218, 2423, 196, 3177, 119, 4400, 120, 4405, -3, 19, -20)
+polygon = PackedVector2Array(24, -5, 12, 253, 212, 206, 340, 218, 670, 218, 669, 21, 854.60266, 17.566467, 851, 249, 1261, 253, 1269, 17, 1482, 21, 1478, 234, 1770, 218, 2075, 242, 2279, 256, 2607, 256, 3083, 225, 3177, 119, 4400, 120, 4405, -3, 19, -20)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomLimits" unique_id=899502228]
 position = Vector2(1079, -202)
@@ -233,7 +232,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_y5mqv")
 
 [node name="Pescador" parent="." unique_id=1525991505 instance=ExtResource("20_lwgnx")]
-position = Vector2(1738, 816)
+position = Vector2(1865, 819)
 
 [node name="CartelArea" type="Area2D" parent="." unique_id=1917610779]
 position = Vector2(465, 692)

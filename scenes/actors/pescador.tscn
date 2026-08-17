@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://duq05rgao3fjr" path="res://content/dialogue/pescador/pescador.dialogue" id="4_dlg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qm6ux"]
-radius = 39.0
+radius = 58.0
 height = 116.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dc4qt"]
@@ -336,12 +336,13 @@ verb = "Hablar con"
 interact_label = "Pescador"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=729799248]
-position = Vector2(50, -5)
+position = Vector2(5, -4)
 shape = SubResource("CapsuleShape2D_qm6ux")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=614340154]
-position = Vector2(59, 0)
+position = Vector2(-9, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_wqcsw")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.84586334

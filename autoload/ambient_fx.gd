@@ -8,13 +8,16 @@ const FLICKER_SHADER := preload("res://assets/shaders/interior_flicker.gdshader"
 const HAZE_SHADER := preload("res://assets/shaders/haze_drift.gdshader")
 
 var _vignette: ColorRect
+var _meal_fade: ColorRect
 var _room_fx_root: Node2D
 var _pixel_tex: Texture2D
+var _meal_tween: Tween
 
 func _ready() -> void:
 	layer = 8
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build_vignette()
+	_build_meal_fade()
 	if SceneRouter and SceneRouter.has_signal("scene_changed"):
 		SceneRouter.scene_changed.connect(_on_scene_changed)
 	call_deferred("_refresh_for_current_scene")
@@ -36,6 +39,43 @@ func _build_vignette() -> void:
 	mat.shader = VIGNETTE_SHADER
 	_vignette.material = mat
 	root.add_child(_vignette)
+
+func _build_meal_fade() -> void:
+	# Above dialogue so a short black fade reads as “time passes”.
+	var layer_node := CanvasLayer.new()
+	layer_node.name = "MealFadeLayer"
+	layer_node.layer = 110
+	layer_node.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(layer_node)
+	var root := Control.new()
+	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	layer_node.add_child(root)
+	_meal_fade = ColorRect.new()
+	_meal_fade.name = "MealFade"
+	_meal_fade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_meal_fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_meal_fade.color = Color(0, 0, 0, 0)
+	_meal_fade.visible = false
+	root.add_child(_meal_fade)
+
+## Simple black fade in/out when the bartender serves the plate.
+## Awaitable so Dialogue Manager waits until the fade finishes.
+func play_warm_meal() -> void:
+	if _meal_fade == null:
+		return
+	if _meal_tween and _meal_tween.is_valid():
+		_meal_tween.kill()
+	_meal_fade.visible = true
+	_meal_fade.color = Color(0, 0, 0, 0)
+	_meal_tween = create_tween()
+	_meal_tween.set_trans(Tween.TRANS_SINE)
+	_meal_tween.tween_property(_meal_fade, "color:a", 1.0, 0.4)
+	_meal_tween.tween_interval(0.35)
+	_meal_tween.tween_property(_meal_fade, "color:a", 0.0, 0.45)
+	await _meal_tween.finished
+	if _meal_fade:
+		_meal_fade.visible = false
 
 func _on_scene_changed(_path: String) -> void:
 	await get_tree().process_frame

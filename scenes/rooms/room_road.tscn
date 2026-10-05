@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dit5jyfyjg1gx" path="res://assets/art/rooms/road/fondo_ruta.webp" id="2_bg"]
 [ext_resource type="PackedScene" uid="uid://vhyy031qfte3" path="res://scenes/actors/player.tscn" id="3_player"]
 [ext_resource type="PackedScene" uid="uid://cee21kfn1hx4x" path="res://scenes/ui/inventory_ui.tscn" id="4_inv"]
-[ext_resource type="Script" uid="uid://dtcjac2t48q13" path="res://scripts/actors/road_police.gd" id="5_police"]
+[ext_resource type="Script" uid="uid://badn5k2kt33mg" path="res://scripts/actors/hawker.gd" id="5_hawker"]
 [ext_resource type="Texture2D" uid="uid://c5xig7ck5q542" path="res://assets/art/characters/Vendedor_Idle.png" id="6_poli"]
 [ext_resource type="Script" uid="uid://buvm1ljygqg5s" path="res://scripts/interactables/road_bag.gd" id="7_bag"]
 [ext_resource type="FontFile" uid="uid://lrs66i8aslri" path="res://assets/fonts/PixelifySans.ttf" id="8_font"]
@@ -97,6 +97,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bag"]
 size = Vector2(140, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moto"]
+size = Vector2(170, 80)
+
 [node name="RoomRoad" type="Node2D" unique_id=119779304]
 position = Vector2(0, 12000)
 script = ExtResource("1_road")
@@ -129,25 +132,31 @@ shape = SubResource("SegmentShape2D_wqcsw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=2131569496]
 shape = SubResource("SegmentShape2D_ground")
 
-[node name="Moto" type="Sprite2D" parent="." unique_id=414603875]
+[node name="Moto" type="StaticBody2D" parent="." unique_id=414603875]
 z_index = 2
 position = Vector2(380, 900)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moto" unique_id=414603876]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_moto")
+
+[node name="Sprite2D" type="Sprite2D" parent="Moto" unique_id=414603877]
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("9_moto")
 
 [node name="Player" parent="." unique_id=1161566690 instance=ExtResource("3_player")]
 position = Vector2(560, 900)
 
-[node name="RoadPolice" type="Area2D" parent="." unique_id=590921576]
+[node name="Hawker" type="Area2D" parent="." unique_id=590921576]
 z_index = 4096
 position = Vector2(980, 875)
-script = ExtResource("5_police")
-visual_oso_flag = "vendedor_tiene_oso"
+script = ExtResource("5_hawker")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RoadPolice" unique_id=152022636]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hawker" unique_id=152022636]
 shape = SubResource("CapsuleShape2D_police")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RoadPolice" unique_id=114515102]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hawker" unique_id=114515102]
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_poli")
 animation = &"idle"
@@ -199,4 +208,4 @@ target_scene = "res://scenes/rooms/room_1.tscn"
 target_spawn_id = "Spawn_From_Road"
 verb = "Ir al"
 interact_label = "Pueblo"
-require_hablado_guardia = true
+require_hablado_hawker = true

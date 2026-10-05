@@ -1,7 +1,5 @@
 extends Node
 
-signal cantinero_mascara_puesta
-signal cantinero_mascara_quitada
 signal paso_abierto_signal
 signal caso_resuelto_signal
 signal clues_changed
@@ -9,51 +7,36 @@ signal mask_equipped_changed
 signal bartender_expuesto_signal
 signal huellas_changed
 signal patito_devuelto_signal
-signal hablado_guardia_signal
+signal hablado_hawker_signal
 signal tiene_bolso_signal
 signal comisario_briefing_signal
 signal hablado_cantinero_signal
-signal npc_oso_visual_changed
 
-var cantinero_mascara := false
 var paso_abierto := false
 var caso_resuelto := false
 var hablado_cantinero := false
 var huellas_pelota := false
 var patito_devuelto := false
 var bartender_expuesto := false
-var hablado_guardia := false
+## Talked to the road hawker (unlocks town + bag take).
+var hablado_hawker := false
 ## World bag collected — enables Bolso HUD / taking items (not an inventory slot).
 var tiene_bolso := false
 ## Comisario asked for help / case briefing done.
 var comisario_briefing := false
-## Mask id currently worn by the detective (e.g. "oso"), or "".
+## Mask id currently worn by the detective (plot: only "oso"), or "".
 var mascara_equipada := ""
-## True while the police is holding the oso mask from a swap.
-var comisario_tiene_oso := false
-## True while the road vendor is holding the oso mask from a swap.
-var vendedor_tiene_oso := false
 ## Clue ids the player has inspected (patito, pelota, tronco, oso, etc.)
 var clues_seen: Array[String] = []
 
-func poner_mascara_cantinero() -> void:
-	cantinero_mascara = true
-	if AudioManager:
-		var sfx: AudioStream = load("res://assets/audio/sfx/mascara_taberna.ogg")
-		AudioManager.play_sfx(sfx)
-	cantinero_mascara_puesta.emit()
-	npc_oso_visual_changed.emit()
-
-func quitar_mascara_cantinero() -> void:
-	cantinero_mascara = false
-	cantinero_mascara_quitada.emit()
-	npc_oso_visual_changed.emit()
+## Only the bear mask is wearable for plot.
+const PLOT_MASK_ID := "oso"
 
 func equip_mask(mask_id: String) -> void:
-	if mask_id == "" or not Inventory.has_item(mask_id):
+	if mask_id != PLOT_MASK_ID or not Inventory.has_item(mask_id):
 		return
 	mascara_equipada = mask_id
-	if AudioManager and mask_id == "oso":
+	if AudioManager:
 		var sfx: AudioStream = load("res://assets/audio/sfx/mascara_oso.ogg")
 		AudioManager.play_sfx(sfx)
 	mask_equipped_changed.emit()
@@ -65,6 +48,8 @@ func unequip_mask() -> void:
 	mask_equipped_changed.emit()
 
 func toggle_equip_mask(mask_id: String) -> void:
+	if mask_id != PLOT_MASK_ID:
+		return
 	if mascara_equipada == mask_id:
 		unequip_mask()
 	else:
@@ -75,31 +60,11 @@ func is_wearing_mask(mask_id: String = "") -> bool:
 		return mascara_equipada != ""
 	return mascara_equipada == mask_id
 
-func set_comisario_tiene_oso(value: bool) -> void:
-	if comisario_tiene_oso == value:
-		return
-	comisario_tiene_oso = value
-	npc_oso_visual_changed.emit()
-
-func set_vendedor_tiene_oso(value: bool) -> void:
-	if vendedor_tiene_oso == value:
-		return
-	vendedor_tiene_oso = value
-	npc_oso_visual_changed.emit()
-
 ## Balloon speaker for detective lines; shows worn mask role when equipped.
 func get_detective_speaker_name() -> String:
-	match mascara_equipada:
-		"oso":
-			return "Detective (Leñador)"
-		"mascara_mozo":
-			return "Detective (Mozo)"
-		"mascara_poli":
-			return "Detective (Policía)"
-		"mascara_vendedor":
-			return "Detective (Vendedor)"
-		_:
-			return "Detective"
+	if mascara_equipada == PLOT_MASK_ID:
+		return "Detective (Leñador)"
+	return "Detective"
 
 func mark_huellas_pelota() -> void:
 	if huellas_pelota:
@@ -163,14 +128,14 @@ func mark_hablado_cantinero() -> void:
 func has_hablado_cantinero() -> bool:
 	return hablado_cantinero
 
-func mark_hablado_guardia() -> void:
-	if hablado_guardia:
+func mark_hablado_hawker() -> void:
+	if hablado_hawker:
 		return
-	hablado_guardia = true
-	hablado_guardia_signal.emit()
+	hablado_hawker = true
+	hablado_hawker_signal.emit()
 
-func has_hablado_guardia() -> bool:
-	return hablado_guardia
+func has_hablado_hawker() -> bool:
+	return hablado_hawker
 
 func mark_tiene_bolso() -> void:
 	if tiene_bolso:
@@ -197,71 +162,64 @@ func resolver_caso() -> void:
 	caso_resuelto_signal.emit()
 
 func reset() -> void:
-	cantinero_mascara = false
 	paso_abierto = false
 	caso_resuelto = false
 	hablado_cantinero = false
 	huellas_pelota = false
 	patito_devuelto = false
 	bartender_expuesto = false
-	hablado_guardia = false
+	hablado_hawker = false
 	tiene_bolso = false
 	comisario_briefing = false
 	mascara_equipada = ""
-	comisario_tiene_oso = false
-	vendedor_tiene_oso = false
 	clues_seen.clear()
 	clues_changed.emit()
 	mask_equipped_changed.emit()
-	npc_oso_visual_changed.emit()
 	tiene_bolso_signal.emit()
 
 func to_dict() -> Dictionary:
 	return {
-		"cantinero_mascara": cantinero_mascara,
 		"paso_abierto": paso_abierto,
 		"caso_resuelto": caso_resuelto,
 		"hablado_cantinero": hablado_cantinero,
 		"huellas_pelota": huellas_pelota,
 		"patito_devuelto": patito_devuelto,
 		"bartender_expuesto": bartender_expuesto,
-		"hablado_guardia": hablado_guardia,
+		"hablado_hawker": hablado_hawker,
 		"tiene_bolso": tiene_bolso,
 		"comisario_briefing": comisario_briefing,
 		"mascara_equipada": mascara_equipada,
-		"comisario_tiene_oso": comisario_tiene_oso,
-		"vendedor_tiene_oso": vendedor_tiene_oso,
 		"clues_seen": clues_seen.duplicate(),
 	}
 
 func from_dict(data: Dictionary) -> void:
-	cantinero_mascara = bool(data.get("cantinero_mascara", false))
 	paso_abierto = bool(data.get("paso_abierto", false))
 	caso_resuelto = bool(data.get("caso_resuelto", false))
 	hablado_cantinero = bool(data.get("hablado_cantinero", false))
 	huellas_pelota = bool(data.get("huellas_pelota", false))
 	patito_devuelto = bool(data.get("patito_devuelto", false))
 	bartender_expuesto = bool(data.get("bartender_expuesto", false))
-	hablado_guardia = bool(data.get("hablado_guardia", false))
+	# Migrate older saves that used hablado_guardia.
+	hablado_hawker = bool(data.get("hablado_hawker", data.get("hablado_guardia", false)))
 	tiene_bolso = bool(data.get("tiene_bolso", false))
 	comisario_briefing = bool(data.get("comisario_briefing", false))
 	mascara_equipada = str(data.get("mascara_equipada", ""))
-	comisario_tiene_oso = bool(data.get("comisario_tiene_oso", false))
-	vendedor_tiene_oso = bool(data.get("vendedor_tiene_oso", false))
+	# Stretch NPC masks are no longer wearable.
+	if mascara_equipada != "" and mascara_equipada != PLOT_MASK_ID:
+		mascara_equipada = ""
 	clues_seen.clear()
 	for id in data.get("clues_seen", []):
 		clues_seen.append(str(id))
 	clues_changed.emit()
 	mask_equipped_changed.emit()
-	npc_oso_visual_changed.emit()
 	if paso_abierto:
 		paso_abierto_signal.emit()
 	if bartender_expuesto:
 		bartender_expuesto_signal.emit()
 	if caso_resuelto:
 		caso_resuelto_signal.emit()
-	if hablado_guardia:
-		hablado_guardia_signal.emit()
+	if hablado_hawker:
+		hablado_hawker_signal.emit()
 	if tiene_bolso:
 		tiene_bolso_signal.emit()
 	if comisario_briefing:

@@ -1,10 +1,11 @@
 extends Interactable
 
-## Appears after huellas (need the lumberjack identity to confront / clear the path).
+## Always visible. Look anytime; Take only after footprint evidence (huellas_pelota).
 
 func _ready() -> void:
 	use_verb_menu = true
 	can_observe = true
+	# Take stays enabled so early attempts get a reject line (not a disabled verb).
 	can_take = true
 	can_use = false
 	dialogue_observe = load("res://content/dialogue/items/oso_observe.dialogue")
@@ -18,24 +19,17 @@ func _ready() -> void:
 	verb = "Recoger"
 	interact_label = "Máscara"
 	interact_sound = load("res://assets/audio/sfx/mascara_oso.ogg")
-	visible = false
-	input_pickable = false
 	super._ready()
-	_apply_reveal()
-	if not _is_revealed():
-		StoryFlags.huellas_changed.connect(_on_huellas)
+	# Scene used to hide this until a flag; hybrid design keeps it visible.
+	visible = true
+	input_pickable = true
+	monitoring = true
+	monitorable = true
 
-func _is_revealed() -> bool:
-	return StoryFlags.has_huellas_pelota()
-
-func _apply_reveal() -> void:
-	if Inventory.is_collected("oso"):
+func _do_take() -> void:
+	if not StoryFlags.has_huellas_pelota():
+		_arm_cooldown()
+		_start_dialogue(load("res://content/dialogue/items/oso_take_blocked.dialogue"), false, false)
 		return
-	var revealed := _is_revealed()
-	visible = revealed
-	input_pickable = revealed
-	monitoring = revealed
-	monitorable = revealed
-
-func _on_huellas() -> void:
-	_apply_reveal()
+	dialogue_take = load("res://content/dialogue/items/oso_take.dialogue")
+	super._do_take()

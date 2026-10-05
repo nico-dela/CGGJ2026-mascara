@@ -1,10 +1,16 @@
 ~ start
 if GameManager.has_comisario_briefing()
 	Policía: Ya vi su placa. No hace falta mostrarla otra vez.
-	Policía: Traiga prueba. Taberna. Bosque. Huellas.
+	Policía: Traiga una pista. Algo con huellas. Pregunte en la ruta.
+	=> END
+if not GameManager.has_hablado_cantinero()
+	Detective: Policía. Quiero presentarme como corresponde.
+	Policía: ...Una placa. ¿Detective?
+	Policía: Qué formal para un extraño con hambre. Primero el bar.
+	Policía: Después, si todavía quiere molestar... vuelva con el estómago lleno. Y con esa cara de trabajo.
 	=> END
 Detective: Policía. Quiero presentarme como corresponde.
-Policía: ...Una placa. Qué formal para un forastero con hambre.
+Policía: ...Una placa. ¿Detective? Ya comió, al menos.
 - Solo quiero que sepa quién soy. No vengo a molestar.
 	Policía: Ya lo vi. Detective. ¿Y?
 	- Ofrezco ayuda con lo del leñador.
@@ -17,7 +23,8 @@ Policía: ...Una placa. Qué formal para un forastero con hambre.
 	=> brief
 
 ~ brief
-Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
-Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.
+Policía: Está bien, detective. El leñador desapareció. Sin él no pueden bañarse ni calefaccionar.
+Policía: Si encuentra algo con huellas... una pista de quién estuvo en el bosque... tráigalo.
+Policía: Empiece por la ruta. El vendedor ambulante a veces se queda con lo que nadie compra.
 do GameManager.mark_comisario_briefing()
 => END

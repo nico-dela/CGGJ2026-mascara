@@ -1,0 +1,57 @@
+~ start
+if GameManager.is_wearing_mask("oso")
+	Vendedor ambulante: ¿El leñador? Pensé que no volvía. Si busca leña, yo no vendo. El pueblo, más adelante.
+	=> END
+if GameManager.has_item("pelota") or GameManager.is_collected("pelota")
+	Vendedor ambulante: Todavía acá. El pueblo, allá. Yo espero a que alguien compre algo de verdad.
+	=> END
+if GameManager.has_comisario_briefing()
+	=> after_briefing
+if GameManager.has_hablado_hawker()
+	Vendedor ambulante: Todavía acá. El bolso es suyo. El pueblo, allá. Esta noche nadie compra... y el pueblo está raro.
+	=> END
+Detective: Buenas... me quedé varado en la ruta. Vi las luces del pueblo y me arrimé.
+Vendedor ambulante: Esta noche no se mueve ni un alma. El pueblo más adelante está raro... yo me quedé en la ruta, a ver si pasa alguien con hambre de chucherías.
+- Tengo un hambre... ¿hay dónde comer?
+	Vendedor ambulante: Comida de verdad, en el bar. Yo vendo lo que quepa en mis bolsillos... y hoy están escuetos de cosas.
+	Vendedor ambulante: Si busca al que manda el caso... la comisaría.
+	=> wrap
+- ¿Raro cómo? ¿Pasó algo?
+	Vendedor ambulante: Murmullos. Un leñador que no vuelve. Malo para el comercio.
+	Vendedor ambulante: Si pregunta, pregunte adentro. Yo atiendo la ruta.
+	=> wrap
+- Disculpe... ¿lleva una máscara?
+	Vendedor ambulante: ¿Máscara? ¿De qué habla? Si busca algo caliente, vaya al bar. Si busca al que manda el caso... la comisaría.
+	=> wrap
+
+~ wrap
+Detective: Gracias. Voy a mirar un poco y después entro al pueblo.
+Vendedor ambulante: Agarre su bolso antes de irse. Allá adentro va a querer manos libres... y yo no se lo voy a guardar.
+do GameManager.mark_hablado_hawker()
+=> END
+
+~ after_briefing
+Vendedor ambulante: Volvió. ¿El de la comisaría le dio trabajo? Mal negocio, eso.
+- El policía pide algo con huellas. ¿No le quedó nada raro en el carrito?
+	=> offer_ball
+- ¿De verdad el carrito está vacío?
+	Vendedor ambulante: Vacío de lo que se vende. De lo que nadie quiere... otra cosa.
+	=> offer_ball
+- Solo pasaba.
+	Vendedor ambulante: Entonces siga. Yo espero un cliente que no llega.
+	=> END
+
+~ offer_ball
+Vendedor ambulante: Mire... tengo una pelota de esas raras. Fútbol americano. La encontré tirada. Nadie la compra.
+Vendedor ambulante: Si el policía quiere "prueba"... llévesela. A mí me estorba.
+- Se la agradezco.
+	=> give_ball
+- ¿Y a cambio?
+	Vendedor ambulante: A cambio de que deje de preguntarme. Y de que el pueblo vuelva a comprar algo.
+	=> give_ball
+
+~ give_ball
+Detective: Gracias. Esto puede servir.
+Vendedor ambulante: Si las huellas hablan... que hablen lejos de mi carrito.
+do GameManager.add_item("pelota")
+=> END

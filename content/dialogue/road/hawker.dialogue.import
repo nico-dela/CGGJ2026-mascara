@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://tu8r1alrvuqe"
+path="res://.godot/imported/hawker.dialogue-bac5a2a10987cfa7e9fe34d82e4c2079.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/hawker.dialogue"
+dest_files=["res://.godot/imported/hawker.dialogue-bac5a2a10987cfa7e9fe34d82e4c2079.tres"]
+
+[params]
+
+defaults=true

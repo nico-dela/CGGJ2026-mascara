@@ -1,3 +1,8 @@
 ~ start
-Detective: Una máscara de oso tirada en el bosque. Como si alguien la hubiera dejado caer al correr.
+if GameManager.has_huellas_pelota()
+	Detective: La máscara del oso. Ahora encaja: el leñador, la pisada del mozo, el golpe en el bosque.
+	Detective: Si me la pongo... el cuerpo puede recordar quién era.
+else
+	Detective: Una máscara de oso tirada en el bosque. Rara. Como si alguien la hubiera dejado caer al correr.
+	Detective: Por ahora... solo un objeto más. No sé qué hacer con ella.
 => END

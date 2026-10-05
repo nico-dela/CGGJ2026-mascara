@@ -41,33 +41,33 @@ addons/             # do not edit Dialogue Manager
 
 - The **bear mask** turns the wearer into a lumberjack. Original wearer = **fisherman** → lumberjack = fisherman.
 - Goal: solve the case in order to **restock the boiler and firewood**.
-- Part 1: road → talk to the **road guard** → take the **bag** (UI tutorial) → town; hunger → bar; the **sign** sets the goal.
-- Case briefing / footprints: the **commissioner** at the station (he does not know the player is a detective until they talk; then he asks for help → `comisario_briefing`).
-- Forest objects appear when the problem is stated ([Why Adventure Games Suck](https://grumpygamer.com/why_adventure_games_suck/) — no solution before the problem):
-  - **Rubber duck** after the bartender mentions it.
-  - **Ball** (plus log/axe as the scene) after the commissioner's briefing asking for evidence with footprints.
-  - **Bear mask** after the **footprints** (the commissioner sends you to look at the forest again).
-  - **Ivy** always visible until it is cut.
-- Ball → police → **footprints** flag ("they belong to the bartender").
+- Only the **bear mask** is wearable for plot (no NPC mask swaps).
+- Part 1: road → talk to the **hawker** (`hablado_hawker`) → take the **bag** (UI tutorial) → town; hunger → **bar** (`hablado_cantinero`) → **comisario** briefing (`comisario_briefing`) starts the case.
+- Hybrid item sourcing (world stays real; meaning unlocks after the problem is stated):
+  - **American football (`pelota`)**: from the **hawker** only after `comisario_briefing` (persuade / credential). Not a forest pop-in.
+  - **Rubber duck (`patito`)**: optional gift from the **fisherman** in town; return to bartender is optional flavor (not a gate).
+  - **Bear mask**: always visible in the forest; Look anytime; Take only after `huellas_pelota`.
+  - **Log/axe**: always visible; Take succeeds only while wearing `oso`.
+  - **Ivy**: always visible until cut.
+- Ball → police → **footprints** flag: muddy sole print matches the bartender (he lied about the woods). Not enough to arrest — no body, no complaint; player must dig up the truth.
 - With the **bear equipped**: Take the **axe** from the log; **use axe on ivy** → `abrir_paso` (access to the river).
-- Rubber duck → return it to the bar (affection / foreshadow; **not a gate**).
-- Expose the bartender: **footprints AND** bear **equipped** + Talk → the fisherman moves to the river (the axe opens the physical passage).
-- Ending A: mask to the fisherman → deal (firewood now and then) → **credits**.
+- Expose the bartender: **footprints AND** bear **equipped** + Talk → confession; the fisherman moves to the river (the axe opens the physical passage).
+- Ending A: mask to the fisherman → deal (firewood now and then) + mask/routine punchline → **credits**.
 
 ## Controls / UX
 
 - **Full Throttle** style: a click on a hotspot opens the **verb coin** (Look / Talk / Use / Take). **Look ≠ Talk** on NPCs. **Use** is enabled only if the hotspot has a real effect (not a reject).
 - On the road: the world bag is **taken** and becomes the **Bolso** button (corner). It holds the detective **credential** (item); **Use** it with NPCs to introduce yourself. Without the bag you cannot take items. Short tutorial when it is taken.
-- `TownTransition` (town) requires `hablado_guardia`.
+- `TownTransition` (town) requires `hablado_hawker`.
 - Inventory is in the **Bolso**; select an item and click a target = use with…
-- Mask: second click on the slot, or Use + click on the detective.
+- Mask: second click on the slot, or Use + click on the detective (**oso** only).
 - Doors / transitions: direct click. Escape closes the coin.
 - `AdventureUI` autoload; per-room `InventoryUI` stays hidden.
 
 ## Code conventions
 
 - Narrative state lives in `StoryFlags`; dialogue only calls `GameManager.*`.
-- Puzzles must advance the story (Gilbert): a clear goal, problem before solution, events connected to opening the river.
+- Puzzles must advance the story (Gilbert): a clear goal, problem before solution, events connected to opening the river — without teleporting props into existence.
+- **English for code**: GDScript identifiers, comments, commits, and agent docs. Spanish stays in dialogue / UI copy. Do not mass-rename existing story item ids (`pelota`, `oso`, …) unless already touching that API.
 - Prefer existing assets or jam-friendly CC0; do not over-engineer.
-- Stretch (optional): custom bartender/police masks with personality.
 - Do not touch `addons/dialogue_manager/`. Do not regenerate `build/` unless an export is requested.

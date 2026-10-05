@@ -114,11 +114,12 @@ func _adapt_for_device() -> void:
 		balloon.theme.default_font_size = int(34 * ui) if touch else 32
 	var responses: Control = balloon.get_node_or_null("ResponsesMenu")
 	if responses:
-		var half_w := 400.0 * ui if touch else 340.0
-		responses.offset_left = -half_w
-		responses.offset_right = half_w
+		# Width only — vertical position is set under the speech balloon.
+		var menu_w := 800.0 * ui if touch else 680.0
+		responses.custom_minimum_size = Vector2(menu_w, 0)
+		responses.size.x = menu_w
 		# More vertical space so choice taps don't miss on phones.
-		var sep := int(14 * ui) if touch else 4
+		var sep := int(14 * ui) if touch else 8
 		responses.add_theme_constant_override("separation", sep)
 		var example := responses.get_node_or_null("ResponseExample") as Button
 		if example:
@@ -146,6 +147,8 @@ func _process(_delta: float) -> void:
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
 		if balloon.visible:
 			_place_next_to_speaker()
+			if responses_menu.visible:
+				_place_responses_below_speech()
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -219,6 +222,7 @@ func apply_dialogue_line() -> void:
 	elif dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
+		_place_responses_below_speech()
 	elif dialogue_line.time != "":
 		var time: float = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 		await get_tree().create_timer(time).timeout
@@ -309,6 +313,14 @@ func _place_next_to_speaker() -> void:
 	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
 	var pad := Vector2(16.0 + safe.x, 16.0 + safe.y)
 	var pad_br := Vector2(16.0 + safe.z, 16.0 + safe.w)
+	# Leave room under the balloon when choices are on screen.
+	var reserve_bottom := pad_br.y
+	if responses_menu and responses_menu.visible:
+		responses_menu.reset_size()
+		var menu_h: float = responses_menu.get_combined_minimum_size().y
+		if menu_h < 8.0:
+			menu_h = 80.0
+		reserve_bottom += menu_h + 12.0
 	var extent := _speaker_extent(speaker_node)
 	var origin := speaker_node.get_global_transform_with_canvas().origin
 	var prefer_right := origin.x < view.x * 0.55
@@ -319,9 +331,49 @@ func _place_next_to_speaker() -> void:
 		pos = origin + Vector2(-extent.x * 0.45 - size.x, -extent.y * 0.85)
 
 	pos.x = clampf(pos.x, pad.x, maxf(pad.x, view.x - size.x - pad_br.x))
-	pos.y = clampf(pos.y, pad.y, maxf(pad.y, view.y - size.y - pad_br.y))
+	pos.y = clampf(pos.y, pad.y, maxf(pad.y, view.y - size.y - reserve_bottom))
 	_speech.position = pos
 	_speech.size = size
+	if responses_menu and responses_menu.visible:
+		_place_responses_below_speech()
+
+
+## Keep choice buttons under the speech balloon so they never cover the line.
+func _place_responses_below_speech() -> void:
+	if responses_menu == null or _speech == null or balloon == null:
+		return
+	responses_menu.reset_size()
+	var menu_size := responses_menu.get_combined_minimum_size()
+	if menu_size.x < 8.0:
+		menu_size.x = responses_menu.custom_minimum_size.x
+	if menu_size.y < 8.0:
+		menu_size.y = 80.0
+
+	var view := get_viewport().get_visible_rect().size
+	var safe := DisplayAdapt.safe_margin if DisplayAdapt else Vector4.ZERO
+	var pad := Vector2(16.0 + safe.x, 16.0 + safe.y)
+	var pad_br := Vector2(16.0 + safe.z, 16.0 + safe.w)
+	var gap := 12.0
+
+	var speech_rect := Rect2(_speech.position, _speech.size)
+	var pos := Vector2(
+		speech_rect.position.x + (speech_rect.size.x - menu_size.x) * 0.5,
+		speech_rect.end.y + gap
+	)
+
+	# If choices would leave the bottom, pin them under the speech and nudge speech up.
+	var max_y := view.y - menu_size.y - pad_br.y
+	if pos.y > max_y:
+		var speech_y := maxf(pad.y, max_y - gap - speech_rect.size.y)
+		_speech.position.y = speech_y
+		speech_rect.position.y = speech_y
+		pos.y = speech_rect.end.y + gap
+		pos.y = minf(pos.y, max_y)
+
+	pos.x = clampf(pos.x, pad.x, maxf(pad.x, view.x - menu_size.x - pad_br.x))
+	pos.y = clampf(pos.y, pad.y, maxf(pad.y, max_y))
+	responses_menu.position = pos
+	responses_menu.size = menu_size
 
 
 #region Signals

@@ -5,13 +5,17 @@ extends Area2D
 @export var transition_sound: AudioStream
 @export var verb: String = "Entrar a"
 @export var interact_label: String = ""
-## If true, player must talk to the road guard before this transition works.
+## If true, player must talk to the road hawker before this transition works.
+@export var require_hablado_hawker: bool = false
+## Legacy scene property; treated as require_hablado_hawker when true.
 @export var require_hablado_guardia: bool = false
 ## If true, stays hidden until the ivy path is opened (hacha + hiedra).
 @export var require_paso_abierto: bool = false
 @export var blocked_dialogue: Resource
 
 func _ready() -> void:
+	if require_hablado_guardia:
+		require_hablado_hawker = true
 	input_pickable = true
 	monitoring = true
 	monitorable = true
@@ -20,7 +24,7 @@ func _ready() -> void:
 	add_to_group("interactable")
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	if blocked_dialogue == null and require_hablado_guardia:
+	if blocked_dialogue == null and require_hablado_hawker:
 		blocked_dialogue = load("res://content/dialogue/road/road_town_blocked.dialogue")
 	if require_paso_abierto:
 		_sync_paso_visibility()
@@ -41,7 +45,7 @@ func try_interact() -> bool:
 		return false
 	if require_paso_abierto and not StoryFlags.is_paso_abierto():
 		return false
-	if require_hablado_guardia and not StoryFlags.has_hablado_guardia():
+	if require_hablado_hawker and not StoryFlags.has_hablado_hawker():
 		InteractionHint.hide_hint()
 		var resource: Resource = blocked_dialogue
 		if resource == null:

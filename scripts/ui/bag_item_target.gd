@@ -42,7 +42,8 @@ func _examine() -> void:
 
 func _use_from_bag() -> void:
 	var item := Inventory.get_item(item_id)
-	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA:
+	# Plot: only the bear mask is wearable.
+	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA and item_id == "oso":
 		if Inventory.selected_item == item_id:
 			GameManager.toggle_equip_mask(item_id)
 			Inventory.selected_item = ""
@@ -50,6 +51,10 @@ func _use_from_bag() -> void:
 			Inventory.selected_item = item_id
 			if AdventureUI:
 				AdventureUI.set_verb(AdventureUI.Verb.USE)
+		return
+	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA:
+		# Non-plot masks: examine-only inventory junk if somehow present.
+		_examine()
 		return
 	if Inventory.selected_item == item_id:
 		Inventory.selected_item = ""

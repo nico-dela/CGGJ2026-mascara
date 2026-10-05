@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ij6dap0y8dja"
+path="res://.godot/imported/oso_take_blocked.dialogue-39265e96a9dadc78ce64cc986c9b3bf0.tres"
+
+[deps]
+
+source_file="res://content/dialogue/items/oso_take_blocked.dialogue"
+dest_files=["res://.godot/imported/oso_take_blocked.dialogue-39265e96a9dadc78ce64cc986c9b3bf0.tres"]
+
+[params]
+
+defaults=true

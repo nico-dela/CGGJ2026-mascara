@@ -28,7 +28,7 @@ func _do_take() -> void:
 		return
 	if StoryFlags.has_tiene_bolso():
 		return
-	if not StoryFlags.has_hablado_guardia():
+	if not StoryFlags.has_hablado_hawker():
 		_arm_cooldown()
 		_start_dialogue(load("res://content/dialogue/road/road_bag_blocked.dialogue"), false, false)
 		return

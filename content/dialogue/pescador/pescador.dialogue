@@ -1,12 +1,6 @@
 ~ start
-if GameManager.is_wearing_mask("mascara_mozo")
-	Pescador: El del bar... ¿o no? La cara engaña. Hoy más que nunca.
-	=> END
-if GameManager.is_wearing_mask("mascara_poli")
-	Pescador: Esa cara... el de la comisaría. Pero su voz no es la de él.
-	=> END
-if GameManager.is_wearing_mask("mascara_vendedor")
-	Pescador: El de la ruta... el que vende. Pero la voz no es de feria.
+if GameManager.is_wearing_mask("oso")
+	Pescador: Esa cara... la conocí demasiado bien. Hoy no. Hoy miro el agua.
 	=> END
 Pescador: ...Alguien nuevo. El pueblo murmura; usted también mira.
 - Buenas. ¿Qué hace aquí, sentado?
@@ -26,6 +20,26 @@ Pescador: ...Alguien nuevo. El pueblo murmura; usted también mira.
 - ¿Vio algo raro en el bosque?
 	Pescador: El bosque calla cuando quiere. Yo solo veo lo que pasa frente a mí.
 	=> lumber
+- ¿Pescó algo últimamente?
+	=> fishing
+
+~ fishing
+if GameManager.has_item("patito") or GameManager.is_collected("patito") or GameManager.has_patito_devuelto()
+	Pescador: Hoy el anzuelo vuelve vacío. Ayer... ya le di lo que el río me trajo.
+	=> lumber
+Pescador: El río a veces devuelve juguetes. Saqué un patito de goma. Amarillo. Absurdo.
+Pescador: No es mío. Si quiere... lléveselo. A mí me estorba la orilla.
+- Se lo agradezco.
+	=> give_duck
+- ¿Un patito? Qué raro.
+	Pescador: Raro es este pueblo. Tome. O déjelo.
+	=> give_duck
+
+~ give_duck
+Detective: Gracias. Quizá le importe a alguien.
+Pescador: Si le importa a alguien... que lo diga con la cara descubierta.
+do GameManager.add_item("patito")
+=> END
 
 ~ lumber_direct
 Pescador: El leñador abastecía la caldera... y a quien lo pidiera.

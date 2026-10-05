@@ -1,0 +1,13 @@
+~ start
+Detective: Disculpe. Soy detective. Mi credencial.
+if GameManager.has_comisario_briefing()
+	if GameManager.has_item("pelota") or GameManager.is_collected("pelota")
+		Vendedor ambulante: Ya le di lo raro. Papeles no compro. El pueblo, allá.
+		=> END
+	Vendedor ambulante: Placa. Trabajo. Mire... tengo una pelota de esas raras. Fútbol americano. Nadie la compra.
+	Vendedor ambulante: Si el policía quiere prueba... llévesela.
+	do GameManager.add_item("pelota")
+	=> END
+Vendedor ambulante: Papeles no compro. El bolso, la mirada... yo vendo lo que quepa en el carrito.
+Vendedor ambulante: El pueblo está más adelante. Si busca al que manda el caso... vaya a la comisaría.
+=> END

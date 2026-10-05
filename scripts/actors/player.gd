@@ -7,9 +7,6 @@ const HOP_HEIGHT_MAX := 120.0
 const SELF_USE_RADIUS := 110.0
 const MASK_ANIMS := {
 	"oso": ["lenador_idle", "lenador_walk"],
-	"mascara_mozo": ["mozo_idle", "mozo_walk"],
-	"mascara_poli": ["poli_idle", "poli_walk"],
-	"mascara_vendedor": ["vendedor_idle", "vendedor_walk"],
 }
 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -198,7 +195,7 @@ func _try_use_item_on_self(world_pos: Vector2) -> bool:
 	if global_position.distance_to(world_pos) > SELF_USE_RADIUS:
 		return false
 	var item := Inventory.get_item(Inventory.selected_item)
-	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA:
+	if item != null and item.tipo == ItemResource.ItemTypes.MASCARA and Inventory.selected_item == "oso":
 		GameManager.toggle_equip_mask(Inventory.selected_item)
 		InteractionHint.hide_hint()
 		return true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://y1ms58ml4qht"
+path="res://.godot/imported/hawker_credencial.dialogue-dc2c7bcc91cdfe77d92bb8b2e357dfa3.tres"
+
+[deps]
+
+source_file="res://content/dialogue/road/hawker_credencial.dialogue"
+dest_files=["res://.godot/imported/hawker_credencial.dialogue-dc2c7bcc91cdfe77d92bb8b2e357dfa3.tres"]
+
+[params]
+
+defaults=true

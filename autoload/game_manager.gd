@@ -3,8 +3,6 @@ extends Node
 ## Dialogue mutations keep calling GameManager.* for compatibility.
 
 signal inventoryChange
-signal cantinero_mascara_puesta
-signal cantinero_mascara_quitada
 signal paso_abierto_signal
 signal caso_resuelto_signal
 signal mask_equipped_changed
@@ -32,12 +30,6 @@ var collected_items: Array:
 	set(value):
 		Inventory.from_dict({"inventory": Inventory.inventory, "selected_item": Inventory.selected_item, "collected_items": value})
 
-var cantinero_mascara: bool:
-	get:
-		return StoryFlags.cantinero_mascara
-	set(value):
-		StoryFlags.cantinero_mascara = value
-
 var paso_abierto: bool:
 	get:
 		return StoryFlags.paso_abierto
@@ -58,8 +50,6 @@ var next_spawn_id: String:
 
 func _ready() -> void:
 	Inventory.inventoryChange.connect(func(): inventoryChange.emit())
-	StoryFlags.cantinero_mascara_puesta.connect(func(): cantinero_mascara_puesta.emit())
-	StoryFlags.cantinero_mascara_quitada.connect(func(): cantinero_mascara_quitada.emit())
 	StoryFlags.paso_abierto_signal.connect(func(): paso_abierto_signal.emit())
 	StoryFlags.caso_resuelto_signal.connect(func(): caso_resuelto_signal.emit())
 	StoryFlags.mask_equipped_changed.connect(func(): mask_equipped_changed.emit())
@@ -67,6 +57,7 @@ func _ready() -> void:
 
 func add_item(item_id: String) -> void:
 	Inventory.add_item(item_id)
+	Inventory.mark_as_collected(item_id)
 	save_game()
 
 func remove_item(item_id: String) -> void:
@@ -84,12 +75,6 @@ func mark_as_collected(item_id: String) -> void:
 
 func is_collected(item_id: String) -> bool:
 	return Inventory.is_collected(item_id)
-
-func poner_mascara_cantinero() -> void:
-	StoryFlags.poner_mascara_cantinero()
-
-func quitar_mascara_cantinero() -> void:
-	StoryFlags.quitar_mascara_cantinero()
 
 func equip_mask(mask_id: String) -> void:
 	StoryFlags.equip_mask(mask_id)
@@ -163,12 +148,18 @@ func mark_hablado_cantinero() -> void:
 func has_hablado_cantinero() -> bool:
 	return StoryFlags.has_hablado_cantinero()
 
-func mark_hablado_guardia() -> void:
-	StoryFlags.mark_hablado_guardia()
+## Visual beat when the bartender serves the warm plate.
+## Awaitable mutation: dialogue continues after the fade completes.
+func play_bar_meal() -> void:
+	if AmbientFx:
+		await AmbientFx.play_warm_meal()
+
+func mark_hablado_hawker() -> void:
+	StoryFlags.mark_hablado_hawker()
 	save_game()
 
-func has_hablado_guardia() -> bool:
-	return StoryFlags.has_hablado_guardia()
+func has_hablado_hawker() -> bool:
+	return StoryFlags.has_hablado_hawker()
 
 func mark_tiene_bolso() -> void:
 	StoryFlags.mark_tiene_bolso()
@@ -232,6 +223,10 @@ func load_game() -> bool:
 	# Saves from before the credential item: bag already taken → grant ID.
 	if StoryFlags.has_tiene_bolso() and not Inventory.has_item("credencial"):
 		Inventory.add_item("credencial")
+	# Stretch NPC masks are no longer part of the plot.
+	for dead_mask in ["mascara_mozo", "mascara_poli", "mascara_vendedor"]:
+		if Inventory.has_item(dead_mask):
+			Inventory.remove_item(dead_mask)
 	return true
 
 func has_save() -> bool:

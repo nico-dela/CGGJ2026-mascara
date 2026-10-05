@@ -1,11 +1,11 @@
 extends Interactable
 
-## Workplace clue after briefing. As lumberjack (oso), the axe can be taken to cut ivy.
+## Always visible. Full collectable Take UX only while wearing the bear mask.
 
 func _ready() -> void:
 	use_verb_menu = true
 	can_observe = true
-	can_take = true
+	can_take = false
 	can_use = false
 	dialogue_observe = load("res://content/dialogue/items/tronco_observe.dialogue")
 	dialogue_take = load("res://content/dialogue/items/tronco_take.dialogue")
@@ -17,35 +17,25 @@ func _ready() -> void:
 	use_hover_feedback = false
 	verb = "Examinar"
 	interact_label = "Hacha"
-	visible = false
-	input_pickable = false
 	super._ready()
-	_apply_reveal()
+	# Scene used to hide this until briefing; hybrid design keeps it visible.
+	visible = true
+	input_pickable = true
+	monitoring = true
+	monitorable = true
 	_refresh_take_state()
-	if not StoryFlags.has_comisario_briefing():
-		StoryFlags.comisario_briefing_signal.connect(_on_briefing)
 	StoryFlags.mask_equipped_changed.connect(_refresh_take_state)
 	StoryFlags.paso_abierto_signal.connect(_refresh_take_state)
 	Inventory.inventory_changed.connect(_refresh_take_state)
-
-func _apply_reveal() -> void:
-	var revealed := StoryFlags.has_comisario_briefing()
-	visible = revealed
-	input_pickable = revealed
-	monitoring = revealed
-	monitorable = revealed
-	_refresh_take_state()
-
-func _on_briefing() -> void:
-	_apply_reveal()
 
 func _refresh_take_state() -> void:
 	if StoryFlags.is_paso_abierto() or Inventory.is_collected("hacha"):
 		can_take = false
 		interact_label = "Tronco"
 		return
-	# Only the leñador (oso worn) can pull the axe free.
-	can_take = StoryFlags.is_wearing_mask("oso")
+	# Take verb available; success only while wearing oso (_do_take).
+	can_take = true
+	interact_label = "Hacha"
 
 func _do_take() -> void:
 	if StoryFlags.is_paso_abierto() or Inventory.is_collected("hacha"):

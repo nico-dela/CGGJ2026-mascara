@@ -3,46 +3,52 @@ if GameManager.is_bartender_expuesto()
 	Policía: Ya oyó la verdad. El río. No me haga perder más tiempo.
 	=> END
 if GameManager.has_huellas_pelota()
-	Policía: Las huellas son del mozo. Eso es todo lo que le digo.
+	Policía: El mozo mintió: estuvo en el bosque. Una pelota no me alcanza para arrestarlo.
 	Policía: El resto... averígüelo usted.
 	=> END
 if GameManager.has_comisario_briefing()
-	Policía: Ya le dije: taberna, bosque. Algo con huellas. Traiga prueba.
+	Policía: Ya le dije: algo con huellas. Una pista. Pregunte en la ruta. El vendedor ambulante a veces guarda basura rara.
 	=> END
-Policía: ...El vendedor de la ruta dijo que venía un forastero con hambre. Usted es.
-Detective: Sí. Buscaba algo caliente... y vi el cartel del leñador.
+if not GameManager.has_hablado_cantinero()
+	Policía: ...El vendedor ambulante de la ruta dijo que venía un extraño con hambre. Usted es.
+	Detective: Sí. Buscaba algo caliente... y vi el cartel del leñador.
+	Policía: Primero coma. El bar atiende a medias. Con el estómago vacío solo ve fantasmas.
+	Policía: Después, si todavía quiere molestar... vuelva.
+	=> END
+Policía: ...Ya comió, ¿no? Se le nota menos el hambre en la cara.
+Detective: El pueblo pasa frío. Vi el cartel del leñador.
 Policía: Todo el pueblo pasa frío sin él. La caldera, la leña. Y murmuran cosas feas.
-Policía: ¿Y usted qué hace en mi comisaría, forastero?
-- Solo busco un plato caliente. El frío me ganó.
-	Policía: El bar atiende... a medias. Sin leña no hay milagros.
-	Policía: Si solo tiene hambre, no me robe más tiempo. Y no pregunte de más.
-	=> END
+Policía: ¿Y usted qué hace en mi comisaría, extraño?
 - Vi el cartel. ¿Qué pasó con el leñador?
-	Policía: Desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
+	Policía: Desapareció. Sin él no pueden bañarse ni calefaccionar.
 	Policía: La gente murmura. Yo necesito prueba, no cuentos.
-	Policía: ¿Y por qué le importa tanto a un forastero?
+	Policía: ¿Y por qué le importa tanto a un extraño?
 	- Porque el pueblo necesita calor. Nada más.
 		Policía: Mm. Si ve algo raro... no lo toque. Tráigalo. O déjelo.
 		=> END
 	- Porque investigo estas cosas. Soy detective.
 		=> reveal
-	- Porque tengo esta credencial. => show_badge
+	- Porque puedo demostrarlo. Tengo credencial.
+		=> show_badge
 - Vengo por trabajo. Soy detective.
 	=> reveal
 
 ~ reveal
-Policía: ...Detective. Mire, no le pedí nada. Pero si de verdad sabe mirar...
+Policía: ...¿Detective? Mire, no le pedí nada. Pero si de verdad sabe mirar...
 Detective: Cuénteme.
-Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
-Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.
+Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar.
+Policía: Si encuentra algo con huellas... una pista de quién estuvo en el bosque... tráigalo.
+Policía: Empiece por la ruta. El vendedor ambulante a veces se queda con lo que nadie compra.
 do GameManager.mark_comisario_briefing()
 => END
 
 ~ show_badge
 Detective: Tengo mi placa. Puedo mostrársela.
-Policía: ...Placa. Firma. Mire, no le pedí nada. Pero si de verdad sabe mirar...
+Policía: ...Placa. Firma. Así que detective.
+Policía: Mire, no le pedí nada. Pero si de verdad sabe mirar...
 Detective: Cuénteme.
-Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar. Taberna. Bosque.
-Policía: Si encuentra algo con huellas... algo que pruebe qué pasó... tráigalo. O siga de paso.
+Policía: El leñador desapareció. Sin él no pueden bañarse ni calefaccionar.
+Policía: Si encuentra algo con huellas... una pista de quién estuvo en el bosque... tráigalo.
+Policía: Empiece por la ruta. El vendedor ambulante a veces se queda con lo que nadie compra.
 do GameManager.mark_comisario_briefing()
 => END

@@ -1,4 +1,33 @@
 keys,en
+"Mozo. Ya comí, ya devolví el patito... ¿algo más sobre la leña?","Bartender. I already ate, I already returned the duck... anything else about the firewood?"
+Solo lo de siempre. Sin leñador no hay fuego de verdad. Y yo... hace años que no piso el bosque.,"Same as always. No lumberjack, no real fire. And I... haven't set foot in the woods in years."
+¿Otra vez? El plato está. El patito no. El leñador tampoco.,Again? The plate's here. The duck isn't. Neither is the lumberjack.
+¿Nada más sobre el leñador?,Nothing else about the lumberjack?
+Ya le dije: hace años que no piso el bosque. Es tenebroso.,I already told you: I haven't set foot in the woods in years. It's creepy.
+Sigo buscando su patito.,I'm still looking for your duck.
+Si alguien lo vio... me haría un favor enorme.,If someone saw it... you'd be doing me a huge favor.
+Solo pasaba.,Just passing through.
+Entonces diga algo o siga. La barra no muerde.,Then say something or move on. The bar doesn't bite.
+Buenas. Me muero de hambre.,Evening. I'm starving.
+"Depende. Sin leña de verdad, la cocina anda a medias. Puedo armarle un plato tibio... nada de guiso largo.","Depends. Without real firewood, the kitchen's half-alive. I can put together a warm plate... nothing slow-cooked."
+Un plato tibio me viene bien. ¿Qué pasó con la leña?,A warm plate sounds good. What happened to the firewood?
+El leñador desapareció. Él abastecía la caldera del pueblo y a quien necesitara.,The lumberjack vanished. He fed the town boiler and anyone who needed wood.
+Mientras tanto la taberna se queda fría... como todas las casas.,Meanwhile the tavern stays cold... like every house.
+¿Sin leña? Suena grave.,No firewood? That sounds bad.
+Mejor cuénteme del pueblo. Estoy de paso.,Tell me about the town instead. I'm just passing through.
+De paso y con hambre. El leñador no vuelve; sin él no hay fuego de verdad.,Passing through and hungry. The lumberjack isn't coming back; without him there's no real fire.
+Espere. Se lo armo.,Hang on. I'll put it together.
+Aquí tiene. No está caliente del todo... pero es comida. Cómalo antes de que se enfríe del todo.,Here you go. Not fully hot... but it's food. Eat it before it goes cold for good.
+Gracias. Lo necesito.,Thanks. I need it.
+...Listo. El frío afloja un poco.,...Done. The cold eases a little.
+"Bien. Y ese hueco en el adorno... mi patito. Lo rompí, lo perdí, quién sabe. Tiene más años que la barra.","Good. And that gap in the shelf... my duck. I broke it, lost it, who knows. It's older than the bar."
+Lo voy a tener en cuenta. Gracias por el plato.,I'll keep that in mind. Thanks for the plate.
+"De nada. Y si pregunta por el leñador... yo no lo vi. Hace años que no voy por el bosque, es un tanto tenebroso.",You're welcome. And if you ask about the lumberjack... I didn't see him. I haven't gone near the woods in years. They're a bit creepy.
+¿Lo perdió por ahí?,Did you lose it somewhere around here?
+...No lo sé. Yo no piso el bosque. Hace años. Es tenebroso.,...I don't know. I don't set foot in the woods. Not for years. They're creepy.
+Si alguien lo encuentra... me haría un favor enorme.,If someone finds it... you'd be doing me a huge favor.
+¿Y usted no sabe nada del leñador?,And you don't know anything about the lumberjack?
+Yo no lo vi. Hace años que no voy por el bosque. Punto.,I didn't see him. I haven't gone near the woods in years. Period.
 (Con la máscara puesta siento el bosque... pero me falta una pista. Mejor no improvise.),(With the mask on I can feel the woods... but I'm missing a lead. Better not improvise.)
 Mozo. Ya no vengo solo a comer.,Bartender. I'm not just here to eat this time.
 ¿Otra vez lo del leñador? Ya le dije: hace años que no piso el bosque.,The lumberjack again? I already told you: I haven't set foot in the woods in years.
@@ -15,25 +44,153 @@ Si aún hay leñador en usted... la hiedra no debería detenerlo.,If there's sti
 Soy detective. Mi credencial.,I'm a detective. My badge.
 ...Ah. Credencial. Qué formal.,...Ah. A badge. How formal.
 "Si busca comida, pida. Si busca chismes del bosque... yo solo atiendo la barra.","If you want food, order. If you want woods gossip... I just tend the bar."
-"Mozo. Ya comí, ya devolví el patito... ¿algo más sobre la leña?","Bartender. I already ate, I already returned the duck... anything else about the firewood?"
-Solo lo de siempre. Sin leñador no hay fuego de verdad. Y yo... hace años que no piso el bosque.,"Same as always. No lumberjack, no real fire. And I... haven't set foot in the woods in years."
-¿Otra vez? El plato está. El patito no. El leñador tampoco.,Again? The plate's here. The duck isn't. Neither is the lumberjack.
-Ya le dije: hace años que no piso el bosque. Es tenebroso.,I already told you: I haven't set foot in the woods in years. It's creepy.
-Si alguien lo vio... me haría un favor enorme.,If someone saw it... you'd be doing me a huge favor.
-Entonces diga algo o siga. La barra no muerde.,Then say something or move on. The bar doesn't bite.
-Buenas. Me muero de hambre.,Evening. I'm starving.
-"Depende. Sin leña de verdad, la cocina anda a medias. Puedo armarle un plato tibio... nada de guiso largo.","Depends. Without real firewood, the kitchen's half-alive. I can put together a warm plate... nothing slow-cooked."
-El leñador desapareció. Él abastecía la caldera del pueblo y a quien necesitara.,The lumberjack vanished. He fed the town boiler and anyone who needed wood.
-Mientras tanto la taberna se queda fría... como todas las casas.,Meanwhile the tavern stays cold... like every house.
-De paso y con hambre. El leñador no vuelve; sin él no hay fuego de verdad.,Passing through and hungry. The lumberjack isn't coming back; without him there's no real fire.
-"De nada. Y si pregunta por el leñador... yo no lo vi. Hace años que no voy por el bosque, es un tanto tenebroso.",You're welcome. And if you ask about the lumberjack... I didn't see him. I haven't gone near the woods in years. They're a bit creepy.
-...No lo sé. Yo no piso el bosque. Hace años. Es tenebroso.,...I don't know. I don't set foot in the woods. Not for years. They're creepy.
-Si alguien lo encuentra... me haría un favor enorme.,If someone finds it... you'd be doing me a huge favor.
-Yo no lo vi. Hace años que no voy por el bosque. Punto.,I didn't see him. I haven't gone near the woods in years. Period.
-Un mozo detrás de la barra. Máscara puesta. El lugar se siente frío... sin leña de verdad.,A bartender behind the counter. Mask on. The place feels cold... no real firewood.
 Traje esto. Parece suyo.,I brought this. Looks like yours.
 "¡El patito! Pensé que no lo volvía a ver... Gracias, detective. De verdad.","The duck! I thought I'd never see it again... Thank you, detective. Really."
 "A veces, cuando el bar se pone raro, iba al bosque a despejarme. No es que... bueno. Da igual. Quédese con la comida caliente cuando pueda.","Sometimes, when the bar got weird, I'd go to the woods to clear my head. Not that... anyway. Doesn't matter. Keep the hot food when you can."
+Un mozo detrás de la barra. Máscara puesta. El lugar se siente frío... sin leña de verdad.,A bartender behind the counter. Mask on. The place feels cold... no real firewood.
+Una máscara abandonada... Aquí nadie pareciera notarla.,An abandoned mask... Nobody here seems to notice it.
+"Si me la pongo, el cuerpo puede recordar al leñador. Si no... es solo un objeto más.","If I put it on, the body might remember the lumberjack. If not... it's just another object."
+El hacha del tronco. Con la máscara del oso... siento que sé usarla.,The axe from the log. With the bear mask on... I feel like I know how to use it.
+"La hiedra... el río más allá. Cuando la verdad salga, este paso dejará de cerrarse.","The ivy... the river beyond. When the truth comes out, this path will stop closing."
+La hiedra tapa el camino al río. Por ahora el pueblo no quiere que pase.,The ivy blocks the path to the river. For now the town doesn't want anyone through.
+La máscara del policía. Pesa como un silencio. Si me la pongo... la comisaría se pone rara.,The chief's mask. It weighs like a silence. If I put it on... the station gets weird.
+La máscara del mozo. Cocina fría y una mentira a medio decir. Si me la pongo... el bar se confunde.,The bartender's mask. A cold kitchen and a lie half-told. If I put it on... the bar gets confused.
+Una máscara abandonada... Aquí nadie pareciera notarla. Como si no existiera para ellos.,An abandoned mask... Nobody here seems to notice it. As if it didn't exist for them.
+Puedo ponérmela... o acercársela a alguien. Las máscaras de este pueblo guardan memorias.,I could put it on... or hold it out to someone. The masks in this town keep memories.
+El mozo juró que hace años no va al bosque. Esto podría decir más que su boca.,The bartender swore he hasn't gone to the woods in years. This might say more than his mouth.
+Mejor la guardo. Puede decir más que cualquier testimonio.,Better keep it. It might say more than any testimony.
+"Mi credencial de detective. Firma, sello y cara de formal. Sirve para presentarme... si quiero.","My detective badge. Signature, stamp, and a formal face. Good for introducing myself... if I want."
+El patito del mozo. Goma gastada y mucho cariño. Mejor devolvérselo.,The bartender's duck. Worn rubber and a lot of love. Better give it back.
+Con el hacha del leñador...,With the lumberjack's axe...
+¡Ya! El paso al río queda libre.,There! The path to the river is clear.
+Una pelota de fútbol americano. Tiene barro... como una suela apretada contra el cuero.,An American football. It's got mud... like a sole pressed into the leather.
+El tronco vacío. El hacha ya cumplió su función.,The empty log. The axe already did its job.
+El hacha... el tronco. Yo estaba talando. Cansancio. Después... un golpe. Y nada.,The axe... the log. I was chopping. Tired. Then... a blow. And nothing.
+"Un hacha clavada en el tronco. Quedó a medias, como si alguien hubiera caído de golpe.","An axe stuck in the log. Left half-done, like someone dropped all at once."
+Está trabada. Solo un leñador la sacaría...,It's stuck. Only a lumberjack could pull it out...
+"La máscara del oso. Si me la pongo, quizá el cuerpo recuerde cómo se tala.","The bear mask. If I put it on, maybe the body will remember how to chop."
+Está trabada. Quizá solo un leñador podría arrancarla.,It's stuck. Maybe only a lumberjack could wrench it free.
+No cede. Como si solo respondiera a quien sabe talar.,It won't give. Like it only answers to someone who knows how to chop.
+"Tengo la máscara del oso. Si me la pongo... ¿volveré a ser leñador, aunque sea un rato?","I have the bear mask. If I put it on... will I be a lumberjack again, even for a while?"
+Está clavada. No cede. Como si solo respondiera a quien sabe talar.,It's stuck in. It won't give. Like it only answers to someone who knows how to chop.
+Un patito tirado... El mozo lo extrañaba. Mejor lo recojo y se lo devuelvo.,A duck lying there... The bartender missed it. Better pick it up and give it back.
+Ya cumplió su función. Solo queda el tronco... y el recuerdo del golpe.,It already did its job. Only the log is left... and the memory of the blow.
+Ya tengo el hacha. Queda el tronco... y el recuerdo del golpe.,I already have the axe. The log is left... and the memory of the blow.
+Arrancarla con las manos no sirve. Está demasiado viva... o demasiado cerrada.,Tearing it out by hand won't work. It's too alive... or too shut.
+El hacha vuelve a mi mano. Ahora sí... puedo abrir camino.,The axe is back in my hand. Now... I can cut a path.
+"""Se busca al leñador. Desaparecido. Sin él, la caldera del pueblo se queda sin leña. El frío no perdona.""","""Wanted: the lumberjack. Missing. Without him, the town boiler runs out of firewood. The cold does not forgive."""
+Claro. Primero como... después veo qué pasó con ese leñador.,Right. First I eat... then I see what happened to that lumberjack.
+Un patito de hule tirado en el bosque. Alguien lo quiere... o lo extraña.,A rubber duck lying in the woods. Someone wants it... or misses it.
+Esto huele a evidencia. Me la llevo.,This smells like evidence. I'm taking it.
+Una pelota abandonada. Tiene marcas de pisada en el barro. Mejor la llevo.,An abandoned ball. It's got footprint marks in the mud. Better take it.
+Un cartel del pueblo. Avisa la desaparición... y el frío que viene sin leña.,A town poster. It warns of a disappearance... and the cold that comes without firewood.
+La máscara del vendedor. Huele a ruta y a trato a medio cerrar. Si me la pongo... la gorra de pato no perdona.,The vendor's mask. It smells like the road and a deal half-closed. If I put it on... the duck cap doesn't forgive.
+"No puedo ""usar"" el cartel. Solo leerlo.","I can't ""use"" the poster. Only read it."
+"Mejor la dejo. Todavía no sé qué significa. Si la agarro ahora, es solo basura del bosque.","Better leave it. I still don't know what it means. If I take it now, it's just woods junk."
+La hiedra tapa el río. Con el hacha... podría abrirme paso.,The ivy blocks the river. With the axe... I could cut a way through.
+La hiedra tapa el camino al río. Haría falta un hacha... y saber usarla.,The ivy blocks the path to the river. I'd need an axe... and know how to use it.
+"Con la máscara del oso puesta, quizá el cuerpo sepa qué hacer.","With the bear mask on, maybe the body will know what to do."
+La hiedra tapa el camino al río. A mano no. Haría falta un hacha... y saber usarla.,The ivy blocks the path to the river. Not by hand. I'd need an axe... and know how to use it.
+"La máscara del oso. Ahora encaja: el leñador, la pisada del mozo, el golpe en el bosque.","The bear mask. Now it fits: the lumberjack, the bartender's footprint, the blow in the woods."
+Si me la pongo... el cuerpo puede recordar quién era.,If I put it on... the body might remember who he was.
+Una máscara de oso tirada en el bosque. Rara. Como si alguien la hubiera dejado caer al correr.,A bear mask lying in the woods. Odd. Like someone dropped it while running.
+Por ahora... solo un objeto más. No sé qué hacer con ella.,For now... just another object. I don't know what to do with it.
+"Mejor lo recojo. Si es el del mozo, se lo voy a devolver.","Better pick it up. If it's the bartender's, I'll give it back."
+La máscara de oso. Huele a bosque y a memoria.,The bear mask. It smells like woods and memory.
+Quizás podría ponérmela... a ver si me da alguna pista.,Maybe I could put it on... see if it gives me a clue.
+Una pelota embarrada. Si mirás bien... hay una pisada en el cuero. El policía sabría leerla.,A muddy ball. If you look close... there's a footprint in the leather. The chief would know how to read it.
+Aquí cayó la máscara. Aquí empezó el olvido.,The mask fell here. This is where the forgetting started.
+Aquí quedó un hacha junto al tronco. Como si alguien hubiera caído a medias.,An axe left by the log. Like someone fell halfway through the job.
+Los rastros no son claros. Parece la escena de un accidente... o de alguien que huyó.,The traces aren't clear. Looks like an accident... or someone who ran.
+El hacha es un recuerdo de lo que pasó. No una llave para abrir caminos.,The axe is a memory of what happened. Not a key to open paths.
+El río canta distinto cuando la verdad ya salió. ¿Qué trae?,The river sings different once the truth is out. What did you bring?
+Todavía no. Cuando esté listo... esto vuelve a usted.,Not yet. When you're ready... this comes back to you.
+"Un pescador. Sin máscara, a diferencia de casi todo el pueblo.","A fisherman. No mask, unlike almost everyone in town."
+Parece esperar algo... o a alguien.,He looks like he's waiting for something... or someone.
+Soy detective. Esto me acredita.,I'm a detective. This proves it.
+Así que usted... tiene papel que dice quién es.,So you... have paper that says who you are.
+Yo no tengo ninguno. Solo miradas. Vuelva cuando haya oído la verdad.,I don't have any. Just looks. Come back when you've heard the truth.
+Esa cara... la conocí demasiado bien. Hoy no. Hoy miro el agua.,That face... I knew it too well. Not today. Today I watch the water.
+...Alguien nuevo. El pueblo murmura; usted también mira.,...Someone new. The town mutters; you're looking too.
+"Buenas. ¿Qué hace aquí, sentado?","Evening. What are you doing here, sitting?"
+Miro el pueblo. Hoy guarda secretos viejos... y usted anda con preguntas en la cara.,I'm watching the town. Today it's keeping old secrets... and you've got questions on your face.
+Disculpe la molestia. Solo pasaba.,Sorry to bother you. Just passing through.
+"Nadie ""solo pasa"" esta noche. Siéntese o pregunte de una.","Nobody ""just passes through"" tonight. Sit down or ask already."
+En este pueblo todos cubren la cara. Usted no.,In this town everyone covers their face. You don't.
+"¿Cubrir la cara? No sé a qué se refiere. Un día sentí que algo se me caía... entró el pánico, como si me hubieran dejado desnudo.","Cover my face? I don't know what you mean. One day I felt something slip off... panic hit, like I'd been left naked."
+"Después me acostumbré a quedarme aquí, mirando en silencio.","Then I got used to sitting here, watching in silence."
+¿Sabe algo del leñador? El pueblo se queda sin leña.,Do you know anything about the lumberjack? The town's running out of firewood.
+¿Vio algo raro en el bosque?,Did you see anything strange in the woods?
+El bosque calla cuando quiere. Yo solo veo lo que pasa frente a mí.,The woods go quiet when they want. I only see what happens in front of me.
+¿Pescó algo últimamente?,Catch anything lately?
+Hoy el anzuelo vuelve vacío. Ayer... ya le di lo que el río me trajo.,Today the hook comes back empty. Yesterday... I already gave you what the river brought me.
+El río a veces devuelve juguetes. Saqué un patito de goma. Amarillo. Absurdo.,The river sometimes gives toys back. I pulled up a rubber duck. Yellow. Absurd.
+No es mío. Si quiere... lléveselo. A mí me estorba la orilla.,It's not mine. If you want... take it. It just clutters my riverbank.
+Se lo agradezco.,I appreciate it.
+¿Un patito? Qué raro.,A duck? That's odd.
+Raro es este pueblo. Tome. O déjelo.,This town is odd. Take it. Or leave it.
+Gracias. Quizá le importe a alguien.,Thanks. Maybe it matters to someone.
+Si le importa a alguien... que lo diga con la cara descubierta.,If it matters to someone... let them say so with their face uncovered.
+El leñador abastecía la caldera... y a quien lo pidiera.,The lumberjack fed the boiler... and anyone who asked.
+"Cuando el bosque calla, el pueblo pasa frío. Vuelva cuando haya escuchado la verdad.","When the woods go quiet, the town goes cold. Come back when you've heard the truth."
+¿Y el leñador? El pueblo necesita leña.,And the lumberjack? The town needs firewood.
+El leñador abastecía la caldera... y a quien lo pidiera. Yo solo veo lo que pasa frente a mí.,The lumberjack fed the boiler... and anyone who asked. I only see what happens in front of me.
+Gracias. Seguiré mirando.,Thanks. I'll keep looking.
+El río entiende mejor que yo. Si trae la verdad... vuelva.,The river understands better than I do. If you bring the truth... come back.
+Ah... ya lo veo en su mirada. Trajo lo que dejé atrás.,Ah... I can see it in your eyes. You brought what I left behind.
+Esto es suyo. Usted era el leñador. El golpe en el bosque... la pelota... el mozo.,This is yours. You were the lumberjack. The blow in the woods... the ball... the bartender.
+En este pueblo todos se ponen una cara para no olvidar el guion.,In this town everyone puts on a face so they don't forget the script.
+Cuando se te cae... te pones borroso. Olvidas el turno. El hacha. La barra. La multa.,When it falls off... you go fuzzy. You forget your shift. The axe. The bar. The fine.
+Hasta que un día miras el río y piensas: la vida no es solo repetir el mismo día con otra máscara.,Until one day you look at the river and think: life isn't just repeating the same day in another mask.
+El pueblo necesita leña. La caldera. La gente.,The town needs firewood. The boiler. The people.
+...No voy a vivir otra vez solo como leñador. Pero puedo usarlo a ratos.,...I'm not going back to living only as a lumberjack. But I can wear it now and then.
+Abastecer la caldera. Dar leña a quien la necesite. Sin que la máscara me coma entero.,Feed the boiler. Give wood to whoever needs it. Without the mask eating me whole.
+"Un trato, entonces. Ponerse el trabajo... y saber cuándo quitárselo.","A deal, then. Put the job on... and know when to take it off."
+Un trato. El pueblo come calor... y yo sigo teniendo orilla.,A deal. The town eats heat... and I still get a riverbank.
+Hasta la próxima.,Until next time.
+Eso no va a funcionar.,That's not going to work.
+Sin el bolso no tengo dónde guardarlo. Mejor lo agarro de la moto.,Without the bag I've got nowhere to keep it. Better grab it off the bike.
+"Mi bolso, junto a la moto. Ahí guardo lo que recojo... y la identificación de detective.","My bag, by the bike. That's where I keep what I pick up... and the detective ID."
+Mejor hablo primero con el vendedor ambulante.,Better talk to the traveling vendor first.
+"¿El leñador? Pensé que no volvía. Si busca leña, yo no vendo. El pueblo, más adelante.","The lumberjack? I thought he wasn't coming back. If you want firewood, I don't sell it. Town's further on."
+"Todavía acá. El pueblo, allá. Yo espero a que alguien compre algo de verdad.",Still here. Town's that way. I'm waiting for someone to buy something real.
+"Todavía acá. El bolso es suyo. El pueblo, allá. Esta noche nadie compra... y el pueblo está raro.",Still here. The bag is yours. Town's that way. Nobody's buying tonight... and the town is weird.
+Buenas... me quedé varado en la ruta. Vi las luces del pueblo y me arrimé.,Evening... I got stranded on the road. I saw the town lights and came closer.
+"Esta noche no se mueve ni un alma. El pueblo más adelante está raro... yo me quedé en la ruta, a ver si pasa alguien con hambre de chucherías.","Not a soul moving tonight. The town up ahead is weird... I stayed on the road, in case someone hungry for trinkets came by."
+Tengo un hambre... ¿hay dónde comer?,I'm starving... is there somewhere to eat?
+"Comida de verdad, en el bar. Yo vendo lo que quepa en mis bolsillos... y hoy están escuetos de cosas.","Real food, at the bar. I sell whatever fits in my pockets... and today they're short on goods."
+Si busca al que manda el caso... la comisaría.,If you want the one running the case... the station.
+¿Raro cómo? ¿Pasó algo?,Strange how? Did something happen?
+Murmullos. Un leñador que no vuelve. Malo para el comercio.,Whispers. A lumberjack who isn't coming back. Bad for business.
+"Si pregunta, pregunte adentro. Yo atiendo la ruta.","If you're asking, ask inside. I mind the road."
+Disculpe... ¿lleva una máscara?,Excuse me... are you wearing a mask?
+"¿Máscara? ¿De qué habla? Si busca algo caliente, vaya al bar. Si busca al que manda el caso... la comisaría.","A mask? What are you talking about? If you want something hot, go to the bar. If you want the one running the case... the station."
+Gracias. Voy a mirar un poco y después entro al pueblo.,Thanks. I'll look around a bit and then head into town.
+Agarre su bolso antes de irse. Allá adentro va a querer manos libres... y yo no se lo voy a guardar.,Grab your bag before you go. In there you'll want your hands free... and I won't hold it for you.
+"Volvió. ¿El de la comisaría le dio trabajo? Mal negocio, eso.","You're back. Did the station give you a job? Bad business, that."
+El policía pide algo con huellas. ¿No le quedó nada raro en el carrito?,The chief wants something with prints. Anything odd left in the cart?
+¿De verdad el carrito está vacío?,Is the cart really empty?
+Vacío de lo que se vende. De lo que nadie quiere... otra cosa.,Empty of what sells. Of what nobody wants... that's something else.
+Entonces siga. Yo espero un cliente que no llega.,Then move along. I'm waiting for a customer who never comes.
+Mire... tengo una pelota de esas raras. Fútbol americano. La encontré tirada. Nadie la compra.,Look... I've got one of those odd balls. American football. I found it lying around. Nobody buys it.
+"Si el policía quiere ""prueba""... llévesela. A mí me estorba.","If the cop wants ""proof""... take it. It just gets in my way."
+Se la agradezco.,I appreciate it.
+¿Y a cambio?,And in return?
+A cambio de que deje de preguntarme. Y de que el pueblo vuelva a comprar algo.,In return for you stopping the questions. And for the town buying something again.
+Gracias. Esto puede servir.,Thanks. This might help.
+Si las huellas hablan... que hablen lejos de mi carrito.,If the prints talk... let them talk far from my cart.
+Un vendedor ambulante. Máscara puesta. Gorra de pato. Parece varado... esperando un cliente que no llega.,A traveling vendor. Mask on. Duck cap. Looks stranded... waiting for a customer who never comes.
+"Mi bolso, junto a la moto. Ahí guardo lo que recojo.","My bag, by the bike. That's where I keep what I pick up."
+Disculpe. Soy detective. Mi credencial.,Excuse me. I'm a detective. My badge.
+"Ya le di lo raro. Papeles no compro. El pueblo, allá.",I already gave you the odd thing. I don't buy papers. Town's that way.
+Placa. Trabajo. Mire... tengo una pelota de esas raras. Fútbol americano. Nadie la compra.,Badge. Work. Look... I've got one of those odd balls. American football. Nobody buys it.
+Si el policía quiere prueba... llévesela.,If the cop wants proof... take it.
+"Papeles no compro. El bolso, la mirada... yo vendo lo que quepa en el carrito.","I don't buy papers. The bag, the look... I sell whatever fits in the cart."
+El pueblo está más adelante. Si busca al que manda el caso... vaya a la comisaría.,Town is further on. If you want the one running the case... go to the station.
+Mejor hablo primero con el vendedor ambulante. Después agarro el bolso.,Better talk to the traveling vendor first. Then I'll grab the bag.
+Listo. Bolso al hombro.,Done. Bag on my shoulder.
+"Adentro, la credencial. Por si hace falta presentarme.","Inside, the badge. In case I need to introduce myself."
+Un policía de la comisaría. Máscara puesta. Parece cansado... o desconfiado.,A cop from the station. Mask on. He looks tired... or wary.
 Ya oyó la verdad. El río. No me haga perder más tiempo.,You already heard the truth. The river. Don't waste any more of my time.
 El mozo mintió: estuvo en el bosque. Una pelota no me alcanza para arrestarlo.,The bartender lied: he was in the woods. A ball isn't enough to arrest him.
 El resto... averígüelo usted.,The rest... you figure it out.
@@ -46,10 +203,15 @@ Primero coma. El bar atiende a medias. Con el estómago vacío solo ve fantasmas
 El pueblo pasa frío. Vi el cartel del leñador.,The town is freezing. I saw the lumberjack poster.
 "Todo el pueblo pasa frío sin él. La caldera, la leña. Y murmuran cosas feas.","The whole town is freezing without him. The boiler, the firewood. And they mutter ugly things."
 "¿Y usted qué hace en mi comisaría, extraño?","And what are you doing in my station, stranger?"
+Vi el cartel. ¿Qué pasó con el leñador?,I saw the poster. What happened to the lumberjack?
 Desapareció. Sin él no pueden bañarse ni calefaccionar.,He vanished. Without him they can't bathe or heat the houses.
 "La gente murmura. Yo necesito prueba, no cuentos.","People talk. I need proof, not stories."
 ¿Y por qué le importa tanto a un extraño?,And why does a stranger care so much?
+Porque el pueblo necesita calor. Nada más.,Because the town needs heat. That's all.
 Mm. Si ve algo raro... no lo toque. Tráigalo. O déjelo.,Mm. If you see something strange... don't touch it. Bring it. Or leave it.
+Porque investigo estas cosas. Soy detective.,Because I look into these things. I'm a detective.
+Porque puedo demostrarlo. Tengo credencial.,Because I can prove it. I have a badge.
+Vengo por trabajo. Soy detective.,I'm here on the job. I'm a detective.
 "...¿Detective? Mire, no le pedí nada. Pero si de verdad sabe mirar...","...Detective? Look, I didn't ask you for anything. But if you really know how to look..."
 Cuénteme.,Tell me.
 El leñador desapareció. Sin él no pueden bañarse ni calefaccionar.,The lumberjack vanished. Without him they can't bathe or heat the houses.
@@ -58,6 +220,25 @@ Empiece por la ruta. El vendedor ambulante a veces se queda con lo que nadie com
 Tengo mi placa. Puedo mostrársela.,I have my badge. I can show it to you.
 ...Placa. Firma. Así que detective.,...Badge. Signature. So you're a detective.
 "Mire, no le pedí nada. Pero si de verdad sabe mirar...","Look, I didn't ask you for anything. But if you really know how to look..."
+Ya vi su placa. No hace falta mostrarla otra vez.,I already saw your badge. No need to flash it again.
+Traiga una pista. Algo con huellas. Pregunte en la ruta.,Bring a lead. Something with prints. Ask on the road.
+Policía. Quiero presentarme como corresponde.,Chief. I'd like to introduce myself properly.
+...Una placa. ¿Detective?,...A badge. Detective?
+Qué formal para un extraño con hambre. Primero el bar.,Fancy for a hungry stranger. The bar first.
+"Después, si todavía quiere molestar... vuelva con el estómago lleno. Y con esa cara de trabajo.","After that, if you still want to bother me... come back with a full stomach. And that work face."
+"...Una placa. ¿Detective? Ya comió, al menos.",...A badge. Detective? At least you ate.
+Solo quiero que sepa quién soy. No vengo a molestar.,I just want you to know who I am. I'm not here to bother you.
+Ya lo vi. Detective. ¿Y?,I saw it. Detective. And?
+Ofrezco ayuda con lo del leñador.,I can help with the lumberjack case.
+Solo pasaba. El cartel me llamó la atención.,Just passing through. The poster caught my eye.
+Entonces mire el cartel y no me robe tiempo. O... si de verdad sabe mirar...,Then look at the poster and don't steal my time. Or... if you really know how to look...
+Vi el cartel del leñador. Quiero saber qué pasó.,I saw the lumberjack poster. I want to know what happened.
+"Con placa o sin placa, necesito prueba. No cuentos.","Badge or no badge, I need proof. Not stories."
+"Está bien, detective. El leñador desapareció. Sin él no pueden bañarse ni calefaccionar.","All right, detective. The lumberjack vanished. Without him they can't bathe or heat the houses."
+...El caso quedó atrás. La caldera puede volver a comer leña.,...The case is behind us. The boiler can eat firewood again.
+Hubo un accidente. Una mentira. Y un hombre que dejó de ser leñador.,There was an accident. A lie. And a man who stopped being a lumberjack.
+El pueblo come calor otra vez. Eso alcanza.,The town eats heat again. That's enough.
+Usted hizo su parte. Váyase a descansar.,You did your part. Go rest.
 ...Volvió. Hable. Rápido.,...You're back. Talk. Fast.
 La pisada apunta al mozo. Él negó el bosque.,The footprint points to the bartender. He denied the woods.
 Mentiroso. Sí. ¿Arrestarlo por una pelota? No. Averigüe el resto.,Liar. Yes. Arrest him over a ball? No. Dig up the rest.
@@ -71,18 +252,6 @@ El hacha y el tronco quedaron a medias. Como si alguien hubiera caído ahí.,The
 Mm. Observe. No invente herramientas donde hay recuerdos.,Mm. Look. Don't invent tools where there are memories.
 El mozo estuvo en el bosque. Eso es todo lo que digo.,The bartender was in the woods. That's all I'm saying.
 Todavía no ganó mi confianza. Investigue.,You haven't earned my trust yet. Investigate.
-Ya vi su placa. No hace falta mostrarla otra vez.,I already saw your badge. No need to flash it again.
-Traiga una pista. Algo con huellas. Pregunte en la ruta.,Bring a lead. Something with prints. Ask on the road.
-Policía. Quiero presentarme como corresponde.,Chief. I'd like to introduce myself properly.
-...Una placa. ¿Detective?,...A badge. Detective?
-Qué formal para un extraño con hambre. Primero el bar.,Fancy for a hungry stranger. The bar first.
-"Después, si todavía quiere molestar... vuelva con el estómago lleno. Y con esa cara de trabajo.","After that, if you still want to bother me... come back with a full stomach. And that work face."
-"...Una placa. ¿Detective? Ya comió, al menos.",...A badge. Detective? At least you ate.
-Ya lo vi. Detective. ¿Y?,I saw it. Detective. And?
-Entonces mire el cartel y no me robe tiempo. O... si de verdad sabe mirar...,Then look at the poster and don't steal my time. Or... if you really know how to look...
-"Con placa o sin placa, necesito prueba. No cuentos.","Badge or no badge, I need proof. Not stories."
-"Está bien, detective. El leñador desapareció. Sin él no pueden bañarse ni calefaccionar.","All right, detective. The lumberjack vanished. Without him they can't bathe or heat the houses."
-Un policía de la comisaría. Máscara puesta. Parece cansado... o desconfiado.,A cop from the station. Mask on. He looks tired... or wary.
 Ya le dije: la pisada es del mozo. Mentiroso. Pero una pelota embarrada no me alcanza para una celda.,I already told you: the footprint is the bartender's. Liar. But a muddy ball isn't enough for a cell.
 Conseguí esta pelota. Parece evidencia.,I got this ball. Looks like evidence.
 Déjemela.,Let me have it.
@@ -92,137 +261,3 @@ Entonces miente. Estuvo ahí. Jugó. Eso lo sé.,Then he's lying. He was there. 
 "Ahora bien: no hay cuerpo, no hay denuncia, no hay quién diga ""me pegó"".","That said: no body, no complaint, nobody saying ""he hit me""."
 No voy a encerrar al de la barra por una pelota sucia. Averigüe qué pasó de verdad.,I'm not locking up the bartender over a dirty ball. Find out what really happened.
 Si el bosque guardó más que esto... mírelo otra vez.,If the woods kept more than this... look again.
-...El caso quedó atrás. La caldera puede volver a comer leña.,...The case is behind us. The boiler can eat firewood again.
-Hubo un accidente. Una mentira. Y un hombre que dejó de ser leñador.,There was an accident. A lie. And a man who stopped being a lumberjack.
-El pueblo come calor otra vez. Eso alcanza.,The town eats heat again. That's enough.
-Usted hizo su parte. Váyase a descansar.,You did your part. Go rest.
-Un cartel del pueblo. Avisa la desaparición... y el frío que viene sin leña.,A town poster. It warns of a disappearance... and the cold that comes without firewood.
-"""Se busca al leñador. Desaparecido. Sin él, la caldera del pueblo se queda sin leña. El frío no perdona.""","""Wanted: the lumberjack. Missing. Without him, the town boiler runs out of firewood. The cold does not forgive."""
-Claro. Primero como... después veo qué pasó con ese leñador.,Right. First I eat... then I see what happened to that lumberjack.
-"No puedo ""usar"" el cartel. Solo leerlo.","I can't ""use"" the poster. Only read it."
-"La hiedra... el río más allá. Cuando la verdad salga, este paso dejará de cerrarse.","The ivy... the river beyond. When the truth comes out, this path will stop closing."
-La hiedra tapa el camino al río. Por ahora el pueblo no quiere que pase.,The ivy blocks the path to the river. For now the town doesn't want anyone through.
-Con el hacha del leñador...,With the lumberjack's axe...
-¡Ya! El paso al río queda libre.,There! The path to the river is clear.
-La hiedra tapa el río. Con el hacha... podría abrirme paso.,The ivy blocks the river. With the axe... I could cut a way through.
-La hiedra tapa el camino al río. Haría falta un hacha... y saber usarla.,The ivy blocks the path to the river. I'd need an axe... and know how to use it.
-"Con la máscara del oso puesta, quizá el cuerpo sepa qué hacer.","With the bear mask on, maybe the body will know what to do."
-La hiedra tapa el camino al río. A mano no. Haría falta un hacha... y saber usarla.,The ivy blocks the path to the river. Not by hand. I'd need an axe... and know how to use it.
-Arrancarla con las manos no sirve. Está demasiado viva... o demasiado cerrada.,Tearing it out by hand won't work. It's too alive... or too shut.
-"Mi credencial de detective. Firma, sello y cara de formal. Sirve para presentarme... si quiero.","My detective badge. Signature, stamp, and a formal face. Good for introducing myself... if I want."
-El hacha del tronco. Con la máscara del oso... siento que sé usarla.,The axe from the log. With the bear mask on... I feel like I know how to use it.
-La máscara del mozo. Cocina fría y una mentira a medio decir. Si me la pongo... el bar se confunde.,The bartender's mask. A cold kitchen and a lie half-told. If I put it on... the bar gets confused.
-La máscara del policía. Pesa como un silencio. Si me la pongo... la comisaría se pone rara.,The chief's mask. It weighs like a silence. If I put it on... the station gets weird.
-La máscara del vendedor. Huele a ruta y a trato a medio cerrar. Si me la pongo... la gorra de pato no perdona.,The vendor's mask. It smells like the road and a deal half-closed. If I put it on... the duck cap doesn't forgive.
-La máscara de oso. Huele a bosque y a memoria.,The bear mask. It smells like woods and memory.
-Quizás podría ponérmela... a ver si me da alguna pista.,Maybe I could put it on... see if it gives me a clue.
-El patito del mozo. Goma gastada y mucho cariño. Mejor devolvérselo.,The bartender's duck. Worn rubber and a lot of love. Better give it back.
-Una pelota embarrada. Si mirás bien... hay una pisada en el cuero. El policía sabría leerla.,A muddy ball. If you look close... there's a footprint in the leather. The chief would know how to read it.
-Una máscara abandonada... Aquí nadie pareciera notarla. Como si no existiera para ellos.,An abandoned mask... Nobody here seems to notice it. As if it didn't exist for them.
-Puedo ponérmela... o acercársela a alguien. Las máscaras de este pueblo guardan memorias.,I could put it on... or hold it out to someone. The masks in this town keep memories.
-El mozo juró que hace años no va al bosque. Esto podría decir más que su boca.,The bartender swore he hasn't gone to the woods in years. This might say more than his mouth.
-Mejor la guardo. Puede decir más que cualquier testimonio.,Better keep it. It might say more than any testimony.
-"La máscara del oso. Ahora encaja: el leñador, la pisada del mozo, el golpe en el bosque.","The bear mask. Now it fits: the lumberjack, the bartender's footprint, the blow in the woods."
-Si me la pongo... el cuerpo puede recordar quién era.,If I put it on... the body might remember who he was.
-Una máscara de oso tirada en el bosque. Rara. Como si alguien la hubiera dejado caer al correr.,A bear mask lying in the woods. Odd. Like someone dropped it while running.
-Por ahora... solo un objeto más. No sé qué hacer con ella.,For now... just another object. I don't know what to do with it.
-Una máscara abandonada... Aquí nadie pareciera notarla.,An abandoned mask... Nobody here seems to notice it.
-"Si me la pongo, el cuerpo puede recordar al leñador. Si no... es solo un objeto más.","If I put it on, the body might remember the lumberjack. If not... it's just another object."
-"Mejor la dejo. Todavía no sé qué significa. Si la agarro ahora, es solo basura del bosque.","Better leave it. I still don't know what it means. If I take it now, it's just woods junk."
-Un patito tirado... El mozo lo extrañaba. Mejor lo recojo y se lo devuelvo.,A duck lying there... The bartender missed it. Better pick it up and give it back.
-Un patito de hule tirado en el bosque. Alguien lo quiere... o lo extraña.,A rubber duck lying in the woods. Someone wants it... or misses it.
-"Mejor lo recojo. Si es el del mozo, se lo voy a devolver.","Better pick it up. If it's the bartender's, I'll give it back."
-Una pelota abandonada. Tiene marcas de pisada en el barro. Mejor la llevo.,An abandoned ball. It's got footprint marks in the mud. Better take it.
-Una pelota de fútbol americano. Tiene barro... como una suela apretada contra el cuero.,An American football. It's got mud... like a sole pressed into the leather.
-Esto huele a evidencia. Me la llevo.,This smells like evidence. I'm taking it.
-El hacha... el tronco. Yo estaba talando. Cansancio. Después... un golpe. Y nada.,The axe... the log. I was chopping. Tired. Then... a blow. And nothing.
-Aquí cayó la máscara. Aquí empezó el olvido.,The mask fell here. This is where the forgetting started.
-Aquí quedó un hacha junto al tronco. Como si alguien hubiera caído a medias.,An axe left by the log. Like someone fell halfway through the job.
-Los rastros no son claros. Parece la escena de un accidente... o de alguien que huyó.,The traces aren't clear. Looks like an accident... or someone who ran.
-El hacha es un recuerdo de lo que pasó. No una llave para abrir caminos.,The axe is a memory of what happened. Not a key to open paths.
-El tronco vacío. El hacha ya cumplió su función.,The empty log. The axe already did its job.
-"Un hacha clavada en el tronco. Quedó a medias, como si alguien hubiera caído de golpe.","An axe stuck in the log. Left half-done, like someone dropped all at once."
-Está trabada. Solo un leñador la sacaría...,It's stuck. Only a lumberjack could pull it out...
-"La máscara del oso. Si me la pongo, quizá el cuerpo recuerde cómo se tala.","The bear mask. If I put it on, maybe the body will remember how to chop."
-Está trabada. Quizá solo un leñador podría arrancarla.,It's stuck. Maybe only a lumberjack could wrench it free.
-No cede. Como si solo respondiera a quien sabe talar.,It won't give. Like it only answers to someone who knows how to chop.
-"Tengo la máscara del oso. Si me la pongo... ¿volveré a ser leñador, aunque sea un rato?","I have the bear mask. If I put it on... will I be a lumberjack again, even for a while?"
-Está clavada. No cede. Como si solo respondiera a quien sabe talar.,It's stuck in. It won't give. Like it only answers to someone who knows how to chop.
-Ya cumplió su función. Solo queda el tronco... y el recuerdo del golpe.,It already did its job. Only the log is left... and the memory of the blow.
-Ya tengo el hacha. Queda el tronco... y el recuerdo del golpe.,I already have the axe. The log is left... and the memory of the blow.
-El hacha vuelve a mi mano. Ahora sí... puedo abrir camino.,The axe is back in my hand. Now... I can cut a path.
-Esa cara... la conocí demasiado bien. Hoy no. Hoy miro el agua.,That face... I knew it too well. Not today. Today I watch the water.
-...Alguien nuevo. El pueblo murmura; usted también mira.,...Someone new. The town mutters; you're looking too.
-Miro el pueblo. Hoy guarda secretos viejos... y usted anda con preguntas en la cara.,I'm watching the town. Today it's keeping old secrets... and you've got questions on your face.
-"Nadie ""solo pasa"" esta noche. Siéntese o pregunte de una.","Nobody ""just passes through"" tonight. Sit down or ask already."
-"¿Cubrir la cara? No sé a qué se refiere. Un día sentí que algo se me caía... entró el pánico, como si me hubieran dejado desnudo.","Cover my face? I don't know what you mean. One day I felt something slip off... panic hit, like I'd been left naked."
-"Después me acostumbré a quedarme aquí, mirando en silencio.","Then I got used to sitting here, watching in silence."
-El bosque calla cuando quiere. Yo solo veo lo que pasa frente a mí.,The woods go quiet when they want. I only see what happens in front of me.
-Hoy el anzuelo vuelve vacío. Ayer... ya le di lo que el río me trajo.,Today the hook comes back empty. Yesterday... I already gave you what the river brought me.
-El río a veces devuelve juguetes. Saqué un patito de goma. Amarillo. Absurdo.,The river sometimes gives toys back. I pulled up a rubber duck. Yellow. Absurd.
-No es mío. Si quiere... lléveselo. A mí me estorba la orilla.,It's not mine. If you want... take it. It just clutters my riverbank.
-Raro es este pueblo. Tome. O déjelo.,This town is odd. Take it. Or leave it.
-Gracias. Quizá le importe a alguien.,Thanks. Maybe it matters to someone.
-Si le importa a alguien... que lo diga con la cara descubierta.,If it matters to someone... let them say so with their face uncovered.
-El leñador abastecía la caldera... y a quien lo pidiera.,The lumberjack fed the boiler... and anyone who asked.
-"Cuando el bosque calla, el pueblo pasa frío. Vuelva cuando haya escuchado la verdad.","When the woods go quiet, the town goes cold. Come back when you've heard the truth."
-El leñador abastecía la caldera... y a quien lo pidiera. Yo solo veo lo que pasa frente a mí.,The lumberjack fed the boiler... and anyone who asked. I only see what happens in front of me.
-El río entiende mejor que yo. Si trae la verdad... vuelva.,The river understands better than I do. If you bring the truth... come back.
-Soy detective. Esto me acredita.,I'm a detective. This proves it.
-Así que usted... tiene papel que dice quién es.,So you... have paper that says who you are.
-Yo no tengo ninguno. Solo miradas. Vuelva cuando haya oído la verdad.,I don't have any. Just looks. Come back when you've heard the truth.
-Ah... ya lo veo en su mirada. Trajo lo que dejé atrás.,Ah... I can see it in your eyes. You brought what I left behind.
-Esto es suyo. Usted era el leñador. El golpe en el bosque... la pelota... el mozo.,This is yours. You were the lumberjack. The blow in the woods... the ball... the bartender.
-En este pueblo todos se ponen una cara para no olvidar el guion.,In this town everyone puts on a face so they don't forget the script.
-Cuando se te cae... te pones borroso. Olvidas el turno. El hacha. La barra. La multa.,When it falls off... you go fuzzy. You forget your shift. The axe. The bar. The fine.
-Hasta que un día miras el río y piensas: la vida no es solo repetir el mismo día con otra máscara.,Until one day you look at the river and think: life isn't just repeating the same day in another mask.
-El pueblo necesita leña. La caldera. La gente.,The town needs firewood. The boiler. The people.
-...No voy a vivir otra vez solo como leñador. Pero puedo usarlo a ratos.,...I'm not going back to living only as a lumberjack. But I can wear it now and then.
-Abastecer la caldera. Dar leña a quien la necesite. Sin que la máscara me coma entero.,Feed the boiler. Give wood to whoever needs it. Without the mask eating me whole.
-"Un trato, entonces. Ponerse el trabajo... y saber cuándo quitárselo.","A deal, then. Put the job on... and know when to take it off."
-Un trato. El pueblo come calor... y yo sigo teniendo orilla.,A deal. The town eats heat... and I still get a riverbank.
-Hasta la próxima.,Until next time.
-"Un pescador. Sin máscara, a diferencia de casi todo el pueblo.","A fisherman. No mask, unlike almost everyone in town."
-Parece esperar algo... o a alguien.,He looks like he's waiting for something... or someone.
-El río canta distinto cuando la verdad ya salió. ¿Qué trae?,The river sings different once the truth is out. What did you bring?
-Todavía no. Cuando esté listo... esto vuelve a usted.,Not yet. When you're ready... this comes back to you.
-"¿El leñador? Pensé que no volvía. Si busca leña, yo no vendo. El pueblo, más adelante.","The lumberjack? I thought he wasn't coming back. If you want firewood, I don't sell it. Town's further on."
-"Todavía acá. El pueblo, allá. Yo espero a que alguien compre algo de verdad.",Still here. Town's that way. I'm waiting for someone to buy something real.
-"Todavía acá. El bolso es suyo. El pueblo, allá. Esta noche nadie compra... y el pueblo está raro.",Still here. The bag is yours. Town's that way. Nobody's buying tonight... and the town is weird.
-Buenas... me quedé varado en la ruta. Vi las luces del pueblo y me arrimé.,Evening... I got stranded on the road. I saw the town lights and came closer.
-"Esta noche no se mueve ni un alma. El pueblo más adelante está raro... yo me quedé en la ruta, a ver si pasa alguien con hambre de chucherías.","Not a soul moving tonight. The town up ahead is weird... I stayed on the road, in case someone hungry for trinkets came by."
-"Comida de verdad, en el bar. Yo vendo lo que quepa en mis bolsillos... y hoy están escuetos de cosas.","Real food, at the bar. I sell whatever fits in my pockets... and today they're short on goods."
-Si busca al que manda el caso... la comisaría.,If you want the one running the case... the station.
-Murmullos. Un leñador que no vuelve. Malo para el comercio.,Whispers. A lumberjack who isn't coming back. Bad for business.
-"Si pregunta, pregunte adentro. Yo atiendo la ruta.","If you're asking, ask inside. I mind the road."
-"¿Máscara? ¿De qué habla? Si busca algo caliente, vaya al bar. Si busca al que manda el caso... la comisaría.","A mask? What are you talking about? If you want something hot, go to the bar. If you want the one running the case... the station."
-Gracias. Voy a mirar un poco y después entro al pueblo.,Thanks. I'll look around a bit and then head into town.
-Agarre su bolso antes de irse. Allá adentro va a querer manos libres... y yo no se lo voy a guardar.,Grab your bag before you go. In there you'll want your hands free... and I won't hold it for you.
-"Volvió. ¿El de la comisaría le dio trabajo? Mal negocio, eso.","You're back. Did the station give you a job? Bad business, that."
-Vacío de lo que se vende. De lo que nadie quiere... otra cosa.,Empty of what sells. Of what nobody wants... that's something else.
-Entonces siga. Yo espero un cliente que no llega.,Then move along. I'm waiting for a customer who never comes.
-Mire... tengo una pelota de esas raras. Fútbol americano. La encontré tirada. Nadie la compra.,Look... I've got one of those odd balls. American football. I found it lying around. Nobody buys it.
-"Si el policía quiere ""prueba""... llévesela. A mí me estorba.","If the cop wants ""proof""... take it. It just gets in my way."
-A cambio de que deje de preguntarme. Y de que el pueblo vuelva a comprar algo.,In return for you stopping the questions. And for the town buying something again.
-Gracias. Esto puede servir.,Thanks. This might help.
-Si las huellas hablan... que hablen lejos de mi carrito.,If the prints talk... let them talk far from my cart.
-Disculpe. Soy detective. Mi credencial.,Excuse me. I'm a detective. My badge.
-"Ya le di lo raro. Papeles no compro. El pueblo, allá.",I already gave you the odd thing. I don't buy papers. Town's that way.
-Placa. Trabajo. Mire... tengo una pelota de esas raras. Fútbol americano. Nadie la compra.,Badge. Work. Look... I've got one of those odd balls. American football. Nobody buys it.
-Si el policía quiere prueba... llévesela.,If the cop wants proof... take it.
-"Papeles no compro. El bolso, la mirada... yo vendo lo que quepa en el carrito.","I don't buy papers. The bag, the look... I sell whatever fits in the cart."
-El pueblo está más adelante. Si busca al que manda el caso... vaya a la comisaría.,Town is further on. If you want the one running the case... go to the station.
-Un vendedor ambulante. Máscara puesta. Gorra de pato. Parece varado... esperando un cliente que no llega.,A traveling vendor. Mask on. Duck cap. Looks stranded... waiting for a customer who never comes.
-"Mi bolso, junto a la moto. Ahí guardo lo que recojo.","My bag, by the bike. That's where I keep what I pick up."
-Mejor hablo primero con el vendedor ambulante. Después agarro el bolso.,Better talk to the traveling vendor first. Then I'll grab the bag.
-"Mi bolso, junto a la moto. Ahí guardo lo que recojo... y la identificación de detective.","My bag, by the bike. That's where I keep what I pick up... and the detective ID."
-Listo. Bolso al hombro.,Done. Bag on my shoulder.
-"Adentro, la credencial. Por si hace falta presentarme.","Inside, the badge. In case I need to introduce myself."
-Mejor hablo primero con el vendedor ambulante.,Better talk to the traveling vendor first.
-Eso no va a funcionar.,That's not going to work.
-Sin el bolso no tengo dónde guardarlo. Mejor lo agarro de la moto.,Without the bag I've got nowhere to keep it. Better grab it off the bike.
-Espere. Se lo armo.,Hang on. I'll put it together.
-Aquí tiene. No está caliente del todo... pero es comida. Cómalo antes de que se enfríe del todo.,Here you go. Not fully hot... but it's food. Eat it before it goes cold for good.
-Gracias. Lo necesito.,Thanks. I need it.
-...Listo. El frío afloja un poco.,...Done. The cold eases a little.
-"Bien. Y ese hueco en el adorno... mi patito. Lo rompí, lo perdí, quién sabe. Tiene más años que la barra.","Good. And that gap in the shelf... my duck. I broke it, lost it, who knows. It's older than the bar."
